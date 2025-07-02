@@ -28,11 +28,13 @@ public class Locators extends BasePage {
     public static String DeletedSuccessfully = "//*[contains(text(),'Delete Successfully')]";
     public static String DeleteConfirmationPopUp = "//h6[.='Are you sure you want to delete this item?']";
     public static String DELETEBTNPOP = "//div[@class='MuiCardContent-root css-15q2cw4']//div//button[.='Delete']";
-    public static String DoctorApprovedSuccess = "//*[contains(text(),'Doctor Approved Successfully!')]";
+    public static String DoctorApprovedSuccess = "//*[contains(text(),'Doctor Approved Successfully!')] | //*[contains(text(),'Chemist Approved Successfully!')] | //*[contains(text(),'Stockist Approved Successfully!')]";
     public static String NOROWS = "//div[starts-with(text(),'No rows')]";
     public static String VIEWBTN1 = "//button//img[@src='/static/media/eye.f10b3b160555bcdbf184fd21043b5df5.svg']";
     public static String PENDINGSTATUS = "(//button[@aria-label='Pending'])[2]";
+    public static String PENDINGSTATUS1 = "(//button[@aria-label='Pending'])[1]";
     public static String APPROVESTATUS = "(//button[@aria-label='Approved'])[2]";
+    public static String APPROVESTATUS1 = "(//button[@aria-label='Approved'])[1]";
     public static String FIRSTCHECKBOXDR = "//input[@tabindex='0']";
     public static String SUCCESSMSG = "//*[contains(text(),'Approved Successfull')]";
 
@@ -690,6 +692,8 @@ public class Locators extends BasePage {
     public static String CREATEDDOCTOR = "(//div[@data-colindex='4'])[1]";
     public static String APPROVALMENU = "//span[.='Approvals']";
     public static String DELETEAPPROVALDOCTOR = "//div[contains(text(),'Delete Approval Doctor')]";
+    public static String DELETEAPPROVALCHEMIST = "//div[contains(text(),'Delete Approval Chemist')]";
+    public static String DELETEAPPROVALSTOCKIEST = "//div[contains(text(),'Delete Approval Stockist')]";
     public static String DOCTORAVAILIBILITY = "//div[contains(text(),'Doctor Availibility')]";
     public static String DOCTORDROPDOWNICN = "//label[.='Doctor *']/following-sibling::div//*[local-name()='svg']";
     //public static String = "";

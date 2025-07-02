@@ -41,6 +41,7 @@ public class AdminTest extends BasePage {
         adminPage.loginWithASMCredential();
         adminPage.redeirectToDoctorPage();
         adminPage.verifyEntityIsCreatedIsShowingInTheTableAndItStatusIsPending(updatedName);
+        adminPage.redeirectToDoctorPage();
         adminPage.verifyDoctorIsUpdated(updatedName,updatedMobile);
     }
 
@@ -51,8 +52,11 @@ public class AdminTest extends BasePage {
         adminPage.verifyEntityIsCreatedIsShowingInTheTableAndItStatusIsPending(drName);
         adminPage.deleteDoctorFromTheList(drName);
         common.logPrint("Step:: Verify delete request is showing in the Directors account");
+        loginWithDirectorCredential();
+        adminPage.redirectsDeleteDoctorApprovalPage();
         adminPage.approvedDeleteRequestFromTheDirectorsUser(drName.toLowerCase());
         loginWithMRCredential();
+        adminPage.redeirectToDoctorPage();
         adminPage.verifyDoctorRemoveFromTheList(drName);
     }
 
@@ -84,7 +88,25 @@ public class AdminTest extends BasePage {
         loginWithASMCredential();
         adminPage.redirectsToChemistPage();
         adminPage.verifyEntityIsCreatedIsShowingInTheTableAndItStatusIsPending(updatedName);
+        adminPage.redirectsToChemistPage();
         adminPage.verifyDoctorIsUpdated(updatedName, updatedMobile);
+    }
+
+    @Test
+    public void verifyDeleteChemistScenario(){
+        common.logPrint("Step:: Verify delete chemist scenario");
+        loginWithMRCredential();
+        String chemistName = adminPage.createChemistAndApprove();
+        adminPage.verifyEntityIsCreatedIsShowingInTheTableAndItStatusIsPending(chemistName);
+        adminPage.deleteChemistFromTheDirector();
+        common.logPrint("Step:: Verify delete request is showing in the Directors account");
+        loginWithDirectorCredential();
+        adminPage.redirectsDeleteChemistApprovalPage();
+        adminPage.approvedDeleteRequestFromTheDirectorsUser(chemistName.toLowerCase());
+        loginWithMRCredential();
+        adminPage.redirectsToChemistPage();
+        adminPage.verifyDoctorRemoveFromTheList(chemistName);
+
     }
 
     @Test
@@ -96,6 +118,42 @@ public class AdminTest extends BasePage {
         loginWithMRCredential();
         adminPage.redirectsToStockiestPage();
         adminPage.verifyDoctorIsCreatedIsShowingInTheTableAndItStatusIsApproval(stockiestName);
+    }
+
+    @Test
+    public void verifyUpdateStockiestScenario(){
+        loginWithMRCredential();
+        String stockiestName = adminPage.createStockiestApproval();
+        adminPage.verifyStockiestIsCreatedIsShowingInTheTableAndItStatusIsPending(stockiestName);
+        adminPage.verifyStockiestApprovedForTheAsmUser(stockiestName);
+        loginWithMRCredential();
+        adminPage.redirectsToStockiestPage();
+        adminPage.verifyStockiestIsCreatedIsShowingInTheTableAndItStatusIsApproval(stockiestName);
+        loginWithMRCredential();
+        String[] updateStockiest = adminPage.updateTheStockiest(stockiestName);
+        String updatedName = updateStockiest[0];
+        String updatedMobile = updateStockiest[1];
+        loginWithASMCredential();
+        adminPage.redirectsToStockiestPage();
+        adminPage.verifyStockiestIsCreatedIsShowingInTheTableAndItStatusIsPending(updatedName);
+        adminPage.redirectsToStockiestPage();
+        adminPage.verifyStockiestIsUpdated(updatedName);
+        //test github
+    }
+
+    @Test
+    public void verifyDeleteStockiestScenario(){
+        loginWithMRCredential();
+        String stockiestName = adminPage.createStockiestApproval();
+        //adminPage.verifyEntityIsCreatedIsShowingInTheTableAndItStatusIsPending(stockiestName);
+        adminPage.deleteChemistFromTheDirector();
+        common.logPrint("Step:: Verify delete request is showing in the Directors account");
+        loginWithDirectorCredential();
+        adminPage.redirectsDeleteStockiestApprovalPage();
+        adminPage.approvedDeleteRequestFromTheDirectorsUser(stockiestName.toLowerCase());
+        loginWithMRCredential();
+        adminPage.redirectsToChemistPage();
+        adminPage.verifyDoctorRemoveFromTheList(stockiestName);
     }
 
     @Test
