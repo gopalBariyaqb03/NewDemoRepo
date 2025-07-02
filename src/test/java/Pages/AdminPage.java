@@ -2749,7 +2749,6 @@ public class AdminPage extends Locators {
         common.assertTwoValuesAreEqual(updatedMobileGet, updatedMobileNum);
 
         common.logPrint("Both values are updated successfully");
-        common.logPrint("Step:: Test test test");
 
     }
 
@@ -2763,6 +2762,8 @@ public class AdminPage extends Locators {
         common.logPrint("Step:: Verify the status is showing as pending");
         common.waitUntilElementToBeVisible(By.xpath(PENDINGSTATUS));
         common.assertElementPresent(PENDINGSTATUS);
+
+        common.logPrint("Test branch");
 
     }
 
