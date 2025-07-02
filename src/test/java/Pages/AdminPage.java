@@ -2749,6 +2749,7 @@ public class AdminPage extends Locators {
         common.assertTwoValuesAreEqual(updatedMobileGet, updatedMobileNum);
 
         common.logPrint("Both values are updated successfully");
+        common.logPrint("Step:: Test test test");
 
     }
 
