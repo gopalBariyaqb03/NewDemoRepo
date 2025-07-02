@@ -2727,7 +2727,7 @@ public class AdminPage extends Locators {
         common.pause(1);
         redirectsToChemistPage();
 
-        common.logPrint("Step:: Search doctor in the table");
+        common.logPrint("Step:: Search entity in the table");
         common.waitUntilElementToBeVisible(By.xpath(SEARCHFIELD));
         common.type(SEARCHFIELD, updatedName);
 
@@ -2748,7 +2748,7 @@ public class AdminPage extends Locators {
         String updatedMobileGet = getMobileNum.replaceAll("[|\\-\\s]", "");
         common.assertTwoValuesAreEqual(updatedMobileGet, updatedMobileNum);
 
-        common.logPrint("Both value are updated successfully");
+        common.logPrint("Both values are updated successfully");
 
     }
 
