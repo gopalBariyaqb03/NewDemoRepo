@@ -69,7 +69,7 @@ public class AdminTest extends BasePage {
 
     @Test
     public void verifyUpdateChemistScenario(){
-        common.logPrint("Step:: Verify that chemist is updated successfully");
+        common.logPrint("Step:: Verify that chemist is updated successfully"); //test
         loginWithMRCredential();
         String chemistName = adminPage.createChemistAndApprove();
         adminPage.verifyEntityIsCreatedIsShowingInTheTableAndItStatusIsPending(chemistName);
