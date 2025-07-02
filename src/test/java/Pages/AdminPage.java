@@ -2750,6 +2750,8 @@ public class AdminPage extends Locators {
 
         common.logPrint("Both values are updated successfully");
 
+        common.logPrint("test");
+
     }
 
     public void verifyEntityIsCreatedIsShowingInTheTableAndItStatusIsPending(String name){
