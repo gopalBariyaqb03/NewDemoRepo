@@ -2763,6 +2763,8 @@ public class AdminPage extends Locators {
         common.waitUntilElementToBeVisible(By.xpath(PENDINGSTATUS));
         common.assertElementPresent(PENDINGSTATUS);
 
+        common.logPrint("Test branch");
+
     }
 
     public void verifyDoctorIsCreatedIsShowingInTheTableAndItStatusIsApproval(String name){
