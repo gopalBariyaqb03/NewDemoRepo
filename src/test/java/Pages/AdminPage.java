@@ -53,6 +53,25 @@ public class AdminPage extends Locators {
         common.click(DELETEAPPROVALDOCTOR);
     }
 
+    public void redirectsDeleteChemistApprovalPage(){
+        common.logPrint("Step:: Click on the Approval menu");
+        common.waitUntilElementToBeVisible(By.xpath(APPROVALMENU));
+        common.click(APPROVALMENU);
+
+        common.logPrint("Step:: Click on the Delete chemist approval menu");
+        common.waitUntilElementToBeVisible(By.xpath(DELETEAPPROVALCHEMIST));
+        common.click(DELETEAPPROVALCHEMIST);
+    }
+
+    public void redirectsDeleteStockiestApprovalPage(){
+        common.logPrint("Step:: Click on the Approval menu");
+        common.waitUntilElementToBeVisible(By.xpath(APPROVALMENU));
+        common.click(APPROVALMENU);
+
+        common.logPrint("Step:: Click on the Delete chemist approval menu");
+        common.waitUntilElementToBeVisible(By.xpath(DELETEAPPROVALSTOCKIEST));
+        common.click(DELETEAPPROVALSTOCKIEST);
+    }
 
 
     public void verifyValidationMessageForDoctorCreationWithDirector(){
@@ -2725,7 +2744,6 @@ public class AdminPage extends Locators {
     public void verifyDoctorIsUpdated(String updatedName, String updatedMobileNum){
 
         common.pause(1);
-        redirectsToChemistPage();
 
         common.logPrint("Step:: Search doctor in the table");
         common.waitUntilElementToBeVisible(By.xpath(SEARCHFIELD));
@@ -2752,6 +2770,35 @@ public class AdminPage extends Locators {
 
     }
 
+    public void verifyStockiestIsUpdated(String updatedName){
+
+        common.pause(1);
+
+        common.logPrint("Step:: Search doctor in the table");
+        common.waitUntilElementToBeVisible(By.xpath(SEARCHFIELD));
+        common.type(SEARCHFIELD, updatedName);
+
+        String xpathName = "//div[@data-colindex='3']";
+
+        common.logPrint("Step:: Verify name is updated");
+        common.pause(2);
+        common.waitUntilElementToBeVisible(By.xpath(xpathName));
+        String getDoctorName = common.getText(xpathName);
+        common.assertTwoValuesAreEqual(getDoctorName.toLowerCase(), updatedName.toLowerCase());
+
+//        String xpathMobile = "//div[@data-colindex='5']";
+//
+//        common.logPrint("Step:: Verify mobile number is updated");
+//        common.pause(2);
+//        common.waitUntilElementToBeVisible(By.xpath(xpathMobile));
+//        String getMobileNum = common.getText(xpathMobile);
+//        String updatedMobileGet = getMobileNum.replaceAll("[|\\-\\s]", "");
+//        common.assertTwoValuesAreEqual(updatedMobileGet, updatedMobileNum);
+
+        common.logPrint("Name value are updated successfully");
+
+    }
+
     public void verifyEntityIsCreatedIsShowingInTheTableAndItStatusIsPending(String name){
 
         common.logPrint("Step:: Search name in the search field");
@@ -2765,6 +2812,19 @@ public class AdminPage extends Locators {
 
     }
 
+    public void verifyStockiestIsCreatedIsShowingInTheTableAndItStatusIsPending(String name){
+
+        common.logPrint("Step:: Search name in the search field");
+        common.waitUntilElementToBeVisible(By.xpath(SEARCHFIELD));
+        common.type(SEARCHFIELD, name);
+
+        common.pause(1);
+        common.logPrint("Step:: Verify the status is showing as pending");
+        common.waitUntilElementToBeVisible(By.xpath(PENDINGSTATUS1));
+        common.assertElementPresent(PENDINGSTATUS1);
+
+    }
+
     public void verifyDoctorIsCreatedIsShowingInTheTableAndItStatusIsApproval(String name){
 
         common.logPrint("Step:: Search name in the search field");
@@ -2775,6 +2835,19 @@ public class AdminPage extends Locators {
         common.logPrint("Step:: Verify the status is showing as Approved");
         common.waitUntilElementToBeVisible(By.xpath(APPROVESTATUS));
         common.assertElementPresent(APPROVESTATUS);
+
+    }
+
+    public void verifyStockiestIsCreatedIsShowingInTheTableAndItStatusIsApproval(String name){
+
+        common.logPrint("Step:: Search name in the search field");
+        common.waitUntilElementToBeVisible(By.xpath(SEARCHFIELD));
+        common.type(SEARCHFIELD, name);
+
+        common.pause(1);
+        common.logPrint("Step:: Verify the status is showing as Approved");
+        common.waitUntilElementToBeVisible(By.xpath(APPROVESTATUS1));
+        common.assertElementPresent(APPROVESTATUS1);
 
     }
 
@@ -2810,8 +2883,7 @@ public class AdminPage extends Locators {
     }
 
     public void approvedDeleteRequestFromTheDirectorsUser(String drName){
-        loginWithDirectorCredential();
-        redirectsDeleteDoctorApprovalPage();
+
 
         String checkBoxUponName = "//td[contains(.,'"+drName+"')]/parent::tr//td//span";
 
@@ -2858,7 +2930,7 @@ public class AdminPage extends Locators {
 
     public void verifyDoctorRemoveFromTheList(String drName){
 
-        redeirectToDoctorPage();
+
 
         common.logPrint("Step:: Search name in the search field");
         common.waitUntilElementToBeVisible(By.xpath(SEARCHFIELD));
@@ -3007,6 +3079,31 @@ public class AdminPage extends Locators {
         verifyDoctorIsCreatedIsShowingInTheTableAndItStatusIsApproval(Chemist);
     }
 
+    public void deleteChemistFromTheDirector(){
+
+        common.logPrint("Step:: Click on the checkbox");
+        common.pause(2);
+        common.selectCheckBox(FIRSTCHECKBOX);
+
+        common.logPrint("Step:: Click on the Delete button");
+        common.waitUntilElementToBeVisible(By.xpath(DELETEBTN));
+        common.click(DELETEBTN);
+
+        common.logPrint("Step:: Verify delete confirmation pop-up is showing");
+        common.waitUntilElementToBeVisible(By.xpath(DeleteConfirmationPopUp));
+        common.assertElementPresent(DeleteConfirmationPopUp);
+
+        common.logPrint("Step:: Click on the delete button");
+        common.waitUntilElementToBeVisible(By.xpath(DELETEBTNPOP));
+        common.click(DELETEBTNPOP);
+
+        common.logPrint("Step:: Verify delete confirmation pop-up is showing");
+
+        common.logPrint("Step:: Check validation is displayed");
+        common.assertElementDisplayed(DeletedSuccessfully );
+
+    }
+
     public String createStockiestApproval(){
 
         redirectsToStockiestPage();
@@ -3066,7 +3163,7 @@ public class AdminPage extends Locators {
 
         redirectsToStockiestPage();
 
-        verifyEntityIsCreatedIsShowingInTheTableAndItStatusIsPending(Stockiest);
+        verifyStockiestIsCreatedIsShowingInTheTableAndItStatusIsPending(Stockiest);
 
         common.logPrint("Step:: Click on the checkbox");
         common.pause(1);
@@ -3084,7 +3181,44 @@ public class AdminPage extends Locators {
 
         common.logPrint("Step:: Verified status is not showing as approved");
 
-        verifyDoctorIsCreatedIsShowingInTheTableAndItStatusIsApproval(Stockiest);
+        verifyStockiestIsCreatedIsShowingInTheTableAndItStatusIsApproval(Stockiest);
+    }
+
+
+    public String[] updateTheStockiest(String stockiestName){
+
+        redirectsToStockiestPage();
+        common.logPrint("Step:: Search doctor name in the search field");
+        common.waitUntilElementToBeVisible(By.xpath(SEARCHFIELD));
+        common.type(SEARCHFIELD, stockiestName);
+
+        common.logPrint("Step:: Select first checkbox");
+        common.pause(2);
+        common.selectCheckBox(FIRSTEMAILCHECKBOX);
+
+        common.logPrint("Step:: Click on the edit button");
+        common.waitUntilElementToBeVisible(By.xpath(EDITBTN));
+        common.click(EDITBTN);
+
+        String StockistName = common.GenerateRandomName();
+        common.logPrint("Step:: Enter Stockist name");
+        common.waitUntilElementsToBeVisible(By.xpath(STOCKISTNAME)).clear();
+        common.type(STOCKISTNAME, StockistName);
+        common.logPrint("Stockiest name is: "+ StockistName);
+
+        common.logPrint("Step:: Enter mobile number");
+        common.waitUntilElementToBeVisible(By.xpath(MOBILENO1FIELD)).clear();
+        String updateMobileNum = common.generateRandomNumberString(10);
+        common.type(MOBILENO1FIELD, updateMobileNum);
+
+        common.logPrint("Step:: Click on the save button");
+        common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
+        common.click(SAVEBUTTON);
+
+        common.logPrint("Step:: Check validation is displayed");
+        common.assertElementDisplayed(UpdatedSuccessfully);
+
+        return new String[] {StockistName,updateMobileNum};
     }
 
     public void redirectToParticulerAddtionalDetailPage(String addtinalDetailXpath){
