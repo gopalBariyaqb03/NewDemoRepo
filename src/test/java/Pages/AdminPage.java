@@ -1,0 +1,3487 @@
+package Pages;
+
+import Utils.Common;
+import Utils.Locators;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+public class AdminPage extends Locators {
+    Common common = new Common(driver);
+
+    public AdminPage(WebDriver driver) {
+        super(driver);
+    }
+
+    public void redeirectToDoctorPage(){
+        common.logPrint("Step:: Click on the admin panel menu");
+        common.waitUntilElementToBeVisible(By.xpath(ADMINPANELMENU));
+        common.click(ADMINPANELMENU);
+
+        common.logPrint("Step:: Click on the Doctor menu");
+        common.waitUntilElementToBeVisible(By.xpath(DOCTORMENU));
+        common.click(DOCTORMENU);
+    }
+
+    public void redirectsToChemistPage(){
+        common.logPrint("Step:: Click on the admin panel menu");
+        common.waitUntilElementToBeVisible(By.xpath(ADMINPANELMENU));
+        common.click(ADMINPANELMENU);
+
+        common.logPrint("Step:: Click on the Chemist menu");
+        common.waitUntilElementToBeVisible(By.xpath(CHEMISTMENU));
+        common.click(CHEMISTMENU);
+    }
+
+    public void redirectsToStockiestPage(){
+        common.logPrint("Step:: Click on the admin panel menu");
+        common.waitUntilElementToBeVisible(By.xpath(ADMINPANELMENU));
+        common.click(ADMINPANELMENU);
+
+        common.logPrint("Step:: Click on the Stockiest menu");
+        common.waitUntilElementToBeVisible(By.xpath(STOCKISTMENU));
+        common.click(STOCKISTMENU);
+    }
+
+    public void redirectsDeleteDoctorApprovalPage(){
+        common.logPrint("Step:: Click on the Approval menu");
+        common.waitUntilElementToBeVisible(By.xpath(APPROVALMENU));
+        common.click(APPROVALMENU);
+
+        common.logPrint("Step:: Click on the Stockiest menu");
+        common.waitUntilElementToBeVisible(By.xpath(DELETEAPPROVALDOCTOR));
+        common.click(DELETEAPPROVALDOCTOR);
+    }
+
+
+
+    public void verifyValidationMessageForDoctorCreationWithDirector(){
+
+        common.logPrint("Verify mandatory fields for the doctor creation page");
+
+        common.logPrint("Step:: Click on the admin menu");
+        common.waitUntilElementToBeVisible(By.xpath(ADMINPANELMENU));
+        common.click(ADMINPANELMENU);
+
+        common.logPrint("Step:: Click on the Doctor menu");
+        common.waitUntilElementToBeVisible(By.xpath(DOCTORMENU));
+        common.click(DOCTORMENU);
+
+        common.logPrint("Step:: Click on the ADD button");
+        common.waitUntilElementToBeVisible(By.xpath(ADDBTN));
+        common.click(ADDBTN);
+
+        common.logPrint("Step:: Click on the save button");
+        common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
+        common.click(SAVEBUTTON);
+
+        common.logPrint("Step:: Verify all the validation message for mandatory fields");
+
+        common.logPrint("Step:: Verify validation message for Doctor Name");
+        common.waitUntilElementToBeVisible(By.xpath(DoctorError));
+        String doctorMsg = common.getText(DoctorError);
+        common.assertTwoValuesAreEqual(doctorMsg, "Doctor Name is required");
+        common.logPrint("Error message is showing for the doctor name: "+ doctorMsg);
+
+        common.logPrint("Step:: Verify validation message for Category");
+        common.waitUntilElementToBeVisible(By.xpath(CategoryError));
+        String categoryMsg = common.getText(CategoryError);
+        common.assertTwoValuesAreEqual(categoryMsg, "Category is Required");
+        common.logPrint("Error message is showing for the category name: "+ categoryMsg);
+
+        common.logPrint("Step:: Verify validation message for Speciality");
+        common.waitUntilElementToBeVisible(By.xpath(SpecialityError));
+        String specialityMsg = common.getText(SpecialityError);
+        common.assertTwoValuesAreEqual(specialityMsg, "Speciality is Required");
+        common.logPrint("Error message is showing for the speciality name: "+ specialityMsg);
+
+        common.logPrint("Step:: Verify validation message for Qualifications");
+        common.waitUntilElementToBeVisible(By.xpath(QualificationsError));
+        String qualificationMsg = common.getText(QualificationsError);
+        common.assertTwoValuesAreEqual(qualificationMsg, "Qualifications is Required");
+        common.logPrint("Error message is showing for the qualification field: "+ qualificationMsg);
+
+//        common.logPrint("Step:: Verify validation message for Employee");
+//        common.waitUntilElementToBeVisible(By.xpath(EmployeeError));
+//        String EmployeeMsg = common.getText(EmployeeError);
+//        common.assertTwoValuesAreEqual(EmployeeMsg, "Employee is Required");
+//        common.logPrint("Error message is showing for the Employee field: "+ EmployeeMsg);
+
+        common.logPrint("Step:: Verify validation message for Product");
+        common.waitUntilElementToBeVisible(By.xpath(ProductError));
+        String ProductMsg = common.getText(ProductError);
+        common.assertTwoValuesAreEqual(ProductMsg, "Product is Required");
+        common.logPrint("Error message is showing for the Product field: "+ ProductMsg);
+
+        common.logPrint("Step:: Verify validation message for Mobile No.");
+        common.waitUntilElementToBeVisible(By.xpath(MobileNoError));
+        String MobileNoMsg = common.getText(MobileNoError);
+        common.assertTwoValuesAreEqual(MobileNoMsg, "Mobile No is required");
+        common.logPrint("Error message is showing for the Mobile No field: "+ MobileNoMsg);
+
+        common.scroll_To_Element(CityError);
+
+        common.logPrint("Step:: Verify validation message for City");
+        common.waitUntilElementToBeVisible(By.xpath(CityError));
+        String CityMsg = common.getText(CityError);
+        common.assertTwoValuesAreEqual(CityMsg, "Hospital City is Required");
+        common.logPrint("Error message is showing for the City field: " + CityMsg);
+
+        common.logPrint("Step:: Verify validation message for Pincode");
+        common.waitUntilElementToBeVisible(By.xpath(PincodeError));
+        String PincodeMsg = common.getText(PincodeError);
+        common.assertTwoValuesAreEqual(PincodeMsg, "Hospital Pincode is Required");
+        common.logPrint("Error message is showing for the Pincode field: " + PincodeMsg);
+
+        common.logPrint("Step:: Verify validation message for City 2");
+        common.waitUntilElementToBeVisible(By.xpath(City2Error));
+        String City2Msg = common.getText(City2Error);
+        common.assertTwoValuesAreEqual(City2Msg, "Residential City is Required");
+        common.logPrint("Error message is showing for the City 2 field: " + City2Msg);
+
+        common.logPrint("Step:: Verify validation message for Pincode 2");
+        common.waitUntilElementToBeVisible(By.xpath(Pincode2Error));
+        String Pincode2Msg = common.getText(Pincode2Error);
+        common.assertTwoValuesAreEqual(Pincode2Msg, "Residential Pincode is Required");
+        common.logPrint("Error message is showing for the Pincode 2 field: " + Pincode2Msg);
+    }
+
+    public void verifyValidationMessageForChemistCreationWithDirector(){
+
+        common.logPrint("Verify Chemist creation screen fields and labels");
+        //common.pause(1);
+        if (common.isElementPresent(ADMINPANELMENU)) {
+            common.logPrint("Step:: Click on the admin panel menu");
+            common.click(ADMINPANELMENU);
+        }
+
+        //common.pause(2);
+//        if (common.isElementPresent(BACKBTN)) {
+//            common.logPrint("Step:: Click on the back button");
+//            common.click(BACKBTN);
+//        }
+
+        common.logPrint("Verify mandatory fields validation for the chemist creation page");
+
+        common.logPrint("Step:: Click on the admin menu");
+        common.waitUntilElementToBeVisible(By.xpath(ADMINPANELMENU));
+        common.click(ADMINPANELMENU);
+
+        common.logPrint("Step:: Click on the Chemist menu");
+        common.waitUntilElementToBeVisible(By.xpath(CHEMISTMENU));
+        common.click(CHEMISTMENU);
+
+        common.logPrint("Step:: Click on the ADD button");
+        common.waitUntilElementToBeVisible(By.xpath(ADDBTN));
+        common.click(ADDBTN);
+
+        common.logPrint("Step:: Click on the save button");
+        common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
+        common.click(SAVEBUTTON);
+
+        common.logPrint("Step:: Verify all the validation message for mandatory fields");
+
+        common.logPrint("Step:: Verify validation message for Chemist Name");
+        common.waitUntilElementToBeVisible(By.xpath(DoctorError));
+        String chemistMsg = common.getText(DoctorError);
+        common.assertTwoValuesAreEqual(chemistMsg, "Chemist Name is required");
+        common.logPrint("Error message is showing for the Chemist name: "+ chemistMsg);
+
+        common.logPrint("Step:: Verify validation message for Category");
+        common.waitUntilElementToBeVisible(By.xpath(CategoryError));
+        String categoryMsg = common.getText(CategoryError);
+        common.assertTwoValuesAreEqual(categoryMsg, "Category is Required");
+        common.logPrint("Error message is showing for the category name: "+ categoryMsg);
+
+        common.logPrint("Step:: Verify validation message for Chemist type");
+        common.waitUntilElementToBeVisible(By.xpath(SpecialityError));
+        String chemistTypeMsg = common.getText(SpecialityError);
+        common.assertTwoValuesAreEqual(chemistTypeMsg, "Chemist Type is Required");
+        common.logPrint("Error message is showing for the Chemist type: "+ chemistTypeMsg);
+
+        common.logPrint("Step:: Verify validation message for Mobile no.");
+        common.waitUntilElementToBeVisible(By.xpath(QualificationsError));
+        String mobileNoMsg = common.getText(QualificationsError);
+        common.assertTwoValuesAreEqual(mobileNoMsg, "Mobile No is required");
+        common.logPrint("Error message is showing for the Mobile no. field: "+ mobileNoMsg);
+
+        common.scroll_To_Element(CityError);
+
+        common.logPrint("Step:: Verify validation message for City");
+        common.waitUntilElementToBeVisible(By.xpath(CityError));
+        String CityMsg = common.getText(CityError);
+        common.assertTwoValuesAreEqual(CityMsg, "City is Required");
+        common.logPrint("Error message is showing for the City field: " + CityMsg);
+
+        common.logPrint("Step:: Verify validation message for Pincode");
+        common.waitUntilElementToBeVisible(By.xpath(PincodeError));
+        String PincodeMsg = common.getText(PincodeError);
+        common.assertTwoValuesAreEqual(PincodeMsg, "Pincode is Required");
+        common.logPrint("Error message is showing for the Pincode field: " + PincodeMsg);
+    }
+
+    public void verifyValidationMessageForStockistCreationWithDirector(){
+
+        common.logPrint("Verify Stockist creation screen fields and labels");
+        common.pause(1);
+        if (common.isElementPresent(ADMINPANELMENU)) {
+            common.logPrint("Step:: Click on the admin panel menu");
+            common.click(ADMINPANELMENU);
+        }
+
+        //common.pause(2);
+//        if (common.isElementPresent(BACKBTN)) {
+//            common.logPrint("Step:: Click on the back button");
+//            common.click(BACKBTN);
+//        }
+
+        common.logPrint("Verify mandatory fields validation for the chemist creation page");
+
+        common.logPrint("Step:: Click on the admin menu");
+        common.waitUntilElementToBeVisible(By.xpath(ADMINPANELMENU));
+        common.click(ADMINPANELMENU);
+
+        common.logPrint("Step:: Click on the Stockist menu");
+        common.waitUntilElementToBeVisible(By.xpath(STOCKISTMENU));
+        common.click(STOCKISTMENU);
+
+        common.logPrint("Step:: Click on the ADD button");
+        common.waitUntilElementToBeVisible(By.xpath(ADDBTN));
+        common.click(ADDBTN);
+
+        common.logPrint("Step:: Click on the save button");
+        common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
+        common.click(SAVEBUTTON);
+
+        common.logPrint("Step:: Verify all the validation message for mandatory fields");
+
+        common.logPrint("Step:: Verify validation message for Stockist Name");
+        common.waitUntilElementToBeVisible(By.xpath(DoctorError));
+        String stockistMsg = common.getText(DoctorError);
+        common.assertTwoValuesAreEqual(stockistMsg, "Stockist Name is required");
+        common.logPrint("Error message is showing for the Stockist name: "+ stockistMsg);
+
+        common.logPrint("Step:: Verify validation message for Stockist type");
+        common.waitUntilElementToBeVisible(By.xpath(CategoryError));
+        String stockistTypeMsg = common.getText(CategoryError);
+        common.assertTwoValuesAreEqual(stockistTypeMsg, "Stockist Type is Required");
+        common.logPrint("Error message is showing for the Stockist type: "+ stockistTypeMsg);
+
+        common.logPrint("Step:: Verify validation message for Mobile no.");
+        common.waitUntilElementToBeVisible(By.xpath(SpecialityError));
+        String mobileNOMsg = common.getText(SpecialityError);
+        common.assertTwoValuesAreEqual(mobileNOMsg, "Mobile No 1 is required");
+        common.logPrint("Error message is showing for the Mobile no.: "+ mobileNOMsg);
+
+        common.scroll_To_Element(CityError);
+
+        common.logPrint("Step:: Verify validation message for City");
+        common.waitUntilElementToBeVisible(By.xpath(CityError));
+        String CityMsg = common.getText(CityError);
+        common.assertTwoValuesAreEqual(CityMsg, "City is Required");
+        common.logPrint("Error message is showing for the City field: " + CityMsg);
+
+        common.logPrint("Step:: Verify validation message for Pincode");
+        common.waitUntilElementToBeVisible(By.xpath(PincodeError));
+        String PincodeMsg = common.getText(PincodeError);
+        common.assertTwoValuesAreEqual(PincodeMsg, "Pincode is Required");
+        common.logPrint("Error message is showing for the Pincode field: " + PincodeMsg);
+    }
+
+    public void verifyValidationMessageForHospitalCreationWithDirector(){
+
+        //common.pause(1);
+        if (common.isElementPresent(ADMINPANELMENU)) {
+            common.logPrint("Step:: Click on the admin panel menu");
+            common.click(ADMINPANELMENU);
+        }
+
+        //common.pause(1);
+//        if (common.isElementPresent(BACKBTN)) {
+//            common.logPrint("Step:: Click on the back button");
+//            common.click(BACKBTN);
+//        }
+
+        common.logPrint("Verify mandatory fields validation for the Hospital creation page");
+
+        common.logPrint("Step:: Click on the admin menu");
+        common.waitUntilElementToBeVisible(By.xpath(ADMINPANELMENU));
+        common.click(ADMINPANELMENU);
+
+        common.logPrint("Step:: Click on the Hospital menu");
+        common.waitUntilElementToBeVisible(By.xpath(HOSPITALMENU));
+        common.click(HOSPITALMENU);
+
+        common.logPrint("Step:: Click on the ADD button");
+        common.waitUntilElementToBeVisible(By.xpath(ADDBTN));
+        common.click(ADDBTN);
+
+        common.logPrint("Step:: Click on the save button");
+        common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
+        common.click(SAVEBUTTON);
+
+        common.logPrint("Step:: Verify all the validation message for mandatory fields");
+
+        common.logPrint("Step:: Verify validation message for Hospital Name");
+        common.waitUntilElementToBeVisible(By.xpath(DoctorError));
+        String hospitalNameMsg = common.getText(DoctorError);
+        common.assertTwoValuesAreEqual(hospitalNameMsg, "Hospital Name is required");
+        common.logPrint("Error message is showing for the Hospital name: "+ hospitalNameMsg);
+
+        common.logPrint("Step:: Verify validation message for GST No.");
+        common.waitUntilElementToBeVisible(By.xpath(CategoryError));
+        String stockistTypeMsg = common.getText(CategoryError);
+        common.assertTwoValuesAreEqual(stockistTypeMsg, "GST No. is required");
+        common.logPrint("Error message is showing for the GST No. "+ stockistTypeMsg);
+
+        common.scroll_To_Element(CityError);
+
+        common.logPrint("Step:: Verify validation message for City");
+        common.waitUntilElementToBeVisible(By.xpath(CityError));
+        String CityMsg = common.getText(CityError);
+        common.assertTwoValuesAreEqual(CityMsg, "City is Required");
+        common.logPrint("Error message is showing for the City field: " + CityMsg);
+
+        common.logPrint("Step:: Verify validation message for Pincode");
+        common.waitUntilElementToBeVisible(By.xpath(PincodeError));
+        String PincodeMsg = common.getText(PincodeError);
+        common.assertTwoValuesAreEqual(PincodeMsg, "Pincode is Required");
+        common.logPrint("Error message is showing for the Pincode field: " + PincodeMsg);
+    }
+
+    public void verifyValidationMessageForProductCreationWithDirector(){
+
+        if (common.isElementPresent(ADMINPANELMENU)) {
+            common.logPrint("Step:: Click on the admin panel menu");
+            common.click(ADMINPANELMENU);
+        }
+
+//        if (common.isElementPresent(BACKBTN)) {
+//            common.logPrint("Step:: Click on the back button");
+//            common.click(BACKBTN);
+//        }
+
+        common.logPrint("Verify mandatory fields validation for the Hospital creation page");
+
+        common.logPrint("Step:: Click on the admin menu");
+        common.waitUntilElementToBeVisible(By.xpath(ADMINPANELMENU));
+        common.click(ADMINPANELMENU);
+
+        common.logPrint("Step:: Click on the Product menu");
+        common.waitUntilElementToBeVisible(By.xpath(PRODUCTMENU));
+        common.click(PRODUCTMENU);
+
+        common.logPrint("Step:: Click on the ADD button");
+        common.waitUntilElementToBeVisible(By.xpath(ADDBTN));
+        common.click(ADDBTN);
+
+        common.logPrint("Step:: Click on the save button");
+        common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
+        common.click(SAVEBUTTON);
+
+        common.logPrint("Step:: Verify all the validation message for mandatory fields");
+
+        common.logPrint("Step:: Verify validation message for Division dropdown");
+        common.waitUntilElementToBeVisible(By.xpath(DoctorError));
+        String divisionDrpMsg = common.getText(DoctorError);
+        common.assertTwoValuesAreEqual(divisionDrpMsg, "Division is Required");
+        common.logPrint("Error message is showing for the Division dropdown: "+ divisionDrpMsg);
+
+        common.logPrint("Step:: Verify validation message for Drug Head dropdown");
+        common.waitUntilElementToBeVisible(By.xpath(CategoryError));
+        String drugTypeMsg = common.getText(CategoryError);
+        common.assertTwoValuesAreEqual(drugTypeMsg, "Drug Head is Required");
+        common.logPrint("Error message is showing for the Drug Head type: "+ drugTypeMsg);
+
+        common.logPrint("Step:: Verify validation message for Product Line dropdown");
+        common.waitUntilElementToBeVisible(By.xpath(SpecialityError));
+        String productLineMsg = common.getText(SpecialityError);
+        common.assertTwoValuesAreEqual(productLineMsg, "Product Line is Required");
+        common.logPrint("Error message is showing for the Product Line dropdown: "+ productLineMsg);
+
+        common.logPrint("Step:: Verify validation message for Drug Head dropdown");
+        common.waitUntilElementToBeVisible(By.xpath(QualificationsError));
+        String productGrpupDrp = common.getText(QualificationsError);
+        common.assertTwoValuesAreEqual(productGrpupDrp, "Product Group is Required");
+        common.logPrint("Error message is showing for the Drug Head type: "+ productGrpupDrp);
+
+        common.logPrint("Step:: Verify validation message for Product Class dropdown");
+        common.waitUntilElementToBeVisible(By.xpath(EmployeeError));
+        String productClassTypeMsg = common.getText(EmployeeError);
+        common.assertTwoValuesAreEqual(productClassTypeMsg, "Product Class is Required");
+        common.logPrint("Error message is showing for the Product Class type: "+ productClassTypeMsg);
+
+        common.logPrint("Step:: Verify validation message for Product type dropdown");
+        common.waitUntilElementToBeVisible(By.xpath(ProductError));
+        String productTypeMsg = common.getText(ProductError);
+        common.assertTwoValuesAreEqual(productTypeMsg, "Product Type is Required");
+        common.logPrint("Error message is showing for the Product type dropdown: "+ productTypeMsg);
+
+        common.logPrint("Step:: Verify validation message for Short Name field");
+        common.waitUntilElementToBeVisible(By.xpath(MobileNoError));
+        String shortNameField = common.getText(MobileNoError);
+        common.assertTwoValuesAreEqual(shortNameField, "Short Name is required");
+        common.logPrint("Error message is showing for the Short Name field: "+ shortNameField);
+
+        common.logPrint("Step:: Verify validation message for Name field");
+        common.waitUntilElementToBeVisible(By.xpath(nameError));
+        String nameFieldMsg = common.getText(nameError);
+        common.assertTwoValuesAreEqual(nameFieldMsg, "Name is required");
+        common.logPrint("Error message is showing for the Name field: " + nameFieldMsg);
+
+        common.logPrint("Step:: Verify validation message for Packing Type field");
+        common.waitUntilElementToBeVisible(By.xpath(packingTypeError));
+        String packingTypeMsg = common.getText(packingTypeError);
+        common.assertTwoValuesAreEqual(packingTypeMsg, "Packing Type is Required");
+        common.logPrint("Error message is showing for the Packing Type field: " + packingTypeMsg);
+
+        common.logPrint("Step:: Verify validation message for HSN Code field");
+        common.waitUntilElementToBeVisible(By.xpath(HSNCodeError));
+        String hsnCodeMsg = common.getText(HSNCodeError);
+        common.assertTwoValuesAreEqual(hsnCodeMsg, "Hsn code is required");
+        common.logPrint("Error message is showing for the HSN Code field: " + hsnCodeMsg);
+
+        common.logPrint("Step:: Verify validation message for PTR/PTS field");
+        common.waitUntilElementToBeVisible(By.xpath(PTRPTSError));
+        String ptrPtsMsg = common.getText(PTRPTSError);
+        common.assertTwoValuesAreEqual(ptrPtsMsg, "PTR PTS Setting is Required");
+        common.logPrint("Error message is showing for the PTR/PTS field: " + ptrPtsMsg);
+
+        common.logPrint("Step:: Verify validation message for GST field");
+        common.waitUntilElementToBeVisible(By.xpath(GSTError));
+        String gstMsg = common.getText(GSTError);
+        common.assertTwoValuesAreEqual(gstMsg, "GST is required");
+        common.logPrint("Error message is showing for the GST field: " + gstMsg);
+
+        common.logPrint("Step:: Verify validation message for MRP field");
+        common.waitUntilElementToBeVisible(By.xpath(MRPError));
+        String mrpMsg = common.getText(MRPError);
+        common.assertTwoValuesAreEqual(mrpMsg, "MRP is required");
+        common.logPrint("Error message is showing for the MRP field: " + mrpMsg);
+
+        common.scroll_To_Element(ContentError);
+
+        common.logPrint("Step:: Verify validation message for Content field");
+        common.waitUntilElementToBeVisible(By.xpath(ContentError));
+        String contentMsg = common.getText(ContentError);
+        common.assertTwoValuesAreEqual(contentMsg, "Content is required");
+        common.logPrint("Error message is showing for the Content field: " + contentMsg);
+    }
+
+    public void verifyValidationMessageForEmployeeCreationWithDirector() {
+
+        if (common.isElementPresent(ADMINPANELMENU)) {
+            common.logPrint("Step:: Click on the admin panel menu");
+            common.click(ADMINPANELMENU);
+        }
+
+//        if (common.isElementPresent(BACKBTN)) {
+//            common.logPrint("Step:: Click on the back button");
+//            common.click(BACKBTN);
+//        }
+
+        common.logPrint("Verify mandatory fields validation for the Employee creation page");
+
+        common.logPrint("Step:: Click on the admin menu");
+        common.waitUntilElementToBeVisible(By.xpath(ADMINPANELMENU));
+        common.click(ADMINPANELMENU);
+
+        common.logPrint("Step:: Click on the Product menu");
+        common.waitUntilElementToBeVisible(By.xpath(EMPLOYEEMENU));
+        common.click(EMPLOYEEMENU);
+
+        common.logPrint("Step:: Click on the ADD button");
+        common.waitUntilElementToBeVisible(By.xpath(ADDBTN));
+        common.click(ADDBTN);
+
+        common.logPrint("Step:: Click on the save button");
+        common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
+        common.click(SAVEBUTTON);
+
+        common.logPrint("Step:: Verify all the validation message for mandatory fields");
+
+        common.logPrint("Step:: Verify validation message for Name field");
+        common.waitUntilElementToBeVisible(By.xpath(DoctorError));
+        String nameMsg = common.getText(DoctorError);
+        common.assertTwoValuesAreEqual(nameMsg, "Name is required");
+        common.logPrint("Error message is showing for the Name field: " + nameMsg);
+
+        common.logPrint("Step:: Verify validation message for Division dropdown");
+        common.waitUntilElementToBeVisible(By.xpath(CategoryError));
+        String divisionMsg = common.getText(CategoryError);
+        common.assertTwoValuesAreEqual(divisionMsg, "Division is Required");
+        common.logPrint("Error message is showing for the Division dropdown: " + divisionMsg);
+
+        common.logPrint("Step:: Verify validation message for Phone Number field");
+        common.waitUntilElementToBeVisible(By.xpath(SpecialityError));
+        String phoneMsg = common.getText(SpecialityError);
+        common.assertTwoValuesAreEqual(phoneMsg, "Phone Number Is Required");
+        common.logPrint("Error message is showing for the Phone Number field: " + phoneMsg);
+
+        common.logPrint("Step:: Verify validation message for Mobile No. field");
+        common.waitUntilElementToBeVisible(By.xpath(QualificationsError));
+        String mobileMsg = common.getText(QualificationsError);
+        common.assertTwoValuesAreEqual(mobileMsg, "Mobile No. is required");
+        common.logPrint("Error message is showing for the Mobile No. field: " + mobileMsg);
+
+        common.logPrint("Step:: Verify validation message for Email field");
+        common.waitUntilElementToBeVisible(By.xpath(EmployeeError));
+        String emailMsg = common.getText(EmployeeError);
+        common.assertTwoValuesAreEqual(emailMsg, "Email is required");
+        common.logPrint("Error message is showing for the Email field: " + emailMsg);
+
+        common.logPrint("Step:: Verify validation message for Joining Date field");
+        common.waitUntilElementToBeVisible(By.xpath(ProductError));
+        String joiningDateMsg = common.getText(ProductError);
+        common.assertTwoValuesAreEqual(joiningDateMsg, "Joining Date is required.");
+        common.logPrint("Error message is showing for the Joining Date field: " + joiningDateMsg);
+
+        common.scroll_To_Element(CityError);
+
+        common.logPrint("Step:: Verify validation message for City");
+        common.waitUntilElementToBeVisible(By.xpath(CityError));
+        String CityMsg = common.getText(CityError);
+        common.assertTwoValuesAreEqual(CityMsg, "City is Required");
+        common.logPrint("Error message is showing for the City field: " + CityMsg);
+
+        common.logPrint("Step:: Verify validation message for Pincode");
+        common.waitUntilElementToBeVisible(By.xpath(PincodeError));
+        String PincodeMsg = common.getText(PincodeError);
+        common.assertTwoValuesAreEqual(PincodeMsg, "Pincode is Required");
+        common.logPrint("Error message is showing for the Pincode field: " + PincodeMsg);
+
+        common.logPrint("Step:: Verify validation message for City 2");
+        common.waitUntilElementToBeVisible(By.xpath(City2Error));
+        String City2Msg = common.getText(City2Error);
+        common.assertTwoValuesAreEqual(City2Msg, "City is Required");
+        common.logPrint("Error message is showing for the City 2 field: " + City2Msg);
+
+        common.logPrint("Step:: Verify validation message for Pincode 2");
+        common.waitUntilElementToBeVisible(By.xpath(Pincode2Error));
+        String Pincode2Msg = common.getText(Pincode2Error);
+        common.assertTwoValuesAreEqual(Pincode2Msg, "Pincode is Required");
+        common.logPrint("Error message is showing for the Pincode 2 field: " + Pincode2Msg);
+    }
+
+    public void verifyValidationMessageForAccountListModule() {
+
+        if (common.isElementPresent(ADMINPANELMENU)) {
+            common.logPrint("Step:: Click on the admin panel menu");
+            common.click(ADMINPANELMENU);
+        }
+//
+//        if (common.isElementPresent(BACKBTN)) {
+//            common.logPrint("Step:: Click on the back button");
+//            common.click(BACKBTN);
+//        }
+
+        common.logPrint("Verify mandatory fields validation for the Account List module");
+
+        common.logPrint("Step:: Click on the admin menu");
+        common.waitUntilElementToBeVisible(By.xpath(ADMINPANELMENU));
+        common.click(ADMINPANELMENU);
+
+        common.logPrint("Step:: Click on the Account List menu");
+        common.waitUntilElementToBeVisible(By.xpath(ACCOUNTLISTMENU));
+        common.click(ACCOUNTLISTMENU);
+
+        common.logPrint("Step:: Click on the ADD button");
+        common.waitUntilElementToBeVisible(By.xpath(ADDBTN));
+        common.click(ADDBTN);
+
+        common.logPrint("Step:: Click on the save button");
+        common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
+        common.click(SAVEBUTTON);
+
+        common.logPrint("Step:: Verify all the validation messages for mandatory fields");
+
+        common.logPrint("Step:: Verify validation message for User Name field");
+        common.waitUntilElementToBeVisible(By.xpath(DoctorError));
+        String userNameMsg = common.getText(DoctorError);
+        common.assertTwoValuesAreEqual(userNameMsg, "User name is required");
+        common.logPrint("Error message is showing for the User Name field: " + userNameMsg);
+
+        common.logPrint("Step:: Verify validation message for Hq field");
+        common.waitUntilElementToBeVisible(By.xpath(CategoryError));
+        String hqMsg = common.getText(CategoryError);
+        common.assertTwoValuesAreEqual(hqMsg, "Hq is Required");
+        common.logPrint("Error message is showing for the Hq field: " + hqMsg);
+
+        common.logPrint("Step:: Verify validation message for Designation field");
+        common.waitUntilElementToBeVisible(By.xpath(SpecialityError));
+        String designationMsg = common.getText(SpecialityError);
+        common.assertTwoValuesAreEqual(designationMsg, "Designation is Required");
+        common.logPrint("Error message is showing for the Designation field: " + designationMsg);
+
+        common.logPrint("Step:: Verify validation message for Employee field");
+        common.waitUntilElementToBeVisible(By.xpath(QualificationsError));
+        String employeeMsg = common.getText(QualificationsError);
+        common.assertTwoValuesAreEqual(employeeMsg, "Employee is Required");
+        common.logPrint("Error message is showing for the Employee field: " + employeeMsg);
+
+        common.logPrint("Step:: Verify validation message for Role field");
+        common.waitUntilElementToBeVisible(By.xpath(EmployeeError));
+        String roleMsg = common.getText(EmployeeError);
+        common.assertTwoValuesAreEqual(roleMsg, "Role is Required");
+        common.logPrint("Error message is showing for the Role field: " + roleMsg);
+
+        common.logPrint("Step:: Verify validation message for Reporting Senior field");
+        common.waitUntilElementToBeVisible(By.xpath(ReportingSenior));
+        String reportingSeniorMsg = common.getText(ReportingSenior);
+        common.assertTwoValuesAreEqual(reportingSeniorMsg, "Reporting Senior is Required");
+        common.logPrint("Error message is showing for the Reporting Senior field: " + reportingSeniorMsg);
+
+        common.logPrint("Step:: Verify validation message for Zone field");
+        common.waitUntilElementToBeVisible(By.xpath(zoneError));
+        String zoneMsg = common.getText(zoneError);
+        common.assertTwoValuesAreEqual(zoneMsg, "Zone is Required");
+        common.logPrint("Error message is showing for the Zone field: " + zoneMsg);
+
+        common.logPrint("Step:: Verify validation message for State field");
+        common.waitUntilElementToBeVisible(By.xpath(stateError));
+        String stateMsg = common.getText(stateError);
+        common.assertTwoValuesAreEqual(stateMsg, "State is Required");
+        common.logPrint("Error message is showing for the State field: " + stateMsg);
+
+        common.logPrint("Step:: Verify validation message for Region field");
+        common.waitUntilElementToBeVisible(By.xpath(regionError));
+        String regionMsg = common.getText(regionError);
+        common.assertTwoValuesAreEqual(regionMsg, "Region is Required");
+        common.logPrint("Error message is showing for the Region field: " + regionMsg);
+
+        common.logPrint("Step:: Verify validation message for District field");
+        common.waitUntilElementToBeVisible(By.xpath(districtError));
+        String districtMsg = common.getText(districtError);
+        common.assertTwoValuesAreEqual(districtMsg, "District is Required");
+        common.logPrint("Error message is showing for the District field: " + districtMsg);
+
+        common.logPrint("Step:: Verify validation message for City field");
+        common.waitUntilElementToBeVisible(By.xpath(cityError));
+        String cityMsg = common.getText(cityError);
+        common.assertTwoValuesAreEqual(cityMsg, "City is Required");
+        common.logPrint("Error message is showing for the City field: " + cityMsg);
+    }
+
+    public void verifyValidationMessageForRoleModule() {
+
+        if (common.isElementPresent(ADMINPANELMENU)) {
+            common.logPrint("Step:: Click on the admin panel menu");
+            common.click(ADMINPANELMENU);
+        }
+
+//        if (common.isElementPresent(BACKBTN)) {
+//            common.logPrint("Step:: Click on the back button");
+//            common.click(BACKBTN);
+//        }
+
+        common.logPrint("Verify mandatory fields validation for the Account List module");
+
+        common.logPrint("Step:: Click on the admin menu");
+        common.waitUntilElementToBeVisible(By.xpath(ADMINPANELMENU));
+        common.click(ADMINPANELMENU);
+
+        common.logPrint("Step:: Click on the Role. menu");
+        common.waitUntilElementToBeVisible(By.xpath(ROLEMENU));
+        common.click(ROLEMENU);
+
+        common.logPrint("Step:: Click on the ADD button");
+        common.waitUntilElementToBeVisible(By.xpath(ADDBTN));
+        common.click(ADDBTN);
+
+        common.logPrint("Step:: Click on the save button");
+        common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
+        common.click(SAVEBUTTON);
+
+        common.logPrint("Step:: Verify all the validation messages for mandatory fields");
+
+        common.logPrint("Step:: Verify validation message for Role Name field");
+        common.waitUntilElementToBeVisible(By.xpath(DoctorError));
+        String roleNameMsg = common.getText(DoctorError);
+        common.assertTwoValuesAreEqual(roleNameMsg, "Role Name is required");
+        common.logPrint("Error message is showing for the Role Name field: " + roleNameMsg);
+
+    }
+
+    public void verifyValidationMessageForDesignationModule() {
+
+        if (common.isElementPresent(ADMINPANELMENU)) {
+            common.logPrint("Step:: Click on the admin panel menu");
+            common.click(ADMINPANELMENU);
+        }
+
+//        if (common.isElementPresent(BACKBTN)) {
+//            common.logPrint("Step:: Click on the back button");
+//            common.click(BACKBTN);
+//        }
+
+        common.logPrint("Verify mandatory fields validation for the Account List module");
+
+        common.logPrint("Step:: Click on the admin menu");
+        common.waitUntilElementToBeVisible(By.xpath(ADMINPANELMENU));
+        common.click(ADMINPANELMENU);
+
+        common.logPrint("Step:: Click on the Designation menu");
+        common.waitUntilElementToBeVisible(By.xpath(DESIGNATIONMENU));
+        common.click(DESIGNATIONMENU);
+
+        common.logPrint("Step:: Click on the ADD button");
+        common.waitUntilElementToBeVisible(By.xpath(ADDBTN));
+        common.click(ADDBTN);
+
+        common.logPrint("Step:: Click on the save button");
+        common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
+        common.click(SAVEBUTTON);
+
+        common.logPrint("Step:: Verify all the validation messages for mandatory fields");
+
+        common.logPrint("Step:: Verify validation message for Designation Name field");
+        common.waitUntilElementToBeVisible(By.xpath(DoctorError));
+        String DesignationNameMsg = common.getText(DoctorError);
+        common.assertTwoValuesAreEqual(DesignationNameMsg, "Designation Name is required");
+        common.logPrint("Error message is showing for the Designation Name field: " + DesignationNameMsg);
+
+        common.logPrint("Step:: Verify validation message for Parent Designation field");
+        common.waitUntilElementToBeVisible(By.xpath(CategoryError));
+        String roleNameMsg = common.getText(CategoryError);
+        common.assertTwoValuesAreEqual(roleNameMsg, "Parent Designation is Required");
+        common.logPrint("Error message is showing for the Parent Designation field: " + roleNameMsg);
+    }
+
+    public void verifyAllTheButtonAndLabelIsPresentOnHeader(){
+
+        common.logPrint("Step:: Verify back button is present");
+        common.waitUntilElementToBeVisible(By.xpath(BACKBTN));
+        common.logPrint("Back button is present in the page");
+
+        common.logPrint("Step:: Verify Add button is present");
+        common.waitUntilElementToBeVisible(By.xpath(ADDBTN));
+        common.logPrint("ADD button is present in the page");
+
+        common.logPrint("Step:: Check Delete button is present and disabled");
+        common.waitUntilElementToBeVisible(By.xpath(DELETEBTN));
+        common.isElementDisabled(DELETEBTN);
+        common.logPrint("Step:: Delete button is present and disabled");
+
+        common.logPrint("Step:: Check Edit button is present and disabled");
+        common.waitUntilElementToBeVisible(By.xpath(EDITBTN));
+        common.isElementDisabled(EDITBTN);
+        common.logPrint("Step:: Edit button is present and disabled");
+
+        common.logPrint("Step:: Check View button is present and disabled");
+        common.waitUntilElementToBeVisible(By.xpath(VIEWBTN));
+        common.isElementDisabled(VIEWBTN);
+        common.logPrint("Step:: View button is present and disabled");
+
+        common.logPrint("Step:: Check Print button is present and disabled");
+        common.waitUntilElementToBeVisible(By.xpath(PRINTBTN));
+        common.isElementDisabled(PRINTBTN);
+        common.logPrint("Step:: Print button is present and disabled");
+
+        common.logPrint("Step:: Verify Export PDF button is present");
+        common.waitUntilElementToBeVisible(By.xpath(EXPORTPDFBTN));
+        common.logPrint("Export PDF button is present in the page");
+
+        common.logPrint("Step:: Verify Export Excel button is present");
+        common.waitUntilElementToBeVisible(By.xpath(EXPORTEXCELBTN));
+        common.logPrint("Export Excel button is present in the page");
+
+//        common.logPrint("Step:: Verify Bulk Approve button is present");
+//        common.waitUntilElementToBeVisible(By.xpath(BULKAPPROVEBTN));
+//        common.logPrint("Bulk Approve button is present in the page");
+
+    }
+
+
+    public void verifyDoctorCreationFieldAndLabelsForLeadEntity(){
+
+        common.logPrint("Step:: Click on the admin panel menu");
+        common.assertElementDisplayed(ADMINPANELMENU);
+        common.click(ADMINPANELMENU);
+
+        common.logPrint("Step:: Verify all the sub-menu is showing");
+
+        common.logPrint("Step:: Verify Doctor menu is present");
+        common.assertElementDisplayed(DOCTORMENU);
+        common.logPrint("Doctor menu is present on the admin panel");
+
+        common.logPrint("Step:: Verify chemist menu is present");
+        common.assertElementDisplayed(CHEMISTMENU);
+        common.logPrint("Chemist menu is present on the admin panel");
+
+        common.logPrint("Step:: Verify Stockist menu is present");
+        common.assertElementDisplayed(STOCKISTMENU);
+        common.logPrint("Stockist menu is present on the admin panel");
+
+        common.logPrint("Step:: Verify Hospital menu is present");
+        common.assertElementDisplayed(HOSPITALMENU);
+        common.logPrint("Hospital menu is present on the admin panel");
+
+        common.logPrint("Step:: Verify Product menu is present");
+        common.assertElementDisplayed(PRODUCTMENU);
+        common.logPrint("Product menu is present on the admin panel");
+
+        common.logPrint("Step:: Verify Employee menu is present");
+        common.assertElementDisplayed(EMPLOYEEMENU);
+        common.logPrint("Employee menu is present on the admin panel");
+
+        common.logPrint("Step:: Click on the Doctor menu");
+        common.assertElementDisplayed(DOCTORMENU);
+        common.click(DOCTORMENU);
+
+        common.logPrint("Verify all the header buttons are present");
+        verifyAllTheButtonAndLabelIsPresentOnHeader();
+
+        common.logPrint("Step:: Verify Financial year dropdown label is present");
+        common.assertElementDisplayed(FINANCIALYEARLBL);
+        common.logPrint("Financial year dropdown label is present on the admin panel");
+
+        common.logPrint("Step:: Verify Financial year dropdown is present");
+        common.assertElementDisplayed(YEARDROPDOWN);
+        common.logPrint("Financial year dropdown is present on the admin panel");
+
+        common.logPrint("Step:: Verify sales graph is present in the screen");
+        common.assertElementDisplayed(SALESGRAPHINADDDCR);
+        common.logPrint("Sales graph is present on the page");
+
+        common.logPrint("Step:: Verify HQ label is present");
+        common.assertElementDisplayed(HQLABEL);
+        common.logPrint("HQ label is present on the page");
+
+        common.logPrint("Step:: Verify HQ dropdown is present");
+        common.assertElementDisplayed(HQDROPDOWN);
+        common.logPrint("HQ dropdown present on the page");
+
+        common.logPrint("Step:: Verify search field is present");
+        common.assertElementDisplayed(SEARCHFIELD);
+        common.logPrint("Search field is present on the page");
+
+        common.logPrint("Step:: Verify Fields on create doctor screen");
+
+        common.logPrint("Step:: Click on the ADD button");
+        common.assertElementDisplayed(ADDBTN);
+        common.click(ADDBTN);
+
+        common.logPrint("Step:: Verify Doctor Name label is present");
+        common.assertElementDisplayed(DOCTORNAMELBL);
+        common.logPrint("Doctor Name label is present");
+
+        common.logPrint("Step:: Verify Doctor Name input field is present");
+        common.assertElementDisplayed(DOCTORNAMEINP);
+        common.logPrint("Doctor Name input field is present");
+
+        common.logPrint("Step:: Verify Category label is present");
+        common.assertElementDisplayed(CATEGORYLBL);
+        common.logPrint("Category label is present");
+
+        common.logPrint("Step:: Verify Category input field is present");
+        common.assertElementDisplayed(CATEGORYINP);
+        common.logPrint("Category input field is present");
+
+        common.logPrint("Step:: Verify Speciality label is present");
+        common.assertElementDisplayed(SPECIALITYLBL);
+        common.logPrint("Speciality label is present");
+
+        common.logPrint("Step:: Verify Speciality input field is present");
+        common.assertElementDisplayed(SPECIALITYINP);
+        common.logPrint("Speciality input field is present");
+
+        common.logPrint("Step:: Verify Qualifications label is present");
+        common.assertElementDisplayed(QUALIFICATIONSLBL);
+        common.logPrint("Qualifications label is present");
+
+        common.logPrint("Step:: Verify Qualifications input field is present");
+        common.assertElementDisplayed(QUALIFICATIONSINP);
+        common.logPrint("Qualifications input field is present");
+
+        common.logPrint("Step:: Verify Employee label is present");
+        common.assertElementDisplayed(EMPLOYEELBL);
+        common.logPrint("Employee label is present");
+
+        common.logPrint("Step:: Verify Employee input field is present");
+        common.assertElementDisplayed(EMPLOYEEINP);
+        common.logPrint("Employee input field is present");
+
+        common.logPrint("Step:: Verify Product label is present");
+        common.assertElementDisplayed(PRODUCTLBL);
+        common.logPrint("Product label is present");
+
+        common.logPrint("Step:: Verify Product input field is present");
+        common.assertElementDisplayed(PRODUCTINP);
+        common.logPrint("Product input field is present");
+
+        common.logPrint("Step:: Verify Hospital Name label is present");
+        common.assertElementDisplayed(HOSPITALNAMELBL);
+        common.logPrint("Hospital Name label is present");
+
+        common.logPrint("Step:: Verify Hospital Name input field is present");
+        common.assertElementDisplayed(HOSPITALNAMEINP);
+        common.logPrint("Hospital Name input field is present");
+
+        common.logPrint("Step:: Verify Email label is present");
+        common.assertElementDisplayed(EMAILLBL);
+        common.logPrint("Email label is present");
+
+        common.logPrint("Step:: Verify Email input field is present");
+        common.assertElementDisplayed(EMAILINP);
+        common.logPrint("Email input field is present");
+
+        common.logPrint("Step:: Verify Mobile No. label is present");
+        common.assertElementDisplayed(MOBILENOLBL);
+        common.logPrint("Mobile No. label is present");
+
+        common.logPrint("Step:: Verify Mobile No. input field is present");
+        common.assertElementDisplayed(MOBILENOINP);
+        common.logPrint("Mobile No. input field is present");
+
+        common.logPrint("Step:: Verify Phone No label is present");
+        common.assertElementDisplayed(PHONENOLBL);
+        common.logPrint("Phone No label is present");
+
+        common.logPrint("Step:: Verify Phone No input field is present");
+        common.assertElementDisplayed(PHONENOINP);
+        common.logPrint("Phone No input field is present");
+
+        common.logPrint("Step:: Verify Website label is present");
+        common.assertElementDisplayed(WEBSITELBL);
+        common.logPrint("Website label is present");
+
+        common.logPrint("Step:: Verify Website input field is present");
+        common.assertElementDisplayed(WEBSITEINP);
+        common.logPrint("Website input field is present");
+
+        common.logPrint("Step:: Verify DOB label is present");
+        common.assertElementDisplayed(DOBLBL);
+        common.logPrint("DOB label is present");
+
+        common.logPrint("Step:: Verify DOB input field is present");
+        common.assertElementDisplayed(DOBINP);
+        common.logPrint("DOB input field is present");
+
+        common.logPrint("Step:: Verify DOA label is present");
+        common.assertElementDisplayed(DOALBL);
+        common.logPrint("DOA label is present");
+
+        common.logPrint("Step:: Verify DOA input field is present");
+        common.assertElementDisplayed(DOAINP);
+        common.logPrint("DOA input field is present");
+
+        common.logPrint("Step:: Verify PanCard Number label is present");
+        common.assertElementDisplayed(PANCARDNOLBL);
+        common.logPrint("PanCard Number label is present");
+
+        common.logPrint("Step:: Verify PanCard Number input field is present");
+        common.assertElementDisplayed(PANCARDNOINP);
+        common.logPrint("PanCard Number input field is present");
+
+        common.logPrint("Step:: Verify Registration Number label is present");
+        common.assertElementDisplayed(REGISTRATIONNOLBL);
+        common.logPrint("Registration Number label is present");
+
+        common.logPrint("Step:: Verify Registration Number input field is present");
+        common.assertElementDisplayed(REGISTRATIONNOINP);
+        common.logPrint("Registration Number input field is present");
+
+        common.logPrint("Step:: Verify Software Name label is present");
+        common.assertElementDisplayed(SOFTWARENAMELBL);
+        common.logPrint("Software Name label is present");
+
+        common.logPrint("Step:: Verify Software Name input field is present");
+        common.assertElementDisplayed(SOFTWARENAMEINP);
+        common.logPrint("Software Name input field is present");
+
+        common.logPrint("Step:: Verify Role in Hospital label is present");
+        common.assertElementDisplayed(ROLEINHOSPITALLBL);
+        common.logPrint("Role in Hospital label is present");
+
+        common.logPrint("Step:: Verify Role in Hospital input field is present");
+        common.assertElementDisplayed(ROLEINHOSPITALINP);
+        common.logPrint("Role in Hospital input field is present");
+
+        common.logPrint("Step:: Verify Patients Daily label is present");
+        common.assertElementDisplayed(PATIENTSDAILYLBL);
+        common.logPrint("Patients Daily label is present");
+
+        common.logPrint("Step:: Verify Patients Daily input field is present");
+        common.assertElementDisplayed(PATIENTSDAILYINP);
+        common.logPrint("Patients Daily input field is present");
+
+        common.logPrint("Step:: Verify Patients Weekly label is present");
+        common.assertElementDisplayed(PATIENTSWEEKLYLBL);
+        common.logPrint("Patients Weekly label is present");
+
+        common.logPrint("Step:: Verify Patients Weekly input field is present");
+        common.assertElementDisplayed(PATIENTSWEEKLYINP);
+        common.logPrint("Patients Weekly input field is present");
+
+        common.logPrint("Step:: Verify Patients Monthly label is present");
+        common.assertElementDisplayed(PATIENTSMONTHLYLBL);
+        common.logPrint("Patients Monthly label is present");
+
+        common.logPrint("Step:: Verify Patients Monthly input field is present");
+        common.assertElementDisplayed(PATIENTSMONTHLYINP);
+        common.logPrint("Patients Monthly input field is present");
+
+        common.logPrint("Step:: Verify Preferred Call Time label is present");
+        common.assertElementDisplayed(PREFERREDCALLTIMELBL);
+        common.logPrint("Preferred Call Time label is present");
+
+        common.logPrint("Step:: Verify Preferred Call Time input field is present");
+        common.assertElementDisplayed(PREFERREDCALLTIMEINP);
+        common.logPrint("Preferred Call Time input field is present");
+
+        common.pause(2);
+        common.scroll_To_Element(ADDRESSLINE1INP1);
+
+        common.logPrint("Step:: Verify Pan card label is showing");
+        common.assertElementDisplayed(PANCARDIMGLBL);
+        common.logPrint("Pan card label is showing");
+
+        common.logPrint("Step:: Verify Registration image label is showing");
+        common.assertElementDisplayed(REGISTRATIONIMGLBL);
+        common.logPrint("Registration image label is showing");
+
+        common.logPrint("Step:: Verify Doctor upload image label is showing");
+        common.assertElementDisplayed(DOCTORIMGLBL);
+        common.logPrint("Doctor upload image is showing");
+
+        common.logPrint("Step:: Verify Visiting card image label is showing");
+        common.assertElementDisplayed(VISITINGCARDIMGLBL);
+        common.logPrint("Visiting card image label is showing");
+
+        common.logPrint("Step:: Verify Pan card image upload field is showing");
+        common.assertElementDisplayed(PANCARDUPLOADIMG);
+        common.logPrint("Pan card image upload field is showing");
+
+        common.logPrint("Step:: Verify Registration image upload field is showing");
+        common.assertElementDisplayed(REGISTRATIONUPLOADIMG);
+        common.logPrint("Registration image upload field is showing");
+
+        common.logPrint("Step:: Verify Doctor upload field is showing");
+        common.assertElementDisplayed(DOCTORUPLOADIMG);
+        common.logPrint("Doctor upload field is showing");
+
+        common.logPrint("Step:: Verify Visiting card image upload is showing");
+        common.assertElementDisplayed(VISITINGCARDUPLOADIMG);
+        common.logPrint("Visiting card image upload field is showing");
+
+        common.logPrint("Step:: Verify Address Line 1 label is present");
+        common.assertElementDisplayed(ADDRESSLINE1LBL1);
+        common.logPrint("Address Line 1 label is present");
+
+        common.logPrint("Step:: Verify Address Line 1 input field is present");
+        common.assertElementDisplayed(ADDRESSLINE1INP1);
+        common.logPrint("Address Line 1 input field is present");
+
+        common.logPrint("Step:: Verify Area label is present");
+        common.assertElementDisplayed(AREALBL);
+        common.logPrint("Area label is present");
+
+        common.logPrint("Step:: Verify Area input field is present");
+        common.assertElementDisplayed(AREAINP);
+        common.logPrint("Area input field is present");
+
+        common.logPrint("Step:: Verify City label is present");
+        common.assertElementDisplayed(CITYLBL);
+        common.logPrint("City label is present");
+
+        common.logPrint("Step:: Verify City input field is present");
+        common.assertElementDisplayed(CITYINP);
+        common.logPrint("City input field is present");
+
+        common.logPrint("Step:: Verify Pincode label is present");
+        common.assertElementDisplayed(PINCODELBL);
+        common.logPrint("Pincode label is present");
+
+        common.logPrint("Step:: Verify Pincode input field is present");
+        common.assertElementDisplayed(PINCODEINP);
+        common.logPrint("Pin code input field is present");
+
+        if (common.findElement(BACKBTN).isDisplayed()) {
+            common.click(BACKBTN);
+        }
+    }
+
+
+    public void verifyChemistCreationFieldAndLabelsForLeadEntity(){
+
+        common.logPrint("Verify Chemist creation screen fields and labels");
+        if (common.isElementPresent(ADMINPANELMENU)){
+            common.logPrint("Step:: Click on the admin panel menu");
+            common.click(ADMINPANELMENU);
+        }
+
+        common.pause(2);
+        if (common.isElementPresent(BACKBTN)){
+            common.logPrint("Step:: Click on the back button");
+            common.click(BACKBTN);
+        }
+
+        common.logPrint("Step:: Click on the chemist menu");
+        common.waitUntilElementToBeVisible(By.xpath(CHEMISTMENU));
+        common.click(CHEMISTMENU);
+
+        common.logPrint("Step:: Verify all the buttons and labels are present on header");
+        verifyAllTheButtonAndLabelIsPresentOnHeader();
+
+        common.waitUntilElementsToBeVisible(By.xpath(ADDBTN));
+        common.click(ADDBTN);
+
+        common.logPrint("Step:: Verify that chemist name label is present");
+        common.waitUntilElementsToBeVisible(By.xpath(CHEMISTNAMELBL));
+        common.assertElementDisplayed(CHEMISTNAMELBL);
+        common.logPrint("Chemist name is present on the page");
+
+        common.logPrint("Step:: Verify that chemist input field is present");
+        common.waitUntilElementsToBeVisible(By.xpath(CHEMISTNAMEINP));
+        common.assertElementDisplayed(CHEMISTNAMEINP);
+        common.logPrint("chemist input field is present on the page");
+
+        common.logPrint("Step:: Verify that category label is present");
+        common.waitUntilElementsToBeVisible(By.xpath(CATEGORYLBL));
+        common.assertElementDisplayed(CATEGORYLBL);
+        common.logPrint("Category label is present on the page");
+
+        common.logPrint("Step:: Verify that category input field is present");
+        common.waitUntilElementsToBeVisible(By.xpath(CATEGORYINP));
+        common.assertElementDisplayed(CATEGORYINP);
+        common.logPrint("Category input field is present on the page");
+
+        common.logPrint("Step:: Verify that chemist type label is present");
+        common.waitUntilElementsToBeVisible(By.xpath(CHEMISTTYPELBL));
+        common.assertElementDisplayed(CHEMISTTYPELBL);
+        common.logPrint("Chemist type label is present on the page");
+
+        common.logPrint("Step:: Verify that chemist type input field is present");
+        common.waitUntilElementsToBeVisible(By.xpath(CHEMISTTYPEINP));
+        common.assertElementDisplayed(CHEMISTTYPEINP);
+        common.logPrint("Chemist type input field is present on the page");
+
+        common.logPrint("Step:: Verify that mobile number label is present");
+        common.waitUntilElementsToBeVisible(By.xpath(MOBILENOLBL));
+        common.assertElementDisplayed(MOBILENOLBL);
+        common.logPrint("Mobile number label is present on the page");
+
+        common.logPrint("Step:: Verify that mobile number input field is present");
+        common.waitUntilElementsToBeVisible(By.xpath(MOBILENOINP));
+        common.assertElementDisplayed(MOBILENOINP);
+        common.logPrint("Mobile number input field is present on the page");
+
+        common.logPrint("Step:: Verify that phone number label is present");
+        common.waitUntilElementsToBeVisible(By.xpath(PHONENOLBL));
+        common.assertElementDisplayed(PHONENOLBL);
+        common.logPrint("Phone number label is present on the page");
+
+        common.logPrint("Step:: Verify that phone number input field is present");
+        common.waitUntilElementsToBeVisible(By.xpath(PHONENOINP));
+        common.assertElementDisplayed(PHONENOINP);
+        common.logPrint("Phone number input field is present on the page");
+
+        common.logPrint("Step:: Verify that potential business label is present");
+        common.waitUntilElementsToBeVisible(By.xpath(POTENTIALBUSINESSLBL));
+        common.assertElementDisplayed(POTENTIALBUSINESSLBL);
+        common.logPrint("Potential business label is present on the page");
+
+        common.logPrint("Step:: Verify that potential business input field is present");
+        common.waitUntilElementsToBeVisible(By.xpath(POTENTIALBUSINESSINP));
+        common.assertElementDisplayed(POTENTIALBUSINESSINP);
+        common.logPrint("Potential business input field is present on the page");
+
+        common.logPrint("Step:: Verify that DL No1 label is present");
+        common.waitUntilElementsToBeVisible(By.xpath(DLNO1LBL));
+        common.assertElementDisplayed(DLNO1LBL);
+        common.logPrint("DL No1 label is present on the page");
+
+        common.logPrint("Step:: Verify that DL No1 input field is present");
+        common.waitUntilElementsToBeVisible(By.xpath(DLNO1INP));
+        common.assertElementDisplayed(DLNO1INP);
+        common.logPrint("DL No1 input field is present on the page");
+
+        common.logPrint("Step:: Verify that DL No2 label is present");
+        common.waitUntilElementsToBeVisible(By.xpath(DLNO2LBL));
+        common.assertElementDisplayed(DLNO2LBL);
+        common.logPrint("DL No2 label is present on the page");
+
+        common.logPrint("Step:: Verify that DL No2 input field is present");
+        common.waitUntilElementsToBeVisible(By.xpath(DLNO2INP));
+        common.assertElementDisplayed(DLNO2INP);
+        common.logPrint("DL No2 input field is present on the page");
+
+        common.logPrint("Step:: Verify that email label is present");
+        common.waitUntilElementsToBeVisible(By.xpath(EMAILLBL));
+        common.assertElementDisplayed(EMAILLBL);
+        common.logPrint("Email label is present on the page");
+
+        common.logPrint("Step:: Verify that email input field is present");
+        common.waitUntilElementsToBeVisible(By.xpath(EMAILINP));
+        common.assertElementDisplayed(EMAILINP);
+        common.logPrint("Email input field is present on the page");
+
+        common.logPrint("Step:: Verify that stockist label is present");
+        common.waitUntilElementsToBeVisible(By.xpath(STOCKISTLBL));
+        common.assertElementDisplayed(STOCKISTLBL);
+        common.logPrint("Stockist label is present on the page");
+
+        common.logPrint("Step:: Verify that stockist input field is present");
+        common.waitUntilElementsToBeVisible(By.xpath(STOCKISTINP));
+        common.assertElementDisplayed(STOCKISTINP);
+        common.logPrint("Stockist input field is present on the page");
+
+        common.logPrint("Step:: Verify that GST No label is present");
+        common.waitUntilElementsToBeVisible(By.xpath(GSTNOLBL));
+        common.assertElementDisplayed(GSTNOLBL);
+        common.logPrint("GST No label is present on the page");
+
+        common.logPrint("Step:: Verify that GST No input field is present");
+        common.waitUntilElementsToBeVisible(By.xpath(GSTNOINP));
+        common.assertElementDisplayed(GSTNOINP);
+        common.logPrint("GST No input field is present on the page");
+
+        common.logPrint("Step:: Verify that FSSAI label is present");
+        common.waitUntilElementsToBeVisible(By.xpath(FSSAILBL));
+        common.assertElementDisplayed(FSSAILBL);
+        common.logPrint("FSSAI label is present on the page");
+
+        common.logPrint("Step:: Verify that FSSAI input field is present");
+        common.waitUntilElementsToBeVisible(By.xpath(FSSAIINP));
+        common.assertElementDisplayed(FSSAIINP);
+        common.logPrint("FSSAI input field is present on the page");
+
+        common.logPrint("Step:: Verify that NRX label is present");
+        common.waitUntilElementsToBeVisible(By.xpath(NRXLBL));
+        common.assertElementDisplayed(NRXLBL);
+        common.logPrint("NRX label is present on the page");
+
+        common.logPrint("Step:: Verify that NRX input field is present");
+        common.waitUntilElementsToBeVisible(By.xpath(NRXINP));
+        common.assertElementDisplayed(NRXINP);
+        common.logPrint("NRX input field is present on the page");
+
+        common.logPrint("Step:: Verify that employee label is present");
+        common.waitUntilElementsToBeVisible(By.xpath(EMPLOYEELBLCHE));
+        common.assertElementDisplayed(EMPLOYEELBLCHE);
+        common.logPrint("Employee label is present on the page");
+
+        common.logPrint("Step:: Verify that employee input field is present");
+        common.waitUntilElementsToBeVisible(By.xpath(EMPLOYEEINPCHE));
+        common.assertElementDisplayed(EMPLOYEEINPCHE);
+        common.logPrint("Employee input field is present on the page");
+
+        common.logPrint("Step:: Verify that doctor label is present");
+        common.waitUntilElementsToBeVisible(By.xpath(DOCTORLBL));
+        common.assertElementDisplayed(DOCTORLBL);
+        common.logPrint("Doctor label is present on the page");
+
+        common.logPrint("Step:: Verify that doctor input field is present");
+        common.waitUntilElementsToBeVisible(By.xpath(DOCTORINP));
+        common.assertElementDisplayed(DOCTORINP);
+        common.logPrint("Doctor input field is present on the page");
+
+        common.logPrint("Step:: Verify that address line 1 label is present");
+        common.waitUntilElementsToBeVisible(By.xpath(ADDRESSLINE1LBL1));
+        common.assertElementDisplayed(ADDRESSLINE1LBL1);
+        common.logPrint("Address Line 1 label is present on the page");
+
+        common.logPrint("Step:: Verify that address line 1 input field is present");
+        common.waitUntilElementsToBeVisible(By.xpath(ADDRESSLINE1INP1));
+        common.assertElementDisplayed(ADDRESSLINE1INP1);
+        common.logPrint("Address Line 1 input field is present on the page");
+
+        common.logPrint("Step:: Verify that area label is present");
+        common.waitUntilElementsToBeVisible(By.xpath(AREALBL));
+        common.assertElementDisplayed(AREALBL);
+        common.logPrint("Area label is present on the page");
+
+        common.logPrint("Step:: Verify that area input field is present");
+        common.waitUntilElementsToBeVisible(By.xpath(AREAINP));
+        common.assertElementDisplayed(AREAINP);
+        common.logPrint("Area input field is present on the page");
+
+        common.logPrint("Step:: Verify that city label is present");
+        common.waitUntilElementsToBeVisible(By.xpath(CITYLBL));
+        common.assertElementDisplayed(CITYLBL);
+        common.logPrint("City label is present on the page");
+
+        common.logPrint("Step:: Verify that city input field is present");
+        common.waitUntilElementsToBeVisible(By.xpath(CITYINP));
+        common.assertElementDisplayed(CITYINP);
+        common.logPrint("City input field is present on the page");
+
+        common.logPrint("Step:: Verify that pincode label is present");
+        common.waitUntilElementsToBeVisible(By.xpath(PINCODELBL));
+        common.assertElementDisplayed(PINCODELBL);
+        common.logPrint("Pincode label is present on the page");
+
+        common.logPrint("Step:: Verify that pincode input field is present");
+        common.waitUntilElementsToBeVisible(By.xpath(PINCODEINP));
+        common.assertElementDisplayed(PINCODEINP);
+        common.logPrint("Pincode input field is present on the page");
+    }
+
+    public void verifyStockistCreationFieldAndLabelsForLeadEntity() {
+
+        common.logPrint("Verify Stockist creation screen fields and labels");
+        if (common.isElementPresent(ADMINPANELMENU)) {
+            common.logPrint("Step:: Click on the admin panel menu");
+            common.click(ADMINPANELMENU);
+        }
+
+        common.pause(2);
+        if (common.isElementPresent(BACKBTN)) {
+            common.logPrint("Step:: Click on the back button");
+            common.click(BACKBTN);
+        }
+
+        common.logPrint("Step:: Click on the chemist menu");
+        common.waitUntilElementToBeVisible(By.xpath(STOCKISTMENU));
+        common.click(STOCKISTMENU);
+
+        common.logPrint("Step:: Verify all the buttons and labels are present on header");
+        verifyAllTheButtonAndLabelIsPresentOnHeader();
+
+        common.logPrint("Step:: Click on the add button");
+        common.waitUntilElementsToBeVisible(By.xpath(ADDBTN));
+        common.click(ADDBTN);
+
+        common.logPrint("Step:: Verify that stockist name label is present");
+        common.waitUntilElementsToBeVisible(By.xpath(STOCKISTNAMELBL));
+        common.assertElementDisplayed(STOCKISTNAMELBL);
+        common.logPrint("Stockist name label is present on the page");
+
+        common.logPrint("Step:: Verify that stockist name input field is present");
+        common.waitUntilElementsToBeVisible(By.xpath(STOCKISTNAMEINP));
+        common.assertElementDisplayed(STOCKISTNAMEINP);
+        common.logPrint("Stockist name input field is present on the page");
+
+        common.logPrint("Step:: Verify that stockist type label is present");
+        common.waitUntilElementsToBeVisible(By.xpath(STOCKISTTYPELBL));
+        common.assertElementDisplayed(STOCKISTTYPELBL);
+        common.logPrint("Stockist type label is present on the page");
+
+        common.logPrint("Step:: Verify that stockist type input field is present");
+        common.waitUntilElementsToBeVisible(By.xpath(STOCKISTTYPEINP));
+        common.assertElementDisplayed(STOCKISTTYPEINP);
+        common.logPrint("Stockist type input field is present on the page");
+
+        common.logPrint("Step:: Verify that mobile no. 1 label is present");
+        common.waitUntilElementsToBeVisible(By.xpath(MOBILENO1LBLSTO));
+        common.assertElementDisplayed(MOBILENO1LBLSTO);
+        common.logPrint("Mobile no. 1 label is present on the page");
+
+        common.logPrint("Step:: Verify that mobile no. 1 input field is present");
+        common.waitUntilElementsToBeVisible(By.xpath(MOBILENO1INPSTO));
+        common.assertElementDisplayed(MOBILENO1INPSTO);
+        common.logPrint("Mobile no. 1 input field is present on the page");
+
+        common.logPrint("Step:: Verify that mobile no. 2 label is present");
+        common.waitUntilElementsToBeVisible(By.xpath(MOBILENO2LBL));
+        common.assertElementDisplayed(MOBILENO2LBL);
+        common.logPrint("Mobile no. 2 label is present on the page");
+
+        common.logPrint("Step:: Verify that mobile no. 2 input field is present");
+        common.waitUntilElementsToBeVisible(By.xpath(MOBILENO2INP));
+        common.assertElementDisplayed(MOBILENO2INP);
+        common.logPrint("Mobile no. 2 input field is present on the page");
+
+        common.logPrint("Step:: Verify that mobile no. 3 label is present");
+        common.waitUntilElementsToBeVisible(By.xpath(MOBILENO3LBL));
+        common.assertElementDisplayed(MOBILENO3LBL);
+        common.logPrint("Mobile no. 3 label is present on the page");
+
+        common.logPrint("Step:: Verify that mobile no. 3 input field is present");
+        common.waitUntilElementsToBeVisible(By.xpath(MOBILENO3INP));
+        common.assertElementDisplayed(MOBILENO3INP);
+        common.logPrint("Mobile no. 3 input field is present on the page");
+
+        common.logPrint("Step:: Verify that phone no. label field is present");
+        common.waitUntilElementsToBeVisible(By.xpath(PHONENOLBL));
+        common.assertElementDisplayed(PHONENOLBL);
+        common.logPrint("Phone no. label is present on the page");
+
+        common.logPrint("Step:: Verify that phone input field is present");
+        common.waitUntilElementsToBeVisible(By.xpath(PHONENOINP));
+        common.assertElementDisplayed(PHONENOINP);
+        common.logPrint("Phone no. input field is present on the page");
+
+        common.logPrint("Step:: Verify that place label is present");
+        common.waitUntilElementsToBeVisible(By.xpath(PLACELBL));
+        common.assertElementDisplayed(PLACELBL);
+        common.logPrint("Place label is present on the page");
+
+        common.logPrint("Step:: Verify that place input field is present");
+        common.waitUntilElementsToBeVisible(By.xpath(PLACEINP));
+        common.assertElementDisplayed(PLACEINP);
+        common.logPrint("Place input field is present on the page");
+
+        common.logPrint("Step:: Verify that CFA location label is present");
+        common.waitUntilElementsToBeVisible(By.xpath(CFALOCATIONLBL));
+        common.assertElementDisplayed(CFALOCATIONLBL);
+        common.logPrint("CFA location label is present on the page");
+
+        common.logPrint("Step:: Verify that CFA location input field is present");
+        common.waitUntilElementsToBeVisible(By.xpath(CFALOCATIONINP));
+        common.assertElementDisplayed(CFALOCATIONINP);
+        common.logPrint("CFA location input field is present on the page");
+
+        common.logPrint("Step:: Verify that contact person label is present");
+        common.waitUntilElementsToBeVisible(By.xpath(CONTACTPERSONLBL));
+        common.assertElementDisplayed(CONTACTPERSONLBL);
+        common.logPrint("Contact person label is present on the page");
+
+        common.logPrint("Step:: Verify that contact person input field is present");
+        common.waitUntilElementsToBeVisible(By.xpath(CONTACTPERSONINP));
+        common.assertElementDisplayed(CONTACTPERSONINP);
+        common.logPrint("Contact person input field is present on the page");
+
+        common.logPrint("Step:: Verify Email label is present");
+        common.waitUntilElementToBeVisible(By.xpath(EMAILLBL));
+        common.logPrint("Email label is present");
+
+        common.logPrint("Step:: Verify Email input field is present");
+        common.waitUntilElementToBeVisible(By.xpath(EMAILINP));
+        common.logPrint("Email input field is present");
+
+        common.logPrint("Step:: Verify that DL No1 label is present");
+        common.waitUntilElementsToBeVisible(By.xpath(DLNO1LBL));
+        common.assertElementDisplayed(DLNO1LBL);
+        common.logPrint("DL No1 label is present on the page");
+
+        common.logPrint("Step:: Verify that DL No1 input field is present");
+        common.waitUntilElementsToBeVisible(By.xpath(DLNO1INP));
+        common.assertElementDisplayed(DLNO1INP);
+        common.logPrint("DL No1 input field is present on the page");
+
+        common.logPrint("Step:: Verify that DL No2 label is present");
+        common.waitUntilElementsToBeVisible(By.xpath(DLNO2LBL));
+        common.assertElementDisplayed(DLNO2LBL);
+        common.logPrint("DL No2 label is present on the page");
+
+        common.logPrint("Step:: Verify that DL No2 input field is present");
+        common.waitUntilElementsToBeVisible(By.xpath(DLNO2INP));
+        common.assertElementDisplayed(DLNO2INP);
+        common.logPrint("DL No2 input field is present on the page");
+
+        common.logPrint("Step:: Verify that FSSAI label is present");
+        common.waitUntilElementsToBeVisible(By.xpath(FSSAILBL));
+        common.assertElementDisplayed(FSSAILBL);
+        common.logPrint("FSSAI label is present on the page");
+
+        common.logPrint("Step:: Verify that FSSAI input field is present");
+        common.waitUntilElementsToBeVisible(By.xpath(FSSAIINP));
+        common.assertElementDisplayed(FSSAIINP);
+        common.logPrint("FSSAI input field is present on the page");
+
+        common.logPrint("Step:: Verify that GST No label is present");
+        common.waitUntilElementsToBeVisible(By.xpath(GSTNOLBL));
+        common.assertElementDisplayed(GSTNOLBL);
+        common.logPrint("GST No label is present on the page");
+
+        common.logPrint("Step:: Verify that GST No input field is present");
+        common.waitUntilElementsToBeVisible(By.xpath(GSTNOINP));
+        common.assertElementDisplayed(GSTNOINP);
+        common.logPrint("GST No input field is present on the page");
+
+        common.logPrint("Step:: Verify that employee label is present");
+        common.waitUntilElementsToBeVisible(By.xpath(EMPLOYEELBLCHE));
+        common.assertElementDisplayed(EMPLOYEELBLCHE);
+        common.logPrint("Employee label is present on the page");
+
+        common.logPrint("Step:: Verify that employee input field is present");
+        common.waitUntilElementsToBeVisible(By.xpath(EMPLOYEEINPCHE));
+        common.assertElementDisplayed(EMPLOYEEINPCHE);
+        common.logPrint("Employee input field is present on the page");
+
+        common.logPrint("Step:: Verify that code reference label is present");
+        common.waitUntilElementsToBeVisible(By.xpath(CODEREFLBL));
+        common.assertElementDisplayed(CODEREFLBL);
+        common.logPrint("Code reference label is present on the page");
+
+        common.logPrint("Step:: Verify that code reference input field is present");
+        common.waitUntilElementsToBeVisible(By.xpath(CODEREFINP));
+        common.assertElementDisplayed(CODEREFINP);
+        common.logPrint("Code reference input field is present on the page");
+
+        common.logPrint("Step:: Verify that address line 1 label is present");
+        common.waitUntilElementsToBeVisible(By.xpath(ADDRESSLINE1LBL1));
+        common.assertElementDisplayed(ADDRESSLINE1LBL1);
+        common.logPrint("Address Line 1 label is present on the page");
+
+        common.logPrint("Step:: Verify that address line 1 input field is present");
+        common.waitUntilElementsToBeVisible(By.xpath(ADDRESSLINE1INP1));
+        common.assertElementDisplayed(ADDRESSLINE1INP1);
+        common.logPrint("Address Line 1 input field is present on the page");
+
+        common.logPrint("Step:: Verify that area label is present");
+        common.waitUntilElementsToBeVisible(By.xpath(AREALBL));
+        common.assertElementDisplayed(AREALBL);
+        common.logPrint("Area label is present on the page");
+
+        common.logPrint("Step:: Verify that area input field is present");
+        common.waitUntilElementsToBeVisible(By.xpath(AREAINP));
+        common.assertElementDisplayed(AREAINP);
+        common.logPrint("Area input field is present on the page");
+
+        common.logPrint("Step:: Verify that city label is present");
+        common.waitUntilElementsToBeVisible(By.xpath(CITYLBL));
+        common.assertElementDisplayed(CITYLBL);
+        common.logPrint("City label is present on the page");
+
+        common.logPrint("Step:: Verify that city input field is present");
+        common.waitUntilElementsToBeVisible(By.xpath(CITYINP));
+        common.assertElementDisplayed(CITYINP);
+        common.logPrint("City input field is present on the page");
+
+        common.logPrint("Step:: Verify that pincode label is present");
+        common.waitUntilElementsToBeVisible(By.xpath(PINCODELBL));
+        common.assertElementDisplayed(PINCODELBL);
+        common.logPrint("Pincode label is present on the page");
+
+        common.logPrint("Step:: Verify that pincode input field is present");
+        common.waitUntilElementsToBeVisible(By.xpath(PINCODEINP));
+        common.assertElementDisplayed(PINCODEINP);
+        common.logPrint("Pincode input field is present on the page");
+    }
+
+    public void verifyHospitalCreationFieldsAndLabels() {
+        common.logPrint("Verify Hospital creation screen fields and labels");
+
+        if (common.isElementPresent(ADMINPANELMENU)) {
+            common.logPrint("Step:: Click on the admin panel menu");
+            common.click(ADMINPANELMENU);
+        }
+
+        common.pause(2);
+        if (common.isElementPresent(BACKBTN)) {
+            common.logPrint("Step:: Click on the back button");
+            common.click(BACKBTN);
+        }
+
+        common.logPrint("Step:: Click on the hospital menu");
+        common.waitUntilElementToBeVisible(By.xpath(HOSPITALMENU)); // Replace with actual hospital menu XPath
+        common.click(HOSPITALMENU);
+
+        common.logPrint("Step:: Click on the add button");
+        common.waitUntilElementsToBeVisible(By.xpath(ADDBTN));
+        common.click(ADDBTN);
+
+        common.logPrint("Step:: Verify that Hospital Name label is present");
+        common.waitUntilElementsToBeVisible(By.xpath(HOSPITALLABEL));
+        common.assertElementDisplayed(HOSPITALLABEL);
+        common.logPrint("Hospital Name label is present on the page");
+
+        common.logPrint("Step:: Verify that Hospital Name input field is present");
+        common.waitUntilElementsToBeVisible(By.xpath(HOSPITALINP));
+        common.assertElementDisplayed(HOSPITALINP);
+        common.logPrint("Hospital Name input field is present on the page");
+
+        common.logPrint("Step:: Verify that GST No. label is present");
+        common.waitUntilElementsToBeVisible(By.xpath(GSTLABEL));
+        common.assertElementDisplayed(GSTLABEL);
+        common.logPrint("GST No. label is present on the page");
+
+        common.logPrint("Step:: Verify that GST No. input field is present");
+        common.waitUntilElementsToBeVisible(By.xpath(GSTINP));
+        common.assertElementDisplayed(GSTINP);
+        common.logPrint("GST No. input field is present on the page");
+
+        common.logPrint("Step:: Verify that Address Line 1 label is present");
+        common.waitUntilElementsToBeVisible(By.xpath(ADDRESSLINE1));
+        common.assertElementDisplayed(ADDRESSLINE1);
+        common.logPrint("Address Line 1 label is present on the page");
+
+        common.logPrint("Step:: Verify that Address Line 1 input field is present");
+        common.waitUntilElementsToBeVisible(By.xpath(ADDRESSLINEINP));
+        common.assertElementDisplayed(ADDRESSLINEINP);
+        common.logPrint("Address Line 1 input field is present on the page");
+
+        common.logPrint("Step:: Verify that Area label is present");
+        common.waitUntilElementsToBeVisible(By.xpath(AREALLBL));
+        common.assertElementDisplayed(AREALLBL);
+        common.logPrint("Area label is displayed");
+
+        common.logPrint("Step:: Verify that Area label is present");
+        common.waitUntilElementsToBeVisible(By.xpath(AREAINPUT));
+        common.assertElementDisplayed(AREAINPUT);
+        common.logPrint("Area input field is displayed properly");
+
+        common.logPrint("Step:: Verify that city input field is present");
+        common.waitUntilElementsToBeVisible(By.xpath(CITYINP));
+        common.assertElementDisplayed(CITYINP);
+        common.logPrint("City input field is present on the page");
+
+        common.logPrint("Step:: Verify that pincode label is present");
+        common.waitUntilElementsToBeVisible(By.xpath(PINCODELBL));
+        common.assertElementDisplayed(PINCODELBL);
+        common.logPrint("Pincode label is present on the page");
+    }
+
+    public void verifyAccountCreationFieldsAndLabels() {
+        common.logPrint("Verify Account creation screen fields and labels");
+
+        // Navigate to the Account creation screen as needed (menu clicks etc.)
+
+        if (common.isElementPresent(ADMINPANELMENU)) {
+            common.logPrint("Step:: Click on the admin panel menu");
+            common.click(ADMINPANELMENU);
+        }
+
+        common.pause(2);
+        if (common.isElementPresent(BACKBTN)) {
+            common.logPrint("Step:: Click on the back button");
+            common.click(BACKBTN);
+        }
+
+        common.logPrint("Step:: Click on the hospital menu");
+        common.waitUntilElementToBeVisible(By.xpath(ACCOUNTLISTMENU));
+        common.click(ACCOUNTLISTMENU);
+
+        common.logPrint("Step:: Click on the add button");
+        common.waitUntilElementsToBeVisible(By.xpath(ADDBTN));
+        common.click(ADDBTN);
+
+        common.logPrint("Step:: Verify that User Name label is present");
+        common.assertElementDisplayed(USERNAMELABELAC);
+        common.logPrint("Step:: Verify that User Name input field is present");
+        common.assertElementDisplayed(USERNAME);
+
+        common.logPrint("Step:: Verify that HQ label is present");
+        common.assertElementDisplayed(HQLBEL);
+        common.logPrint("Step:: Verify that HQ input field is present");
+        common.assertElementDisplayed(HQINP);
+
+        common.logPrint("Step:: Verify that Designation label is present");
+        common.assertElementDisplayed(DESIGNATIONLBL);
+        common.logPrint("Step:: Verify that Designation input field is present");
+        common.assertElementDisplayed(DESIGNATIONINP);
+
+        common.logPrint("Step:: Verify that Employee label is present");
+        common.assertElementDisplayed(EMPLOYEELBLAC);
+        common.logPrint("Step:: Verify that Employee input field is present");
+        common.assertElementDisplayed(EMPLOYEEINPEMP);
+
+        common.logPrint("Step:: Verify that Role label is present");
+        common.assertElementDisplayed(ROLELABEL);
+        common.logPrint("Step:: Verify that Role input field is present");
+        common.assertElementDisplayed(ROLEINP);
+
+        common.logPrint("Step:: Verify that Reporting Senior label is present");
+        common.assertElementDisplayed(REPORTINGSENIOR);
+        common.logPrint("Step:: Verify that Reporting Senior input field is present");
+        common.assertElementDisplayed(REPORTINGSENIORINP);
+
+        common.logPrint("Step:: Verify that Zone label is present");
+        common.assertElementDisplayed(ZONELABL);
+        common.logPrint("Step:: Verify that Zone input field is present");
+        common.assertElementDisplayed(ZONEINP);
+
+        common.logPrint("Step:: Verify that State label is present");
+        common.assertElementDisplayed(STATELBL);
+        common.logPrint("Step:: Verify that State input field is present");
+        common.assertElementDisplayed(STATEINP);
+
+        common.logPrint("Step:: Verify that Region label is present");
+        common.assertElementDisplayed(REGIONALLBL);
+        common.logPrint("Step:: Verify that Region input field is present");
+        common.assertElementDisplayed(REGIONINP);
+
+        common.logPrint("Step:: Verify that District label is present");
+        common.assertElementDisplayed(DISTRICTLBL);
+        common.logPrint("Step:: Verify that District input field is present");
+        common.assertElementDisplayed(DISTRICTINP);
+
+        common.logPrint("Step:: Verify that City label is present");
+        common.assertElementDisplayed(CITYLABEL);
+        common.logPrint("Step:: Verify that City input field is present");
+        common.assertElementDisplayed(CITYINPEMP);
+
+        common.logPrint("Account creation field and label verification completed successfully.");
+    }
+
+    public void verifyRoleCreationFieldsAndLabels(){
+
+        common.logPrint("Verify Role creation screen fields and labels");
+
+        // Navigate to the Account creation screen as needed (menu clicks etc.)
+
+        if (common.isElementPresent(ADMINPANELMENU)) {
+            common.logPrint("Step:: Click on the admin panel menu");
+            common.click(ADMINPANELMENU);
+        }
+
+        common.pause(2);
+        if (common.isElementPresent(BACKBTN)) {
+            common.logPrint("Step:: Click on the back button");
+            common.click(BACKBTN);
+        }
+
+        common.logPrint("Step:: Click on the hospital menu");
+        common.waitUntilElementToBeVisible(By.xpath(ROLEMENU));
+        common.click(ROLEMENU);
+
+        common.logPrint("Step:: Click on the add button");
+        common.waitUntilElementsToBeVisible(By.xpath(ADDBTN));
+        common.click(ADDBTN);
+
+        common.logPrint("Step:: Verify that Role label is present");
+        common.assertElementDisplayed(ROLENAMELABEL);
+
+        common.logPrint("Step:: Verify that Role input field is present");
+        common.assertElementDisplayed(ROLENAMEINP);
+    }
+
+    public void verifyProductCreationFieldsAndLabels() {
+        common.logPrint("Verify Product creation screen fields and labels");
+
+        if (common.isElementPresent(ADMINPANELMENU)) {
+            common.logPrint("Step:: Click on the admin panel menu");
+            common.click(ADMINPANELMENU);
+        }
+
+        common.pause(2);
+        if (common.isElementPresent(BACKBTN)) {
+            common.logPrint("Step:: Click on the back button");
+            common.click(BACKBTN);
+        }
+
+        common.logPrint("Step:: Click on the hospital menu");
+        common.waitUntilElementToBeVisible(By.xpath(PRODUCTMENU));
+        common.click(PRODUCTMENU);
+
+        common.logPrint("Step:: Click on the add button");
+        common.waitUntilElementsToBeVisible(By.xpath(ADDBTN));
+        common.click(ADDBTN);
+
+        common.logPrint("Step:: Verify that Division label is present");
+        common.assertElementDisplayed(DIVISIONLBL);
+        common.logPrint("Division label is present on the page");
+        common.logPrint("Step:: Verify that Division input is present");
+        common.assertElementDisplayed(DIVISIONINPProduct);
+
+        common.logPrint("Step:: Verify that Drug Head label is present");
+        common.assertElementDisplayed(DRUGHEADLBL);
+        common.logPrint("Drug Head label is present on the page");
+        common.logPrint("Step:: Verify that Drug Head input is present");
+        common.assertElementDisplayed(DRUGHEADINP);
+
+        common.logPrint("Step:: Verify that Product Line label is present");
+        common.assertElementDisplayed(PRODUCTLINELBL);
+        common.logPrint("Product Line label is present on the page");
+        common.logPrint("Step:: Verify that Product Line input is present");
+        common.assertElementDisplayed(PRODUCTLINEINP);
+
+        common.logPrint("Step:: Verify that Product Group label is present");
+        common.assertElementDisplayed(PRODUCTGROUPLBL);
+        common.logPrint("Product Group label is present on the page");
+        common.logPrint("Step:: Verify that Product Group input is present");
+        common.assertElementDisplayed(PRODUCTGROUPINP);
+
+        common.logPrint("Step:: Verify that Product Class label is present");
+        common.assertElementDisplayed(PRODUCTCLASSLBL);
+        common.logPrint("Product Class label is present on the page");
+        common.logPrint("Step:: Verify that Product Class input is present");
+        common.assertElementDisplayed(PRODUCTCLASSINP);
+
+        common.logPrint("Step:: Verify that Product Type label is present");
+        common.assertElementDisplayed(PRODUCTTYPELBL);
+        common.logPrint("Product Type label is present on the page");
+        common.logPrint("Step:: Verify that Product Type input is present");
+        common.assertElementDisplayed(PRODUCTTYPEINP);
+
+        common.logPrint("Step:: Verify that Short Name label is present");
+        common.assertElementDisplayed(SHORTNAMELBL);
+        common.logPrint("Short Name label is present on the page");
+        common.logPrint("Step:: Verify that Short Name input is present");
+        common.assertElementDisplayed(SHORTNAMEINP);
+
+        common.logPrint("Step:: Verify that Name label is present");
+        common.assertElementDisplayed(NAMELBL);
+        common.logPrint("Name label is present on the page");
+        common.logPrint("Step:: Verify that Name input is present");
+        common.assertElementDisplayed(NAMEINPProduct);
+
+        common.logPrint("Step:: Verify that Packing Type label is present");
+        common.assertElementDisplayed(PACKINGTYPELBL);
+        common.logPrint("Packing Type label is present on the page");
+        common.logPrint("Step:: Verify that Packing Type input is present");
+        common.assertElementDisplayed(PACKINGTYPEINP);
+
+        common.logPrint("Step:: Verify that Code Ref 1 label is present");
+        common.assertElementDisplayed(CODEREF1LBL);
+        common.logPrint("Code Ref 1 label is present on the page");
+        common.logPrint("Step:: Verify that Code Ref 1 input is present");
+        common.assertElementDisplayed(CODEREF1INP);
+
+        common.logPrint("Step:: Verify that HSN Code label is present");
+        common.assertElementDisplayed(HSNCODELBL);
+        common.logPrint("HSN Code label is present on the page");
+        common.logPrint("Step:: Verify that HSN Code input is present");
+        common.assertElementDisplayed(HSNCODEINP);
+
+        common.logPrint("Step:: Verify that PTS AND PTR label is present");
+        common.assertElementDisplayed(PTSANDPTRLBL);
+        common.logPrint("PTS AND PTR label is present on the page");
+        common.logPrint("Step:: Verify that PTS AND PTR input is present");
+        common.assertElementDisplayed(PTSANDPTRINP);
+
+//        common.logPrint("Step:: Verify that Margin label is present");
+//        common.assertElementDisplayed(MARGINLBL);
+//        common.logPrint("Margin label is present on the page");
+//        common.logPrint("Step:: Verify that Margin input is present");
+//        common.assertElementDisplayed(MARGININP);
+
+        common.logPrint("Step:: Verify that GST % label is present");
+        common.assertElementDisplayed(GSTPERCENTLBL);
+        common.logPrint("GST % label is present on the page");
+        common.logPrint("Step:: Verify that GST % input is present");
+        common.assertElementDisplayed(GSTPERCENTINP);
+
+        common.logPrint("Step:: Verify that MRP label is present");
+        common.assertElementDisplayed(MRPLBL);
+        common.logPrint("MRP label is present on the page");
+        common.logPrint("Step:: Verify that MRP input is present");
+        common.assertElementDisplayed(MRPINP);
+
+        common.logPrint("Step:: Verify that PTR label is present");
+        common.assertElementDisplayed(PTRLBL);
+        common.logPrint("PTR label is present on the page");
+        common.logPrint("Step:: Verify that PTR input is present");
+        common.assertElementDisplayed(PTRINP);
+
+        common.scroll_To_Element(PTSLBL);
+
+        common.logPrint("Step:: Verify that PTS label is present");
+        common.assertElementDisplayed(PTSLBL);
+        common.logPrint("PTS label is present on the page");
+        common.logPrint("Step:: Verify that PTS input is present");
+        common.assertElementDisplayed(PTSINP);
+
+        common.logPrint("Step:: Verify that Content label is present");
+        common.assertElementDisplayed(CONTENTLBL);
+        common.logPrint("Content label is present on the page");
+        common.logPrint("Step:: Verify that Content input is present");
+        common.assertElementDisplayed(CONTENTINP);
+        common.logPrint("Content input field is present on the page");
+    }
+
+    public void verifyEmployeeCreationFieldsAndLabels() {
+        common.logPrint("Verify Employee creation screen fields and labels");
+
+        if (common.isElementPresent(ADMINPANELMENU)) {
+            common.logPrint("Step:: Click on the admin panel menu");
+            common.click(ADMINPANELMENU);
+        }
+
+        common.pause(2);
+        if (common.isElementPresent(BACKBTN)) {
+            common.logPrint("Step:: Click on the back button");
+            common.click(BACKBTN);
+        }
+
+        common.logPrint("Step:: Click on the employee menu");
+        common.waitUntilElementToBeVisible(By.xpath(EMPLOYEEMENU));
+        common.click(EMPLOYEEMENU);
+
+        common.logPrint("Step:: Click on the add button");
+        common.waitUntilElementsToBeVisible(By.xpath(ADDBTN));
+        common.click(ADDBTN);
+
+        common.logPrint("Step:: Verify that Name label is present");
+        common.assertElementDisplayed(NAMELBLEMP);
+        common.logPrint("Step:: Verify that Name input is present");
+        common.assertElementDisplayed(NAMEINPEMP);
+
+        common.logPrint("Step:: Verify that Division label is present");
+        common.assertElementDisplayed(DIVISIONLBLEMP);
+        common.logPrint("Step:: Verify that Division input is present");
+        common.assertElementDisplayed(DIVISIONINPEMP);
+
+        common.logPrint("Step:: Verify that Reference label is present");
+        common.assertElementDisplayed(REFERENCELBLEMP);
+        common.logPrint("Step:: Verify that Reference input is present");
+        common.assertElementDisplayed(REFERENCEINPEMP);
+
+        common.logPrint("Step:: Verify that Phone No label is present");
+        common.assertElementDisplayed(PHONENOLBLEMP);
+        common.logPrint("Step:: Verify that Phone No input is present");
+        common.assertElementDisplayed(PHONENOINPEMP);
+
+        common.logPrint("Step:: Verify that Mobile No. label is present");
+        common.assertElementDisplayed(MOBILENOLBLEMP);
+        common.logPrint("Step:: Verify that Mobile No. input is present");
+        common.assertElementDisplayed(MOBILENOINPEMP);
+
+        common.logPrint("Step:: Verify that Email label is present");
+        common.assertElementDisplayed(EMAILLBLEMP);
+        common.logPrint("Step:: Verify that Email input is present");
+        common.assertElementDisplayed(EMAILINPEMP);
+
+        common.logPrint("Step:: Verify that Previous Experience label is present");
+        common.assertElementDisplayed(PREVEXPLBL);
+        common.logPrint("Step:: Verify that Previous Experience input is present");
+        common.assertElementDisplayed(PREVEXPINP);
+
+        common.logPrint("Step:: Verify that Passport label is present");
+        common.assertElementDisplayed(PASSPORTLBL);
+        common.logPrint("Step:: Verify that Passport input is present");
+        common.assertElementDisplayed(PASSPORTINP);
+
+        common.logPrint("Step:: Verify that Pancard label is present");
+        common.assertElementDisplayed(PANCARDLBL);
+        common.logPrint("PanCard label is displayed on the page");
+        common.logPrint("Step:: Verify that PanCard input field is present");
+        common.assertElementDisplayed(PANCARDINP);
+        common.logPrint("PanCard input field is present on the page");
+
+        common.logPrint("Step:: Verify that PF No. label is present");
+        common.assertElementDisplayed(PFNOLBL);
+        common.logPrint("PF No. label is displayed on the page");
+        common.logPrint("Step:: Verify that PF No. input field is present");
+        common.assertElementDisplayed(PFNOINP);
+        common.logPrint("PF No. input field is present on the page");
+
+        common.logPrint("Step:: Verify that UanNo label is present");
+        common.assertElementDisplayed(UANNOLBL);
+        common.logPrint("UanNo label is displayed on the page");
+        common.logPrint("Step:: Verify that UanNo input field is present");
+        common.assertElementDisplayed(UANNOINP);
+        common.logPrint("UanNo input field is present on the page");
+
+        common.logPrint("Step:: Verify that Blood Group label is present");
+        common.assertElementDisplayed(BLOODGROUPLBL);
+        common.logPrint("Blood Group label is displayed on the page");
+        common.logPrint("Step:: Verify that Blood Group input field is present");
+        common.assertElementDisplayed(BLOODGROUPINP);
+        common.logPrint("Blood Group input field is present on the page");
+
+        common.logPrint("Step:: Verify that Religion label is present");
+        common.assertElementDisplayed(RELIGIONLBL);
+        common.logPrint("Religion label is displayed on the page");
+        common.logPrint("Step:: Verify that Religion input field is present");
+        common.assertElementDisplayed(RELIGIONINP);
+        common.logPrint("Religion input field is present on the page");
+
+        common.logPrint("Step:: Verify that Birth Date label is present");
+        common.assertElementDisplayed(BIRTHDATELBL);
+        common.logPrint("Birth Date label is displayed on the page");
+        common.logPrint("Step:: Verify that Birth Date input field is present");
+        common.assertElementDisplayed(BIRTHDATEINP);
+        common.logPrint("Birth Date input field is present on the page");
+
+        common.logPrint("Step:: Verify that Marital Status label is present");
+        common.assertElementDisplayed(MARITALSTATUSLBL);
+        common.logPrint("Marital Status label is displayed on the page");
+        common.logPrint("Step:: Verify that Marital Status input field is present");
+        common.assertElementDisplayed(MARITALSTATUSINP);
+        common.logPrint("Marital Status input field is present on the page");
+
+        common.logPrint("Step:: Verify that Gender label is present");
+        common.assertElementDisplayed(GENDERLBL);
+        common.logPrint("Gender label is displayed on the page");
+        common.logPrint("Step:: Verify that Gender input field is present");
+        common.assertElementDisplayed(GENDERINP);
+        common.logPrint("Gender input field is present on the page");
+
+        common.logPrint("Step:: Verify that Anniversary Date label is present");
+        common.assertElementDisplayed(ANNIDATELBL);
+        common.logPrint("Anniversary Date label is displayed on the page");
+        common.logPrint("Step:: Verify that Anniversary Date input field is present");
+        common.assertElementDisplayed(ANNIDATEINP);
+        common.logPrint("Anniversary Date input field is present on the page");
+
+        common.logPrint("Step:: Verify that Joining Date label is present");
+        common.assertElementDisplayed(JOININGDATELBL);
+        common.logPrint("Joining Date label is displayed on the page");
+        common.logPrint("Step:: Verify that Joining Date input field is present");
+        common.assertElementDisplayed(JOININGDATEINP);
+        common.logPrint("Joining Date input field is present on the page");
+
+        common.logPrint("Step:: Verify that Last Working Date label is present");
+        common.assertElementDisplayed(LASTWORKINGDATELBL);
+        common.logPrint("Last Working Date label is displayed on the page");
+        common.logPrint("Step:: Verify that Last Working Date input field is present");
+        common.assertElementDisplayed(LASTWORKINGDATEINP);
+        common.logPrint("Last Working Date input field is present on the page");
+
+        common.logPrint("Step:: Verify that Bank IFSC code label is present");
+        common.assertElementDisplayed(BANKIFSCLBL);
+        common.logPrint("Bank IFSC code label is displayed on the page");
+        common.logPrint("Step:: Verify that Bank IFSC code input field is present");
+        common.assertElementDisplayed(BANKIFSCINP);
+        common.logPrint("Bank IFSC code input field is present on the page");
+
+        common.logPrint("Step:: Verify that Salary Bank Name label is present");
+        common.assertElementDisplayed(SALARYBANKNAMELBL);
+        common.logPrint("Salary Bank Name label is displayed on the page");
+        common.logPrint("Step:: Verify that Salary Bank Name input field is present");
+        common.assertElementDisplayed(SALARYBANKNAMEINP);
+        common.logPrint("Salary Bank Name input field is present on the page");
+
+        common.logPrint("Step:: Verify that Bank Account No. label is present");
+        common.assertElementDisplayed(BANKACCOUNTNOLBL);
+        common.logPrint("Bank Account No. label is displayed on the page");
+        common.logPrint("Step:: Verify that Bank Account No. input field is present");
+        common.assertElementDisplayed(BANKACCOUNTNOINP);
+        common.logPrint("Bank Account No. input field is present on the page");
+
+        common.logPrint("Step:: Verify that Name As Bank Registered label is present");
+        common.assertElementDisplayed(NAMEASBANKLBL);
+        common.logPrint("Name As Bank Registered label is displayed on the page");
+        common.logPrint("Step:: Verify that Name As Bank Registered input field is present");
+        common.assertElementDisplayed(NAMEASBANKINP);
+        common.logPrint("Name As Bank Registered input field is present on the page");
+
+        common.logPrint("Step:: Verify that Aadhar Card Number label is present");
+        common.assertElementDisplayed(AADHARLBL);
+        common.logPrint("Aadhar Card Number label is displayed on the page");
+        common.logPrint("Step:: Verify that Aadhar Card Number input field is present");
+        common.assertElementDisplayed(AADHARINP);
+        common.logPrint("Aadhar Card Number input field is present on the page");
+
+        common.scroll_To_Element(DRIVINGLICENCELBL);
+
+        common.logPrint("Step:: Verify that Driving License No label is present");
+        common.assertElementDisplayed(DRIVINGLICENCELBL);
+        common.logPrint("Driving License No label is displayed on the page");
+        common.logPrint("Step:: Verify that Driving License No input field is present");
+        common.assertElementDisplayed(DRIVINGLICENSEINP);
+        common.logPrint("Driving License No input field is present on the page");
+
+        common.logPrint("Step:: Verify that Expense Bank Name label is present");
+        common.assertElementDisplayed(EXPENSEBANKNAMELBL);
+        common.logPrint("Expense Bank Name label is displayed on the page");
+        common.logPrint("Step:: Verify that Expense Bank Name input field is present");
+        common.assertElementDisplayed(EXPENSEBANKNAMEINP);
+        common.logPrint("Expense Bank Name input field is present on the page");
+
+        common.logPrint("Step:: Verify that Expense Bank Account Number label is present");
+        common.assertElementDisplayed(EXPENSEBANKACCLBL);
+        common.logPrint("Expense Bank Account Number label is displayed on the page");
+        common.logPrint("Step:: Verify that Expense Bank Account Number input field is present");
+        common.assertElementDisplayed(EXPENSEBANKACCINP);
+        common.logPrint("Expense Bank Account Number input field is present on the page");
+
+        //common.scrollPageUsingPixel(250,250);
+        common.logPrint("Step:: Verify that Promotion Date label is present");
+        common.assertElementDisplayed(PROMOTIONDATELBL);
+        common.logPrint("Promotion Date label is displayed on the page");
+        common.logPrint("Step:: Verify that Promotion Date input field is present");
+        common.assertElementDisplayed(PROMOTIONDATEINP);
+        common.logPrint("Promotion Date input field is present on the page");
+
+        common.logPrint("Step:: Verify that Demotion Date label is present");
+        common.assertElementDisplayed(DEMOTIONDATELBL);
+        common.logPrint("Demotion Date label is displayed on the page");
+        common.logPrint("Step:: Verify that Demotion Date input field is present");
+        common.assertElementDisplayed(DEMOTIONDATEINP);
+        common.logPrint("Demotion Date input field is present on the page");
+
+        common.logPrint("Step:: Verify that Conformation Date label is present");
+        common.assertElementDisplayed(CONFORMATIONDATELBL);
+        common.logPrint("Conformation Date label is displayed on the page");
+        common.logPrint("Step:: Verify that Conformation Date input field is present");
+        common.assertElementDisplayed(CONFORMATIONDATEINP);
+        common.logPrint("Conformation Date input field is present on the page");
+
+        common.logPrint("Step:: Verify that Metro label is present");
+        common.assertElementDisplayed(METROLBL);
+        common.logPrint("Metro label is displayed on the page");
+        common.logPrint("Step:: Verify that Metro input field is present");
+        common.assertElementDisplayed(METROINP);
+        common.logPrint("Metro input field is present on the page");
+
+        common.logPrint("Step:: Verify that Appointment Letter label is present");
+        common.assertElementDisplayed(APPOINTMENTLETTLBL);
+        common.logPrint("Appointment Letter label is displayed on the page");
+        common.logPrint("Step:: Verify that Appointment Letter input field is present");
+        common.assertElementDisplayed(APPOINTMENTLETTINP);
+        common.logPrint("Appointment Letter input field is present on the page");
+
+        common.logPrint("Step:: Verify that Education label is present");
+        common.assertElementDisplayed(EDUCATIONLBL);
+        common.logPrint("Education label is displayed on the page");
+        common.logPrint("Step:: Verify that Education input field is present");
+        common.assertElementDisplayed(EDUCATIONINP);
+        common.logPrint("Education input field is present on the page");
+
+        //common.scrollToElement(FATHERHUSBNAMELBL);
+
+        common.logPrint("Step:: Verify that Father/Husband Name label is present");
+        common.assertElementDisplayed(FATHERHUSBNAMELBL);
+        common.logPrint("Father/Husband Name label is displayed on the page");
+        common.logPrint("Step:: Verify that Father/Husband Name input field is present");
+        common.assertElementDisplayed(FATHERHUSBNAMEINP);
+        common.logPrint("Father/Husband Name input field is present on the page");
+
+        common.logPrint("Step:: Verify that Father/Husband Contact Number label is present");
+        common.assertElementDisplayed(FATHERHUSBCONTACTLBL);
+        common.logPrint("Father/Husband Contact Number label is displayed on the page");
+        common.logPrint("Step:: Verify that Father/Husband Contact Number input field is present");
+        common.assertElementDisplayed(FATHERHUSBCONTACTINP);
+        common.logPrint("Father/Husband Contact Number input field is present on the page");
+
+        common.logPrint("Step:: Verify that Abha Number label is present");
+        common.assertElementDisplayed(ABHANOLBL);
+        common.logPrint("Abha Number label is displayed on the page");
+
+        common.logPrint("Step:: Verify that Abha Number input field is present");
+        common.assertElementDisplayed(ABHANOINP);
+        common.logPrint("Abha Number input field is present on the page");
+
+        common.logPrint("Step:: Verify that Aayushman Card Number label is present");
+        common.assertElementDisplayed(AAYUSHMANCARDLBL);
+        common.logPrint("Aayushman Card Number label is displayed on the page");
+        common.logPrint("Step:: Verify that Aayushman Card Number input field is present");
+        common.assertElementDisplayed(AAYUSHMANCARDINP);
+        common.logPrint("Aayushman Card Number input field is present on the page");
+
+        common.logPrint("Step:: Verify that Spouse Name label is present");
+        common.assertElementDisplayed(SPOUSENAMELBL);
+        common.logPrint("Spouse Name label is displayed on the page");
+        common.logPrint("Step:: Verify that Spouse Name input field is present");
+        common.assertElementDisplayed(SPOUSENAMEINP);
+        common.logPrint("Spouse Name input field is present on the page");
+
+        common.logPrint("Step:: Verify that Spouse Contact Number label is present");
+        common.assertElementDisplayed(SPOUSECONTACTLBL);
+        common.logPrint("Spouse Contact Number label is displayed on the page");
+        common.logPrint("Step:: Verify that Spouse Contact Number input field is present");
+        common.assertElementDisplayed(SPOUSECONTACTINP);
+        common.logPrint("Spouse Contact Number input field is present on the page");
+
+        common.logPrint("Step:: Verify that Son Name label is present");
+        common.assertElementDisplayed(SONNAMELBL);
+        common.logPrint("Son Name label is displayed on the page");
+        common.logPrint("Step:: Verify that Son Name input field is present");
+        common.assertElementDisplayed(SONNAMEINP);
+        common.logPrint("Son Name input field is present on the page");
+
+        common.logPrint("Step:: Verify that Son Contact Number label is present");
+        common.assertElementDisplayed(SONCONTACTLBL);
+        common.logPrint("Son Contact Number label is displayed on the page");
+        common.logPrint("Step:: Verify that Son Contact Number input field is present");
+        common.assertElementDisplayed(SONCONTACTINP);
+        common.logPrint("Son Contact Number input field is present on the page");
+
+        common.logPrint("Step:: Verify that Daughter Name label is present");
+        common.assertElementDisplayed(DAUGHTERNAMELBL);
+        common.logPrint("Daughter Name label is displayed on the page");
+        common.logPrint("Step:: Verify that Daughter Name input field is present");
+        common.assertElementDisplayed(DAUGHTERNAMEINP);
+        common.logPrint("Daughter Name input field is present on the page");
+
+        common.logPrint("Step:: Verify that Daughter Contact Number label is present");
+        common.assertElementDisplayed(DAUGHTERCONTACTLBL);
+        common.logPrint("Daughter Contact Number label is displayed on the page");
+        common.logPrint("Step:: Verify that Daughter Contact Number input field is present");
+        common.assertElementDisplayed(DAUGHTERCONTACTINP);
+        common.logPrint("Daughter Contact Number input field is present on the page");
+
+        common.logPrint("Step:: Verify that Skills label is present");
+        common.assertElementDisplayed(SKILLSLBL);
+        common.logPrint("Skills label is displayed on the page");
+        common.logPrint("Step:: Verify that Skills input field is present");
+        common.assertElementDisplayed(SKILLSINP);
+        common.logPrint("Skills input field is present on the page");
+
+        common.logPrint("Step:: Verify that Area Of Development label is present");
+        common.assertElementDisplayed(AREADEVLBL);
+        common.logPrint("Area Of Development label is displayed on the page");
+        common.logPrint("Step:: Verify that Area Of Development input field is present");
+        common.assertElementDisplayed(AREADEVINP);
+        common.logPrint("Area Of Development input field is present on the page");
+
+        common.logPrint("Step:: Verify that Short Term Goal label is present");
+        common.assertElementDisplayed(SHORTGOALLBL);
+        common.logPrint("Short Term Goal label is displayed on the page");
+        common.logPrint("Step:: Verify that Short Term Goal input field is present");
+        common.assertElementDisplayed(SHORTGOALINP);
+        common.logPrint("Short Term Goal input field is present on the page");
+
+        common.logPrint("Step:: Verify that Long Term Goal label is present");
+        common.assertElementDisplayed(LONGGOALLBL);
+        common.logPrint("Long Term Goal label is displayed on the page");
+        common.logPrint("Step:: Verify that Long Term Goal input field is present");
+        common.assertElementDisplayed(LONGGOALINP);
+        common.logPrint("Long Term Goal input field is present on the page");
+
+        common.logPrint("Step:: Verify that Investments label is present");
+        common.assertElementDisplayed(INVESTMENTSLBL);
+        common.logPrint("Investments label is displayed on the page");
+        common.logPrint("Step:: Verify that Investments input field is present");
+        common.assertElementDisplayed(INVESTMENTSINP);
+        common.logPrint("Investments input field is present on the page");
+
+        common.logPrint("Step:: Verify that Liabilities label is present");
+        common.assertElementDisplayed(LIABILITIESLBL);
+        common.logPrint("Liabilities label is displayed on the page");
+        common.logPrint("Step:: Verify that Liabilities input field is present");
+        common.assertElementDisplayed(LIABILITIESINP);
+        common.logPrint("Liabilities input field is present on the page");
+
+        common.logPrint("Step:: Verify that Reference Name 1 label is present");
+        common.assertElementDisplayed(REFNAME1LBL);
+        common.logPrint("Reference Name 1 label is displayed on the page");
+        common.logPrint("Step:: Verify that Reference Name 1 input field is present");
+        common.assertElementDisplayed(REFNAME1INP);
+        common.logPrint("Reference Name 1 input field is present on the page");
+
+        common.logPrint("Step:: Verify that Reference Name 1 Contact Number label is present");
+        common.assertElementDisplayed(REF1CONTACTLBL);
+        common.logPrint("Reference Name 1 Contact Number label is displayed on the page");
+        common.logPrint("Step:: Verify that Reference Name 1 Contact Number input field is present");
+        common.assertElementDisplayed(REF1CONTACTINP);
+        common.logPrint("Reference Name 1 Contact Number input field is present on the page");
+
+        common.logPrint("Step:: Verify that Reference Name 2 label is present");
+        common.assertElementDisplayed(REFNAME2LBL);
+        common.logPrint("Reference Name 2 label is displayed on the page");
+        common.logPrint("Step:: Verify that Reference Name 2 input field is present");
+        common.assertElementDisplayed(REFNAME2INP);
+        common.logPrint("Reference Name 2 input field is present on the page");
+
+        common.logPrint("Step:: Verify that Reference Name 2 Contact Number label is present");
+        common.assertElementDisplayed(REF2CONTACTLBL);
+        common.logPrint("Reference Name 2 Contact Number label is displayed on the page");
+        common.logPrint("Step:: Verify that Reference Name 2 Contact Number input field is present");
+        common.assertElementDisplayed(REF2CONTACTINP);
+        common.logPrint("Reference Name 2 Contact Number input field is present on the page");
+
+        common.logPrint("Step:: Verify that Reference Name 3 label is present");
+        common.assertElementDisplayed(REFNAME3LBL);
+        common.logPrint("Reference Name 3 label is displayed on the page");
+        common.logPrint("Step:: Verify that Reference Name 3 input field is present");
+        common.assertElementDisplayed(REFNAME3INP);
+        common.logPrint("Reference Name 3 input field is present on the page");
+
+        common.logPrint("Step:: Verify that Reference Name 3 Contact Number label is present");
+        common.assertElementDisplayed(REF3CONTACTLBL);
+        common.logPrint("Reference Name 3 Contact Number label is displayed on the page");
+        common.logPrint("Step:: Verify that Reference Name 3 Contact Number input field is present");
+        common.assertElementDisplayed(REF3CONTACTINP);
+        common.logPrint("Reference Name 3 Contact Number input field is present on the page");
+
+        common.logPrint("Step:: Verify that Experiences label is present");
+        common.assertElementDisplayed(EXPERIENCESLBL);
+        common.logPrint("Experiences label is displayed on the page");
+        common.logPrint("Step:: Verify that Experiences input field is present");
+        common.assertElementDisplayed(EXPERIENCESINP);
+        common.logPrint("Experiences input field is present on the page");
+
+    }
+
+    public void verifyLabelAndFieldsInTheDesignationPage(){
+
+        common.logPrint("Verify Employee creation screen fields and labels");
+
+        if (common.isElementPresent(ADMINPANELMENU)) {
+            common.logPrint("Step:: Click on the admin panel menu");
+            common.click(ADMINPANELMENU);
+        }
+
+        common.pause(2);
+        if (common.isElementPresent(BACKBTN)) {
+            common.logPrint("Step:: Click on the back button");
+            common.click(BACKBTN);
+        }
+
+        common.logPrint("Step:: Click on the employee menu");
+        common.waitUntilElementToBeVisible(By.xpath(DESIGNATIONMENU));
+        common.click(DESIGNATIONMENU);
+
+        common.logPrint("Step:: Click on the add button");
+        common.waitUntilElementsToBeVisible(By.xpath(ADDBTN));
+        common.click(ADDBTN);
+
+        common.logPrint("Step:: Verify that Designation label is present");
+        common.assertElementDisplayed(DESIGNATIONLBL1);
+        common.logPrint("Designation label is displayed on the page");
+        common.logPrint("Step:: Verify that Designation input field is present");
+        common.assertElementDisplayed(DESIGNATIONINPUT);
+        common.logPrint("Designation input field is present on the page");
+
+        common.logPrint("Step:: Verify that Parent Designation label is present");
+        common.assertElementDisplayed(PARENTDESIGNATIONLBL);
+        common.logPrint("Parent Designation label is displayed on the page");
+        common.logPrint("Step:: Verify that Parent Designation input field is present");
+        common.assertElementDisplayed(PARENTDESIGNATIONINP);
+        common.logPrint("Parent Designation input field is present on the page");
+
+    }
+
+    public void verifyDoctorCreationFieldAndLabels(){
+
+        common.logPrint("Step:: Click on the admin panel menu");
+        common.waitUntilElementToBeVisible(By.xpath(ADMINPANELMENU));
+        common.click(ADMINPANELMENU);
+
+        common.logPrint("Step:: Verify all the sub-menu is showing");
+
+        common.logPrint("Step:: Verify chemist menu is present");
+        common.waitUntilElementToBeVisible(By.xpath(CHEMISTMENU));
+        common.logPrint("Chemist menu is present on the admin panel");
+
+        common.logPrint("Step:: Verify Stockist menu is present");
+        common.waitUntilElementToBeVisible(By.xpath(STOCKISTMENU));
+        common.logPrint("Stockist menu is present on the admin panel");
+
+        common.logPrint("Step:: Verify Hospital menu is present");
+        common.waitUntilElementToBeVisible(By.xpath(HOSPITALMENU));
+        common.logPrint("Hospital menu is present on the admin panel");
+
+        common.logPrint("Step:: Verify Product menu is present");
+        common.waitUntilElementToBeVisible(By.xpath(PRODUCTMENU));
+        common.logPrint("Product menu is present on the admin panel");
+
+        common.logPrint("Step:: Verify Employee menu is present");
+        common.waitUntilElementToBeVisible(By.xpath(EMPLOYEEMENU));
+        common.logPrint("Employee menu is present on the admin panel");
+
+        common.logPrint("Step:: Click on the Doctor menu");
+        common.waitUntilElementToBeVisible(By.xpath(DOCTORMENU));
+        common.click(DOCTORMENU);
+
+        common.logPrint("Verify all the header buttons are present");
+        verifyAllTheButtonAndLabelIsPresentOnHeader();
+
+        common.logPrint("Step:: Verify Financial year dropdown label is present");
+        common.waitUntilElementToBeVisible(By.xpath(FINANCIALYEARLBL));
+        common.logPrint("Financial year dropdown label is present on the admin panel");
+
+        common.logPrint("Step:: Verify Financial year dropdown is present");
+        common.waitUntilElementToBeVisible(By.xpath(YEARDROPDOWN));
+        common.logPrint("Financial year dropdown is present on the admin panel");
+
+        common.logPrint("Step:: Verify sales graph is present in the screen");
+        common.waitUntilElementToBeVisible(By.xpath(SALESGRAPHINADDDCR));
+        common.logPrint("Sales graph is present on the page");
+
+        common.logPrint("Step:: Verify HQ label is present");
+        common.waitUntilElementToBeVisible(By.xpath(HQLABEL));
+        common.logPrint("HQ label is present on the page");
+
+        common.logPrint("Step:: Verify HQ dropdown is present");
+        common.waitUntilElementToBeVisible(By.xpath(HQDROPDOWN));
+        common.logPrint("HQ dropdown present on the page");
+
+        common.logPrint("Step:: Verify search field is present");
+        common.waitUntilElementToBeVisible(By.xpath(SEARCHFIELD));
+        common.logPrint("Search field is present on the page");
+
+        common.logPrint("Step:: Verify Fields on create doctor screen");
+
+        common.logPrint("Step:: Click on the ADD button");
+        common.waitUntilElementToBeVisible(By.xpath(ADDBTN));
+        common.click(ADDBTN);
+
+        common.logPrint("Step:: Verify Doctor Name label is present");
+        common.waitUntilElementToBeVisible(By.xpath(DOCTORNAMELBL));
+        common.logPrint("Doctor Name label is present");
+
+        common.logPrint("Step:: Verify Doctor Name input field is present");
+        common.waitUntilElementToBeVisible(By.xpath(DOCTORNAMEINP));
+        common.logPrint("Doctor Name input field is present");
+
+        common.logPrint("Step:: Verify Category label is present");
+        common.waitUntilElementToBeVisible(By.xpath(CATEGORYLBL));
+        common.logPrint("Category label is present");
+
+        common.logPrint("Step:: Verify Category input field is present");
+        common.waitUntilElementToBeVisible(By.xpath(CATEGORYINP));
+        common.logPrint("Category input field is present");
+
+        common.logPrint("Step:: Verify Speciality label is present");
+        common.waitUntilElementToBeVisible(By.xpath(SPECIALITYLBL));
+        common.logPrint("Speciality label is present");
+
+        common.logPrint("Step:: Verify Speciality input field is present");
+        common.waitUntilElementToBeVisible(By.xpath(SPECIALITYINP));
+        common.logPrint("Speciality input field is present");
+
+        common.logPrint("Step:: Verify Qualifications label is present");
+        common.waitUntilElementToBeVisible(By.xpath(QUALIFICATIONSLBL));
+        common.logPrint("Qualifications label is present");
+
+        common.logPrint("Step:: Verify Qualifications input field is present");
+        common.waitUntilElementToBeVisible(By.xpath(QUALIFICATIONSINP));
+        common.logPrint("Qualifications input field is present");
+
+        //For MR user we are not showing employee dropdown
+        common.logPrint("Step:: Verify Employee label is not present for MR");
+        common.assertElementIsNotDisplayed((EMPLOYEELBL));
+        common.logPrint("Employee label is not present when create doctor using MR user");
+        common.logPrint("Step:: Verify Employee input field is not present");
+        common.assertElementIsNotDisplayed((EMPLOYEEINP));
+        common.logPrint("Employee input field is not present when create doctor using MR user");
+
+        common.logPrint("Step:: Verify Product label is present");
+        common.waitUntilElementToBeVisible(By.xpath(PRODUCTLBL));
+        common.logPrint("Product label is present");
+
+        common.logPrint("Step:: Verify Product input field is present");
+        common.waitUntilElementToBeVisible(By.xpath(PRODUCTINP));
+        common.logPrint("Product input field is present");
+
+        common.logPrint("Step:: Verify Hospital Name label is present");
+        common.waitUntilElementToBeVisible(By.xpath(HOSPITALNAMELBL));
+        common.logPrint("Hospital Name label is present");
+
+        common.logPrint("Step:: Verify Hospital Name input field is present");
+        common.waitUntilElementToBeVisible(By.xpath(HOSPITALNAMEINP));
+        common.logPrint("Hospital Name input field is present");
+
+        common.logPrint("Step:: Verify Email label is present");
+        common.waitUntilElementToBeVisible(By.xpath(EMAILLBL));
+        common.logPrint("Email label is present");
+
+        common.logPrint("Step:: Verify Email input field is present");
+        common.waitUntilElementToBeVisible(By.xpath(EMAILINP));
+        common.logPrint("Email input field is present");
+
+        common.logPrint("Step:: Verify Mobile No. label is present");
+        common.waitUntilElementToBeVisible(By.xpath(MOBILENOLBL));
+        common.logPrint("Mobile No. label is present");
+
+        common.logPrint("Step:: Verify Mobile No. input field is present");
+        common.waitUntilElementToBeVisible(By.xpath(MOBILENOINP));
+        common.logPrint("Mobile No. input field is present");
+
+        common.logPrint("Step:: Verify Phone No label is present");
+        common.waitUntilElementToBeVisible(By.xpath(PHONENOLBL));
+        common.logPrint("Phone No label is present");
+
+        common.logPrint("Step:: Verify Phone No input field is present");
+        common.waitUntilElementToBeVisible(By.xpath(PHONENOINP));
+        common.logPrint("Phone No input field is present");
+
+        common.logPrint("Step:: Verify Website label is present");
+        common.waitUntilElementToBeVisible(By.xpath(WEBSITELBL));
+        common.logPrint("Website label is present");
+
+        common.logPrint("Step:: Verify Website input field is present");
+        common.waitUntilElementToBeVisible(By.xpath(WEBSITEINP));
+        common.logPrint("Website input field is present");
+
+        common.logPrint("Step:: Verify DOB label is present");
+        common.waitUntilElementToBeVisible(By.xpath(DOBLBL));
+        common.logPrint("DOB label is present");
+
+        common.logPrint("Step:: Verify DOB input field is present");
+        common.waitUntilElementToBeVisible(By.xpath(DOBINP));
+        common.logPrint("DOB input field is present");
+
+        common.logPrint("Step:: Verify DOA label is present");
+        common.waitUntilElementToBeVisible(By.xpath(DOALBL));
+        common.logPrint("DOA label is present");
+
+        common.logPrint("Step:: Verify DOA input field is present");
+        common.waitUntilElementToBeVisible(By.xpath(DOAINP));
+        common.logPrint("DOA input field is present");
+
+        common.logPrint("Step:: Verify PanCard Number label is present");
+        common.waitUntilElementToBeVisible(By.xpath(PANCARDNOLBL));
+        common.logPrint("PanCard Number label is present");
+
+        common.logPrint("Step:: Verify PanCard Number input field is present");
+        common.waitUntilElementToBeVisible(By.xpath(PANCARDNOINP));
+        common.logPrint("PanCard Number input field is present");
+
+        common.logPrint("Step:: Verify Registration Number label is present");
+        common.waitUntilElementToBeVisible(By.xpath(REGISTRATIONNOLBL));
+        common.logPrint("Registration Number label is present");
+
+        common.logPrint("Step:: Verify Registration Number input field is present");
+        common.waitUntilElementToBeVisible(By.xpath(REGISTRATIONNOINP));
+        common.logPrint("Registration Number input field is present");
+
+        common.logPrint("Step:: Verify Software Name label is present");
+        common.waitUntilElementToBeVisible(By.xpath(SOFTWARENAMELBL));
+        common.logPrint("Software Name label is present");
+
+        common.logPrint("Step:: Verify Software Name input field is present");
+        common.waitUntilElementToBeVisible(By.xpath(SOFTWARENAMEINP));
+        common.logPrint("Software Name input field is present");
+
+        common.logPrint("Step:: Verify Role in Hospital label is present");
+        common.waitUntilElementToBeVisible(By.xpath(ROLEINHOSPITALLBL));
+        common.logPrint("Role in Hospital label is present");
+
+        common.logPrint("Step:: Verify Role in Hospital input field is present");
+        common.waitUntilElementToBeVisible(By.xpath(ROLEINHOSPITALINP));
+        common.logPrint("Role in Hospital input field is present");
+
+        common.logPrint("Step:: Verify Patients Daily label is present");
+        common.waitUntilElementToBeVisible(By.xpath(PATIENTSDAILYLBL));
+        common.logPrint("Patients Daily label is present");
+
+        common.logPrint("Step:: Verify Patients Daily input field is present");
+        common.waitUntilElementToBeVisible(By.xpath(PATIENTSDAILYINP));
+        common.logPrint("Patients Daily input field is present");
+
+        common.logPrint("Step:: Verify Patients Weekly label is present");
+        common.waitUntilElementToBeVisible(By.xpath(PATIENTSWEEKLYLBL));
+        common.logPrint("Patients Weekly label is present");
+
+        common.logPrint("Step:: Verify Patients Weekly input field is present");
+        common.waitUntilElementToBeVisible(By.xpath(PATIENTSWEEKLYINP));
+        common.logPrint("Patients Weekly input field is present");
+
+        common.logPrint("Step:: Verify Patients Monthly label is present");
+        common.waitUntilElementToBeVisible(By.xpath(PATIENTSMONTHLYLBL));
+        common.logPrint("Patients Monthly label is present");
+
+        common.logPrint("Step:: Verify Patients Monthly input field is present");
+        common.waitUntilElementToBeVisible(By.xpath(PATIENTSMONTHLYINP));
+        common.logPrint("Patients Monthly input field is present");
+
+        common.logPrint("Step:: Verify Preferred Call Time label is present");
+        common.waitUntilElementToBeVisible(By.xpath(PREFERREDCALLTIMELBL));
+        common.logPrint("Preferred Call Time label is present");
+
+        common.logPrint("Step:: Verify Preferred Call Time input field is present");
+        common.waitUntilElementToBeVisible(By.xpath(PREFERREDCALLTIMEINP));
+        common.logPrint("Preferred Call Time input field is present");
+
+        common.pause(2);
+        common.scroll_To_Element(ADDRESSLINE1INP1);
+
+        common.logPrint("Step:: Verify Pan card label is showing");
+        common.assertElementDisplayed(PANCARDIMGLBL);
+        common.logPrint("Pan card label is showing");
+
+        common.logPrint("Step:: Verify Registration image label is showing");
+        common.assertElementDisplayed(REGISTRATIONIMGLBL);
+        common.logPrint("Registration image label is showing");
+
+        common.logPrint("Step:: Verify Doctor upload image label is showing");
+        common.assertElementDisplayed(DOCTORIMGLBL);
+        common.logPrint("Doctor upload image is showing");
+
+        common.logPrint("Step:: Verify Visiting card image label is showing");
+        common.assertElementDisplayed(VISITINGCARDIMGLBL);
+        common.logPrint("Visiting card image label is showing");
+
+        common.logPrint("Step:: Verify Pan card image upload field is showing");
+        common.assertElementDisplayed(PANCARDUPLOADIMG);
+        common.logPrint("Pan card image upload field is showing");
+
+        common.logPrint("Step:: Verify Registration image upload field is showing");
+        common.assertElementDisplayed(REGISTRATIONUPLOADIMG);
+        common.logPrint("Registration image upload field is showing");
+
+        common.logPrint("Step:: Verify Doctor upload field is showing");
+        common.assertElementDisplayed(DOCTORUPLOADIMG);
+        common.logPrint("Doctor upload field is showing");
+
+        common.logPrint("Step:: Verify Visiting card image upload is showing");
+        common.assertElementDisplayed(VISITINGCARDUPLOADIMG);
+        common.logPrint("Visiting card image upload field is showing");
+
+        common.logPrint("Step:: Verify Address Line 1 label is present");
+        common.waitUntilElementToBeVisible(By.xpath(ADDRESSLINE1LBL1));
+        common.logPrint("Address Line 1 label is present");
+
+        common.logPrint("Step:: Verify Address Line 1 input field is present");
+        common.waitUntilElementToBeVisible(By.xpath(ADDRESSLINE1INP1));
+        common.logPrint("Address Line 1 input field is present");
+
+        common.logPrint("Step:: Verify Area label is present");
+        common.waitUntilElementToBeVisible(By.xpath(AREALBL));
+        common.logPrint("Area label is present");
+
+        common.logPrint("Step:: Verify Area input field is present");
+        common.waitUntilElementToBeVisible(By.xpath(AREAINP));
+        common.logPrint("Area input field is present");
+
+        common.logPrint("Step:: Verify City label is present");
+        common.waitUntilElementToBeVisible(By.xpath(CITYLBL));
+        common.logPrint("City label is present");
+
+        common.logPrint("Step:: Verify City input field is present");
+        common.waitUntilElementToBeVisible(By.xpath(CITYINP));
+        common.logPrint("City input field is present");
+
+        common.logPrint("Step:: Verify Pincode label is present");
+        common.waitUntilElementToBeVisible(By.xpath(PINCODELBL));
+        common.logPrint("Pincode label is present");
+
+        common.logPrint("Step:: Verify Pincode input field is present");
+        common.waitUntilElementToBeVisible(By.xpath(PINCODEINP));
+        common.logPrint("Pincode input field is present");
+    }
+
+    public String verifyCreateDoctorCreateFunctionality(){
+
+        redeirectToDoctorPage();
+
+        common.logPrint("Step:: Click on the ADD button");
+        common.waitUntilElementToBeVisible(By.xpath(ADDBTN));
+        common.click(ADDBTN);
+
+        common.scroll_To_Element(DOCTORNAMEINP);
+
+        String drName = common.GenerateRandomName();
+        common.logPrint("Step:: Create doctor create functionality");
+        common.waitUntilElementsToBeVisible(By.xpath(DOCTORNAMEINP));
+        common.type(DOCTORNAMEINP, drName);
+        common.logPrint("Doctor name is: "+ drName);
+
+        common.logPrint("Step:: Select category");
+        common.waitUntilElementToBeVisible(By.xpath(CATEGORYINP));
+        common.click(CATEGORYINP);
+        common.twoDownKeyAndEnter();
+
+        common.logPrint("Step:: Select Speciality");
+        common.waitUntilElementToBeVisible(By.xpath(SPECIALITYINP));
+        common.click(SPECIALITYINP);
+        common.twoDownKeyAndEnter();
+
+        common.logPrint("Step:: Select Qualification");
+        common.waitUntilElementToBeVisible(By.xpath(QUALIFICATIONSINP));
+        common.click(QUALIFICATIONSINP);
+        common.twoDownKeyAndEnter();
+
+        common.logPrint("Step:: Select Product");
+        common.waitUntilElementToBeVisible(By.xpath(PRODUCTINP));
+        common.click(PRODUCTINP);
+        common.twoDownKeyAndEnter();
+
+        common.logPrint("Step:: Enter mobile number");
+        common.waitUntilElementToBeVisible(By.xpath(MOBILENOINP));
+        String mobileNum = common.generateRandomNumberString(10);
+        common.type(MOBILENOINP, mobileNum);
+
+        common.logPrint("Step:: Select City");
+        common.waitUntilElementToBeVisible(By.xpath(COMMNUNICATIONCITY));
+        common.type(COMMNUNICATIONCITY, "AHMEDABAD");
+        common.pause(1);
+        common.downKeyAndEnter();
+
+        common.logPrint("Step:: Select Pincode");
+        common.waitUntilElementToBeVisible(By.xpath(COMMNUCATIONPINCODE));
+        common.click(COMMNUCATIONPINCODE);
+        common.pause(1);
+        common.downKeyAndEnter();
+
+        common.logPrint("Step:: Select residential City");
+        common.waitUntilElementToBeVisible(By.xpath(PERMANENTCITY));
+        common.type(PERMANENTCITY, "AHMEDABAD");
+        common.pause(1);
+        common.downKeyAndEnter();
+
+        common.logPrint("Step:: Select residential Pincode");
+        common.waitUntilElementToBeVisible(By.xpath(PERMANENTPINCODE));
+        common.click(PERMANENTPINCODE);
+        common.pause(1);
+        common.downKeyAndEnter();
+
+        common.logPrint("Step:: Click on the save button");
+        common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
+        common.click(SAVEBUTTON);
+
+        common.logPrint("Step:: Check validation is displayed");
+        common.assertElementDisplayed(AddedSuccessfully);
+
+        common.logPrint("New doctor is created successfully and name");
+
+        return drName;
+    }
+
+    public String[] updateTheDoctor(String drName){
+
+        redeirectToDoctorPage();
+
+        common.logPrint("Step:: Search doctor name in the search field");
+        common.waitUntilElementToBeVisible(By.xpath(SEARCHFIELD));
+        common.type(SEARCHFIELD, drName);
+
+        common.logPrint("Step:: Select first checkbox");
+        common.pause(2);
+        common.selectCheckBox(FIRSTEMAILCHECKBOX);
+
+        common.logPrint("Step:: Click on the edit button");
+        common.waitUntilElementToBeVisible(By.xpath(EDITBTN));
+        common.click(EDITBTN);
+
+        String UpdatedrName = common.GenerateRandomName();
+        common.logPrint("Step:: Update the doctor name");
+        common.waitUntilElementsToBeVisible(By.xpath(DOCTORNAMEINP)).clear();
+        common.type(DOCTORNAMEINP, UpdatedrName);
+        common.logPrint("Updated Doctor name is: "+ UpdatedrName);
+
+        common.logPrint("Step:: Update the mobile number");
+        common.waitUntilElementToBeVisible(By.xpath(MOBILENOINP)).clear();
+        String mobileNum = common.generateRandomNumberString(10);
+        common.type(MOBILENOINP, mobileNum);
+
+        common.logPrint("Step:: Click on the save button");
+        common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
+        common.click(SAVEBUTTON);
+
+        common.logPrint("Step:: Check validation is displayed");
+        common.assertElementDisplayed(UpdatedSuccessfully);
+
+        return new String[] {UpdatedrName,mobileNum};
+    }
+
+    public void verifyDoctorIsUpdated(String updatedName, String updatedMobileNum){
+
+        common.pause(1);
+        redirectsToChemistPage();
+
+        common.logPrint("Step:: Search doctor in the table");
+        common.waitUntilElementToBeVisible(By.xpath(SEARCHFIELD));
+        common.type(SEARCHFIELD, updatedName);
+
+        String xpathName = "//div[@data-colindex='3']";
+
+        common.logPrint("Step:: Verify name is updated");
+        common.pause(2);
+        common.waitUntilElementToBeVisible(By.xpath(xpathName));
+        String getDoctorName = common.getText(xpathName);
+        common.assertTwoValuesAreEqual(getDoctorName.toLowerCase(), updatedName.toLowerCase());
+
+        String xpathMobile = "//div[@data-colindex='5']";
+
+        common.logPrint("Step:: Verify mobile number is updated");
+        common.pause(2);
+        common.waitUntilElementToBeVisible(By.xpath(xpathMobile));
+        String getMobileNum = common.getText(xpathMobile);
+        String updatedMobileGet = getMobileNum.replaceAll("[|\\-\\s]", "");
+        common.assertTwoValuesAreEqual(updatedMobileGet, updatedMobileNum);
+
+        common.logPrint("Both value are updated successfully");
+
+    }
+
+    public void verifyEntityIsCreatedIsShowingInTheTableAndItStatusIsPending(String name){
+
+        common.logPrint("Step:: Search name in the search field");
+        common.waitUntilElementToBeVisible(By.xpath(SEARCHFIELD));
+        common.type(SEARCHFIELD, name);
+
+        common.pause(1);
+        common.logPrint("Step:: Verify the status is showing as pending");
+        common.waitUntilElementToBeVisible(By.xpath(PENDINGSTATUS));
+        common.assertElementPresent(PENDINGSTATUS);
+
+    }
+
+    public void verifyDoctorIsCreatedIsShowingInTheTableAndItStatusIsApproval(String name){
+
+        common.logPrint("Step:: Search name in the search field");
+        common.waitUntilElementToBeVisible(By.xpath(SEARCHFIELD));
+        common.type(SEARCHFIELD, name);
+
+        common.pause(1);
+        common.logPrint("Step:: Verify the status is showing as Approved");
+        common.waitUntilElementToBeVisible(By.xpath(APPROVESTATUS));
+        common.assertElementPresent(APPROVESTATUS);
+
+    }
+
+    public void verifyDrApprovalForTheAsmUser(String doctor){
+
+        loginWithASMCredential();
+
+        redeirectToDoctorPage();
+
+        verifyEntityIsCreatedIsShowingInTheTableAndItStatusIsPending(doctor);
+
+        common.logPrint("Step:: Click on the checkbox");
+        common.pause(1);
+        common.selectCheckBox(FIRSTEMAILCHECKBOX);
+        //WebElement element = driver.findElement(By.xpath(FIRSTEMAILCHECKBOX));
+        //element.click();
+
+        common.logPrint("Step:: Click on the Approval button");
+        common.waitUntilElementToBeVisible(By.xpath(APPROVEBTN));
+        common.click(APPROVEBTN);
+
+        common.logPrint("Step:: Verified success message is showing after approved");
+        common.waitUntilElementToBeVisible(By.xpath(SUCCESSMSG));
+        common.assertElementPresent(SUCCESSMSG);
+
+        common.refreshPage();
+
+        common.logPrint("Step:: Verified status is not showing as approved");
+
+        verifyDoctorIsCreatedIsShowingInTheTableAndItStatusIsApproval(doctor);
+
+
+    }
+
+    public void approvedDeleteRequestFromTheDirectorsUser(String drName){
+        loginWithDirectorCredential();
+        redirectsDeleteDoctorApprovalPage();
+
+        String checkBoxUponName = "//td[contains(.,'"+drName+"')]/parent::tr//td//span";
+
+        common.logPrint("Step:: Select the checkbox according to the Doctor name");
+        common.pause(2);
+        common.selectCheckBox(checkBoxUponName);
+
+        common.logPrint("Step:: Click on the approve button");
+        common.waitUntilElementToBeVisible(By.xpath(APPROVEBTN));
+        common.click(APPROVEBTN);
+
+        common.logPrint("Step:: Verify validation is showing for the doctor delete confirmation");
+        common.waitUntilElementToBeVisible(By.xpath(DoctorApprovedSuccess));
+        common.assertElementPresent(DoctorApprovedSuccess);
+
+    }
+
+    public void deleteDoctorFromTheList(String name){
+
+        common.logPrint("Step:: Click on the checkbox");
+        common.pause(2);
+        common.selectCheckBox(FIRSTCHECKBOX);
+
+        common.logPrint("Step:: Click on the Delete button");
+        common.waitUntilElementToBeVisible(By.xpath(DELETEBTN));
+        common.click(DELETEBTN);
+
+        common.logPrint("Step:: Verify delete confirmation pop-up is showing");
+        common.waitUntilElementToBeVisible(By.xpath(DeleteConfirmationPopUp));
+        common.assertElementPresent(DeleteConfirmationPopUp);
+
+        common.logPrint("Step:: Click on the delete button");
+        common.waitUntilElementToBeVisible(By.xpath(DELETEBTNPOP));
+        common.click(DELETEBTNPOP);
+
+        common.logPrint("Step:: Verify delete confirmation pop-up is showing");
+
+        common.logPrint("Step:: Check validation is displayed");
+        common.assertElementDisplayed(DeletedSuccessfully );
+
+       // verifyDoctorRemoveFromTheList(name);
+
+    }
+
+    public void verifyDoctorRemoveFromTheList(String drName){
+
+        redeirectToDoctorPage();
+
+        common.logPrint("Step:: Search name in the search field");
+        common.waitUntilElementToBeVisible(By.xpath(SEARCHFIELD));
+        common.type(SEARCHFIELD, drName);
+
+        common.pause(1);
+
+        common.logPrint("Step:: Check doctor is removed from the list");
+
+        common.logPrint("Step:: Now rows are available");
+        common.assertElementDisplayed(NOROWS);
+
+        common.logPrint("Doctor is removed from the list");
+    }
+
+    public void redirectToTheDoctorAddtionalDetail(){
+
+        common.logPrint("Step:: Click on the admin panel menu");
+        common.waitUntilElementToBeVisible(By.xpath(ADMINPANELMENU));
+        common.click(ADMINPANELMENU);
+
+        common.logPrint("Step:: Click on the Doctor menu");
+        common.waitUntilElementToBeVisible(By.xpath(DOCTORMENU));
+        common.click(DOCTORMENU);
+
+        common.logPrint("Step:: Click on the First raw data");
+        common.waitUntilElementToBeVisible(By.xpath(FIRSTROWDATADOCTR));
+        common.click(FIRSTROWDATADOCTR);
+
+    }
+
+    public String createChemistAndApprove(){
+
+        redirectsToChemistPage();
+
+        common.logPrint("Step:: Click on the ADD button");
+        common.waitUntilElementToBeVisible(By.xpath(ADDBTN));
+        common.click(ADDBTN);
+
+        String ChemistName = common.GenerateRandomName();
+
+        common.logPrint("Step:: Enter chemist name");
+        common.waitUntilElementsToBeVisible(By.xpath(CHEMISTNAME));
+        common.type(CHEMISTNAME, ChemistName);
+        common.logPrint("Doctor name is: "+ ChemistName);
+
+        common.logPrint("Step:: Select category");
+        common.waitUntilElementToBeVisible(By.xpath(CATEGORYINP));
+        common.click(CATEGORYINP);
+        common.twoDownKeyAndEnter();
+
+        common.logPrint("Step:: Select chemist type");
+        common.waitUntilElementToBeVisible(By.xpath(CHEMMISTTYPE));
+        common.click(CHEMMISTTYPE);
+        common.twoDownKeyAndEnter();
+
+        common.logPrint("Step:: Enter mobile number");
+        common.waitUntilElementToBeVisible(By.xpath(MOBILENOINP));
+        String mobileNum = common.generateRandomNumberString(10);
+        common.type(MOBILENOINP, mobileNum);
+
+        common.logPrint("Step:: Select City");
+        common.waitUntilElementToBeVisible(By.xpath(CITYINPUT));
+        common.type(CITYINPUT, "AHMEDABAD");
+        common.pause(2);
+        common.downKeyAndEnter();
+
+        common.logPrint("Step:: Select Pincode");
+        common.waitUntilElementToBeVisible(By.xpath(PINCODEINPUT));
+        common.click(PINCODEINPUT);
+        common.pause(2);
+        common.downKeyAndEnter();
+
+        common.logPrint("Step:: Click on the save button");
+        common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
+        common.click(SAVEBUTTON);
+
+        common.logPrint("Step:: Check validation is displayed");
+        common.assertElementDisplayed(AddedSuccessfully);
+
+        common.logPrint("New chemist is created successfully and name is: "+ ChemistName);
+
+        return ChemistName;
+    }
+
+    public String[] updateTheChemist(String chemistName){
+
+        redirectsToChemistPage();
+        common.logPrint("Step:: Search doctor name in the search field");
+        common.waitUntilElementToBeVisible(By.xpath(SEARCHFIELD));
+        common.type(SEARCHFIELD, chemistName);
+
+        common.logPrint("Step:: Select first checkbox");
+        common.pause(2);
+        common.selectCheckBox(FIRSTEMAILCHECKBOX);
+
+        common.logPrint("Step:: Click on the edit button");
+        common.waitUntilElementToBeVisible(By.xpath(EDITBTN));
+        common.click(EDITBTN);
+
+        String updateChemist = common.GenerateRandomName();
+        common.logPrint("Step:: Enter chemist name");
+        common.waitUntilElementsToBeVisible(By.xpath(CHEMISTNAME)).clear();
+        common.type(CHEMISTNAME, updateChemist);
+        common.logPrint("Doctor name is: "+ updateChemist);
+
+        common.logPrint("Step:: Enter mobile number");
+        common.waitUntilElementToBeVisible(By.xpath(MOBILENOINP)).clear();
+        String updateMobileNum = common.generateRandomNumberString(10);
+        common.type(MOBILENOINP, updateMobileNum);
+
+        common.logPrint("Step:: Click on the save button");
+        common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
+        common.click(SAVEBUTTON);
+
+        common.logPrint("Step:: Check validation is displayed");
+        common.assertElementDisplayed(UpdatedSuccessfully);
+
+        return new String[] {updateChemist,updateMobileNum};
+    }
+
+    public void verifyChemistApprovedForTheAsmUser(String Chemist){
+
+        loginWithASMCredential();
+
+        redirectsToChemistPage();
+
+        verifyEntityIsCreatedIsShowingInTheTableAndItStatusIsPending(Chemist);
+
+        common.logPrint("Step:: Click on the checkbox");
+        common.pause(1);
+        common.selectCheckBox(FIRSTEMAILCHECKBOX);
+
+        common.logPrint("Step:: Click on the Approval button");
+        common.waitUntilElementToBeVisible(By.xpath(APPROVEBTN));
+        common.click(APPROVEBTN);
+
+        common.logPrint("Step:: Verified success message is showing after approved");
+        common.waitUntilElementToBeVisible(By.xpath(SUCCESSMSG));
+        common.assertElementPresent(SUCCESSMSG);
+
+        common.refreshPage();
+
+        common.logPrint("Step:: Verified status is not showing as approved");
+
+        verifyDoctorIsCreatedIsShowingInTheTableAndItStatusIsApproval(Chemist);
+    }
+
+    public String createStockiestApproval(){
+
+        redirectsToStockiestPage();
+
+        common.logPrint("Step:: Click on the ADD button");
+        common.waitUntilElementToBeVisible(By.xpath(ADDBTN));
+        common.click(ADDBTN);
+
+        common.scroll_To_Element(STOCKISTNAME);
+
+        String StockistName = common.GenerateRandomName();
+
+        common.logPrint("Step:: Enter Stockist name");
+        common.waitUntilElementsToBeVisible(By.xpath(STOCKISTNAME));
+        common.type(STOCKISTNAME, StockistName);
+        common.logPrint("Stockiest name is: "+ StockistName);
+
+        common.logPrint("Step:: Select stockist type");
+        common.waitUntilElementToBeVisible(By.xpath(STOCKISTTYPE));
+        common.click(STOCKISTTYPE);
+        common.twoDownKeyAndEnter();
+
+        common.logPrint("Step:: Enter mobile number");
+        common.waitUntilElementToBeVisible(By.xpath(MOBILENO1FIELD));
+        String mobileNum = common.generateRandomNumberString(10);
+        common.type(MOBILENO1FIELD, mobileNum);
+
+        common.logPrint("Step:: Select City");
+        common.waitUntilElementToBeVisible(By.xpath(CITYINPUT));
+        common.type(CITYINPUT, "AHMEDABAD");
+        common.pause(1);
+        common.downKeyAndEnter();
+
+        common.logPrint("Step:: Select Pincode");
+        common.waitUntilElementToBeVisible(By.xpath(PINCODEINPUT));
+        common.click(PINCODEINPUT);
+        common.pause(1);
+        common.downKeyAndEnter();
+
+        common.logPrint("Step:: Click on the save button");
+        common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
+        common.click(SAVEBUTTON);
+
+        common.logPrint("Step:: Check validation is displayed");
+        common.assertElementDisplayed(AddedSuccessfully);
+
+        common.logPrint("New stockist is created successfully and name is: "+ StockistName);
+
+
+        return StockistName;
+    }
+
+
+    public void verifyStockiestApprovedForTheAsmUser(String Stockiest){
+
+        loginWithASMCredential();
+
+        redirectsToStockiestPage();
+
+        verifyEntityIsCreatedIsShowingInTheTableAndItStatusIsPending(Stockiest);
+
+        common.logPrint("Step:: Click on the checkbox");
+        common.pause(1);
+        common.selectCheckBox(FIRSTEMAILCHECKBOX);
+
+        common.logPrint("Step:: Click on the Approval button");
+        common.waitUntilElementToBeVisible(By.xpath(APPROVEBTN));
+        common.click(APPROVEBTN);
+
+        common.logPrint("Step:: Verified success message is showing after approved");
+        common.waitUntilElementToBeVisible(By.xpath(SUCCESSMSG));
+        common.assertElementPresent(SUCCESSMSG);
+
+        common.refreshPage();
+
+        common.logPrint("Step:: Verified status is not showing as approved");
+
+        verifyDoctorIsCreatedIsShowingInTheTableAndItStatusIsApproval(Stockiest);
+    }
+
+    public void redirectToParticulerAddtionalDetailPage(String addtinalDetailXpath){
+
+        redirectToTheDoctorAddtionalDetail();
+
+        common.logPrint("Step:: Click on the Area of interest menu");
+        common.scroll_To_Element(addtinalDetailXpath);
+        common.waitUntilElementToBeVisible(By.xpath(addtinalDetailXpath));
+        common.click(addtinalDetailXpath);
+
+        if(driver.findElement(By.xpath(ADDBTN)).isEnabled()){
+            common.logPrint("Step:: Add button is enabled");
+            common.click(ADDBTN);
+        } else {
+            common.logPrint("Step:: Add button is not enabled");
+
+            common.logPrint("Step:: Click on Area of interest menu");
+            common.waitUntilElementToBeVisible(By.xpath(addtinalDetailXpath));
+            common.click(addtinalDetailXpath);
+
+            common.logPrint("Step:: Add button is enabled");
+            common.click(ADDBTN);
+        }
+
+    }
+
+    public void addDegree(){
+
+        redirectToTheDoctorAddtionalDetail();
+        common.pause(2);
+        if(driver.findElement(By.xpath(ADDBTN)).isEnabled()){
+            common.logPrint("Step:: Add button is enabled");
+            common.click(ADDBTN);
+        } else {
+            common.logPrint("Step:: Add button is not enabled");
+
+            common.logPrint("Step:: Click on the Degree menu");
+            common.waitUntilElementToBeVisible(By.xpath(DEGREEMENU));
+            common.click(DEGREEMENU);
+
+            common.logPrint("Step:: Add button is enabled");
+            common.click(ADDBTN);
+        }
+
+        common.logPrint("Step:: Click on the Degree dropdown");
+        common.waitUntilElementToBeVisible(By.xpath(DEGREEDROPDOWN));
+        common.click(DEGREEDROPDOWN);
+        common.downKeyAndEnter();
+
+        common.logPrint("Step:: Click on the Speciality dropdown");
+        common.waitUntilElementToBeVisible(By.xpath(SPECIALITYDRODOWN));
+        common.click(SPECIALITYDRODOWN);
+        common.downKeyAndEnter();
+
+        String year = common.generateRandomYear("1998", "2001");
+        common.logPrint("Step:: Enter Degree addmission year");
+        common.waitUntilElementToBeVisible(By.xpath(ADDMISSIONYEAR));
+        common.type(ADDMISSIONYEAR, year);
+
+        String passoutyear = common.generateRandomYear("2001", "2005");
+        common.logPrint("Step:: Enter Degree Passout year");
+        common.waitUntilElementToBeVisible(By.xpath(PASSOUTYEAR));
+        common.type(PASSOUTYEAR, passoutyear);
+
+        String degreeColllage = common.generateRandomChars(10);
+        common.logPrint("Step:: Enter Degree collage name");
+        common.waitUntilElementToBeVisible(By.xpath(DEGREECOLLAGE));
+        common.type(DEGREECOLLAGE, degreeColllage);
+
+        String degreeRegNum = common.generateRandomNumberString(10);
+        common.logPrint("Step:: Enter Degree collage name");
+        common.waitUntilElementToBeVisible(By.xpath(DEGREEREGNUM));
+        common.type(DEGREEREGNUM, degreeRegNum);
+
+        common.logPrint("Step:: Select city from the dropdown");
+        common.waitUntilElementToBeVisible(By.xpath(CITYINPUT));
+        common.type(CITYINPUT, "AHMEDABAD");
+        common.pause(1);
+        common.downKeyAndEnter();
+        common.logPrint("Selected end city is: AHMEDABAD");
+
+        common.scroll_To_Element(PINCODEDROPDOWN);
+
+        common.logPrint("Step:: Select city from dropdown");
+        common.waitUntilElementToBeVisible(By.xpath(PINCODEDROPDOWN));
+        common.click(PINCODEDROPDOWN);
+        common.twoDownKeyAndEnter();
+
+        common.logPrint("Step:: Click on the save button");
+        common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
+        common.click(SAVEBUTTON);
+    }
+
+    public void addAreaOfInterest(){
+
+        redirectToParticulerAddtionalDetailPage(AREAOFINTEREST);
+
+        common.logPrint("Step:: Select Area Of Interest In Medical Field");
+        common.waitUntilElementToBeVisible(By.xpath(AREAOFINTERESTINMEDICAL));
+        common.click(AREAOFINTERESTINMEDICAL);
+        common.downKeyAndEnter();
+
+        String areaRemark = common.generateRandomChars(20);
+        common.logPrint("Step:: Enter interest of area remark");
+        common.waitUntilElementToBeVisible(By.xpath(AREAREMARK));
+        common.type(AREAREMARK, areaRemark);
+
+        common.logPrint("Step:: Click on the save button");
+        common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
+        common.click(SAVEBUTTON);
+    }
+
+    public void addGuidelinesFollowed(){
+
+        redirectToParticulerAddtionalDetailPage(GUIDELINESFOLLOWED);
+
+        common.logPrint("Step:: Select guideline followed from dropdown");
+        common.waitUntilElementToBeVisible(By.xpath(GUIDELINEFOLLOWEDDRP));
+        common.click(GUIDELINEFOLLOWEDDRP);
+        common.downKeyAndEnter();
+
+        String areaRemark = common.generateRandomChars(20);
+        common.logPrint("Step:: Enter guideline followed remark");
+        common.waitUntilElementToBeVisible(By.xpath(AREAREMARK));
+        common.type(AREAREMARK, areaRemark);
+
+        common.logPrint("Step:: Click on the save button");
+        common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
+        common.click(SAVEBUTTON);
+    }
+
+    public void addConferenceAndSpeker(){
+
+        redirectToParticulerAddtionalDetailPage(CONFERENCESPECKER);
+
+        common.logPrint("Step:: Select Subject type from dropdown");
+        common.waitUntilElementToBeVisible(By.xpath(SUBJECTTYPE));
+        common.click(SUBJECTTYPE);
+        common.downKeyAndEnter();
+
+        String startDate = common.generateDate("current",null,null);
+        common.logPrint("Step:: Enter start date");
+        common.waitUntilElementToBeVisible(By.xpath(STARTDATEINP));
+        common.type(STARTDATEINP,startDate);
+
+        String endDate = common.generateDate("future",null,null);
+        common.logPrint("Step:: Enter end date");
+        common.waitUntilElementToBeVisible(By.xpath(ENDDATEINP));
+        common.type(ENDDATEINP,endDate);
+
+        String days = common.generateRandomNumberString(2);
+        common.logPrint("Step:: Enter days");
+        common.waitUntilElementToBeVisible(By.xpath(DAYSINP));
+        common.type(DAYSINP,days);
+
+        String Subject = common.generateRandomChars(10);
+        common.logPrint("Step:: Enter Subject and Topic");
+        common.waitUntilElementToBeVisible(By.xpath(SUBJECTTOPICINP));
+        common.type(SUBJECTTOPICINP,Subject);
+
+        common.logPrint("Step:: Select Attendee as from dropdown");
+        common.waitUntilElementToBeVisible(By.xpath(ATTENDEDASDRP));
+        common.click(ATTENDEDASDRP);
+        common.downKeyAndEnter();
+
+        String venue = common.generateRandomChars(10);
+        common.logPrint("Step:: Enter venue name");
+        common.waitUntilElementToBeVisible(By.xpath(VENUEINP));
+        common.type(VENUEINP,venue);
+
+        String numberOfAttendee = common.generateRandomNumberString(2);
+        common.logPrint("Step:: Enter days");
+        common.waitUntilElementToBeVisible(By.xpath(NOOFATTENDEE));
+        common.type(NOOFATTENDEE,numberOfAttendee);
+
+        String areaRemark = common.generateRandomChars(20);
+        common.logPrint("Step:: Enter guideline followed remark");
+        common.waitUntilElementToBeVisible(By.xpath(AREAREMARK));
+        common.type(AREAREMARK, areaRemark);
+
+        common.logPrint("Step:: Click on the save button");
+        common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
+        common.click(SAVEBUTTON);
+    }
+
+    public void addWeekendsAndVacation(){
+
+        redirectToParticulerAddtionalDetailPage(WEEKENDVACTION);
+
+        common.logPrint("Step:: Select Entertainment from dropdown");
+        common.waitUntilElementToBeVisible(By.xpath(ENTERTAINMENTDRP));
+        common.click(ENTERTAINMENTDRP);
+        common.downKeyAndEnter();
+
+        common.logPrint("Step:: Select Activity type type from dropdown");
+        common.waitUntilElementToBeVisible(By.xpath(ACTIVITYTYPE));
+        common.click(ACTIVITYTYPE);
+        common.downKeyAndEnter();
+
+        String place = common.generateRandomChars(10);
+        common.logPrint("Step:: Enter Place");
+        common.waitUntilElementToBeVisible(By.xpath(PLACEINPADDITIONALDETAIL));
+        common.type(PLACEINPADDITIONALDETAIL,place);
+
+        String Date = common.generateDate("current",null,null);
+        common.logPrint("Step:: Enter start date");
+        common.waitUntilElementToBeVisible(By.xpath(PREFFREDDATE));
+        common.type(PREFFREDDATE,Date);
+
+        String areaRemark = common.generateRandomChars(20);
+        common.logPrint("Step:: Enter guideline followed remark");
+        common.waitUntilElementToBeVisible(By.xpath(AREAREMARK));
+        common.type(AREAREMARK, areaRemark);
+
+        common.logPrint("Step:: Click on the save button");
+        common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
+        common.click(SAVEBUTTON);
+    }
+
+    public void addFamilyFriendDetailInfo() {
+
+        redirectToParticulerAddtionalDetailPage(FAMILYFRIENDDETAIL);
+
+        String name = common.generateRandomChars(8);
+        common.logPrint("Step:: Enter Name");
+        common.waitUntilElementToBeVisible(By.xpath(NAMEINPFamily));
+        common.type(NAMEINPFamily, name);
+
+        common.logPrint("Step:: Select Relation from dropdown");
+        common.waitUntilElementToBeVisible(By.xpath(RELATIONDRP));
+        common.click(RELATIONDRP);
+        common.downKeyAndEnter();
+
+        String dob = common.generateDate("past", null, null);
+        common.logPrint("Step:: Enter DOB");
+        common.waitUntilElementToBeVisible(By.xpath(DOBINPAdd));
+        common.type(DOBINPAdd, dob);
+
+        String doa = common.generateDate("past", null, null);
+        common.logPrint("Step:: Enter DOA");
+        common.waitUntilElementToBeVisible(By.xpath(DOAINPAdd));
+        common.type((DOAINPAdd), doa);
+
+        String specialDay = common.generateRandomNumberString(7);
+        common.logPrint("Step:: Enter days");
+        common.waitUntilElementToBeVisible(By.xpath(SPECIALDAYDOBINP));
+        common.type(SPECIALDAYDOBINP,specialDay);
+
+        String specialDayDOB = common.generateDate("past", null, null);
+        common.logPrint("Step:: Enter Special Day DOB");
+        common.waitUntilElementToBeVisible(By.xpath(SPECIALDAYDOBINPAdd));
+        common.type(SPECIALDAYDOBINPAdd, specialDayDOB);
+
+        String remarks = common.generateRandomChars(25);
+        common.logPrint("Step:: Enter Remarks");
+        common.waitUntilElementToBeVisible(By.xpath(REMARKINP));
+        common.type(REMARKINP, remarks);
+
+        common.logPrint("Step:: Click on Save button");
+        common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
+        common.click(SAVEBUTTON);
+    }
+
+    public void addCollegeMateDetailInfo() {
+
+        redirectToParticulerAddtionalDetailPage(COLLAGEMATE);
+
+        String name = common.generateRandomChars(8);
+        common.logPrint("Step:: Enter Name");
+        common.waitUntilElementToBeVisible(By.xpath(CLGMATENAME));
+        common.type(CLGMATENAME, name);
+
+        String dob = common.generateDate("past", null, null);
+        common.logPrint("Step:: Enter Date of Birth");
+        common.waitUntilElementToBeVisible(By.xpath(CLGDATEOFBIRTH));
+        common.type(CLGDATEOFBIRTH, dob);
+
+        common.logPrint("Step:: Select Speciality from dropdown");
+        common.waitUntilElementToBeVisible(By.xpath(SPECIALITYDRP));
+        common.click(SPECIALITYDRP);
+        common.downKeyAndEnter();
+
+        String hospitalName = common.generateRandomChars(10);
+        common.logPrint("Step:: Enter Hospital Name");
+        common.waitUntilElementToBeVisible(By.xpath(HOPSPITALNAME));
+        common.type(HOPSPITALNAME, hospitalName);
+
+        String collegeName = common.generateRandomChars(12);
+        common.logPrint("Step:: Enter College Name");
+        common.waitUntilElementToBeVisible(By.xpath(COLLAGENAME));
+        common.type(COLLAGENAME, collegeName);
+
+        String remarks = common.generateRandomChars(25);
+        common.logPrint("Step:: Enter Remarks");
+        common.waitUntilElementToBeVisible(By.xpath(REMARK));
+        common.type(REMARK, remarks);
+
+        String passoutYear = "2010";
+        common.logPrint("Step:: Enter Passout Year");
+        common.waitUntilElementToBeVisible(By.xpath(PASSOUTYEARCLG));
+        common.type(PASSOUTYEARCLG, passoutYear);
+
+        String cityHospital = "Ahmedabad";
+        common.logPrint("Step:: Enter City for Hospital");
+        common.waitUntilElementToBeVisible(By.xpath(CITYHOSPITAL));
+        common.type(CITYHOSPITAL, cityHospital);
+        common.pause(1);
+        common.downKeyAndEnter();
+
+        common.logPrint("Step:: Select Hospital Pincode");
+        common.waitUntilElementToBeVisible(By.xpath(PINCODEHOSPITAL));
+        common.click(PINCODEHOSPITAL);
+        common.pause(1);
+        common.downKeyAndEnter();
+
+        String cityCollege = "Ahmedabad";
+        common.logPrint("Step:: Enter City for College");
+        common.waitUntilElementToBeVisible(By.xpath(CITYCOLLAGE));
+        common.type(CITYCOLLAGE, cityCollege);
+        common.pause(1);
+        common.downKeyAndEnter();
+
+        common.logPrint("Step:: Select College Pincode");
+        common.waitUntilElementToBeVisible(By.xpath(PINCODECOLLAGE));
+        common.click(PINCODECOLLAGE);
+        common.pause(1);
+        common.downKeyAndEnter();
+
+        common.logPrint("Step:: Click on Save button");
+        common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
+        common.click(SAVEBUTTON);
+    }
+
+    public void addSocialActivityDetailInfo() {
+
+        redirectToParticulerAddtionalDetailPage(SOCIALACTIVITY);
+
+        String activityType = common.generateRandomChars(10);
+        common.logPrint("Step:: Enter Type of Activity");
+        common.waitUntilElementToBeVisible(By.xpath(TYPEOFACTIVITY));
+        common.type(TYPEOFACTIVITY, activityType);
+
+        common.logPrint("Step:: Select Event Partner from dropdown");
+        common.waitUntilElementToBeVisible(By.xpath(EVENTPARTNER));
+        common.click(EVENTPARTNER);
+        common.downKeyAndEnter();
+
+        String participants = common.generateRandomNumberString(2);
+        common.logPrint("Step:: Enter Number of Participants");
+        common.waitUntilElementToBeVisible(By.xpath(NOOFPARTICIPANT));
+        common.type(NOOFPARTICIPANT, participants);
+
+        String venue = common.generateRandomChars(12);
+        common.logPrint("Step:: Enter Activity Venue");
+        common.waitUntilElementToBeVisible(By.xpath(ACTIVITYVENUE));
+        common.type(ACTIVITYVENUE, venue);
+
+        String amountSpent = common.generateRandomNumberString(5);
+        common.logPrint("Step:: Enter Amount Spent");
+        common.waitUntilElementToBeVisible(By.xpath(AMOUNTSPENT));
+        common.type(AMOUNTSPENT, amountSpent);
+
+        String sponsors = common.generateRandomChars(10);
+        common.logPrint("Step:: Enter Sponsors");
+        common.waitUntilElementToBeVisible(By.xpath(SPONSORS));
+        common.type(SPONSORS, sponsors);
+
+        String remarks = common.generateRandomChars(20);
+        common.logPrint("Step:: Enter Remarks");
+        common.waitUntilElementToBeVisible(By.xpath(REMARKINPADDActivity));
+        common.type(REMARKINPADDActivity, remarks);
+
+        String description = common.generateRandomChars(30);
+        common.logPrint("Step:: Enter Description");
+        common.waitUntilElementToBeVisible(By.xpath(DECRIPTIONINP));
+        common.type(DECRIPTIONINP, description);
+
+        String city = "Surat";
+        common.logPrint("Step:: Enter City");
+        common.waitUntilElementToBeVisible(By.xpath(CITYADDRESS));
+        common.type(CITYADDRESS, city);
+        common.downKeyAndEnter();
+
+        common.logPrint("Step:: Select Pincode from dropdown");
+        common.waitUntilElementToBeVisible(By.xpath(PINCODEDRP));
+        common.click(PINCODEDRP);
+        common.downKeyAndEnter();
+
+        common.logPrint("Step:: Click on Save button");
+        common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
+        common.click(SAVEBUTTON);
+    }
+
+
+
+
+
+
+}

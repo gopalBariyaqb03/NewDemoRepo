@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Web scenarios" verbose="10" parallel="tests" -count="1" allow-return-values="true">
+    <listeners>
+        <listener class-name="org.uncommons.reportng.HTMLReporter"/>
+        <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
+    </listeners>
+
+    <!--  Verify create all the additional details on the admin panel module.-->
+    <test name="Verify all elements and fields on the Login, Signup, and Forgot Password pages.">
+        <classes>
+            <class name="Tests.AdminTest">
+                <methods>
+                    <include name="createAllTheAddinationDetail"></include>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+<!--    &lt;!&ndash;    Verify Signup, Login, and Forgot Password scenarios.&ndash;&gt;-->
+<!--    <test name="Verify Signup, Login, and Forgot Password scenarios.">-->
+<!--        <classes>-->
+<!--            <class name="Tests.HomeTest">-->
+<!--                <methods>-->
+<!--                    <include name="loginAndSignupScenarios"></include>-->
+<!--                </methods>-->
+<!--            </class>-->
+<!--        </classes>-->
+<!--    </test>-->
+</suite>
