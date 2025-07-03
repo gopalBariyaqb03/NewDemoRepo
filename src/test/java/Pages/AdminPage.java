@@ -21,6 +21,7 @@ public class AdminPage extends Locators {
         common.logPrint("Step:: Click on the Doctor menu");
         common.waitUntilElementToBeVisible(By.xpath(DOCTORMENU));
         common.click(DOCTORMENU);
+       // test
     }
 
     public void redirectsToChemistPage(){
