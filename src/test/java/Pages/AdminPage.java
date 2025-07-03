@@ -9,12 +9,10 @@ import org.openqa.selenium.WebElement;
 public class AdminPage extends Locators {
     Common common = new Common(driver);
 
-    //its my  1st update
 
     public AdminPage(WebDriver driver) {
         super(driver);
     }
-//vjhvsdjcvgi
     public void redeirectToDoctorPage(){
         common.logPrint("Step:: Click on the admin panel menu");
         common.waitUntilElementToBeVisible(By.xpath(ADMINPANELMENU));
