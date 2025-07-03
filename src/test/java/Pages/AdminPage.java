@@ -12,7 +12,7 @@ public class AdminPage extends Locators {
     public AdminPage(WebDriver driver) {
         super(driver);
     }
-
+//vjhvsdjcvgi
     public void redeirectToDoctorPage(){
         common.logPrint("Step:: Click on the admin panel menu");
         common.waitUntilElementToBeVisible(By.xpath(ADMINPANELMENU));
