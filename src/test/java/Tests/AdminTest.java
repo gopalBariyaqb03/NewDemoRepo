@@ -164,7 +164,7 @@ public class AdminTest extends BasePage {
         //adminPage.addWeekendsAndVacation();
         //adminPage.addFamilyFriendDetailInfo();
         //adminPage.addCollegeMateDetailInfo();
-        adminPage.addSocialActivityDetailInfo();
+        adminPage.addSocialActivities();
     }
 
 }

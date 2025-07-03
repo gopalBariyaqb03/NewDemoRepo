@@ -2618,7 +2618,7 @@ public class AdminPage extends Locators {
 
         common.scroll_To_Element(DOCTORNAMEINP);
 
-        String drName = common.GenerateRandomName();
+        String drName = common.fakeName();
         common.logPrint("Step:: Create doctor create functionality");
         common.waitUntilElementsToBeVisible(By.xpath(DOCTORNAMEINP));
         common.type(DOCTORNAMEINP, drName);
@@ -2701,7 +2701,7 @@ public class AdminPage extends Locators {
         common.waitUntilElementToBeVisible(By.xpath(EDITBTN));
         common.click(EDITBTN);
 
-        String UpdatedrName = common.GenerateRandomName();
+        String UpdatedrName = common.fakeName();
         common.logPrint("Step:: Update the doctor name");
         common.waitUntilElementsToBeVisible(By.xpath(DOCTORNAMEINP)).clear();
         common.type(DOCTORNAMEINP, UpdatedrName);
@@ -2898,7 +2898,7 @@ public class AdminPage extends Locators {
         common.waitUntilElementToBeVisible(By.xpath(ADDBTN));
         common.click(ADDBTN);
 
-        String ChemistName = common.GenerateRandomName();
+        String ChemistName = common.fakeName();
 
         common.logPrint("Step:: Enter chemist name");
         common.waitUntilElementsToBeVisible(By.xpath(CHEMISTNAME));
@@ -2959,7 +2959,7 @@ public class AdminPage extends Locators {
         common.waitUntilElementToBeVisible(By.xpath(EDITBTN));
         common.click(EDITBTN);
 
-        String updateChemist = common.GenerateRandomName();
+        String updateChemist = common.fakeName();
         common.logPrint("Step:: Enter chemist name");
         common.waitUntilElementsToBeVisible(By.xpath(CHEMISTNAME)).clear();
         common.type(CHEMISTNAME, updateChemist);
@@ -3017,7 +3017,7 @@ public class AdminPage extends Locators {
 
         common.scroll_To_Element(STOCKISTNAME);
 
-        String StockistName = common.GenerateRandomName();
+        String StockistName = common.fakeName();
 
         common.logPrint("Step:: Enter Stockist name");
         common.waitUntilElementsToBeVisible(By.xpath(STOCKISTNAME));
@@ -3348,139 +3348,335 @@ public class AdminPage extends Locators {
         common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
         common.click(SAVEBUTTON);
     }
+    public void addCollegeMateandAlumniDetails(){
 
-    public void addCollegeMateDetailInfo() {
+        redirectToParticulerAddtionalDetailPage(COLLEGEALUMNIDETAILS);
 
-        redirectToParticulerAddtionalDetailPage(COLLAGEMATE);
-
-        String name = common.generateRandomChars(8);
+        String name = common.fakeName();
         common.logPrint("Step:: Enter Name");
-        common.waitUntilElementToBeVisible(By.xpath(CLGMATENAME));
-        common.type(CLGMATENAME, name);
+        common.waitUntilElementToBeVisible(By.xpath(COLLEAGUENAME));
+        common.type(COLLEAGUENAME, name);
+        common.logPrint("Entered Name" + name);
 
-        String dob = common.generateDate("past", null, null);
-        common.logPrint("Step:: Enter Date of Birth");
-        common.waitUntilElementToBeVisible(By.xpath(CLGDATEOFBIRTH));
-        common.type(CLGDATEOFBIRTH, dob);
+        common.logPrint("Step :: Enter Date of Birth");
+        common.waitUntilElementToBeVisible(By.xpath(COLLEAGUEDATEOFBIRTH));
+        common.type(COLLEAGUEDATEOFBIRTH, "26-06-2025");
 
-        common.logPrint("Step:: Select Speciality from dropdown");
-        common.waitUntilElementToBeVisible(By.xpath(SPECIALITYDRP));
-        common.click(SPECIALITYDRP);
-        common.downKeyAndEnter();
+        common.logPrint("Step :: Enter Speciality");
+        common.click(COLLEAGUESPECIALITY);
+        common.twoDownKeyAndEnter();
 
-        String hospitalName = common.generateRandomChars(10);
-        common.logPrint("Step:: Enter Hospital Name");
-        common.waitUntilElementToBeVisible(By.xpath(HOPSPITALNAME));
-        common.type(HOPSPITALNAME, hospitalName);
+        common.logPrint("Step :: Enter Hospital Name");
+        common.click(COLLEAGUEHOSPITAL);
+        common.type(COLLEAGUEHOSPITAL, "Test Hospital");
 
-        String collegeName = common.generateRandomChars(12);
-        common.logPrint("Step:: Enter College Name");
-        common.waitUntilElementToBeVisible(By.xpath(COLLAGENAME));
-        common.type(COLLAGENAME, collegeName);
+        common.logPrint("Step :: Enter Colege Name");
+        common.click(COLLEAGUECOLLEGE);
+        common.type(COLLEAGUECOLLEGE, "College"+ name);
 
-        String remarks = common.generateRandomChars(25);
-        common.logPrint("Step:: Enter Remarks");
-        common.waitUntilElementToBeVisible(By.xpath(REMARK));
-        common.type(REMARK, remarks);
+        common.logPrint("Step :: Enter Passout Year");
+        common.click(COLLEAGUEPASSOUTYEAR);
+        common.type(COLLEAGUEPASSOUTYEAR, "2025");
 
-        String passoutYear = "2010";
-        common.logPrint("Step:: Enter Passout Year");
-        common.waitUntilElementToBeVisible(By.xpath(PASSOUTYEARCLG));
-        common.type(PASSOUTYEARCLG, passoutYear);
+        common.logPrint("Step :: Enter Remarks");
+        common.click(REMARKS);
+        common.type(REMARKS, "2025"+" Remarks");
 
-        String cityHospital = "Ahmedabad";
-        common.logPrint("Step:: Enter City for Hospital");
-        common.waitUntilElementToBeVisible(By.xpath(CITYHOSPITAL));
-        common.type(CITYHOSPITAL, cityHospital);
-        common.pause(1);
-        common.downKeyAndEnter();
-
-        common.logPrint("Step:: Select Hospital Pincode");
-        common.waitUntilElementToBeVisible(By.xpath(PINCODEHOSPITAL));
-        common.click(PINCODEHOSPITAL);
-        common.pause(1);
-        common.downKeyAndEnter();
-
-        String cityCollege = "Ahmedabad";
-        common.logPrint("Step:: Enter City for College");
-        common.waitUntilElementToBeVisible(By.xpath(CITYCOLLAGE));
-        common.type(CITYCOLLAGE, cityCollege);
-        common.pause(1);
-        common.downKeyAndEnter();
-
-        common.logPrint("Step:: Select College Pincode");
-        common.waitUntilElementToBeVisible(By.xpath(PINCODECOLLAGE));
-        common.click(PINCODECOLLAGE);
-        common.pause(1);
-        common.downKeyAndEnter();
+        common.fillBothAddress();
 
         common.logPrint("Step:: Click on Save button");
         common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
         common.click(SAVEBUTTON);
     }
 
-    public void addSocialActivityDetailInfo() {
+    public void addSocialActivities(){
 
-        redirectToParticulerAddtionalDetailPage(SOCIALACTIVITY);
+        redirectToParticulerAddtionalDetailPage(CSR);
 
-        String activityType = common.generateRandomChars(10);
-        common.logPrint("Step:: Enter Type of Activity");
-        common.waitUntilElementToBeVisible(By.xpath(TYPEOFACTIVITY));
-        common.type(TYPEOFACTIVITY, activityType);
+        common.logPrint("Step :: Enter CSR Activity");
+        common.waitUntilElementsToBeVisible(By.xpath(CSRACTIVITY));
+        common.type(CSRACTIVITY, "Activity");
 
-        common.logPrint("Step:: Select Event Partner from dropdown");
-        common.waitUntilElementToBeVisible(By.xpath(EVENTPARTNER));
-        common.click(EVENTPARTNER);
+        common.logPrint("Step :: Select NGO");
+        common.waitUntilElementsToBeVisible(By.xpath(CSRNGO));
+        common.click(CSRNGO);
+        common.twoDownKeyAndEnter();
+
+        common.logPrint("Step :: Entering No. of Participants");
+        common.waitUntilElementsToBeVisible(By.xpath(CSRPARTICIPANTS));
+        common.type(CSRPARTICIPANTS, "10");
+
+        common.logPrint("Step :: Entering CSR Venue");
+        common.waitUntilElementsToBeVisible(By.xpath(CSRVENUE));
+        common.type(CSRVENUE, "Ahmedabad");
+
+        common.logPrint("Step :: Entering Amount Spent");
+        common.waitUntilElementsToBeVisible(By.xpath(CSRAMOUNT));
+        common.type(CSRAMOUNT, "10000");
+
+        common.logPrint("Step :: Entering Sponsors");
+        common.waitUntilElementsToBeVisible(By.xpath(CSRSPONSORS));
+        common.type(CSRSPONSORS, "Sponsors");
+
+        common.logPrint("Step :: Entering Remarks");
+        common.waitUntilElementsToBeVisible(By.xpath(CSRREMARKS));
+        common.type(CSRREMARKS, "Remarks");
+
+        common.logPrint("Step :: Entering Desc");
+        common.waitUntilElementsToBeVisible(By.xpath(CSRDESC));
+        common.type(CSRDESC, "Desc");
+
+        common.logPrint("Step :: Entering Address line 1");
+        common.waitUntilElementsToBeVisible(By.xpath(CSRAD1));
+        common.type(CSRAD1, "Ahmedabad");
+
+        common.logPrint("Step :: Entering Address line 2");
+        common.waitUntilElementsToBeVisible(By.xpath(CSRAD2));
+        common.type(CSRAD2, "Ahmedabad");
+
+        common.logPrint("Step :: Entering City");
+        common.waitUntilElementsToBeVisible(By.xpath(CSRCITY));
+        common.type(CSRCITY, "Ahmedabad");
+        common.twoDownKeyAndEnter();
+
+        common.logPrint("Step :: Entering Pincode");
+        common.waitUntilElementsToBeVisible(By.xpath(CSRPINCODE));
+        common.type(CSRPINCODE, "");
+        common.twoDownKeyAndEnter();
+
+        common.logPrint("Step:: Click on Save button");
+        common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
+        common.click(SAVEBUTTON);
+
+    }
+    public void addAssociatedHospital(){
+        redirectToParticulerAddtionalDetailPage(AH);
+
+        common.logPrint("Step :: Enter Associated Hospital");
+        common.waitUntilElementsToBeVisible(By.xpath(AHNAME));
+        common.type(AHNAME, "Associated Hospital");
+
+        common.logPrint("Step :: Enter Hospital City");
+        common.waitUntilElementsToBeVisible(By.xpath(AHCITY));
+        common.type(AHCITY, "Ahmedabad");
+        common.pause(1);
         common.downKeyAndEnter();
 
-        String participants = common.generateRandomNumberString(2);
-        common.logPrint("Step:: Enter Number of Participants");
-        common.waitUntilElementToBeVisible(By.xpath(NOOFPARTICIPANT));
-        common.type(NOOFPARTICIPANT, participants);
+        common.logPrint("Step :: Enter Active Checkbox");
+        common.selectCheckBox(AHACTIVE);
 
-        String venue = common.generateRandomChars(12);
-        common.logPrint("Step:: Enter Activity Venue");
-        common.waitUntilElementToBeVisible(By.xpath(ACTIVITYVENUE));
-        common.type(ACTIVITYVENUE, venue);
+        common.logPrint("Step :: Select Is Recursive");
+        common.waitUntilElementsToBeVisible(By.xpath(AHRECURSIVE));
+        common.type(AHRECURSIVE, "");
+        common.twoDownKeyAndEnter();
 
-        String amountSpent = common.generateRandomNumberString(5);
-        common.logPrint("Step:: Enter Amount Spent");
-        common.waitUntilElementToBeVisible(By.xpath(AMOUNTSPENT));
-        common.type(AMOUNTSPENT, amountSpent);
+        common.logPrint("Step :: Enter Daily Patient count");
+        common.waitUntilElementsToBeVisible(By.xpath(AHHOSPITAL));
+        common.type(AHHOSPITAL, "10");
 
-        String sponsors = common.generateRandomChars(10);
-        common.logPrint("Step:: Enter Sponsors");
-        common.waitUntilElementToBeVisible(By.xpath(SPONSORS));
-        common.type(SPONSORS, sponsors);
+        common.logPrint("Step :: Enter Weekly Patient count");
+        common.waitUntilElementsToBeVisible(By.xpath(AHHOSPITALWEEKLY));
+        common.type(AHHOSPITALWEEKLY, "100");
 
-        String remarks = common.generateRandomChars(20);
-        common.logPrint("Step:: Enter Remarks");
-        common.waitUntilElementToBeVisible(By.xpath(REMARKINPADDActivity));
-        common.type(REMARKINPADDActivity, remarks);
+        common.logPrint("Step :: Enter Monthly Patient count");
+        common.waitUntilElementsToBeVisible(By.xpath(AHHOSPITAMONTHLY));
+        common.type(AHHOSPITAMONTHLY, "1000");
 
-        String description = common.generateRandomChars(30);
-        common.logPrint("Step:: Enter Description");
-        common.waitUntilElementToBeVisible(By.xpath(DECRIPTIONINP));
-        common.type(DECRIPTIONINP, description);
+        common.logPrint("Step :: Enter Address Line 1");
+        common.waitUntilElementsToBeVisible(By.xpath(AHADDRESS1));
+        common.type(AHADDRESS1, "Ahmedabad");
 
-        String city = "Surat";
-        common.logPrint("Step:: Enter City");
-        common.waitUntilElementToBeVisible(By.xpath(CITYADDRESS));
-        common.type(CITYADDRESS, city);
+        common.logPrint("Step :: Enter Address Line 2");
+        common.waitUntilElementsToBeVisible(By.xpath(AHADDRESS2));
+        common.type(AHADDRESS2, "Ahmedabad");
+
+        common.logPrint("Step :: Enter City");
+        common.waitUntilElementsToBeVisible(By.xpath(AHCITYD));
+        common.type(AHCITYD, "Ahmedabad");
         common.downKeyAndEnter();
 
-        common.logPrint("Step:: Select Pincode from dropdown");
-        common.waitUntilElementToBeVisible(By.xpath(PINCODEDRP));
-        common.click(PINCODEDRP);
+        common.logPrint("Step :: Enter Pincode");
+        common.waitUntilElementsToBeVisible(By.xpath(AHPINCODE));
+        common.type(AHPINCODE, "");
+        common.twoDownKeyAndEnter();
+
+        common.logPrint("Step:: Click on Save button");
+        common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
+        common.click(SAVEBUTTON);
+
+    }
+    public void addPatientsReferTo(){
+        redirectToParticulerAddtionalDetailPage(PRT);
+
+        String name = common.fakeName();
+        common.logPrint("Step :: Enter Name");
+        common.waitUntilElementsToBeVisible(By.xpath(PRTDRNAME));
+        common.type(PRTDRNAME, name);
+
+        common.logPrint("Step :: PRT Speciality");
+        common.waitUntilElementsToBeVisible(By.xpath(PRTSPECIALITY));
+        common.type(PRTSPECIALITY, "");
+        common.twoDownKeyAndEnter();
+
+        common.logPrint("Step :: Enter Hospital name");
+        common.waitUntilElementsToBeVisible(By.xpath(PRTDRNAME));
+        common.type(PRTDRNAME, name);
+
+        common.logPrint("Step :: Enter Hospital name");
+        common.waitUntilElementsToBeVisible(By.xpath(PRTHOSPITALNAME));
+        common.type(PRTHOSPITALNAME, name);
+
+        common.logPrint("Step :: PRT Priority");
+        common.waitUntilElementsToBeVisible(By.xpath(PRTPRIORITY));
+        common.type(PRTPRIORITY, "");
+        common.twoDownKeyAndEnter();
+
+        common.logPrint("Step :: PRT Patient Name");
+        common.waitUntilElementsToBeVisible(By.xpath(PRTPATIENTNAME));
+        common.type(PRTPATIENTNAME, name);
+
+        common.logPrint("Step :: PRT Mobile");
+        common.waitUntilElementsToBeVisible(By.xpath(PRTMOBILE));
+        common.type(PRTMOBILE, "9871727272");
+
+        common.logPrint("Step :: PRT Date");
+        common.waitUntilElementsToBeVisible(By.xpath(PRTDATE));
+        common.type(PRTDATE, "27-06-2025");
+
+        common.logPrint("Step :: PRT Address 1");
+        common.waitUntilElementsToBeVisible(By.xpath(PRTAD1));
+        common.type(PRTAD1, "Ahmedabad");
+
+        common.logPrint("Step :: PRT Address 1");
+        common.waitUntilElementsToBeVisible(By.xpath(PRTAD2));
+        common.type(PRTAD2, "Ahmedabad");
+
+        common.logPrint("Step :: PRT City");
+        common.waitUntilElementsToBeVisible(By.xpath(PRTCITY));
+        common.type(PRTCITY, "Ahmedabad");
         common.downKeyAndEnter();
+
+        common.logPrint("Step :: PRT Pincode");
+        common.waitUntilElementsToBeVisible(By.xpath(PRTPINCODE));
+        common.type(PRTPINCODE, "");
+        common.twoDownKeyAndEnter();
+
+        common.logPrint("Step:: Click on Save button");
+        common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
+        common.click(SAVEBUTTON);
+
+    }
+    public void addPatientRefSource(){
+        redirectToParticulerAddtionalDetailPage(PRS);
+
+        String name = common.fakeName();
+        common.logPrint("Step :: Enter Name");
+        common.waitUntilElementsToBeVisible(By.xpath(PRSNAME));
+        common.type(PRSNAME, name);
+
+        common.logPrint("Step :: PRS Speciality");
+        common.waitUntilElementsToBeVisible(By.xpath(PRSSPECIALITY));
+        common.type(PRSSPECIALITY, "");
+        common.twoDownKeyAndEnter();
+
+        common.logPrint("Step :: PRS Speciality");
+        common.waitUntilElementsToBeVisible(By.xpath(PRSHOSPITAL));
+        common.type(PRSHOSPITAL, "Name");
+
+        common.logPrint("Step :: PRS Priority");
+        common.waitUntilElementsToBeVisible(By.xpath(PRSPRIORITY));
+        common.type(PRSPRIORITY, "");
+        common.twoDownKeyAndEnter();
+
+        common.logPrint("Step :: Enter Patient Name");
+        common.waitUntilElementsToBeVisible(By.xpath(PRSPATIENTNAME));
+        common.type(PRSPATIENTNAME, name);
+
+        common.logPrint("Step :: Enter PRS Mobile");
+        common.waitUntilElementsToBeVisible(By.xpath(PRSMOBILE));
+        common.type(PRSMOBILE, "1231231231");
+
+        common.logPrint("Step :: Enter Date");
+        common.waitUntilElementsToBeVisible(By.xpath(PRSREFERDATE));
+        common.type(PRSREFERDATE, common.generateCurDate());
+
+        common.logPrint("Step :: Enter PRS Address");
+        common.waitUntilElementsToBeVisible(By.xpath(PRSAD1));
+        common.type(PRSAD1, "Ahmedabad");
+
+        common.logPrint("Step :: Enter PRS Address");
+        common.waitUntilElementsToBeVisible(By.xpath(PRSAD2));
+        common.type(PRSAD2, "Ahmedabad");
+
+        common.logPrint("Step :: PRS City");
+        common.waitUntilElementsToBeVisible(By.xpath(PRSCITY));
+        common.type(PRSCITY, "Ahmedabad");
+        common.downKeyAndEnter();
+
+        common.logPrint("Step :: PRS Pincode");
+        common.waitUntilElementsToBeVisible(By.xpath(PRSPINCODE));
+        common.type(PRSPINCODE, "");
+        common.twoDownKeyAndEnter();
 
         common.logPrint("Step:: Click on Save button");
         common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
         common.click(SAVEBUTTON);
     }
+    public void addConsultingFess(){
+        redirectToParticulerAddtionalDetailPage(CFC);
+
+        common.logPrint("Step :: CFC Type");
+        common.waitUntilElementsToBeVisible(By.xpath(CFCTYPE));
+        common.type(CFCTYPE, "");
+        common.twoDownKeyAndEnter();
+
+        common.logPrint("Step :: CFC Amount");
+        common.waitUntilElementsToBeVisible(By.xpath(CFCAMOUNT));
+        common.type(CFCAMOUNT, "1000");
+
+        common.logPrint("Step :: Enter Start Date");
+        common.waitUntilElementsToBeVisible(By.xpath(CFCSDATE));
+        common.type(CFCSDATE, common.generateCurDate());
+
+        common.logPrint("Step :: Enter End Date");
+        common.waitUntilElementsToBeVisible(By.xpath(CFCEDATE));
+        common.type(CFCEDATE, common.generateCurDate());
+
+        common.logPrint("Step :: Entering CFC Duration");
+        common.waitUntilElementsToBeVisible(By.xpath(CFCDURATION));
+        common.type(CFCDURATION, "Name");
+
+        common.logPrint("Step :: Entering CFC Current Amount");
+        common.waitUntilElementsToBeVisible(By.xpath(CFCAMOUNTS));
+        common.type(CFCAMOUNTS, "Name");
+
+        common.logPrint("Step:: Click on Save button");
+        common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
+        common.click(SAVEBUTTON);
+    }
+    public void addConsultingFessMR(){
+
+        redirectToParticulerAddtionalDetailPage(CFM);
+
+        common.logPrint("Step :: CFM Type");
+        common.waitUntilElementsToBeVisible(By.xpath(CFMTYPE));
+        common.type(CFMTYPE, "");
+        common.twoDownKeyAndEnter();
+
+        common.logPrint("Step :: Entering CFM Current Amount");
+        common.waitUntilElementsToBeVisible(By.xpath(CFMAMOUNT));
+        common.type(CFMAMOUNT, "1000");
+
+        common.logPrint("Step :: Entering CFM Valid Upto");
+        common.waitUntilElementsToBeVisible(By.xpath(CFMVALIDUPTO));
+        common.type(CFMVALIDUPTO, "30");
+
+        common.logPrint("Step:: Click on Save button");
+        common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
+        common.click(SAVEBUTTON);
 
 
-
+    }
 
 
 
