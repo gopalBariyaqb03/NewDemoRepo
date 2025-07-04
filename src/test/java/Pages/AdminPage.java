@@ -8,6 +8,8 @@ import org.openqa.selenium.WebElement;
 
 public class AdminPage extends Locators {
     Common common = new Common(driver);
+    //jhghcjgfcjbhjjj
+
 
 
     public AdminPage(WebDriver driver) {
