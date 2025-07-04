@@ -73,7 +73,6 @@ public class AdminPage extends Locators {
         common.click(DELETEAPPROVALSTOCKIEST);
     }
 
-
     public void verifyValidationMessageForDoctorCreationWithDirector(){
 
         common.logPrint("Verify mandatory fields for the doctor creation page");
@@ -810,7 +809,6 @@ public class AdminPage extends Locators {
 
     }
 
-
     public void verifyDoctorCreationFieldAndLabelsForLeadEntity(){
 
         common.logPrint("Step:: Click on the admin panel menu");
@@ -1119,7 +1117,6 @@ public class AdminPage extends Locators {
             common.click(BACKBTN);
         }
     }
-
 
     public void verifyChemistCreationFieldAndLabelsForLeadEntity(){
 
@@ -3160,7 +3157,6 @@ public class AdminPage extends Locators {
         return StockistName;
     }
 
-
     public void verifyStockiestApprovedForTheAsmUser(String Stockiest){
 
         loginWithASMCredential();
@@ -3188,7 +3184,6 @@ public class AdminPage extends Locators {
         verifyStockiestIsCreatedIsShowingInTheTableAndItStatusIsApproval(Stockiest);
     }
 
-
     public String[] updateTheStockiest(String stockiestName){
 
         redirectsToStockiestPage();
@@ -3204,7 +3199,7 @@ public class AdminPage extends Locators {
         common.waitUntilElementToBeVisible(By.xpath(EDITBTN));
         common.click(EDITBTN);
 
-        String StockistName = common.GenerateRandomName();
+        String StockistName = common.fakeName();
         common.logPrint("Step:: Enter Stockist name");
         common.waitUntilElementsToBeVisible(By.xpath(STOCKISTNAME)).clear();
         common.type(STOCKISTNAME, StockistName);
@@ -3486,6 +3481,7 @@ public class AdminPage extends Locators {
         common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
         common.click(SAVEBUTTON);
     }
+
     public void addCollegeMateandAlumniDetails(){
 
         redirectToParticulerAddtionalDetailPage(COLLEGEALUMNIDETAILS);
@@ -3587,6 +3583,7 @@ public class AdminPage extends Locators {
         common.click(SAVEBUTTON);
 
     }
+
     public void addAssociatedHospital(){
         redirectToParticulerAddtionalDetailPage(AH);
 
@@ -3643,6 +3640,7 @@ public class AdminPage extends Locators {
         common.click(SAVEBUTTON);
 
     }
+
     public void addPatientsReferTo(){
         redirectToParticulerAddtionalDetailPage(PRT);
 
@@ -3704,6 +3702,7 @@ public class AdminPage extends Locators {
         common.click(SAVEBUTTON);
 
     }
+
     public void addPatientRefSource(){
         redirectToParticulerAddtionalDetailPage(PRS);
 
@@ -3760,6 +3759,7 @@ public class AdminPage extends Locators {
         common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
         common.click(SAVEBUTTON);
     }
+
     public void addConsultingFess(){
         redirectToParticulerAddtionalDetailPage(CFC);
 
@@ -3792,6 +3792,7 @@ public class AdminPage extends Locators {
         common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
         common.click(SAVEBUTTON);
     }
+
     public void addConsultingFessMR(){
 
         redirectToParticulerAddtionalDetailPage(CFM);
@@ -3815,6 +3816,7 @@ public class AdminPage extends Locators {
 
 
     }
+
 
 
 
