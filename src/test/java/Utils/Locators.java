@@ -179,33 +179,110 @@ public class Locators extends BasePage {
     public static String SPECIALDAYDOBINP = "//input[@name='FamilyAndFriendSpeicialDay']";
     public static String SPECIALDAYDOBINPAdd = "//input[@name='FamilyAndFriendSpeicialDate']";
     public static String REMARKINP = "//textarea[@name='Remarks']";
-    public static String COLLAGEMATE = "//span[contains(.,'College Mate / Alumni Details')]";
-    public static String CLGMATENAME = "//input[@name='ColleagueName']";
-    public static String CLGDATEOFBIRTH = "//input[@name='ColleagueDateOfBirth']";
-    public static String SPECIALITYDRP = "//label[@id='autocomplete-dropdown-1-label']/following-sibling::div//button";
-    public static String HOPSPITALNAME = "//input[@name='ColleagueHospitalName']";
-    public static String COLLAGENAME = "//input[@name='ColleagueCollegeName']";
-    public static String PASSOUTYEARCLG = "//input[@name='ColleaguePassOutYear']";
-    public static String REMARK = "//textarea[@name='Remarks']";
-    public static String CITYHOSPITAL = "(//label[.='City *']/following-sibling::div//input)[1]";
-    public static String CITYCOLLAGE = "(//label[.='City *']/following-sibling::div//input)[2]";
-    public static String PINCODEHOSPITAL = "(//label[.='Pincode *']/following-sibling::div//button)[1]";
-    public static String PINCODECOLLAGE = "(//label[.='Pincode *']/following-sibling::div//button)[3]";
-    public static String SOCIALACTIVITY = "//span[.='Social Activities / CSR']";
-    public static String TYPEOFACTIVITY = "//input[@name='TypeOfSocialActivity']";
-    public static String EVENTPARTNER = "//label[.='Event Partner (Trust / NGO / Hospital etc) *']/following-sibling::div//button";
-    public static String NOOFPARTICIPANT = "//input[@name='SocialActivityNoOfParticipants']";
-    public static String ACTIVITYVENUE = "//input[@name='SocialActivityVenue']";
-    public static String AMOUNTSPENT = "//input[@name='SocialActivityAmountSpent']";
-    public static String SPONSORS = "//input[@name='SocialActivitySponsors']";
-    public static String REMARKINPADDActivity = "//input[@name='Remarks']";
-    public static String DECRIPTIONINP = "//input[@name='SocialActivityDescription']";
-    public static String CITYADDRESS = "//label[contains(.,'City')]/following-sibling::div//input";
-    public static String PINCODEDRP = "//label[.='Pincode *']/following-sibling::div//button";
-//    public static String  = "";
-//    public static String  = "";
-//    public static String  = "";
 
+    //ADDITIONAL DETAILS -> ALUMNI
+    public static String COLLEGEALUMNIDETAILS = "//p[normalize-space()='College Mate / Alumni Details']";
+    public static String COLLEAGUENAME = "//input[@name='ColleagueName']";
+    public static String COLLEAGUEDATEOFBIRTH = "//input[@name='ColleagueDateOfBirth']";
+    public static String COLLEAGUESPECIALITY = "(//input[@role='combobox'])[1]";
+    public static String COLLEAGUEHOSPITAL = "//input[@name='ColleagueHospitalName']";
+    public static String COLLEAGUECOLLEGE = "//input[@name='ColleagueCollegeName']";
+    public static String COLLEAGUEPASSOUTYEAR = "//input[@name='ColleaguePassOutYear']";
+    public static String REMARKS = "(//textarea[@name='Remarks'])[1]";
+    public static String RADDRESSLINE1 = "//input[@name='ColleagueHospitalAddressLine1']";
+    public static String RADDRESSLINE2 = "//input[@name='ColleagueHospitalAddressLine2']";
+    public static String RCITY = "(//input[@role='combobox'])[2]";
+    public static String RPINCODE = "(//input[@role='combobox'])[3]";
+    public static String HADDRESSLINE1 = "//input[@name='ColleagueCollegeAddressLine1']";
+    public static String HADDRESSLINE2 = "//input[@name='ColleagueCollegeAddressLine2']";
+    public static String HCITY = "(//input[@role='combobox'])[4]";
+    public static String HPINCODE = "(//input[@role='combobox'])[5]";
+
+    //ADDITIONAL DETAILS -> SOCIAL ACTIVITIES
+    public static String CSR = "//p[normalize-space()='Social Activities / CSR']";
+    public static String CSRACTIVITY = "//input[@name='TypeOfSocialActivity']";
+    public static String CSRNGO = "(//input[@role='combobox'])[1]";
+    public static String CSRPARTICIPANTS = "//input[@name='SocialActivityNoOfParticipants']";
+    public static String CSRVENUE = "//input[@name='SocialActivityVenue']";
+    public static String CSRAMOUNT = "//input[@name='SocialActivityAmountSpent']";
+    public static String CSRSPONSORS = "//input[@name='SocialActivitySponsors']";
+    public static String CSRREMARKS = "//input[@name='Remarks']";
+    public static String CSRDESC = "//input[@name='SocialActivityDescription']";
+    public static String CSRAD1 = "//input[@name='SocialActivityAddressLine1']";
+    public static String CSRAD2 = "//input[@name='SocialActivityAddressLine2']";
+    public static String CSRCITY = "(//input[@role='combobox'])[2]";
+    public static String CSRPINCODE = "(//input[@role='combobox'])[3]";
+
+    //ADDITIONAL DETAILS -> ASSOCIATED HOSPITAL
+    public static String AH = "//p[normalize-space()='Associated Hospital']";
+    public static String AHNAME = "//input[@name='AssociatedHospitalName']";
+    public static String AHCITY = "(//input[@role='combobox'])[1]";
+    public static String AHACTIVE = "//input[@name='AssociatedHospitalActive']";
+    public static String AHRECURSIVE = "(//input[@id='autocomplete-dropdown-7'])[2]";
+    public static String AHHOSPITAL = "//input[@name='AssociatedHospitalDaily']";
+    public static String AHHOSPITALWEEKLY = "//input[@name='AssociatedHospitalWeekly']";
+    public static String AHHOSPITAMONTHLY = "//input[@name='AssociatedHospitalMonthly']";
+    public static String AHADDRESS1 = "//input[@name='AssociatedHospitalAddressLine1']";
+    public static String AHADDRESS2 = "//input[@name='AssociatedHospitalAddressLine2']";
+    public static String AHCITYD = "(//input[@role='combobox'])[3]";
+    public static String AHPINCODE = "(//input[@role='combobox'])[4]";
+
+    //ADDITIONAL DETAILS -> PATIENT REFER TO
+    public static String PRT = "//p[normalize-space()='Patients Refer TO']";
+    public static String PRTDRNAME = "//input[@name='PatientReferToDoctorName']";
+    public static String PRTSPECIALITY = "(//input[@role='combobox'])[1]";
+    public static String PRTHOSPITALNAME = "//input[@name='PatientReferToHospitalName']";
+    public static String PRTPRIORITY = "(//input[@role='combobox'])[2]";
+    public static String PRTPATIENTNAME = "//input[@name='PatientName']";
+    public static String PRTMOBILE = "//input[@name='Mobile']";
+    public static String PRTDATE = "//input[@name='ReferOnDate']";
+    public static String PRTAD1 = "//input[@name='PatientReferToHospitalAddressLine1']";
+    public static String PRTAD2 = "//input[@name='PatientReferToHospitalAddressLine2']";
+    public static String PRTCITY = "(//input[@role='combobox'])[3]";
+    public static String PRTPINCODE = "(//input[@role='combobox'])[4]";
+
+    //ADDITIONAL DETAILS -> PATIENT REFERENCE SOURCE
+    public static String PRS = "//p[normalize-space()='Patient References Source']";
+    public static String PRSNAME = "//input[@name='PatientReferencesSourceDoctorName']";
+    public static String PRSSPECIALITY = "(//input[@role='combobox'])[1]";
+    public static String PRSHOSPITAL = "//input[@name='PatientReferencesSourceHospitalName']";
+    public static String PRSPRIORITY = "(//input[@role='combobox'])[2]";
+    public static String PRSPATIENTNAME = "//input[@name='PatientName']";
+    public static String PRSMOBILE = "//input[@name='Mobile']";
+    public static String PRSREFERDATE = "//input[@name='ReferOnDate']";
+    public static String PRSAD1 = "//input[@name='PatientReferencesSourceHospitalAddressLine1']";
+    public static String PRSAD2 = "//input[@name='PatientReferencesSourceHospitalAddressLine2']";
+    public static String PRSCITY = "(//input[@role='combobox'])[3]";
+    public static String PRSPINCODE = "(//input[@role='combobox'])[4]";
+
+    //ADDITIONAL DETAILS -> CONSULTING FEES CLINIC
+    public static String CFC = "//p[normalize-space()='Consulting Fees (Clinic)']";
+    public static String CFCTYPE = "//input[@role='combobox']";
+    public static String CFCAMOUNT = "//input[@name='ConsultingFeesForPatienAmount']";
+    public static String CFCSDATE = "//input[@name='ConsultingFeesForPatienStartDate']";
+    public static String CFCEDATE = "//input[@name='ConsultingFeesForPatienEndDate']";
+    public static String CFCDURATION = "//input[@name='ConsultingFeesForPatienDuration']";
+    public static String CFCAMOUNTS = "//input[@name='ConsultingFeesForPatienCurrentAmount']";
+
+    //ADDITIONAL DETAILS -> CONSULTING FEES MR
+    public static String CFM = "//p[normalize-space()='Consulting Fees (MR)']";
+    public static String CFMTYPE = "//input[@role='combobox']";
+    public static String CFMAMOUNT = "//input[@name='ConsultingFeesForMramount']";
+    public static String CFMVALIDUPTO = "//input[@name='ConsultingFeesForMrvalidUpto']";
+
+    //ADDITIONAL DETAILS -> MEDICAL ADVISORY/ SPEAKER
+    public static String MED= "//p[normalize-space()='Medical Advisory / Speaker']";
+    public static String MEDPURPOSE = "//input[@name='MedicalAdvisoryOrSpeakerPurpose']";
+    public static String MEDAMOUNT = "//input[@name='MedicalAdvisoryOrSpeakerAmount']";
+    public static String MEDCOMPANY = "//input[@name='MedicalAdvisoryOrSpeakerCompanyName']";
+    public static String MEDSDATE = "(//input[@name='MedicalAdvisoryOrSpeakerStartDate'])[1]";
+    public static String MEDEDATE = "(//input[@name='MedicalAdvisoryOrSpeakerStartDate'])[2]";
+    public static String MEDBUSINESS = "//input[@name='MedicalAdvisoryOrSpeakerBussinessValue']";
+    public static String MEDREMARKS = "//textarea[@name='Remarks']";
+    public static String MEDAD1 = "//input[@name='MedicalAdvisoryOrSpeakerCompanyAddressLine1']";
+    public static String MEDAD2 = "//input[@name='MedicalAdvisoryOrSpeakerCompanyAddressLine2']";
+    public static String CITY = "(//input[@role='combobox'])[1]";
+    public static String PINCODE = "(//input[@role='combobox'])[2]";
 
 
 
@@ -700,6 +777,133 @@ public class Locators extends BasePage {
 
     //Xpath for Daily tour plan
     public static String DAILYTOURPLANMENU = "//div[contains(text(),'Daily Tour plan')]";
+    //xpath for inventory
+    public static String INVENTORYMENU = "//a[@href='/inventory']";
+
+    //xpath for inventory Master
+    public static String INVENTORYMASTERMENU = "//div[contains(text(),'Master')]";
+
+    //xpath for inventory Master company
+    public static String INVENTORYMASTERCOMPANY = "//div[contains(text(),'Company')]";
+    public static String COMPANYNAME = "//input[@name='Name']";
+    public static String COMPANYGST = "//input[@name='GstNo']";
+    public static String COMPANYCURRENCY = "(//input[@role='combobox'])[1]";
+    public static String COMPANYFSSAI = "//input[@name='FssAi']";
+    public static String COMPANYDLNO1 = "//input[@name='DlNo1']";
+    public static String COMPANYDLNO2 = "//input[@name='DlNo2']";
+    public static String COMPANYNRX = "//input[@name='Nrx']";
+    public static String COMPANYDATE = "//input[@name='FssAiExpiryDate']";
+    public static String COMPANYDLNO1EXPDATE = "//input[@name='DlNo1ExpiryDate']";
+    public static String COMPANYDLNO2EXPDATE = "//input[@name='DlNo2ExpiryDate']";
+    public static String COMPANYNRXDATE = "//input[@name='NrxExpiryDate']";
+    public static String COMPANYADDRESS1 = "//input[@name='AddressLine1']";
+    public static String COMPANYAREA = "//input[@name='AddressLine2']";
+    public static String COMPANYCITY = "(//input[@role='combobox'])[2]";
+    public static String COMPANYPINCODE = "(//input[@role='combobox'])[3]";
+    public static String COMPANYSEARCH = "//input[@placeholder='Search']";
+    public static String COMPANYSEARCH_CLICK = "form[class='MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1gh1qyt'] button[aria-label='search']";
+
+    //xpath for inventory Master Currency
+    public static String INVENTORYMASTERCURRENCY = "//div[contains(text(),'Currency')]";
+    public static String CURRENCYNAME = "//input[@name='Name']";
+    public static String CURRENCYSYMBOL = "//input[@name='Symbol']";
+    public static String CURRENCYFORMAT = "//input[@name='Format']";
+    public static String CURRENCYSEARCH = "//input[@placeholder='Search']";
+
+    //xpath for inventory master Customer
+    public static String INVENTORYMASTERCUSTOMER = "//div[contains(text(),'Customer')]";
+    public static String CUSTOMERNAME = "//input[@name='Name']";
+    public static String CUSTOMERGRNUMBER = "//input[@name='GRNumber']";
+    public static String CUSTOMERGSTNUMBER = "//input[@name='Gstno']";
+    public static String CUSTOMERCOMPANY = "//label[contains(., 'Company')]/following-sibling::div//input";
+    public static String CUSTOMERDISCOUNT = "//input[@name='Discount']";
+    public static String CUSTOMERHQ = "//label[contains(., 'HQ')]/following-sibling::div//input";
+
+    //xpath for inventory master HSN
+    public static String INVENTORYHSNMENU = "//div[contains(text(),'HSN')]";
+    public static String SGST= "//input[@name='Sgst']";
+    public static String CGST= "//input[@name='Cgst']";
+    public static String IGST= "//input[@name='Igst']";
+    public static String HSNTYPE= "//input[@role='combobox']";
+    public static String UQC= "//input[@name='Uqcunit']";
+
+    //xpath for inventory master payment method
+    public static String INVENTORYPAYMENTMETHODMENU = "//div[contains(text(),'Payment Method')]";
+
+    //xpath for inventory master warehouse
+    public static String INVENTORYWAREHOUSE = "//div[contains(text(),'Warehouse')]";
+    public static String INVENTORYCOMPANY = "//input[@role='combobox']";
+
+    //xpath for inventory master vendor
+    public static String INVENTORYVENDORMENU = "//div[contains(text(),'Vendor')]";
+    public static String VENDORNAME = "//input[@name='VendorName']";
+    public static String GSTNUMBER = "//input[@name='Gstno']";
+    public static String COMPANY = "(//input[@role='combobox'])[1]";
+    public static String DLNO1 = "//input[@name='DlNo1']";
+    public static String DLNO2 = "//input[@name='DlNo2']";
+    public static String NRX = "//input[@name='Nrx']";
+    public static String FSSAIEXPIRYDATE = "//input[@name='FssAiExpiryDate']";
+    public static String DLNO1EXPIRYDATE = "//input[@name='DlNo1ExpiryDate']";
+    public static String DLNO2EXPIRYDATE = "//input[@name='DlNo2ExpiryDate']";
+    public static String NRXEXPIRYDATE = "//input[@name='NrxExpiryDate']";
+    public static String FSSAI = "//input[@name='FssAi']";
+    public static String PHONE = "//input[@name='Phone']";
+    public static String DISCOUNT = "//input[@name='Discount']";
+
+    //xpath for inventory master gift
+    public static String INVENTORYGIFT = "//div[contains(text(),'Gift')]";
+    public static String GIFTNAME = "//input[@name='GiftName']";
+    public static String GIFTPRICE = "//input[@name='GiftPrice']";
+    public static String DIVISION = "//input[@role='combobox']";
+    public static String DOCTORGIFT = "//span[normalize-space()='Doctor Gift']";
+    public static String CHEMISTGIFT = "//span[normalize-space()='Chemist Gift']";
+    public static String STOCKIESTGIFT = "//span[normalize-space()='Stockist Gift']";
+    public static String EMPLOYEEGIFT = "//span[normalize-space()='Employee Gift']";
+    public static String SELECTCHECKBOX = "(//input[@name='select_row'])[1]";
+    public static String MREMARK = "//textarea[@name='Remark']";
+
+    //xpath for inventory purchase invoice
+    public static String PURCHASINVOICE = "//div[contains(text(),'Purchase Invoice')]";
+    public static String INITIALVALUE = "//tbody[@class='MuiTableBody-root css-y6j1my']/tr[@class='MuiTableRow-root css-16xx7dv'][1]/td[5]";
+    public static String CURRENTVALUE = "//tbody[@class='MuiTableBody-root css-y6j1my']/tr[@class='MuiTableRow-root css-16xx7dv'][1]/td[5]";
+    public static String VENDOR = "(//input[@role='combobox'])[1]";
+    public static String WAREHOUSE = "(//input[@role='combobox'])[2]";
+    public static String BILLNO = "//input[@name='BillNo']";
+    public static String BILLDATE = "//input[@name='BillDate']";
+    public static String EXTRACHARGES = "//input[@name='ExtraCharges']";
+    public static String TOTALDISCOUNT = "(//input[@name='Discount'])[1]";
+    public static String NOTE = "//textarea[@name='Note']";
+    public static String PRODUCT = "(//input[@role='combobox'])[3]";
+    public static String HSN = "(//input[@role='combobox'])[4]";
+    public static String BATCH_NO = "//input[@name='BatchNo']";
+    public static String PURCHASEPRICE = "//input[@name='PurchasePrice']";
+    public static String QUANTITY = "//input[@name='Quantity']";
+    public static String SAMPLEQUANTITY = "//input[@name='SampleQuantity']";
+    public static String DISCOUNT2 = "(//input[@name='Discount'])[2]";
+    public static String MFGDATE = "//input[@name='ManufactureDate']";
+    public static String EXPDATE = "//input[@name='ExpiryDate']";
+    public static String MRP = "//input[@name='MRP']";
+    public static String ADD = "(//button[@type='button'][normalize-space()='Add'])[1]";
+    public static String PAYMENTMETHOD = "(//input[@role='combobox'])[5]";
+    public static String AMOUNT = "//input[@name='Amount']";
+    public static String NOTES = "//textarea[@name='Notes']";
+    public static String ADD2 = "(//button[@type='button'][normalize-space()='Add'])[2]";
+    public static String SAVE = "//button[normalize-space()='Save']";
+
+    //xpath for purchase return
+    public static String PURCHASERETURN = "//tbody[@class='MuiTableBody-root css-y6j1my']/tr[@class='MuiTableRow-root css-16xx7dv'][1]/td[16]";
+    public static String RETURNTYPE = "(//input[@role='combobox'])[1]";
+    public static String STOCKTYPE = "(//input[@role='combobox'])[2]";
+    public static String PREXTRACHARGES = "//input[@name='ExtraCharges']";
+    public static String PRDISCOUNT = "//input[@name='Discount']";
+    public static String PRNOTE = "//textarea[@name='Note']";
+    public static String PREDIT = "//img[@alt='Edit']";
+    public static String PRQTY = "//input[@name='Quantity']";
+    public static String PRPRICE = "//input[@name='PurchasePrice']";
+    public static String PRDISCOUNT2 = "(//input[@name='Discount'])[2]";
+    public static String ACCEPT = "//img[@alt='Update']";
+    public static String CANCEL = "//img[@alt='Cancle']";
+
 
 
 }
