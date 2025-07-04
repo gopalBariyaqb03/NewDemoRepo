@@ -6,6 +6,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.awt.*;
+
 public class AdminPage extends Locators {
     Common common = new Common(driver);
 
@@ -3816,6 +3818,91 @@ public class AdminPage extends Locators {
 
 
     }
+
+    public void addMedicalAdvisory(){
+        redirectToParticulerAddtionalDetailPage(MEDICALADVISORYSPEAKER);
+
+        common.logPrint("Step :: Entering MPurpose");
+        common.waitUntilElementsToBeVisible(By.xpath(MPURPOSE));
+        common.type(MPURPOSE, "ADVICE");
+
+        common.logPrint("Step :: Entering MAmount");
+        common.waitUntilElementsToBeVisible(By.xpath(MAMOUNT));
+        common.type(MAMOUNT, "100");
+
+        common.logPrint("Step :: Entering MCompany");
+        common.waitUntilElementsToBeVisible(By.xpath(MCOMPANY));
+        common.type(MCOMPANY, "Test");
+
+        common.logPrint("Step :: Entering MStart Date");
+        common.waitUntilElementsToBeVisible(By.xpath(MSTARTDATE));
+        common.type(MSTARTDATE, "04-07-2025");
+
+        common.logPrint("Step :: Entering MEnd Date");
+        common.waitUntilElementsToBeVisible(By.xpath(MENDDATE));
+        common.type(MENDDATE, "04-07-2025");
+
+        common.logPrint("Step :: Entering MBusiness");
+        common.waitUntilElementsToBeVisible(By.xpath(MBUSINESS));
+        common.type(MBUSINESS, "Test");
+
+        common.logPrint("Step :: Entering MRemarks");
+        common.waitUntilElementsToBeVisible(By.xpath(MREMARKS));
+        common.type(MREMARKS, "Remarks");
+
+        common.logPrint("Step :: Entering MAddress");
+        common.waitUntilElementsToBeVisible(By.xpath(MADDRESS));
+        common.type(MADDRESS, "Ahmedabad");
+
+        common.logPrint("Step :: Entering MAddress");
+        common.waitUntilElementsToBeVisible(By.xpath(MADDRESS2));
+        common.type(MADDRESS2, "Ahmedabad");
+
+        common.logPrint("Step :: Entering MCity");
+        common.waitUntilElementsToBeVisible(By.xpath(MCITY));
+        common.type(MCITY, "Ahmedabad");
+        common.twoDownKeyAndEnter();
+
+        common.logPrint("Step :: Entering MPincode");
+        common.waitUntilElementsToBeVisible(By.xpath(MPINCODE));
+        common.type(MPINCODE, "");
+        common.twoDownKeyAndEnter();
+
+        common.logPrint("Step:: Click on Save button");
+        common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
+        common.click(SAVEBUTTON);
+
+    }
+
+    public void addAchievements() {
+
+        redirectToParticulerAddtionalDetailPage(ACHIEVEMENTS);
+
+        common.logPrint("Step :: Selecting Achievements");
+        common.waitUntilElementsToBeVisible(By.xpath(ACHIEVEMENTSADD));
+        common.type(ACHIEVEMENTSADD, "");
+        common.twoDownKeyAndEnter();
+
+        common.logPrint("Step :: Selecting Date");
+        common.waitUntilElementsToBeVisible(By.xpath(ACHIEVEMENTSDATE));
+        common.type(ACHIEVEMENTSDATE, "04-07-2025");
+
+        common.logPrint("Step :: Adding Remarks");
+        common.waitUntilElementsToBeVisible(By.xpath(ACHIEVEMENTSREMARKS));
+        common.type(ACHIEVEMENTSREMARKS, " Remarks");
+
+        common.logPrint("Step :: Adding image");
+        WebElement fileInput = driver.findElement(By.xpath("//input[@type='file']"));
+        fileInput.sendKeys("C:\\Users\\Admin\\OneDrive\\Desktop\\Gopal Repo\\NewDemoRepo\\1.JPG");
+
+        common.logPrint("Step:: Click on Save button");
+        common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
+        common.click(SAVEBUTTON);
+
+
+    }
+
+
 
 
 

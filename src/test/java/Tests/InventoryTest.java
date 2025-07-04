@@ -27,6 +27,7 @@ public class InventoryTest extends BasePage {
         inventoryPage.createInventoryGift();
 
 
+
     }
 
     @Test

@@ -6,6 +6,7 @@ import com.github.javafaker.Faker;
 import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 
+import java.awt.*;
 import java.text.ParseException;
 import java.util.Locale;
 
@@ -222,7 +223,9 @@ public class AdminTest extends BasePage {
         //adminPage.addWeekendsAndVacation();
         //adminPage.addFamilyFriendDetailInfo();
         //adminPage.addCollegeMateDetailInfo();
-        adminPage.addSocialActivities();
+        //adminPage.addSocialActivities();
+        //adminPage.addMedicalAdvisory();
+        adminPage.addAchievements();
     }
 
 }
