@@ -261,6 +261,7 @@ public class Locators extends BasePage {
     public static String ADDRESSLINEINP = "//input[@name='AddressLine1']";
     public static String AREALLBL = "//label[.='Area']";
     public static String AREAINPUT = "//input[@name='AddressLine2']";
+    public static String HOSPITALNETABLE = "(//div[@data-field='HospitalName'])[2]";
 
     //Xpath for mandatory field
     public static String DoctorError = "(//p[contains(@class,'MuiFormHelperText-root Mui-error MuiFormHelperText-sizeSmall')])[1]";

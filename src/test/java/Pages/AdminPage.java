@@ -2,9 +2,15 @@ package Pages;
 
 import Utils.Common;
 import Utils.Locators;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class AdminPage extends Locators {
     Common common = new Common(driver);
@@ -41,6 +47,17 @@ public class AdminPage extends Locators {
         common.logPrint("Step:: Click on the Stockiest menu");
         common.waitUntilElementToBeVisible(By.xpath(STOCKISTMENU));
         common.click(STOCKISTMENU);
+    }
+
+    public void redirectToHospitalPage(){
+
+        common.logPrint("Step:: Click on the admin panel menu");
+        common.waitUntilElementToBeVisible(By.xpath(ADMINPANELMENU));
+        common.click(ADMINPANELMENU);
+
+        common.logPrint("Step:: Click on the Hospital menu");
+        common.waitUntilElementToBeVisible(By.xpath(HOSPITALMENU));
+        common.click(HOSPITALMENU);
     }
 
     public void redirectsDeleteDoctorApprovalPage(){
@@ -2675,7 +2692,7 @@ public class AdminPage extends Locators {
 
         common.logPrint("Step:: Click on the save button");
         common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
-        common.click(SAVEBUTTON);
+        common.jsClick(SAVEBUTTON);
 
         common.logPrint("Step:: Check validation is displayed");
         common.assertElementDisplayed(AddedSuccessfully);
@@ -3057,6 +3074,112 @@ public class AdminPage extends Locators {
 
 
         return StockistName;
+    }
+
+    public String createNewHospital(){
+
+        redirectToHospitalPage();
+
+        common.logPrint("Step:: Click on the ADD button");
+        common.waitUntilElementToBeVisible(By.xpath(ADDBTN));
+        common.click(ADDBTN);
+
+        common.logPrint("Step:: Select City");
+        common.waitUntilElementToBeVisible(By.xpath(CITYINPUT));
+        common.type(CITYINPUT, "AHMEDABAD");
+        common.pause(1);
+        common.downKeyAndEnter();
+
+        common.logPrint("Step:: Select Pincode");
+        common.waitUntilElementToBeVisible(By.xpath(PINCODEINPUT));
+        common.click(PINCODEINPUT);
+        common.pause(1);
+        common.downKeyAndEnter();
+
+        String HospitalName = common.generateRandomChars(7);
+        common.logPrint("Step:: Enter Hospital name");
+        common.waitUntilElementsToBeVisible(By.xpath(HOSPITALNAMEINP));
+        common.type(HOSPITALNAMEINP, HospitalName);
+        common.logPrint("Hospital name is: "+ HospitalName);
+
+        common.logPrint("Generate GST number");
+        String gstnum = common.generateRandomNumberString(10);
+
+        common.logPrint("Step:: Enter GST number");
+        common.waitUntilElementToBeVisible(By.xpath(GSTINP));
+        common.type(GSTINP, "AUTOG"+gstnum);
+
+        common.logPrint("Step:: Click on the save button");
+        common.waitUntilElementToBeVisible(SAVEBUTTON);
+        common.click(SAVEBUTTON);
+
+        common.pause(2);
+        common.logPrint("Step:: Check validation is displayed");
+        common.waitUntilElementToBeVisible(AddedSuccessfully);
+        common.assertElementDisplayed(AddedSuccessfully);
+
+        common.logPrint("New stockist is created successfully and name is: "+ HospitalName);
+
+        return HospitalName;
+    }
+
+    public String updateTheHospitalName(String hospitalName){
+
+        redirectToHospitalPage();
+
+        verifyCreatedHospitalIsShowingInTheTable(hospitalName);
+
+        common.logPrint("Step:: Click on the first checkbox");
+        common.pause(2);
+        common.selectCheckBox(FIRSTCHECKBOX);
+
+        common.logPrint("Step:: Click on the edit button");
+        common.waitUntilElementToBeVisible(By.xpath(EDITBTN));
+        common.click(EDITBTN);
+
+        String UpdatedHospitalName = common.generateRandomChars(7);
+
+        common.logPrint("Step:: Enter Hospital name");
+        common.waitUntilElementsToBeVisible(By.xpath(HOSPITALNAMEINP)).clear();
+        common.type(HOSPITALNAMEINP, UpdatedHospitalName);
+        common.logPrint("Hospital name is: "+ UpdatedHospitalName);
+
+        common.logPrint("Step:: Click on the save button");
+        common.waitUntilElementsToBeVisible(By.xpath(SAVEBUTTON));
+        common.click(SAVEBUTTON);
+
+        return UpdatedHospitalName;
+    }
+
+    public void verifyInAllUserHospitalIsSHowingInTable(String name){
+        common.pause(1);
+        loginWithASMCredential();
+        verifyCreatedHospitalIsShowingInTheTable(name);
+        common.pause(1);
+        loginWithRSMCredential();
+        verifyCreatedHospitalIsShowingInTheTable(name);
+        common.pause(1);
+        loginWithDirectorCredential();
+        verifyCreatedHospitalIsShowingInTheTable(name);
+    }
+
+    public void verifyCreatedHospitalIsShowingInTheTable(String hospitalName){
+
+        redirectToHospitalPage();
+
+        common.logPrint("Step:: Search name in the search field");
+        common.waitUntilElementToBeVisible(By.xpath(SEARCHFIELD));
+        common.type(SEARCHFIELD, hospitalName);
+
+        common.logPrint("Step:: Get data from the hospital column");
+        common.waitUntilElementToBeVisible(By.xpath(HOSPITALNETABLE));
+        String getValue = common.getText(HOSPITALNETABLE);
+
+        common.logPrint("Assert hospital name is showing proper");
+        common.assertTwoValuesAreEqual(hospitalName, getValue);
+
+        common.logPrint("Hospital name is matched and showing properly.");
+
     }
 
 
@@ -3479,9 +3602,35 @@ public class AdminPage extends Locators {
         common.click(SAVEBUTTON);
     }
 
+    public void verifyDropdownValueDuplication() {
 
+        common.pause(5);
 
+        List<WebElement> element = driver.findElements(By.xpath("//div[@data-colindex='3']"));
 
+        HashSet<String> doctorName = new HashSet<>();
+        boolean allUnique = true;
+
+       for(WebElement e : element){
+
+           String name = e.getAttribute("title").trim();
+
+           // Log the name
+           common.logPrint(name);
+
+           //Check for duplicate
+           if(!doctorName.add(name)){
+               common.logPrint("Duplicate found: " + name);
+               allUnique = false;
+           }
+       }
+
+        if (allUnique) {
+            common.logPrint("All doctor names are unique.");
+        } else {
+            common.logPrint("Some doctor names are duplicated.");
+        }
+    }
 
 
 }

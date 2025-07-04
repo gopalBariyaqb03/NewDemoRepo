@@ -99,6 +99,42 @@ public class AdminTest extends BasePage {
     }
 
     @Test
+    public void verifyHospitalCreationScenario(){
+        loginWithMRCredential();
+        String hospitalName = adminPage.createNewHospital();
+        common.logPrint("Verify hospital is showing in the ASM account");
+        loginWithASMCredential();
+        adminPage.verifyCreatedHospitalIsShowingInTheTable(hospitalName);
+        common.logPrint("Verify hospital is showing in the RSM account");
+        loginWithRSMCredential();
+        adminPage.verifyCreatedHospitalIsShowingInTheTable(hospitalName);
+        common.logPrint("Verify hospital is showing in the Directors account");
+        loginWithDirectorCredential();
+        adminPage.verifyCreatedHospitalIsShowingInTheTable(hospitalName);
+    }
+
+    @Test
+    public void verifyUpdateHospitalScenario(){
+        loginWithMRCredential();
+        String hospitalName = adminPage.createNewHospital();
+        loginWithASMCredential();
+        adminPage.verifyCreatedHospitalIsShowingInTheTable(hospitalName);
+        loginWithRSMCredential();
+        adminPage.verifyCreatedHospitalIsShowingInTheTable(hospitalName);
+        loginWithDirectorCredential();
+        adminPage.verifyCreatedHospitalIsShowingInTheTable(hospitalName);
+        common.logPrint("Update the Hospital name and check it's update in all the user");
+        String updatedName = adminPage.updateTheHospitalName(hospitalName);
+        adminPage.verifyInAllUserHospitalIsSHowingInTable(updatedName);
+    }
+
+    @Test
+    public void verifyHospitalDeleteScenario(){
+
+
+    }
+
+    @Test
     public void verifyValidationMessageForDoctorWithDirector(){
         //loginWithDirectorCredential();
         //loginWithRSMCredential();
@@ -165,6 +201,13 @@ public class AdminTest extends BasePage {
         //adminPage.addFamilyFriendDetailInfo();
         //adminPage.addCollegeMateDetailInfo();
         adminPage.addSocialActivityDetailInfo();
+    }
+
+    @Test
+    public void verifyDuplicateValueInDropdown(){
+        loginWithDirectorCredential();
+        adminPage.redeirectToDoctorPage();
+        adminPage.verifyDropdownValueDuplication();
     }
 
 }
