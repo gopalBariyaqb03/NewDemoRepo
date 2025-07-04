@@ -284,6 +284,27 @@ public class Locators extends BasePage {
     public static String CITY = "(//input[@role='combobox'])[1]";
     public static String PINCODE = "(//input[@role='combobox'])[2]";
 
+    //ADDITIONAL DETAILS -> MEDICAL ADVISROY
+    public static String MEDICALADVISORYSPEAKER = "//p[normalize-space()='Medical Advisory / Speaker']";
+    public static String MPURPOSE = "//input[@name='MedicalAdvisoryOrSpeakerPurpose']";
+    public static String MAMOUNT = "//input[@name='MedicalAdvisoryOrSpeakerAmount']";
+    public static String MCOMPANY = "//input[@name='MedicalAdvisoryOrSpeakerCompanyName']";
+    public static String MSTARTDATE = "(//input[@name='MedicalAdvisoryOrSpeakerStartDate'])[1]";
+    public static String MENDDATE = "(//input[@name='MedicalAdvisoryOrSpeakerStartDate'])[2]";
+    public static String MBUSINESS = "//input[@name='MedicalAdvisoryOrSpeakerBussinessValue']";
+    public static String MREMARKS = "//textarea[@name='Remarks']";
+    public static String MADDRESS = "//input[@name='MedicalAdvisoryOrSpeakerCompanyAddressLine1']";
+    public static String MADDRESS2 = "//input[@name='MedicalAdvisoryOrSpeakerCompanyAddressLine2']";
+    public static String MCITY = "(//input[@role='combobox'])[1]";
+    public static String MPINCODE = "(//input[@role='combobox'])[2]";
+
+    //ADDITIONAL DETAILS -> ACHIEVEMENTS
+    public static String ACHIEVEMENTS ="//p[normalize-space()='Achievements']";
+    public static String ACHIEVEMENTSADD ="//input[@role='combobox']";
+    public static String ACHIEVEMENTSDATE ="//input[@name='AchievementDate']";
+    public static String ACHIEVEMENTSREMARKS ="//textarea[@name='Remarks']";
+    public static String ACHIEVEMENTSIMAGE ="//input[@type='file']";
+
 
 
 
