@@ -22,6 +22,7 @@ public class AdminPage extends Locators {
         common.waitUntilElementToBeVisible(By.xpath(DOCTORMENU));
         common.click(DOCTORMENU);
     }
+    //lnfdkjdsfkjdsf
 
     public void redirectsToChemistPage(){
         common.logPrint("Step:: Click on the admin panel menu");
