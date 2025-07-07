@@ -10,8 +10,6 @@ import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 
-import java.awt.*;
-
 public class AdminPage extends Locators {
     Common common = new Common(driver);
 
@@ -19,7 +17,8 @@ public class AdminPage extends Locators {
     public AdminPage(WebDriver driver) {
         super(driver);
     }
-    public void redeirectToDoctorPage(){
+
+    public void redirectToDoctorPage() {
         common.logPrint("Step:: Click on the admin panel menu");
         common.waitUntilElementToBeVisible(By.xpath(ADMINPANELMENU));
         common.click(ADMINPANELMENU);
@@ -29,7 +28,7 @@ public class AdminPage extends Locators {
         common.click(DOCTORMENU);
     }
 
-    public void redirectsToChemistPage(){
+    public void redirectsToChemistPage() {
         common.logPrint("Step:: Click on the admin panel menu");
         common.waitUntilElementToBeVisible(By.xpath(ADMINPANELMENU));
         common.click(ADMINPANELMENU);
@@ -39,7 +38,7 @@ public class AdminPage extends Locators {
         common.click(CHEMISTMENU);
     }
 
-    public void redirectsToStockiestPage(){
+    public void redirectsToStockiestPage() {
         common.logPrint("Step:: Click on the admin panel menu");
         common.waitUntilElementToBeVisible(By.xpath(ADMINPANELMENU));
         common.click(ADMINPANELMENU);
@@ -49,7 +48,7 @@ public class AdminPage extends Locators {
         common.click(STOCKISTMENU);
     }
 
-    public void redirectsDeleteDoctorApprovalPage(){
+    public void redirectsDeleteDoctorApprovalPage() {
         common.logPrint("Step:: Click on the Approval menu");
         common.waitUntilElementToBeVisible(By.xpath(APPROVALMENU));
         common.click(APPROVALMENU);
@@ -59,7 +58,7 @@ public class AdminPage extends Locators {
         common.click(DELETEAPPROVALDOCTOR);
     }
 
-    public void redirectsDeleteChemistApprovalPage(){
+    public void redirectsDeleteChemistApprovalPage() {
         common.logPrint("Step:: Click on the Approval menu");
         common.waitUntilElementToBeVisible(By.xpath(APPROVALMENU));
         common.click(APPROVALMENU);
@@ -69,7 +68,7 @@ public class AdminPage extends Locators {
         common.click(DELETEAPPROVALCHEMIST);
     }
 
-    public void redirectsDeleteStockiestApprovalPage(){
+    public void redirectsDeleteStockiestApprovalPage() {
         common.logPrint("Step:: Click on the Approval menu");
         common.waitUntilElementToBeVisible(By.xpath(APPROVALMENU));
         common.click(APPROVALMENU);
@@ -79,7 +78,7 @@ public class AdminPage extends Locators {
         common.click(DELETEAPPROVALSTOCKIEST);
     }
 
-    public void verifyValidationMessageForDoctorCreationWithDirector(){
+    public void verifyValidationMessageForDoctorCreationWithDirector() {
 
         common.logPrint("Verify mandatory fields for the doctor creation page");
 
@@ -105,25 +104,25 @@ public class AdminPage extends Locators {
         common.waitUntilElementToBeVisible(By.xpath(DoctorError));
         String doctorMsg = common.getText(DoctorError);
         common.assertTwoValuesAreEqual(doctorMsg, "Doctor Name is required");
-        common.logPrint("Error message is showing for the doctor name: "+ doctorMsg);
+        common.logPrint("Error message is showing for the doctor name: " + doctorMsg);
 
         common.logPrint("Step:: Verify validation message for Category");
         common.waitUntilElementToBeVisible(By.xpath(CategoryError));
         String categoryMsg = common.getText(CategoryError);
         common.assertTwoValuesAreEqual(categoryMsg, "Category is Required");
-        common.logPrint("Error message is showing for the category name: "+ categoryMsg);
+        common.logPrint("Error message is showing for the category name: " + categoryMsg);
 
         common.logPrint("Step:: Verify validation message for Speciality");
         common.waitUntilElementToBeVisible(By.xpath(SpecialityError));
         String specialityMsg = common.getText(SpecialityError);
         common.assertTwoValuesAreEqual(specialityMsg, "Speciality is Required");
-        common.logPrint("Error message is showing for the speciality name: "+ specialityMsg);
+        common.logPrint("Error message is showing for the speciality name: " + specialityMsg);
 
         common.logPrint("Step:: Verify validation message for Qualifications");
         common.waitUntilElementToBeVisible(By.xpath(QualificationsError));
         String qualificationMsg = common.getText(QualificationsError);
         common.assertTwoValuesAreEqual(qualificationMsg, "Qualifications is Required");
-        common.logPrint("Error message is showing for the qualification field: "+ qualificationMsg);
+        common.logPrint("Error message is showing for the qualification field: " + qualificationMsg);
 
 //        common.logPrint("Step:: Verify validation message for Employee");
 //        common.waitUntilElementToBeVisible(By.xpath(EmployeeError));
@@ -135,13 +134,13 @@ public class AdminPage extends Locators {
         common.waitUntilElementToBeVisible(By.xpath(ProductError));
         String ProductMsg = common.getText(ProductError);
         common.assertTwoValuesAreEqual(ProductMsg, "Product is Required");
-        common.logPrint("Error message is showing for the Product field: "+ ProductMsg);
+        common.logPrint("Error message is showing for the Product field: " + ProductMsg);
 
         common.logPrint("Step:: Verify validation message for Mobile No.");
         common.waitUntilElementToBeVisible(By.xpath(MobileNoError));
         String MobileNoMsg = common.getText(MobileNoError);
         common.assertTwoValuesAreEqual(MobileNoMsg, "Mobile No is required");
-        common.logPrint("Error message is showing for the Mobile No field: "+ MobileNoMsg);
+        common.logPrint("Error message is showing for the Mobile No field: " + MobileNoMsg);
 
         common.scroll_To_Element(CityError);
 
@@ -170,7 +169,7 @@ public class AdminPage extends Locators {
         common.logPrint("Error message is showing for the Pincode 2 field: " + Pincode2Msg);
     }
 
-    public void verifyValidationMessageForChemistCreationWithDirector(){
+    public void verifyValidationMessageForChemistCreationWithDirector() {
 
         common.logPrint("Verify Chemist creation screen fields and labels");
         //common.pause(1);
@@ -209,25 +208,25 @@ public class AdminPage extends Locators {
         common.waitUntilElementToBeVisible(By.xpath(DoctorError));
         String chemistMsg = common.getText(DoctorError);
         common.assertTwoValuesAreEqual(chemistMsg, "Chemist Name is required");
-        common.logPrint("Error message is showing for the Chemist name: "+ chemistMsg);
+        common.logPrint("Error message is showing for the Chemist name: " + chemistMsg);
 
         common.logPrint("Step:: Verify validation message for Category");
         common.waitUntilElementToBeVisible(By.xpath(CategoryError));
         String categoryMsg = common.getText(CategoryError);
         common.assertTwoValuesAreEqual(categoryMsg, "Category is Required");
-        common.logPrint("Error message is showing for the category name: "+ categoryMsg);
+        common.logPrint("Error message is showing for the category name: " + categoryMsg);
 
         common.logPrint("Step:: Verify validation message for Chemist type");
         common.waitUntilElementToBeVisible(By.xpath(SpecialityError));
         String chemistTypeMsg = common.getText(SpecialityError);
         common.assertTwoValuesAreEqual(chemistTypeMsg, "Chemist Type is Required");
-        common.logPrint("Error message is showing for the Chemist type: "+ chemistTypeMsg);
+        common.logPrint("Error message is showing for the Chemist type: " + chemistTypeMsg);
 
         common.logPrint("Step:: Verify validation message for Mobile no.");
         common.waitUntilElementToBeVisible(By.xpath(QualificationsError));
         String mobileNoMsg = common.getText(QualificationsError);
         common.assertTwoValuesAreEqual(mobileNoMsg, "Mobile No is required");
-        common.logPrint("Error message is showing for the Mobile no. field: "+ mobileNoMsg);
+        common.logPrint("Error message is showing for the Mobile no. field: " + mobileNoMsg);
 
         common.scroll_To_Element(CityError);
 
@@ -244,7 +243,7 @@ public class AdminPage extends Locators {
         common.logPrint("Error message is showing for the Pincode field: " + PincodeMsg);
     }
 
-    public void verifyValidationMessageForStockistCreationWithDirector(){
+    public void verifyValidationMessageForStockistCreationWithDirector() {
 
         common.logPrint("Verify Stockist creation screen fields and labels");
         common.pause(1);
@@ -283,19 +282,19 @@ public class AdminPage extends Locators {
         common.waitUntilElementToBeVisible(By.xpath(DoctorError));
         String stockistMsg = common.getText(DoctorError);
         common.assertTwoValuesAreEqual(stockistMsg, "Stockist Name is required");
-        common.logPrint("Error message is showing for the Stockist name: "+ stockistMsg);
+        common.logPrint("Error message is showing for the Stockist name: " + stockistMsg);
 
         common.logPrint("Step:: Verify validation message for Stockist type");
         common.waitUntilElementToBeVisible(By.xpath(CategoryError));
         String stockistTypeMsg = common.getText(CategoryError);
         common.assertTwoValuesAreEqual(stockistTypeMsg, "Stockist Type is Required");
-        common.logPrint("Error message is showing for the Stockist type: "+ stockistTypeMsg);
+        common.logPrint("Error message is showing for the Stockist type: " + stockistTypeMsg);
 
         common.logPrint("Step:: Verify validation message for Mobile no.");
         common.waitUntilElementToBeVisible(By.xpath(SpecialityError));
         String mobileNOMsg = common.getText(SpecialityError);
         common.assertTwoValuesAreEqual(mobileNOMsg, "Mobile No 1 is required");
-        common.logPrint("Error message is showing for the Mobile no.: "+ mobileNOMsg);
+        common.logPrint("Error message is showing for the Mobile no.: " + mobileNOMsg);
 
         common.scroll_To_Element(CityError);
 
@@ -312,7 +311,7 @@ public class AdminPage extends Locators {
         common.logPrint("Error message is showing for the Pincode field: " + PincodeMsg);
     }
 
-    public void verifyValidationMessageForHospitalCreationWithDirector(){
+    public void verifyValidationMessageForHospitalCreationWithDirector() {
 
         //common.pause(1);
         if (common.isElementPresent(ADMINPANELMENU)) {
@@ -350,13 +349,13 @@ public class AdminPage extends Locators {
         common.waitUntilElementToBeVisible(By.xpath(DoctorError));
         String hospitalNameMsg = common.getText(DoctorError);
         common.assertTwoValuesAreEqual(hospitalNameMsg, "Hospital Name is required");
-        common.logPrint("Error message is showing for the Hospital name: "+ hospitalNameMsg);
+        common.logPrint("Error message is showing for the Hospital name: " + hospitalNameMsg);
 
         common.logPrint("Step:: Verify validation message for GST No.");
         common.waitUntilElementToBeVisible(By.xpath(CategoryError));
         String stockistTypeMsg = common.getText(CategoryError);
         common.assertTwoValuesAreEqual(stockistTypeMsg, "GST No. is required");
-        common.logPrint("Error message is showing for the GST No. "+ stockistTypeMsg);
+        common.logPrint("Error message is showing for the GST No. " + stockistTypeMsg);
 
         common.scroll_To_Element(CityError);
 
@@ -373,7 +372,7 @@ public class AdminPage extends Locators {
         common.logPrint("Error message is showing for the Pincode field: " + PincodeMsg);
     }
 
-    public void verifyValidationMessageForProductCreationWithDirector(){
+    public void verifyValidationMessageForProductCreationWithDirector() {
 
         if (common.isElementPresent(ADMINPANELMENU)) {
             common.logPrint("Step:: Click on the admin panel menu");
@@ -409,43 +408,43 @@ public class AdminPage extends Locators {
         common.waitUntilElementToBeVisible(By.xpath(DoctorError));
         String divisionDrpMsg = common.getText(DoctorError);
         common.assertTwoValuesAreEqual(divisionDrpMsg, "Division is Required");
-        common.logPrint("Error message is showing for the Division dropdown: "+ divisionDrpMsg);
+        common.logPrint("Error message is showing for the Division dropdown: " + divisionDrpMsg);
 
         common.logPrint("Step:: Verify validation message for Drug Head dropdown");
         common.waitUntilElementToBeVisible(By.xpath(CategoryError));
         String drugTypeMsg = common.getText(CategoryError);
         common.assertTwoValuesAreEqual(drugTypeMsg, "Drug Head is Required");
-        common.logPrint("Error message is showing for the Drug Head type: "+ drugTypeMsg);
+        common.logPrint("Error message is showing for the Drug Head type: " + drugTypeMsg);
 
         common.logPrint("Step:: Verify validation message for Product Line dropdown");
         common.waitUntilElementToBeVisible(By.xpath(SpecialityError));
         String productLineMsg = common.getText(SpecialityError);
         common.assertTwoValuesAreEqual(productLineMsg, "Product Line is Required");
-        common.logPrint("Error message is showing for the Product Line dropdown: "+ productLineMsg);
+        common.logPrint("Error message is showing for the Product Line dropdown: " + productLineMsg);
 
         common.logPrint("Step:: Verify validation message for Drug Head dropdown");
         common.waitUntilElementToBeVisible(By.xpath(QualificationsError));
         String productGrpupDrp = common.getText(QualificationsError);
         common.assertTwoValuesAreEqual(productGrpupDrp, "Product Group is Required");
-        common.logPrint("Error message is showing for the Drug Head type: "+ productGrpupDrp);
+        common.logPrint("Error message is showing for the Drug Head type: " + productGrpupDrp);
 
         common.logPrint("Step:: Verify validation message for Product Class dropdown");
         common.waitUntilElementToBeVisible(By.xpath(EmployeeError));
         String productClassTypeMsg = common.getText(EmployeeError);
         common.assertTwoValuesAreEqual(productClassTypeMsg, "Product Class is Required");
-        common.logPrint("Error message is showing for the Product Class type: "+ productClassTypeMsg);
+        common.logPrint("Error message is showing for the Product Class type: " + productClassTypeMsg);
 
         common.logPrint("Step:: Verify validation message for Product type dropdown");
         common.waitUntilElementToBeVisible(By.xpath(ProductError));
         String productTypeMsg = common.getText(ProductError);
         common.assertTwoValuesAreEqual(productTypeMsg, "Product Type is Required");
-        common.logPrint("Error message is showing for the Product type dropdown: "+ productTypeMsg);
+        common.logPrint("Error message is showing for the Product type dropdown: " + productTypeMsg);
 
         common.logPrint("Step:: Verify validation message for Short Name field");
         common.waitUntilElementToBeVisible(By.xpath(MobileNoError));
         String shortNameField = common.getText(MobileNoError);
         common.assertTwoValuesAreEqual(shortNameField, "Short Name is required");
-        common.logPrint("Error message is showing for the Short Name field: "+ shortNameField);
+        common.logPrint("Error message is showing for the Short Name field: " + shortNameField);
 
         common.logPrint("Step:: Verify validation message for Name field");
         common.waitUntilElementToBeVisible(By.xpath(nameError));
@@ -771,7 +770,7 @@ public class AdminPage extends Locators {
         common.logPrint("Error message is showing for the Parent Designation field: " + roleNameMsg);
     }
 
-    public void verifyAllTheButtonAndLabelIsPresentOnHeader(){
+    public void verifyAllTheButtonAndLabelIsPresentOnHeader() {
 
         common.logPrint("Step:: Verify back button is present");
         common.waitUntilElementToBeVisible(By.xpath(BACKBTN));
@@ -815,7 +814,7 @@ public class AdminPage extends Locators {
 
     }
 
-    public void verifyDoctorCreationFieldAndLabelsForLeadEntity(){
+    public void verifyDoctorCreationFieldAndLabelsForLeadEntity() {
 
         common.logPrint("Step:: Click on the admin panel menu");
         common.assertElementDisplayed(ADMINPANELMENU);
@@ -1124,16 +1123,16 @@ public class AdminPage extends Locators {
         }
     }
 
-    public void verifyChemistCreationFieldAndLabelsForLeadEntity(){
+    public void verifyChemistCreationFieldAndLabelsForLeadEntity() {
 
         common.logPrint("Verify Chemist creation screen fields and labels");
-        if (common.isElementPresent(ADMINPANELMENU)){
+        if (common.isElementPresent(ADMINPANELMENU)) {
             common.logPrint("Step:: Click on the admin panel menu");
             common.click(ADMINPANELMENU);
         }
 
         common.pause(2);
-        if (common.isElementPresent(BACKBTN)){
+        if (common.isElementPresent(BACKBTN)) {
             common.logPrint("Step:: Click on the back button");
             common.click(BACKBTN);
         }
@@ -1718,7 +1717,7 @@ public class AdminPage extends Locators {
         common.logPrint("Account creation field and label verification completed successfully.");
     }
 
-    public void verifyRoleCreationFieldsAndLabels(){
+    public void verifyRoleCreationFieldsAndLabels() {
 
         common.logPrint("Verify Role creation screen fields and labels");
 
@@ -2290,7 +2289,7 @@ public class AdminPage extends Locators {
 
     }
 
-    public void verifyLabelAndFieldsInTheDesignationPage(){
+    public void verifyLabelAndFieldsInTheDesignationPage() {
 
         common.logPrint("Verify Employee creation screen fields and labels");
 
@@ -2329,7 +2328,7 @@ public class AdminPage extends Locators {
 
     }
 
-    public void verifyDoctorCreationFieldAndLabels(){
+    public void verifyDoctorCreationFieldAndLabels() {
 
         common.logPrint("Step:: Click on the admin panel menu");
         common.waitUntilElementToBeVisible(By.xpath(ADMINPANELMENU));
@@ -2630,9 +2629,9 @@ public class AdminPage extends Locators {
         common.logPrint("Pincode input field is present");
     }
 
-    public String verifyCreateDoctorCreateFunctionality(){
+    public String verifyCreateDoctorCreateFunctionality() {
 
-        redeirectToDoctorPage();
+        redirectToDoctorPage();
 
         common.logPrint("Step:: Click on the ADD button");
         common.waitUntilElementToBeVisible(By.xpath(ADDBTN));
@@ -2644,7 +2643,7 @@ public class AdminPage extends Locators {
         common.logPrint("Step:: Create doctor create functionality");
         common.waitUntilElementsToBeVisible(By.xpath(DOCTORNAMEINP));
         common.type(DOCTORNAMEINP, drName);
-        common.logPrint("Doctor name is: "+ drName);
+        common.logPrint("Doctor name is: " + drName);
 
         common.logPrint("Step:: Select category");
         common.waitUntilElementToBeVisible(By.xpath(CATEGORYINP));
@@ -2707,9 +2706,9 @@ public class AdminPage extends Locators {
         return drName;
     }
 
-    public String[] updateTheDoctor(String drName){
+    public String[] updateTheDoctor(String drName) {
 
-        redeirectToDoctorPage();
+        redirectToDoctorPage();
 
         common.logPrint("Step:: Search doctor name in the search field");
         common.waitUntilElementToBeVisible(By.xpath(SEARCHFIELD));
@@ -2727,7 +2726,7 @@ public class AdminPage extends Locators {
         common.logPrint("Step:: Update the doctor name");
         common.waitUntilElementsToBeVisible(By.xpath(DOCTORNAMEINP)).clear();
         common.type(DOCTORNAMEINP, UpdatedrName);
-        common.logPrint("Updated Doctor name is: "+ UpdatedrName);
+        common.logPrint("Updated Doctor name is: " + UpdatedrName);
 
         common.logPrint("Step:: Update the mobile number");
         common.waitUntilElementToBeVisible(By.xpath(MOBILENOINP)).clear();
@@ -2741,10 +2740,10 @@ public class AdminPage extends Locators {
         common.logPrint("Step:: Check validation is displayed");
         common.assertElementDisplayed(UpdatedSuccessfully);
 
-        return new String[] {UpdatedrName,mobileNum};
+        return new String[]{UpdatedrName, mobileNum};
     }
 
-    public void verifyDoctorIsUpdated(String updatedName, String updatedMobileNum){
+    public void verifyDoctorIsUpdated(String updatedName, String updatedMobileNum) {
 
         common.pause(1);
 
@@ -2775,7 +2774,7 @@ public class AdminPage extends Locators {
 
     }
 
-    public void verifyStockiestIsUpdated(String updatedName){
+    public void verifyStockiestIsUpdated(String updatedName) {
 
         common.pause(1);
 
@@ -2804,7 +2803,7 @@ public class AdminPage extends Locators {
 
     }
 
-    public void verifyEntityIsCreatedIsShowingInTheTableAndItStatusIsPending(String name){
+    public void verifyEntityIsCreatedIsShowingInTheTableAndItStatusIsPending(String name) {
 
         common.logPrint("Step:: Search name in the search field");
         common.waitUntilElementToBeVisible(By.xpath(SEARCHFIELD));
@@ -2819,7 +2818,7 @@ public class AdminPage extends Locators {
 
     }
 
-    public void verifyStockiestIsCreatedIsShowingInTheTableAndItStatusIsPending(String name){
+    public void verifyStockiestIsCreatedIsShowingInTheTableAndItStatusIsPending(String name) {
 
         common.logPrint("Step:: Search name in the search field");
         common.waitUntilElementToBeVisible(By.xpath(SEARCHFIELD));
@@ -2832,7 +2831,7 @@ public class AdminPage extends Locators {
 
     }
 
-    public void verifyDoctorIsCreatedIsShowingInTheTableAndItStatusIsApproval(String name){
+    public void verifyDoctorIsCreatedIsShowingInTheTableAndItStatusIsApproval(String name) {
 
         common.logPrint("Step:: Search name in the search field");
         common.waitUntilElementToBeVisible(By.xpath(SEARCHFIELD));
@@ -2845,7 +2844,7 @@ public class AdminPage extends Locators {
 
     }
 
-    public void verifyStockiestIsCreatedIsShowingInTheTableAndItStatusIsApproval(String name){
+    public void verifyStockiestIsCreatedIsShowingInTheTableAndItStatusIsApproval(String name) {
 
         common.logPrint("Step:: Search name in the search field");
         common.waitUntilElementToBeVisible(By.xpath(SEARCHFIELD));
@@ -2858,11 +2857,11 @@ public class AdminPage extends Locators {
 
     }
 
-    public void verifyDrApprovalForTheAsmUser(String doctor){
+    public void verifyDrApprovalForTheAsmUser(String doctor) {
 
         loginWithASMCredential();
 
-        redeirectToDoctorPage();
+        redirectToDoctorPage();
 
         verifyEntityIsCreatedIsShowingInTheTableAndItStatusIsPending(doctor);
 
@@ -2889,10 +2888,10 @@ public class AdminPage extends Locators {
 
     }
 
-    public void approvedDeleteRequestFromTheDirectorsUser(String drName){
+    public void approvedDeleteRequestFromTheDirectorsUser(String drName) {
 
 
-        String checkBoxUponName = "//td[contains(.,'"+drName+"')]/parent::tr//td//span";
+        String checkBoxUponName = "//td[contains(.,'" + drName + "')]/parent::tr//td//span";
 
         common.logPrint("Step:: Select the checkbox according to the Doctor name");
         common.pause(2);
@@ -2908,7 +2907,7 @@ public class AdminPage extends Locators {
 
     }
 
-    public void deleteDoctorFromTheList(String name){
+    public void deleteDoctorFromTheList(String name) {
 
         common.logPrint("Step:: Click on the checkbox");
         common.pause(2);
@@ -2929,14 +2928,13 @@ public class AdminPage extends Locators {
         common.logPrint("Step:: Verify delete confirmation pop-up is showing");
 
         common.logPrint("Step:: Check validation is displayed");
-        common.assertElementDisplayed(DeletedSuccessfully );
+        common.assertElementDisplayed(DeletedSuccessfully);
 
-       // verifyDoctorRemoveFromTheList(name);
+        // verifyDoctorRemoveFromTheList(name);
 
     }
 
-    public void verifyDoctorRemoveFromTheList(String drName){
-
+    public void verifyDoctorRemoveFromTheList(String drName) {
 
 
         common.logPrint("Step:: Search name in the search field");
@@ -2953,7 +2951,7 @@ public class AdminPage extends Locators {
         common.logPrint("Doctor is removed from the list");
     }
 
-    public void redirectToTheDoctorAddtionalDetail(){
+    public void redirectToTheDoctorAdditionalDetail() {
 
         common.logPrint("Step:: Click on the admin panel menu");
         common.waitUntilElementToBeVisible(By.xpath(ADMINPANELMENU));
@@ -2969,7 +2967,7 @@ public class AdminPage extends Locators {
 
     }
 
-    public String createChemistAndApprove(){
+    public String createChemistAndApprove() {
 
         redirectsToChemistPage();
 
@@ -2982,7 +2980,7 @@ public class AdminPage extends Locators {
         common.logPrint("Step:: Enter chemist name");
         common.waitUntilElementsToBeVisible(By.xpath(CHEMISTNAME));
         common.type(CHEMISTNAME, ChemistName);
-        common.logPrint("Doctor name is: "+ ChemistName);
+        common.logPrint("Doctor name is: " + ChemistName);
 
         common.logPrint("Step:: Select category");
         common.waitUntilElementToBeVisible(By.xpath(CATEGORYINP));
@@ -3018,12 +3016,12 @@ public class AdminPage extends Locators {
         common.logPrint("Step:: Check validation is displayed");
         common.assertElementDisplayed(AddedSuccessfully);
 
-        common.logPrint("New chemist is created successfully and name is: "+ ChemistName);
+        common.logPrint("New chemist is created successfully and name is: " + ChemistName);
 
         return ChemistName;
     }
 
-    public String[] updateTheChemist(String chemistName){
+    public String[] updateTheChemist(String chemistName) {
 
         redirectsToChemistPage();
         common.logPrint("Step:: Search doctor name in the search field");
@@ -3042,7 +3040,7 @@ public class AdminPage extends Locators {
         common.logPrint("Step:: Enter chemist name");
         common.waitUntilElementsToBeVisible(By.xpath(CHEMISTNAME)).clear();
         common.type(CHEMISTNAME, updateChemist);
-        common.logPrint("Doctor name is: "+ updateChemist);
+        common.logPrint("Doctor name is: " + updateChemist);
 
         common.logPrint("Step:: Enter mobile number");
         common.waitUntilElementToBeVisible(By.xpath(MOBILENOINP)).clear();
@@ -3056,10 +3054,10 @@ public class AdminPage extends Locators {
         common.logPrint("Step:: Check validation is displayed");
         common.assertElementDisplayed(UpdatedSuccessfully);
 
-        return new String[] {updateChemist,updateMobileNum};
+        return new String[]{updateChemist, updateMobileNum};
     }
 
-    public void verifyChemistApprovedForTheAsmUser(String Chemist){
+    public void verifyChemistApprovedForTheAsmUser(String Chemist) {
 
         loginWithASMCredential();
 
@@ -3086,7 +3084,7 @@ public class AdminPage extends Locators {
         verifyDoctorIsCreatedIsShowingInTheTableAndItStatusIsApproval(Chemist);
     }
 
-    public void deleteChemistFromTheDirector(){
+    public void deleteChemistFromTheDirector() {
 
         common.logPrint("Step:: Click on the checkbox");
         common.pause(2);
@@ -3107,11 +3105,11 @@ public class AdminPage extends Locators {
         common.logPrint("Step:: Verify delete confirmation pop-up is showing");
 
         common.logPrint("Step:: Check validation is displayed");
-        common.assertElementDisplayed(DeletedSuccessfully );
+        common.assertElementDisplayed(DeletedSuccessfully);
 
     }
 
-    public String createStockiestApproval(){
+    public String createStockiestApproval() {
 
         redirectsToStockiestPage();
 
@@ -3126,7 +3124,7 @@ public class AdminPage extends Locators {
         common.logPrint("Step:: Enter Stockist name");
         common.waitUntilElementsToBeVisible(By.xpath(STOCKISTNAME));
         common.type(STOCKISTNAME, StockistName);
-        common.logPrint("Stockiest name is: "+ StockistName);
+        common.logPrint("Stockiest name is: " + StockistName);
 
         common.logPrint("Step:: Select stockist type");
         common.waitUntilElementToBeVisible(By.xpath(STOCKISTTYPE));
@@ -3157,13 +3155,13 @@ public class AdminPage extends Locators {
         common.logPrint("Step:: Check validation is displayed");
         common.assertElementDisplayed(AddedSuccessfully);
 
-        common.logPrint("New stockist is created successfully and name is: "+ StockistName);
+        common.logPrint("New stockist is created successfully and name is: " + StockistName);
 
 
         return StockistName;
     }
 
-    public void verifyStockiestApprovedForTheAsmUser(String Stockiest){
+    public void verifyStockiestApprovedForTheAsmUser(String Stockiest) {
 
         loginWithASMCredential();
 
@@ -3190,7 +3188,7 @@ public class AdminPage extends Locators {
         verifyStockiestIsCreatedIsShowingInTheTableAndItStatusIsApproval(Stockiest);
     }
 
-    public String[] updateTheStockiest(String stockiestName){
+    public String[] updateTheStockiest(String stockiestName) {
 
         redirectsToStockiestPage();
         common.logPrint("Step:: Search doctor name in the search field");
@@ -3209,7 +3207,7 @@ public class AdminPage extends Locators {
         common.logPrint("Step:: Enter Stockist name");
         common.waitUntilElementsToBeVisible(By.xpath(STOCKISTNAME)).clear();
         common.type(STOCKISTNAME, StockistName);
-        common.logPrint("Stockiest name is: "+ StockistName);
+        common.logPrint("Stockiest name is: " + StockistName);
 
         common.logPrint("Step:: Enter mobile number");
         common.waitUntilElementToBeVisible(By.xpath(MOBILENO1FIELD)).clear();
@@ -3223,27 +3221,27 @@ public class AdminPage extends Locators {
         common.logPrint("Step:: Check validation is displayed");
         common.assertElementDisplayed(UpdatedSuccessfully);
 
-        return new String[] {StockistName,updateMobileNum};
+        return new String[]{StockistName, updateMobileNum};
     }
 
-    public void redirectToParticulerAddtionalDetailPage(String addtinalDetailXpath){
+    public void redirectToParticularAdditionalDetailPage(String additionalDetailXpath) {
 
-        redirectToTheDoctorAddtionalDetail();
+        redirectToTheDoctorAdditionalDetail();
 
         common.logPrint("Step:: Click on the Area of interest menu");
-        common.scroll_To_Element(addtinalDetailXpath);
-        common.waitUntilElementToBeVisible(By.xpath(addtinalDetailXpath));
-        common.click(addtinalDetailXpath);
+        common.scroll_To_Element(additionalDetailXpath);
+        common.waitUntilElementToBeVisible(By.xpath(additionalDetailXpath));
+        common.click(additionalDetailXpath);
 
-        if(driver.findElement(By.xpath(ADDBTN)).isEnabled()){
+        if (driver.findElement(By.xpath(ADDBTN)).isEnabled()) {
             common.logPrint("Step:: Add button is enabled");
             common.click(ADDBTN);
         } else {
             common.logPrint("Step:: Add button is not enabled");
 
             common.logPrint("Step:: Click on Area of interest menu");
-            common.waitUntilElementToBeVisible(By.xpath(addtinalDetailXpath));
-            common.click(addtinalDetailXpath);
+            common.waitUntilElementToBeVisible(By.xpath(additionalDetailXpath));
+            common.click(additionalDetailXpath);
 
             common.logPrint("Step:: Add button is enabled");
             common.click(ADDBTN);
@@ -3251,1064 +3249,1060 @@ public class AdminPage extends Locators {
 
     }
 
-
-
-
-        public void addDegree() {
-            try {
-                redirectToTheDoctorAddtionalDetail();
-                common.pause(2);
-                WebElement addButton = driver.findElement(By.xpath(ADDBTN));
-                if (addButton.isEnabled()) {
-                    common.logPrint("Step:: Add button is enabled");
-                    common.click(ADDBTN);
-                } else {
-                    common.logPrint("Step:: Add button is not enabled");
-                    common.logPrint("Step:: Click on the Degree menu");
-                    common.waitUntilElementToBeVisible(By.xpath(DEGREEMENU));
-                    common.click(DEGREEMENU);
-                    common.logPrint("Step:: Add button is enabled");
-                    common.click(ADDBTN);
-                }
-
-                common.logPrint("Step:: Click on the Degree dropdown");
-                common.waitUntilElementToBeVisible(By.xpath(DEGREEDROPDOWN));
-                common.click(DEGREEDROPDOWN);
-                common.downKeyAndEnter();
-
-                common.logPrint("Step:: Click on the Speciality dropdown");
-                common.waitUntilElementToBeVisible(By.xpath(SPECIALITYDRODOWN));
-                common.click(SPECIALITYDRODOWN);
-                common.downKeyAndEnter();
-
-                String year = common.generateRandomYear("1998", "2001");
-                common.logPrint("Step:: Enter Degree admission year");
-                common.waitUntilElementToBeVisible(By.xpath(ADDMISSIONYEAR));
-                common.type(ADDMISSIONYEAR, year);
-
-                String passoutyear = common.generateRandomYear("2001", "2005");
-                common.logPrint("Step:: Enter Degree Passout year");
-                common.waitUntilElementToBeVisible(By.xpath(PASSOUTYEAR));
-                common.type(PASSOUTYEAR, passoutyear);
-
-                String degreeColllage = common.generateRandomChars(10);
-                common.logPrint("Step:: Enter Degree college name");
-                common.waitUntilElementToBeVisible(By.xpath(DEGREECOLLAGE));
-                common.type(DEGREECOLLAGE, degreeColllage);
-
-                String degreeRegNum = common.generateRandomNumberString(10);
-                common.logPrint("Step:: Enter Degree registration number");
-                common.waitUntilElementToBeVisible(By.xpath(DEGREEREGNUM));
-                common.type(DEGREEREGNUM, degreeRegNum);
-
-                common.logPrint("Step:: Select city from the dropdown");
-                common.waitUntilElementToBeVisible(By.xpath(CITYINPUT));
-                common.type(CITYINPUT, "AHMEDABAD");
-                common.pause(1);
-                common.downKeyAndEnter();
-                common.logPrint("Selected city is: AHMEDABAD");
-
-                common.scroll_To_Element(PINCODEDROPDOWN);
-
-                common.logPrint("Step:: Select pincode from dropdown");
-                common.waitUntilElementToBeVisible(By.xpath(PINCODEDROPDOWN));
-                common.click(PINCODEDROPDOWN);
-                common.twoDownKeyAndEnter();
-
-                common.logPrint("Step:: Click on the save button");
-                common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
-                common.click(SAVEBUTTON);
-            } catch (NoSuchElementException e) {
-                common.logPrint("Error: Element not found - " + e.getMessage());
-                throw new RuntimeException("Failed to add degree due to missing element", e);
-            } catch (TimeoutException e) {
-                common.logPrint("Error: Operation timed out - " + e.getMessage());
-                throw new RuntimeException("Failed to add degree due to timeout", e);
-            } catch (ElementClickInterceptedException e) {
-                common.logPrint("Error: Element click intercepted - " + e.getMessage());
-                throw new RuntimeException("Failed to add degree due to click interception", e);
-            } catch (StaleElementReferenceException e) {
-                common.logPrint("Error: Stale element reference - " + e.getMessage());
-                throw new RuntimeException("Failed to add degree due to stale element", e);
-            } catch (Exception e) {
-                common.logPrint("Unexpected error: " + e.getMessage());
-                throw new RuntimeException("Failed to add degree due to unexpected error", e);
+    public void addDegree() {
+        try {
+            redirectToTheDoctorAdditionalDetail();
+            common.pause(2);
+            WebElement addButton = driver.findElement(By.xpath(ADDBTN));
+            if (addButton.isEnabled()) {
+                common.logPrint("Step:: Add button is enabled");
+                common.click(ADDBTN);
+            } else {
+                common.logPrint("Step:: Add button is not enabled");
+                common.logPrint("Step:: Click on the Degree menu");
+                common.waitUntilElementToBeVisible(By.xpath(DEGREEMENU));
+                common.click(DEGREEMENU);
+                common.logPrint("Step:: Add button is enabled");
+                common.click(ADDBTN);
             }
-        }
 
-        public void addAreaOfInterest() {
-            try {
-                redirectToParticulerAddtionalDetailPage(AREAOFINTEREST);
-
-                common.logPrint("Step:: Select Area Of Interest In Medical Field");
-                common.waitUntilElementToBeVisible(By.xpath(AREAOFINTERESTINMEDICAL));
-                common.click(AREAOFINTERESTINMEDICAL);
-                common.downKeyAndEnter();
-
-                String areaRemark = common.generateRandomChars(20);
-                common.logPrint("Step:: Enter interest of area remark");
-                common.waitUntilElementToBeVisible(By.xpath(AREAREMARK));
-                common.type(AREAREMARK, areaRemark);
-
-                common.logPrint("Step:: Click on the save button");
-                common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
-                common.click(SAVEBUTTON);
-            } catch (NoSuchElementException e) {
-                common.logPrint("Error: Element not found - " + e.getMessage());
-                throw new RuntimeException("Failed to add area of interest due to missing element", e);
-            } catch (TimeoutException e) {
-                common.logPrint("Error: Operation timed out - " + e.getMessage());
-                throw new RuntimeException("Failed to add area of interest due to timeout", e);
-            } catch (ElementClickInterceptedException e) {
-                common.logPrint("Error: Element click intercepted - " + e.getMessage());
-                throw new RuntimeException("Failed to add area of interest due to click interception", e);
-            } catch (StaleElementReferenceException e) {
-                common.logPrint("Error: Stale element reference - " + e.getMessage());
-                throw new RuntimeException("Failed to add area of interest due to stale element", e);
-            } catch (Exception e) {
-                common.logPrint("Unexpected error: " + e.getMessage());
-                throw new RuntimeException("Failed to add area of interest due to unexpected error", e);
-            }
-        }
-
-        public void addGuidelinesFollowed() {
-            try {
-                redirectToParticulerAddtionalDetailPage(GUIDELINESFOLLOWED);
-
-                common.logPrint("Step:: Select guideline followed from dropdown");
-                common.waitUntilElementToBeVisible(By.xpath(GUIDELINEFOLLOWEDDRP));
-                common.click(GUIDELINEFOLLOWEDDRP);
-                common.downKeyAndEnter();
-
-                String areaRemark = common.generateRandomChars(20);
-                common.logPrint("Step:: Enter guideline followed remark");
-                common.waitUntilElementToBeVisible(By.xpath(AREAREMARK));
-                common.type(AREAREMARK, areaRemark);
-
-                common.logPrint("Step:: Click on the save button");
-                common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
-                common.click(SAVEBUTTON);
-            } catch (NoSuchElementException e) {
-                common.logPrint("Error: Element not found - " + e.getMessage());
-                throw new RuntimeException("Failed to add guidelines followed due to missing element", e);
-            } catch (TimeoutException e) {
-                common.logPrint("Error: Operation timed out - " + e.getMessage());
-                throw new RuntimeException("Failed to add guidelines followed due to timeout", e);
-            } catch (ElementClickInterceptedException e) {
-                common.logPrint("Error: Element click intercepted - " + e.getMessage());
-                throw new RuntimeException("Failed to add guidelines followed due to click interception", e);
-            } catch (StaleElementReferenceException e) {
-                common.logPrint("Error: Stale element reference - " + e.getMessage());
-                throw new RuntimeException("Failed to add guidelines followed due to stale element", e);
-            } catch (Exception e) {
-                common.logPrint("Unexpected error: " + e.getMessage());
-                throw new RuntimeException("Failed to add guidelines followed due to unexpected error", e);
-            }
-        }
-
-        public void addConferenceAndSpeker() {
-            try {
-                redirectToParticulerAddtionalDetailPage(CONFERENCESPECKER);
-
-                common.logPrint("Step:: Select Subject type from dropdown");
-                common.waitUntilElementToBeVisible(By.xpath(SUBJECTTYPE));
-                common.click(SUBJECTTYPE);
-                common.downKeyAndEnter();
-
-                String startDate = common.generateDate("current", null, null);
-                common.logPrint("Step:: Enter start date");
-                common.waitUntilElementToBeVisible(By.xpath(STARTDATEINP));
-                common.type(STARTDATEINP, startDate);
-
-                String endDate = common.generateDate("future", null, null);
-                common.logPrint("Step:: Enter end date");
-                common.waitUntilElementToBeVisible(By.xpath(ENDDATEINP));
-                common.type(ENDDATEINP, endDate);
-
-                String days = common.generateRandomNumberString(2);
-                common.logPrint("Step:: Enter days");
-                common.waitUntilElementToBeVisible(By.xpath(DAYSINP));
-                common.type(DAYSINP, days);
-
-                String subject = common.generateRandomChars(10);
-                common.logPrint("Step:: Enter Subject and Topic");
-                common.waitUntilElementToBeVisible(By.xpath(SUBJECTTOPICINP));
-                common.type(SUBJECTTOPICINP, subject);
-
-                common.logPrint("Step:: Select Attendee as from dropdown");
-                common.waitUntilElementToBeVisible(By.xpath(ATTENDEDASDRP));
-                common.click(ATTENDEDASDRP);
-                common.downKeyAndEnter();
-
-                String venue = common.generateRandomChars(10);
-                common.logPrint("Step:: Enter venue name");
-                common.waitUntilElementToBeVisible(By.xpath(VENUEINP));
-                common.type(VENUEINP, venue);
-
-                String numberOfAttendee = common.generateRandomNumberString(2);
-                common.logPrint("Step:: Enter number of attendees");
-                common.waitUntilElementToBeVisible(By.xpath(NOOFATTENDEE));
-                common.type(NOOFATTENDEE, numberOfAttendee);
-
-                String areaRemark = common.generateRandomChars(20);
-                common.logPrint("Step:: Enter guideline followed remark");
-                common.waitUntilElementToBeVisible(By.xpath(AREAREMARK));
-                common.type(AREAREMARK, areaRemark);
-
-                common.logPrint("Step:: Click on the save button");
-                common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
-                common.click(SAVEBUTTON);
-            } catch (NoSuchElementException e) {
-                common.logPrint("Error: Element not found - " + e.getMessage());
-                throw new RuntimeException("Failed to add conference and speaker due to missing element", e);
-            } catch (TimeoutException e) {
-                common.logPrint("Error: Operation timed out - " + e.getMessage());
-                throw new RuntimeException("Failed to add conference and speaker due to timeout", e);
-            } catch (ElementClickInterceptedException e) {
-                common.logPrint("Error: Element click intercepted - " + e.getMessage());
-                throw new RuntimeException("Failed to add conference and speaker due to click interception", e);
-            } catch (StaleElementReferenceException e) {
-                common.logPrint("Error: Stale element reference - " + e.getMessage());
-                throw new RuntimeException("Failed to add conference and speaker due to stale element", e);
-            } catch (Exception e) {
-                common.logPrint("Unexpected error: " + e.getMessage());
-                throw new RuntimeException("Failed to add conference and speaker due to unexpected error", e);
-            }
-        }
-
-        public void addWeekendsAndVacation() {
-            try {
-                redirectToParticulerAddtionalDetailPage(WEEKENDVACTION);
-
-                common.logPrint("Step:: Select Entertainment from dropdown");
-                common.waitUntilElementToBeVisible(By.xpath(ENTERTAINMENTDRP));
-                common.click(ENTERTAINMENTDRP);
-                common.downKeyAndEnter();
-
-                common.logPrint("Step:: Select Activity type from dropdown");
-                common.waitUntilElementToBeVisible(By.xpath(ACTIVITYTYPE));
-                common.click(ACTIVITYTYPE);
-                common.downKeyAndEnter();
-
-                String place = common.generateRandomChars(10);
-                common.logPrint("Step:: Enter Place");
-                common.waitUntilElementToBeVisible(By.xpath(PLACEINPADDITIONALDETAIL));
-                common.type(PLACEINPADDITIONALDETAIL, place);
-
-                String date = common.generateDate("current", null, null);
-                common.logPrint("Step:: Enter start date");
-                common.waitUntilElementToBeVisible(By.xpath(PREFFREDDATE));
-                common.type(PREFFREDDATE, date);
-
-                String areaRemark = common.generateRandomChars(20);
-                common.logPrint("Step:: Enter guideline followed remark");
-                common.waitUntilElementToBeVisible(By.xpath(AREAREMARK));
-                common.type(AREAREMARK, areaRemark);
-
-                common.logPrint("Step:: Click on the save button");
-                common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
-                common.click(SAVEBUTTON);
-            } catch (NoSuchElementException e) {
-                common.logPrint("Error: Element not found - " + e.getMessage());
-                throw new RuntimeException("Failed to add weekends and vacation due to missing element", e);
-            } catch (TimeoutException e) {
-                common.logPrint("Error: Operation timed out - " + e.getMessage());
-                throw new RuntimeException("Failed to add weekends and vacation due to timeout", e);
-            } catch (ElementClickInterceptedException e) {
-                common.logPrint("Error: Element click intercepted - " + e.getMessage());
-                throw new RuntimeException("Failed to add weekends and vacation due to click interception", e);
-            } catch (StaleElementReferenceException e) {
-                common.logPrint("Error: Stale element reference - " + e.getMessage());
-                throw new RuntimeException("Failed to add weekends and vacation due to stale element", e);
-            } catch (Exception e) {
-                common.logPrint("Unexpected error: " + e.getMessage());
-                throw new RuntimeException("Failed to add weekends and vacation due to unexpected error", e);
-            }
-        }
-
-        public void addFamilyFriendDetailInfo() {
-            try {
-                redirectToParticulerAddtionalDetailPage(FAMILYFRIENDDETAIL);
-
-                String name = common.generateRandomChars(8);
-                common.logPrint("Step:: Enter Name");
-                common.waitUntilElementToBeVisible(By.xpath(NAMEINPFamily));
-                common.type(NAMEINPFamily, name);
-
-                common.logPrint("Step:: Select Relation from dropdown");
-                common.waitUntilElementToBeVisible(By.xpath(RELATIONDRP));
-                common.click(RELATIONDRP);
-                common.downKeyAndEnter();
-
-                String dob = common.generateDate("past", null, null);
-                common.logPrint("Step:: Enter DOB");
-                common.waitUntilElementToBeVisible(By.xpath(DOBINPAdd));
-                common.type(DOBINPAdd, dob);
-
-                String doa = common.generateDate("past", null, null);
-                common.logPrint("Step:: Enter DOA");
-                common.waitUntilElementToBeVisible(By.xpath(DOAINPAdd));
-                common.type(DOAINPAdd, doa);
-
-                String specialDay = common.generateRandomNumberString(7);
-                common.logPrint("Step:: Enter days");
-                common.waitUntilElementToBeVisible(By.xpath(SPECIALDAYDOBINP));
-                common.type(SPECIALDAYDOBINP, specialDay);
-
-                String specialDayDOB = common.generateDate("past", null, null);
-                common.logPrint("Step:: Enter Special Day DOB");
-                common.waitUntilElementToBeVisible(By.xpath(SPECIALDAYDOBINPAdd));
-                common.type(SPECIALDAYDOBINPAdd, specialDayDOB);
-
-                String remarks = common.generateRandomChars(25);
-                common.logPrint("Step:: Enter Remarks");
-                common.waitUntilElementToBeVisible(By.xpath(REMARKINP));
-                common.type(REMARKINP, remarks);
-
-                common.logPrint("Step:: Click on Save button");
-                common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
-                common.click(SAVEBUTTON);
-            } catch (NoSuchElementException e) {
-                common.logPrint("Error: Element not found - " + e.getMessage());
-                throw new RuntimeException("Failed to add family friend detail due to missing element", e);
-            } catch (TimeoutException e) {
-                common.logPrint("Error: Operation timed out - " + e.getMessage());
-                throw new RuntimeException("Failed to add family friend detail due to timeout", e);
-            } catch (ElementClickInterceptedException e) {
-                common.logPrint("Error: Element click intercepted - " + e.getMessage());
-                throw new RuntimeException("Failed to add family friend detail due to click interception", e);
-            } catch (StaleElementReferenceException e) {
-                common.logPrint("Error: Stale element reference - " + e.getMessage());
-                throw new RuntimeException("Failed to add family friend detail due to stale element", e);
-            } catch (Exception e) {
-                common.logPrint("Unexpected error: " + e.getMessage());
-                throw new RuntimeException("Failed to add family friend detail due to unexpected error", e);
-            }
-        }
-
-        public void addCollegeMateandAlumniDetails() {
-            try {
-                redirectToParticulerAddtionalDetailPage(COLLEGEALUMNIDETAILS);
-
-                String name = common.fakeName();
-                common.logPrint("Step:: Enter Name");
-                common.waitUntilElementToBeVisible(By.xpath(COLLEAGUENAME));
-                common.type(COLLEAGUENAME, name);
-                common.logPrint("Entered Name: " + name);
-
-                common.logPrint("Step :: Enter Date of Birth");
-                common.waitUntilElementToBeVisible(By.xpath(COLLEAGUEDATEOFBIRTH));
-                common.type(COLLEAGUEDATEOFBIRTH, "26-06-2025");
-
-                common.logPrint("Step :: Enter Speciality");
-                common.click(COLLEAGUESPECIALITY);
-                common.twoDownKeyAndEnter();
-
-                common.logPrint("Step :: Enter Hospital Name");
-                common.click(COLLEAGUEHOSPITAL);
-                common.type(COLLEAGUEHOSPITAL, "Test Hospital");
-
-                common.logPrint("Step :: Enter College Name");
-                common.click(COLLEAGUECOLLEGE);
-                common.type(COLLEAGUECOLLEGE, "College" + name);
-
-                common.logPrint("Step :: Enter Passout Year");
-                common.click(COLLEAGUEPASSOUTYEAR);
-                common.type(COLLEAGUEPASSOUTYEAR, "2025");
-
-                common.logPrint("Step :: Enter Remarks");
-                common.click(REMARKS);
-                common.type(REMARKS, "2025 Remarks");
-
-                common.fillBothAddress();
-
-                common.logPrint("Step:: Click on Save button");
-                common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
-                common.click(SAVEBUTTON);
-            } catch (NoSuchElementException e) {
-                common.logPrint("Error: Element not found - " + e.getMessage());
-                throw new RuntimeException("Failed to add college mate and alumni details due to missing element", e);
-            } catch (TimeoutException e) {
-                common.logPrint("Error: Operation timed out - " + e.getMessage());
-                throw new RuntimeException("Failed to add college mate and alumni details due to timeout", e);
-            } catch (ElementClickInterceptedException e) {
-                common.logPrint("Error: Element click intercepted - " + e.getMessage());
-                throw new RuntimeException("Failed to add college mate and alumni details due to click interception", e);
-            } catch (StaleElementReferenceException e) {
-                common.logPrint("Error: Stale element reference - " + e.getMessage());
-                throw new RuntimeException("Failed to add college mate and alumni details due to stale element", e);
-            } catch (Exception e) {
-                common.logPrint("Unexpected error: " + e.getMessage());
-                throw new RuntimeException("Failed to add college mate and alumni details due to unexpected error", e);
-            }
-        }
-
-        public void addSocialActivities() {
-            try {
-                redirectToParticulerAddtionalDetailPage(CSR);
-
-                common.logPrint("Step :: Enter CSR Activity");
-                common.waitUntilElementToBeVisible(By.xpath(CSRACTIVITY));
-                common.type(CSRACTIVITY, "Activity");
-
-                common.logPrint("Step :: Select NGO");
-                common.waitUntilElementToBeVisible(By.xpath(CSRNGO));
-                common.click(CSRNGO);
-                common.twoDownKeyAndEnter();
-
-                common.logPrint("Step :: Entering No. of Participants");
-                common.waitUntilElementToBeVisible(By.xpath(CSRPARTICIPANTS));
-                common.type(CSRPARTICIPANTS, "10");
-
-                common.logPrint("Step :: Entering CSR Venue");
-                common.waitUntilElementToBeVisible(By.xpath(CSRVENUE));
-                common.type(CSRVENUE, "Ahmedabad");
-
-                common.logPrint("Step :: Entering Amount Spent");
-                common.waitUntilElementToBeVisible(By.xpath(CSRAMOUNT));
-                common.type(CSRAMOUNT, "10000");
-
-                common.logPrint("Step :: Entering Sponsors");
-                common.waitUntilElementToBeVisible(By.xpath(CSRSPONSORS));
-                common.type(CSRSPONSORS, "Sponsors");
-
-                common.logPrint("Step :: Entering Remarks");
-                common.waitUntilElementToBeVisible(By.xpath(CSRREMARKS));
-                common.type(CSRREMARKS, "Remarks");
-
-                common.logPrint("Step :: Entering Desc");
-                common.waitUntilElementToBeVisible(By.xpath(CSRDESC));
-                common.type(CSRDESC, "Desc");
-
-                common.logPrint("Step :: Entering Address line 1");
-                common.waitUntilElementToBeVisible(By.xpath(CSRAD1));
-                common.type(CSRAD1, "Ahmedabad");
-
-                common.logPrint("Step :: Entering Address line 2");
-                common.waitUntilElementToBeVisible(By.xpath(CSRAD2));
-                common.type(CSRAD2, "Ahmedabad");
-
-                common.logPrint("Step :: Entering City");
-                common.waitUntilElementToBeVisible(By.xpath(CSRCITY));
-                common.type(CSRCITY, "Ahmedabad");
-                common.twoDownKeyAndEnter();
-
-                common.logPrint("Step :: Entering Pincode");
-                common.waitUntilElementToBeVisible(By.xpath(CSRPINCODE));
-                common.type(CSRPINCODE, "");
-                common.twoDownKeyAndEnter();
-
-                common.logPrint("Step:: Click on Save button");
-                common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
-                common.click(SAVEBUTTON);
-            } catch (NoSuchElementException e) {
-                common.logPrint("Error: Element not found - " + e.getMessage());
-                throw new RuntimeException("Failed to add social activities due to missing element", e);
-            } catch (TimeoutException e) {
-                common.logPrint("Error: Operation timed out - " + e.getMessage());
-                throw new RuntimeException("Failed to add social activities due to timeout", e);
-            } catch (ElementClickInterceptedException e) {
-                common.logPrint("Error: Element click intercepted - " + e.getMessage());
-                throw new RuntimeException("Failed to add social activities due to click interception", e);
-            } catch (StaleElementReferenceException e) {
-                common.logPrint("Error: Stale element reference - " + e.getMessage());
-                throw new RuntimeException("Failed to add social activities due to stale element", e);
-            } catch (Exception e) {
-                common.logPrint("Unexpected error: " + e.getMessage());
-                throw new RuntimeException("Failed to add social activities due to unexpected error", e);
-            }
-        }
-
-        public void addAssociatedHospital() {
-            try {
-                redirectToParticulerAddtionalDetailPage(AH);
-
-                common.logPrint("Step :: Enter Associated Hospital");
-                common.waitUntilElementToBeVisible(By.xpath(AHNAME));
-                common.type(AHNAME, "Associated Hospital");
-
-                common.logPrint("Step :: Enter Hospital City");
-                common.waitUntilElementToBeVisible(By.xpath(AHCITY));
-                common.type(AHCITY, "Ahmedabad");
-                common.pause(1);
-                common.downKeyAndEnter();
-
-                common.logPrint("Step :: Enter Active Checkbox");
-                common.selectCheckBox(AHACTIVE);
-
-                common.logPrint("Step :: Select Is Recursive");
-                common.waitUntilElementToBeVisible(By.xpath(AHRECURSIVE));
-                common.type(AHRECURSIVE, "");
-                common.twoDownKeyAndEnter();
-
-                common.logPrint("Step :: Enter Daily Patient count");
-                common.waitUntilElementToBeVisible(By.xpath(AHHOSPITAL));
-                common.type(AHHOSPITAL, "10");
-
-                common.logPrint("Step :: Enter Weekly Patient count");
-                common.waitUntilElementToBeVisible(By.xpath(AHHOSPITALWEEKLY));
-                common.type(AHHOSPITALWEEKLY, "100");
-
-                common.logPrint("Step :: Enter Monthly Patient count");
-                common.waitUntilElementToBeVisible(By.xpath(AHHOSPITAMONTHLY));
-                common.type(AHHOSPITAMONTHLY, "1000");
-
-                common.logPrint("Step :: Enter Address Line 1");
-                common.waitUntilElementToBeVisible(By.xpath(AHADDRESS1));
-                common.type(AHADDRESS1, "Ahmedabad");
-
-                common.logPrint("Step :: Enter Address Line 2");
-                common.waitUntilElementToBeVisible(By.xpath(AHADDRESS2));
-                common.type(AHADDRESS2, "Ahmedabad");
-
-                common.logPrint("Step :: Enter City");
-                common.waitUntilElementToBeVisible(By.xpath(AHCITYD));
-                common.type(AHCITYD, "Ahmedabad");
-                common.downKeyAndEnter();
-
-                common.logPrint("Step :: Enter Pincode");
-                common.waitUntilElementToBeVisible(By.xpath(AHPINCODE));
-                common.type(AHPINCODE, "");
-                common.twoDownKeyAndEnter();
-
-                common.logPrint("Step:: Click on Save button");
-                common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
-                common.click(SAVEBUTTON);
-            } catch (NoSuchElementException e) {
-                common.logPrint("Error: Element not found - " + e.getMessage());
-                throw new RuntimeException("Failed to add associated hospital due to missing element", e);
-            } catch (TimeoutException e) {
-                common.logPrint("Error: Operation timed out - " + e.getMessage());
-                throw new RuntimeException("Failed to add associated hospital due to timeout", e);
-            } catch (ElementClickInterceptedException e) {
-                common.logPrint("Error: Element click intercepted - " + e.getMessage());
-                throw new RuntimeException("Failed to add associated hospital due to click interception", e);
-            } catch (StaleElementReferenceException e) {
-                common.logPrint("Error: Stale element reference - " + e.getMessage());
-                throw new RuntimeException("Failed to add associated hospital due to stale element", e);
-            } catch (Exception e) {
-                common.logPrint("Unexpected error: " + e.getMessage());
-                throw new RuntimeException("Failed to add associated hospital due to unexpected error", e);
-            }
-        }
-
-        public void addPatientsReferTo() {
-            try {
-                redirectToParticulerAddtionalDetailPage(PRT);
-
-                String name = common.fakeName();
-                common.logPrint("Step :: Enter Name");
-                common.waitUntilElementToBeVisible(By.xpath(PRTDRNAME));
-                common.type(PRTDRNAME, name);
-
-                common.logPrint("Step :: PRT Speciality");
-                common.waitUntilElementToBeVisible(By.xpath(PRTSPECIALITY));
-                common.type(PRTSPECIALITY, "");
-                common.twoDownKeyAndEnter();
-
-                common.logPrint("Step :: Enter Hospital name");
-                common.waitUntilElementToBeVisible(By.xpath(PRTHOSPITALNAME));
-                common.type(PRTHOSPITALNAME, name);
-
-                common.logPrint("Step :: PRT Priority");
-                common.waitUntilElementToBeVisible(By.xpath(PRTPRIORITY));
-                common.type(PRTPRIORITY, "");
-                common.twoDownKeyAndEnter();
-
-                common.logPrint("Step :: PRT Patient Name");
-                common.waitUntilElementToBeVisible(By.xpath(PRTPATIENTNAME));
-                common.type(PRTPATIENTNAME, name);
-
-                common.logPrint("Step :: PRT Mobile");
-                common.waitUntilElementToBeVisible(By.xpath(PRTMOBILE));
-                common.type(PRTMOBILE, "9871727272");
-
-                common.logPrint("Step :: PRT Date");
-                common.waitUntilElementToBeVisible(By.xpath(PRTDATE));
-                common.type(PRTDATE, "27-06-2025");
-
-                common.logPrint("Step :: PRT Address 1");
-                common.waitUntilElementToBeVisible(By.xpath(PRTAD1));
-                common.type(PRTAD1, "Ahmedabad");
-
-                common.logPrint("Step :: PRT Address 2");
-                common.waitUntilElementToBeVisible(By.xpath(PRTAD2));
-                common.type(PRTAD2, "Ahmedabad");
-
-                common.logPrint("Step :: PRT City");
-                common.waitUntilElementToBeVisible(By.xpath(PRTCITY));
-                common.type(PRTCITY, "Ahmedabad");
-                common.downKeyAndEnter();
-
-                common.logPrint("Step :: PRT Pincode");
-                common.waitUntilElementToBeVisible(By.xpath(PRTPINCODE));
-                common.type(PRTPINCODE, "");
-                common.twoDownKeyAndEnter();
-
-                common.logPrint("Step:: Click on Save button");
-                common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
-                common.click(SAVEBUTTON);
-            } catch (NoSuchElementException e) {
-                common.logPrint("Error: Element not found - " + e.getMessage());
-                throw new RuntimeException("Failed to add patients refer to due to missing element", e);
-            } catch (TimeoutException e) {
-                common.logPrint("Error: Operation timed out - " + e.getMessage());
-                throw new RuntimeException("Failed to add patients refer to due to timeout", e);
-            } catch (ElementClickInterceptedException e) {
-                common.logPrint("Error: Element click intercepted - " + e.getMessage());
-                throw new RuntimeException("Failed to add patients refer to due to click interception", e);
-            } catch (StaleElementReferenceException e) {
-                common.logPrint("Error: Stale element reference - " + e.getMessage());
-                throw new RuntimeException("Failed to add patients refer to due to stale element", e);
-            } catch (Exception e) {
-                common.logPrint("Unexpected error: " + e.getMessage());
-                throw new RuntimeException("Failed to add patients refer to due to unexpected error", e);
-            }
-        }
-
-        public void addPatientRefSource() {
-            try {
-                redirectToParticulerAddtionalDetailPage(PRS);
-
-                String name = common.fakeName();
-                common.logPrint("Step :: Enter Name");
-                common.waitUntilElementToBeVisible(By.xpath(PRSNAME));
-                common.type(PRSNAME, name);
-
-                common.logPrint("Step :: PRS Speciality");
-                common.waitUntilElementToBeVisible(By.xpath(PRSSPECIALITY));
-                common.type(PRSSPECIALITY, "");
-                common.twoDownKeyAndEnter();
-
-                common.logPrint("Step :: PRS Hospital");
-                common.waitUntilElementToBeVisible(By.xpath(PRSHOSPITAL));
-                common.type(PRSHOSPITAL, "Name");
-
-                common.logPrint("Step :: PRS Priority");
-                common.waitUntilElementToBeVisible(By.xpath(PRSPRIORITY));
-                common.type(PRSPRIORITY, "");
-                common.twoDownKeyAndEnter();
-
-                common.logPrint("Step :: Enter Patient Name");
-                common.waitUntilElementToBeVisible(By.xpath(PRSPATIENTNAME));
-                common.type(PRSPATIENTNAME, name);
-
-                common.logPrint("Step :: Enter PRS Mobile");
-                common.waitUntilElementToBeVisible(By.xpath(PRSMOBILE));
-                common.type(PRSMOBILE, "1231231231");
-
-                common.logPrint("Step :: Enter Date");
-                common.waitUntilElementToBeVisible(By.xpath(PRSREFERDATE));
-                common.type(PRSREFERDATE, common.generateCurDate());
-
-                common.logPrint("Step :: Enter PRS Address");
-                common.waitUntilElementToBeVisible(By.xpath(PRSAD1));
-                common.type(PRSAD1, "Ahmedabad");
-
-                common.logPrint("Step :: Enter PRS Address");
-                common.waitUntilElementToBeVisible(By.xpath(PRSAD2));
-                common.type(PRSAD2, "Ahmedabad");
-
-                common.logPrint("Step :: PRS City");
-                common.waitUntilElementToBeVisible(By.xpath(PRSCITY));
-                common.type(PRSCITY, "Ahmedabad");
-                common.downKeyAndEnter();
-
-                common.logPrint("Step :: PRS Pincode");
-                common.waitUntilElementToBeVisible(By.xpath(PRSPINCODE));
-                common.type(PRSPINCODE, "");
-                common.twoDownKeyAndEnter();
-
-                common.logPrint("Step:: Click on Save button");
-                common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
-                common.click(SAVEBUTTON);
-            } catch (NoSuchElementException e) {
-                common.logPrint("Error: Element not found - " + e.getMessage());
-                throw new RuntimeException("Failed to add patient reference source due to missing element", e);
-            } catch (TimeoutException e) {
-                common.logPrint("Error: Operation timed out - " + e.getMessage());
-                throw new RuntimeException("Failed to add patient reference source due to timeout", e);
-            } catch (ElementClickInterceptedException e) {
-                common.logPrint("Error: Element click intercepted - " + e.getMessage());
-                throw new RuntimeException("Failed to add patient reference source due to click interception", e);
-            } catch (StaleElementReferenceException e) {
-                common.logPrint("Error: Stale element reference - " + e.getMessage());
-                throw new RuntimeException("Failed to add patient reference source due to stale element", e);
-            } catch (Exception e) {
-                common.logPrint("Unexpected error: " + e.getMessage());
-                throw new RuntimeException("Failed to add patient reference source due to unexpected error", e);
-            }
-        }
-
-        public void addConsultingFess() {
-            try {
-                redirectToParticulerAddtionalDetailPage(CFC);
-
-                common.logPrint("Step :: CFC Type");
-                common.waitUntilElementToBeVisible(By.xpath(CFCTYPE));
-                common.type(CFCTYPE, "");
-                common.twoDownKeyAndEnter();
-
-                common.logPrint("Step :: CFC Amount");
-                common.waitUntilElementToBeVisible(By.xpath(CFCAMOUNT));
-                common.type(CFCAMOUNT, "1000");
-
-                common.logPrint("Step :: Enter Start Date");
-                common.waitUntilElementToBeVisible(By.xpath(CFCSDATE));
-                common.type(CFCSDATE, common.generateCurDate());
-
-                common.logPrint("Step :: Enter End Date");
-                common.waitUntilElementToBeVisible(By.xpath(CFCEDATE));
-                common.type(CFCEDATE, common.generateCurDate());
-
-                common.logPrint("Step :: Entering CFC Duration");
-                common.waitUntilElementToBeVisible(By.xpath(CFCDURATION));
-                common.type(CFCDURATION, "Name");
-
-                common.logPrint("Step :: Entering CFC Current Amount");
-                common.waitUntilElementToBeVisible(By.xpath(CFCAMOUNTS));
-                common.type(CFCAMOUNTS, "Name");
-
-                common.logPrint("Step:: Click on Save button");
-                common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
-                common.click(SAVEBUTTON);
-            } catch (NoSuchElementException e) {
-                common.logPrint("Error: Element not found - " + e.getMessage());
-                throw new RuntimeException("Failed to add consulting fees due to missing element", e);
-            } catch (TimeoutException e) {
-                common.logPrint("Error: Operation timed out - " + e.getMessage());
-                throw new RuntimeException("Failed to add consulting fees due to timeout", e);
-            } catch (ElementClickInterceptedException e) {
-                common.logPrint("Error: Element click intercepted - " + e.getMessage());
-                throw new RuntimeException("Failed to add consulting fees due to click interception", e);
-            } catch (StaleElementReferenceException e) {
-                common.logPrint("Error: Stale element reference - " + e.getMessage());
-                throw new RuntimeException("Failed to add consulting fees due to stale element", e);
-            } catch (Exception e) {
-                common.logPrint("Unexpected error: " + e.getMessage());
-                throw new RuntimeException("Failed to add consulting fees due to unexpected error", e);
-            }
-        }
-
-        public void addConsultingFessMR() {
-            try {
-                redirectToParticulerAddtionalDetailPage(CFM);
-
-                common.logPrint("Step :: CFM Type");
-                common.waitUntilElementToBeVisible(By.xpath(CFMTYPE));
-                common.type(CFMTYPE, "");
-                common.twoDownKeyAndEnter();
-
-                common.logPrint("Step :: Entering CFM Current Amount");
-                common.waitUntilElementToBeVisible(By.xpath(CFMAMOUNT));
-                common.type(CFMAMOUNT, "1000");
-
-                common.logPrint("Step :: Entering CFM Valid Upto");
-                common.waitUntilElementToBeVisible(By.xpath(CFMVALIDUPTO));
-                common.type(CFMVALIDUPTO, "30");
-
-                common.logPrint("Step:: Click on Save button");
-                common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
-                common.click(SAVEBUTTON);
-            } catch (NoSuchElementException e) {
-                common.logPrint("Error: Element not found - " + e.getMessage());
-                throw new RuntimeException("Failed to add consulting fees MR due to missing element", e);
-            } catch (TimeoutException e) {
-                common.logPrint("Error: Operation timed out - " + e.getMessage());
-                throw new RuntimeException("Failed to add consulting fees MR due to timeout", e);
-            } catch (ElementClickInterceptedException e) {
-                common.logPrint("Error: Element click intercepted - " + e.getMessage());
-                throw new RuntimeException("Failed to add consulting fees MR due to click interception", e);
-            } catch (StaleElementReferenceException e) {
-                common.logPrint("Error: Stale element reference - " + e.getMessage());
-                throw new RuntimeException("Failed to add consulting fees MR due to stale element", e);
-            } catch (Exception e) {
-                common.logPrint("Unexpected error: " + e.getMessage());
-                throw new RuntimeException("Failed to add consulting fees MR due to unexpected error", e);
-            }
-        }
-
-        public void addMedicalAdvisory() {
-            try {
-                redirectToParticulerAddtionalDetailPage(MEDICALADVISORYSPEAKER);
-
-                common.logPrint("Step :: Entering MPurpose");
-                common.waitUntilElementToBeVisible(By.xpath(MPURPOSE));
-                common.type(MPURPOSE, "ADVICE");
-
-                common.logPrint("Step :: Entering MAmount");
-                common.waitUntilElementToBeVisible(By.xpath(MAMOUNT));
-                common.type(MAMOUNT, "100");
-
-                common.logPrint("Step :: Entering MCompany");
-                common.waitUntilElementToBeVisible(By.xpath(MCOMPANY));
-                common.type(MCOMPANY, "Test");
-
-                common.logPrint("Step :: Entering MStart Date");
-                common.waitUntilElementToBeVisible(By.xpath(MSTARTDATE));
-                common.type(MSTARTDATE, "04-07-2025");
-
-                common.logPrint("Step :: Entering MEnd Date");
-                common.waitUntilElementToBeVisible(By.xpath(MENDDATE));
-                common.type(MENDDATE, "04-07-2025");
-
-                common.logPrint("Step :: Entering MBusiness");
-                common.waitUntilElementToBeVisible(By.xpath(MBUSINESS));
-                common.type(MBUSINESS, "Test");
-
-                common.logPrint("Step :: Entering MRemarks");
-                common.waitUntilElementToBeVisible(By.xpath(MREMARKS));
-                common.type(MREMARKS, "Remarks");
-
-                common.logPrint("Step :: Entering MAddress");
-                common.waitUntilElementToBeVisible(By.xpath(MADDRESS));
-                common.type(MADDRESS, "Ahmedabad");
-
-                common.logPrint("Step :: Entering MAddress");
-                common.waitUntilElementToBeVisible(By.xpath(MADDRESS2));
-                common.type(MADDRESS2, "Ahmedabad");
-
-                common.logPrint("Step :: Entering MCity");
-                common.waitUntilElementToBeVisible(By.xpath(MCITY));
-                common.type(MCITY, "Ahmedabad");
-                common.twoDownKeyAndEnter();
-
-                common.logPrint("Step :: Entering MPincode");
-                common.waitUntilElementToBeVisible(By.xpath(MPINCODE));
-                common.type(MPINCODE, "");
-                common.twoDownKeyAndEnter();
-
-                common.logPrint("Step:: Click on Save button");
-                common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
-                common.click(SAVEBUTTON);
-            } catch (NoSuchElementException e) {
-                common.logPrint("Error: Element not found - " + e.getMessage());
-                throw new RuntimeException("Failed to add medical advisory due to missing element", e);
-            } catch (TimeoutException e) {
-                common.logPrint("Error: Operation timed out - " + e.getMessage());
-                throw new RuntimeException("Failed to add medical advisory due to timeout", e);
-            } catch (ElementClickInterceptedException e) {
-                common.logPrint("Error: Element click intercepted - " + e.getMessage());
-                throw new RuntimeException("Failed to add medical advisory due to click interception", e);
-            } catch (StaleElementReferenceException e) {
-                common.logPrint("Error: Stale element reference - " + e.getMessage());
-                throw new RuntimeException("Failed to add medical advisory due to stale element", e);
-            } catch (Exception e) {
-                common.logPrint("Unexpected error: " + e.getMessage());
-                throw new RuntimeException("Failed to add medical advisory due to unexpected error", e);
-            }
-        }
-
-        public void addAchievements() {
-            try {
-                redirectToParticulerAddtionalDetailPage(ACHIEVEMENTS);
-
-                common.logPrint("Step :: Selecting Achievements");
-                common.waitUntilElementToBeVisible(By.xpath(ACHIEVEMENTSADD));
-                common.type(ACHIEVEMENTSADD, "");
-                common.twoDownKeyAndEnter();
-
-                common.logPrint("Step :: Selecting Date");
-                common.waitUntilElementToBeVisible(By.xpath(ACHIEVEMENTSDATE));
-                common.type(ACHIEVEMENTSDATE, "04-07-2025");
-
-                common.logPrint("Step :: Adding Remarks");
-                common.waitUntilElementToBeVisible(By.xpath(ACHIEVEMENTSREMARKS));
-                common.type(ACHIEVEMENTSREMARKS, " Remarks");
-
-                common.logPrint("Step :: Adding image");
-                WebElement fileInput = driver.findElement(By.xpath("//input[@type='file']"));
-                fileInput.sendKeys("C:\\Users\\Admin\\OneDrive\\Desktop\\Gopal Repo\\NewDemoRepo\\1.JPG");
-
-                common.logPrint("Step:: Click on Save button");
-                common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
-                common.click(SAVEBUTTON);
-            } catch (NoSuchElementException e) {
-                common.logPrint("Error: Element not found - " + e.getMessage());
-                throw new RuntimeException("Failed to add achievements due to missing element", e);
-            } catch (TimeoutException e) {
-                common.logPrint("Error: Operation timed out - " + e.getMessage());
-                throw new RuntimeException("Failed to add achievements due to timeout", e);
-            } catch (ElementClickInterceptedException e) {
-                common.logPrint("Error: Element click intercepted - " + e.getMessage());
-                throw new RuntimeException("Failed to add achievements due to click interception", e);
-            } catch (StaleElementReferenceException e) {
-                common.logPrint("Error: Stale element reference - " + e.getMessage());
-                throw new RuntimeException("Failed to add achievements due to stale element", e);
-            } catch (Exception e) {
-                common.logPrint("Unexpected error: " + e.getMessage());
-                throw new RuntimeException("Failed to add achievements due to unexpected error", e);
-            }
-        }
-
-        public void addProceduralEquipment() {
-            try {
-                redirectToParticulerAddtionalDetailPage(PE);
-
-                common.logPrint("Step :: Entering PE Name");
-                common.waitUntilElementToBeVisible(By.xpath(PENAME));
-                common.type(PENAME, "Test");
-
-                common.logPrint("Step :: Entering Vendor Name");
-                common.waitUntilElementToBeVisible(By.xpath(PEVENDOR));
-                common.type(PEVENDOR, "Test Vendor");
-
-                common.logPrint("Step :: Entering PE Date");
-                common.waitUntilElementToBeVisible(By.xpath(PEDATE));
-                common.type(PEDATE, "07-07-2025");
-
-                common.logPrint("Step :: Entering PE Price");
-                common.waitUntilElementToBeVisible(By.xpath(PEPRICE));
-                common.type(PEPRICE, "100");
-
-                common.logPrint("Step :: Entering Remarks");
-                common.waitUntilElementToBeVisible(By.xpath(PEREMARKS));
-                common.type(PEREMARKS, "Test Remarks");
-
-                common.logPrint("Step :: Clicking the Save button");
-                common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
-                common.click(SAVEBUTTON);
-            } catch (NoSuchElementException e) {
-                common.logPrint("Error: Element not found - " + e.getMessage());
-                throw new RuntimeException("Failed to add procedural equipment due to missing element", e);
-            } catch (TimeoutException e) {
-                common.logPrint("Error: Operation timed out - " + e.getMessage());
-                throw new RuntimeException("Failed to add procedural equipment due to timeout", e);
-            } catch (ElementClickInterceptedException e) {
-                common.logPrint("Error: Element click intercepted - " + e.getMessage());
-                throw new RuntimeException("Failed to add procedural equipment due to click interception", e);
-            } catch (StaleElementReferenceException e) {
-                common.logPrint("Error: Stale element reference - " + e.getMessage());
-                throw new RuntimeException("Failed to add procedural equipment due to stale element", e);
-            } catch (Exception e) {
-                common.logPrint("Unexpected error: " + e.getMessage());
-                throw new RuntimeException("Failed to add procedural equipment due to unexpected error", e);
-            }
-        }
-
-        public void addDoctorBankDetails() {
-            try {
-                redirectToParticulerAddtionalDetailPage(DBD);
-
-                common.logPrint("Step :: Entering Bank Name");
-                common.waitUntilElementToBeVisible(By.xpath(DBDBANKNAME));
-                common.type(DBDBANKNAME, "BOB");
-
-                common.logPrint("Step :: Entering Bank Account");
-                common.waitUntilElementToBeVisible(By.xpath(DBDACCOUNT));
-                common.type(DBDACCOUNT, "07072025321");
-
-                common.logPrint("Step :: Entering Bank IFSC");
-                common.waitUntilElementToBeVisible(By.xpath(DBDIFSC));
-                common.type(DBDIFSC, "07072025321");
-
-                common.logPrint("Step :: Entering Bank Account Holder");
-                common.waitUntilElementToBeVisible(By.xpath(DBDACCOUNTHOLDER));
-                common.type(DBDACCOUNTHOLDER, "NAME");
-
-                common.logPrint("Step :: Clicking the Save button");
-                common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
-                common.click(SAVEBUTTON);
-            } catch (NoSuchElementException e) {
-                common.logPrint("Error: Element not found - " + e.getMessage());
-                throw new RuntimeException("Failed to add doctor bank details due to missing element", e);
-            } catch (TimeoutException e) {
-                common.logPrint("Error: Operation timed out - " + e.getMessage());
-                throw new RuntimeException("Failed to add doctor bank details due to timeout", e);
-            } catch (ElementClickInterceptedException e) {
-                common.logPrint("Error: Element click intercepted - " + e.getMessage());
-                throw new RuntimeException("Failed to add doctor bank details due to click interception", e);
-            } catch (StaleElementReferenceException e) {
-                common.logPrint("Error: Stale element reference - " + e.getMessage());
-                throw new RuntimeException("Failed to add doctor bank details due to stale element", e);
-            } catch (Exception e) {
-                common.logPrint("Unexpected error: " + e.getMessage());
-                throw new RuntimeException("Failed to add doctor bank details due to unexpected error", e);
-            }
-        }
-
-        public void addSpecialDay() {
-            try {
-                redirectToParticulerAddtionalDetailPage(SD);
-
-                common.logPrint("Step :: Entering Special Day Name");
-                common.waitUntilElementToBeVisible(By.xpath(SDNAME));
-                common.type(SDNAME, "Special Day");
-
-                common.logPrint("Step :: Entering Special Date");
-                common.waitUntilElementToBeVisible(By.xpath(SDDATE));
-                common.type(SDDATE, "07-07-2025");
-
-                common.logPrint("Step :: Clicking the Save button");
-                common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
-                common.click(SAVEBUTTON);
-            } catch (NoSuchElementException e) {
-                common.logPrint("Error: Element not found - " + e.getMessage());
-                throw new RuntimeException("Failed to add special day due to missing element", e);
-            } catch (TimeoutException e) {
-                common.logPrint("Error: Operation timed out - " + e.getMessage());
-                throw new RuntimeException("Failed to add special day due to timeout", e);
-            } catch (ElementClickInterceptedException e) {
-                common.logPrint("Error: Element click intercepted - " + e.getMessage());
-                throw new RuntimeException("Failed to add special day due to click interception", e);
-            } catch (StaleElementReferenceException e) {
-                common.logPrint("Error: Stale element reference - " + e.getMessage());
-                throw new RuntimeException("Failed to add special day due to stale element", e);
-            } catch (Exception e) {
-                common.logPrint("Unexpected error: " + e.getMessage());
-                throw new RuntimeException("Failed to add special day due to unexpected error", e);
-            }
-        }
-
-        public void addDoctorVendor() {
-            try {
-                redirectToParticulerAddtionalDetailPage(DV);
-
-                common.logPrint("Step :: Selecting Doctor Vendor");
-                common.waitUntilElementToBeVisible(By.xpath(DVSERVICE));
-                common.type(DVSERVICE, "");
-                common.twoDownKeyAndEnter();
-
-                common.logPrint("Step :: Entering Doctor Vendor Head");
-                common.waitUntilElementToBeVisible(By.xpath(DVHEAD));
-                common.type(DVHEAD, "Doctor Vendor");
-
-                common.logPrint("Step :: Entering Doctor Vendor Phone");
-                common.waitUntilElementToBeVisible(By.xpath(DVPHONE));
-                common.type(DVPHONE, "1231231231");
-
-                common.logPrint("Step :: Entering Doctor Vendor Date");
-                common.waitUntilElementToBeVisible(By.xpath(DVDATE));
-                common.type(DVDATE, "07-07-2025");
-
-                common.logPrint("Step :: Entering Doctor Vendor Note");
-                common.waitUntilElementToBeVisible(By.xpath(DVNOTE));
-                common.type(DVNOTE, "Notes");
-
-                common.logPrint("Step :: Clicking the Save button");
-                common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
-                common.click(SAVEBUTTON);
-            } catch (NoSuchElementException e) {
-                common.logPrint("Error: Element not found - " + e.getMessage());
-                throw new RuntimeException("Failed to add doctor vendor due to missing element", e);
-            } catch (TimeoutException e) {
-                common.logPrint("Error: Operation timed out - " + e.getMessage());
-                throw new RuntimeException("Failed to add doctor vendor due to timeout", e);
-            } catch (ElementClickInterceptedException e) {
-                common.logPrint("Error: Element click intercepted - " + e.getMessage());
-                throw new RuntimeException("Failed to add doctor vendor due to click interception", e);
-            } catch (StaleElementReferenceException e) {
-                common.logPrint("Error: Stale element reference - " + e.getMessage());
-                throw new RuntimeException("Failed to add doctor vendor due to stale element", e);
-            }
-            catch(RuntimeException e){
-                common.logPrint("Error:"+ e.getMessage());
-                throw new RuntimeException("Fail, e");
-            } catch (Exception e) {
-                common.logPrint("Unexpected error: " + e.getMessage());
-                throw new RuntimeException("Failed to add doctor vendor due to unexpected error", e);
-            }
+            common.logPrint("Step:: Click on the Degree dropdown");
+            common.waitUntilElementToBeVisible(By.xpath(DEGREEDROPDOWN));
+            common.click(DEGREEDROPDOWN);
+            common.downKeyAndEnter();
+
+            common.logPrint("Step:: Click on the Speciality dropdown");
+            common.waitUntilElementToBeVisible(By.xpath(SPECIALITYDRODOWN));
+            common.click(SPECIALITYDRODOWN);
+            common.downKeyAndEnter();
+
+            String year = common.generateRandomYear("1998", "2001");
+            common.logPrint("Step:: Enter Degree admission year");
+            common.waitUntilElementToBeVisible(By.xpath(ADDMISSIONYEAR));
+            common.type(ADDMISSIONYEAR, year);
+
+            String passoutyear = common.generateRandomYear("2001", "2005");
+            common.logPrint("Step:: Enter Degree Passout year");
+            common.waitUntilElementToBeVisible(By.xpath(PASSOUTYEAR));
+            common.type(PASSOUTYEAR, passoutyear);
+
+            String degreeColllage = common.generateRandomChars(10);
+            common.logPrint("Step:: Enter Degree college name");
+            common.waitUntilElementToBeVisible(By.xpath(DEGREECOLLAGE));
+            common.type(DEGREECOLLAGE, degreeColllage);
+
+            String degreeRegNum = common.generateRandomNumberString(10);
+            common.logPrint("Step:: Enter Degree registration number");
+            common.waitUntilElementToBeVisible(By.xpath(DEGREEREGNUM));
+            common.type(DEGREEREGNUM, degreeRegNum);
+
+            common.logPrint("Step:: Select city from the dropdown");
+            common.waitUntilElementToBeVisible(By.xpath(CITYINPUT));
+            common.type(CITYINPUT, "AHMEDABAD");
+            common.pause(1);
+            common.downKeyAndEnter();
+            common.logPrint("Selected city is: AHMEDABAD");
+
+            common.scroll_To_Element(PINCODEDROPDOWN);
+
+            common.logPrint("Step:: Select pincode from dropdown");
+            common.waitUntilElementToBeVisible(By.xpath(PINCODEDROPDOWN));
+            common.click(PINCODEDROPDOWN);
+            common.twoDownKeyAndEnter();
+
+            common.logPrint("Step:: Click on the save button");
+            common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
+            common.click(SAVEBUTTON);
+        } catch (NoSuchElementException e) {
+            common.logPrint("Error: Element not found - " + e.getMessage());
+            throw new RuntimeException("Failed to add degree due to missing element", e);
+        } catch (TimeoutException e) {
+            common.logPrint("Error: Operation timed out - " + e.getMessage());
+            throw new RuntimeException("Failed to add degree due to timeout", e);
+        } catch (ElementClickInterceptedException e) {
+            common.logPrint("Error: Element click intercepted - " + e.getMessage());
+            throw new RuntimeException("Failed to add degree due to click interception", e);
+        } catch (StaleElementReferenceException e) {
+            common.logPrint("Error: Stale element reference - " + e.getMessage());
+            throw new RuntimeException("Failed to add degree due to stale element", e);
+        } catch (Exception e) {
+            common.logPrint("Unexpected error: " + e.getMessage());
+            throw new RuntimeException("Failed to add degree due to unexpected error", e);
         }
     }
+
+    public void addAreaOfInterest() {
+        try {
+            redirectToParticularAdditionalDetailPage(AREAOFINTEREST);
+
+            common.logPrint("Step:: Select Area Of Interest In Medical Field");
+            common.waitUntilElementToBeVisible(By.xpath(AREAOFINTERESTINMEDICAL));
+            common.click(AREAOFINTERESTINMEDICAL);
+            common.downKeyAndEnter();
+
+            String areaRemark = common.generateRandomChars(20);
+            common.logPrint("Step:: Enter interest of area remark");
+            common.waitUntilElementToBeVisible(By.xpath(AREAREMARK));
+            common.type(AREAREMARK, areaRemark);
+
+            common.logPrint("Step:: Click on the save button");
+            common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
+            common.click(SAVEBUTTON);
+        } catch (NoSuchElementException e) {
+            common.logPrint("Error: Element not found - " + e.getMessage());
+            throw new RuntimeException("Failed to add area of interest due to missing element", e);
+        } catch (TimeoutException e) {
+            common.logPrint("Error: Operation timed out - " + e.getMessage());
+            throw new RuntimeException("Failed to add area of interest due to timeout", e);
+        } catch (ElementClickInterceptedException e) {
+            common.logPrint("Error: Element click intercepted - " + e.getMessage());
+            throw new RuntimeException("Failed to add area of interest due to click interception", e);
+        } catch (StaleElementReferenceException e) {
+            common.logPrint("Error: Stale element reference - " + e.getMessage());
+            throw new RuntimeException("Failed to add area of interest due to stale element", e);
+        } catch (Exception e) {
+            common.logPrint("Unexpected error: " + e.getMessage());
+            throw new RuntimeException("Failed to add area of interest due to unexpected error", e);
+        }
+    }
+
+    public void addGuidelinesFollowed() {
+        try {
+            redirectToParticularAdditionalDetailPage(GUIDELINESFOLLOWED);
+
+            common.logPrint("Step:: Select guideline followed from dropdown");
+            common.waitUntilElementToBeVisible(By.xpath(GUIDELINEFOLLOWEDDRP));
+            common.click(GUIDELINEFOLLOWEDDRP);
+            common.downKeyAndEnter();
+
+            String areaRemark = common.generateRandomChars(20);
+            common.logPrint("Step:: Enter guideline followed remark");
+            common.waitUntilElementToBeVisible(By.xpath(AREAREMARK));
+            common.type(AREAREMARK, areaRemark);
+
+            common.logPrint("Step:: Click on the save button");
+            common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
+            common.click(SAVEBUTTON);
+        } catch (NoSuchElementException e) {
+            common.logPrint("Error: Element not found - " + e.getMessage());
+            throw new RuntimeException("Failed to add guidelines followed due to missing element", e);
+        } catch (TimeoutException e) {
+            common.logPrint("Error: Operation timed out - " + e.getMessage());
+            throw new RuntimeException("Failed to add guidelines followed due to timeout", e);
+        } catch (ElementClickInterceptedException e) {
+            common.logPrint("Error: Element click intercepted - " + e.getMessage());
+            throw new RuntimeException("Failed to add guidelines followed due to click interception", e);
+        } catch (StaleElementReferenceException e) {
+            common.logPrint("Error: Stale element reference - " + e.getMessage());
+            throw new RuntimeException("Failed to add guidelines followed due to stale element", e);
+        } catch (Exception e) {
+            common.logPrint("Unexpected error: " + e.getMessage());
+            throw new RuntimeException("Failed to add guidelines followed due to unexpected error", e);
+        }
+    }
+
+    public void addConferenceAndSpeaker() {
+        try {
+            redirectToParticularAdditionalDetailPage(CONFERENCESPECKER);
+
+            common.logPrint("Step:: Select Subject type from dropdown");
+            common.waitUntilElementToBeVisible(By.xpath(SUBJECTTYPE));
+            common.click(SUBJECTTYPE);
+            common.downKeyAndEnter();
+
+            String startDate = common.generateDate("current", null, null);
+            common.logPrint("Step:: Enter start date");
+            common.waitUntilElementToBeVisible(By.xpath(STARTDATEINP));
+            common.type(STARTDATEINP, startDate);
+
+            String endDate = common.generateDate("future", null, null);
+            common.logPrint("Step:: Enter end date");
+            common.waitUntilElementToBeVisible(By.xpath(ENDDATEINP));
+            common.type(ENDDATEINP, endDate);
+
+            String days = common.generateRandomNumberString(2);
+            common.logPrint("Step:: Enter days");
+            common.waitUntilElementToBeVisible(By.xpath(DAYSINP));
+            common.type(DAYSINP, days);
+
+            String subject = common.generateRandomChars(10);
+            common.logPrint("Step:: Enter Subject and Topic");
+            common.waitUntilElementToBeVisible(By.xpath(SUBJECTTOPICINP));
+            common.type(SUBJECTTOPICINP, subject);
+
+            common.logPrint("Step:: Select Attendee as from dropdown");
+            common.waitUntilElementToBeVisible(By.xpath(ATTENDEDASDRP));
+            common.click(ATTENDEDASDRP);
+            common.downKeyAndEnter();
+
+            String venue = common.generateRandomChars(10);
+            common.logPrint("Step:: Enter venue name");
+            common.waitUntilElementToBeVisible(By.xpath(VENUEINP));
+            common.type(VENUEINP, venue);
+
+            String numberOfAttendee = common.generateRandomNumberString(2);
+            common.logPrint("Step:: Enter number of attendees");
+            common.waitUntilElementToBeVisible(By.xpath(NOOFATTENDEE));
+            common.type(NOOFATTENDEE, numberOfAttendee);
+
+            String areaRemark = common.generateRandomChars(20);
+            common.logPrint("Step:: Enter guideline followed remark");
+            common.waitUntilElementToBeVisible(By.xpath(AREAREMARK));
+            common.type(AREAREMARK, areaRemark);
+
+            common.logPrint("Step:: Click on the save button");
+            common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
+            common.click(SAVEBUTTON);
+        } catch (NoSuchElementException e) {
+            common.logPrint("Error: Element not found - " + e.getMessage());
+            throw new RuntimeException("Failed to add conference and speaker due to missing element", e);
+        } catch (TimeoutException e) {
+            common.logPrint("Error: Operation timed out - " + e.getMessage());
+            throw new RuntimeException("Failed to add conference and speaker due to timeout", e);
+        } catch (ElementClickInterceptedException e) {
+            common.logPrint("Error: Element click intercepted - " + e.getMessage());
+            throw new RuntimeException("Failed to add conference and speaker due to click interception", e);
+        } catch (StaleElementReferenceException e) {
+            common.logPrint("Error: Stale element reference - " + e.getMessage());
+            throw new RuntimeException("Failed to add conference and speaker due to stale element", e);
+        } catch (Exception e) {
+            common.logPrint("Unexpected error: " + e.getMessage());
+            throw new RuntimeException("Failed to add conference and speaker due to unexpected error", e);
+        }
+    }
+
+    public void addWeekendsAndVacation() {
+        try {
+            redirectToParticularAdditionalDetailPage(WEEKENDVACTION);
+
+            common.logPrint("Step:: Select Entertainment from dropdown");
+            common.waitUntilElementToBeVisible(By.xpath(ENTERTAINMENTDRP));
+            common.click(ENTERTAINMENTDRP);
+            common.downKeyAndEnter();
+
+            common.logPrint("Step:: Select Activity type from dropdown");
+            common.waitUntilElementToBeVisible(By.xpath(ACTIVITYTYPE));
+            common.click(ACTIVITYTYPE);
+            common.downKeyAndEnter();
+
+            String place = common.generateRandomChars(10);
+            common.logPrint("Step:: Enter Place");
+            common.waitUntilElementToBeVisible(By.xpath(PLACEINPADDITIONALDETAIL));
+            common.type(PLACEINPADDITIONALDETAIL, place);
+
+            String date = common.generateDate("current", null, null);
+            common.logPrint("Step:: Enter start date");
+            common.waitUntilElementToBeVisible(By.xpath(PREFFREDDATE));
+            common.type(PREFFREDDATE, date);
+
+            String areaRemark = common.generateRandomChars(20);
+            common.logPrint("Step:: Enter guideline followed remark");
+            common.waitUntilElementToBeVisible(By.xpath(AREAREMARK));
+            common.type(AREAREMARK, areaRemark);
+
+            common.logPrint("Step:: Click on the save button");
+            common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
+            common.click(SAVEBUTTON);
+        } catch (NoSuchElementException e) {
+            common.logPrint("Error: Element not found - " + e.getMessage());
+            throw new RuntimeException("Failed to add weekends and vacation due to missing element", e);
+        } catch (TimeoutException e) {
+            common.logPrint("Error: Operation timed out - " + e.getMessage());
+            throw new RuntimeException("Failed to add weekends and vacation due to timeout", e);
+        } catch (ElementClickInterceptedException e) {
+            common.logPrint("Error: Element click intercepted - " + e.getMessage());
+            throw new RuntimeException("Failed to add weekends and vacation due to click interception", e);
+        } catch (StaleElementReferenceException e) {
+            common.logPrint("Error: Stale element reference - " + e.getMessage());
+            throw new RuntimeException("Failed to add weekends and vacation due to stale element", e);
+        } catch (Exception e) {
+            common.logPrint("Unexpected error: " + e.getMessage());
+            throw new RuntimeException("Failed to add weekends and vacation due to unexpected error", e);
+        }
+    }
+
+    public void addFamilyFriendDetailInfo() {
+        try {
+            redirectToParticularAdditionalDetailPage(FAMILYFRIENDDETAIL);
+
+            String name = common.generateRandomChars(8);
+            common.logPrint("Step:: Enter Name");
+            common.waitUntilElementToBeVisible(By.xpath(NAMEINPFamily));
+            common.type(NAMEINPFamily, name);
+
+            common.logPrint("Step:: Select Relation from dropdown");
+            common.waitUntilElementToBeVisible(By.xpath(RELATIONDRP));
+            common.click(RELATIONDRP);
+            common.downKeyAndEnter();
+
+            String dob = common.generateDate("past", null, null);
+            common.logPrint("Step:: Enter DOB");
+            common.waitUntilElementToBeVisible(By.xpath(DOBINPAdd));
+            common.type(DOBINPAdd, dob);
+
+            String doa = common.generateDate("past", null, null);
+            common.logPrint("Step:: Enter DOA");
+            common.waitUntilElementToBeVisible(By.xpath(DOAINPAdd));
+            common.type(DOAINPAdd, doa);
+
+            String specialDay = common.generateRandomNumberString(7);
+            common.logPrint("Step:: Enter days");
+            common.waitUntilElementToBeVisible(By.xpath(SPECIALDAYDOBINP));
+            common.type(SPECIALDAYDOBINP, specialDay);
+
+            String specialDayDOB = common.generateDate("past", null, null);
+            common.logPrint("Step:: Enter Special Day DOB");
+            common.waitUntilElementToBeVisible(By.xpath(SPECIALDAYDOBINPAdd));
+            common.type(SPECIALDAYDOBINPAdd, specialDayDOB);
+
+            String remarks = common.generateRandomChars(25);
+            common.logPrint("Step:: Enter Remarks");
+            common.waitUntilElementToBeVisible(By.xpath(REMARKINP));
+            common.type(REMARKINP, remarks);
+
+            common.logPrint("Step:: Click on Save button");
+            common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
+            common.click(SAVEBUTTON);
+        } catch (NoSuchElementException e) {
+            common.logPrint("Error: Element not found - " + e.getMessage());
+            throw new RuntimeException("Failed to add family friend detail due to missing element", e);
+        } catch (TimeoutException e) {
+            common.logPrint("Error: Operation timed out - " + e.getMessage());
+            throw new RuntimeException("Failed to add family friend detail due to timeout", e);
+        } catch (ElementClickInterceptedException e) {
+            common.logPrint("Error: Element click intercepted - " + e.getMessage());
+            throw new RuntimeException("Failed to add family friend detail due to click interception", e);
+        } catch (StaleElementReferenceException e) {
+            common.logPrint("Error: Stale element reference - " + e.getMessage());
+            throw new RuntimeException("Failed to add family friend detail due to stale element", e);
+        } catch (Exception e) {
+            common.logPrint("Unexpected error: " + e.getMessage());
+            throw new RuntimeException("Failed to add family friend detail due to unexpected error", e);
+        }
+    }
+
+    public void addCollegeMateAndAlumniDetails() {
+        try {
+            redirectToParticularAdditionalDetailPage(COLLEGEALUMNIDETAILS);
+
+            String name = common.fakeName();
+            common.logPrint("Step:: Enter Name");
+            common.waitUntilElementToBeVisible(By.xpath(COLLEAGUENAME));
+            common.type(COLLEAGUENAME, name);
+            common.logPrint("Entered Name: " + name);
+
+            common.logPrint("Step :: Enter Date of Birth");
+            common.waitUntilElementToBeVisible(By.xpath(COLLEAGUEDATEOFBIRTH));
+            common.type(COLLEAGUEDATEOFBIRTH, "26-06-2025");
+
+            common.logPrint("Step :: Enter Speciality");
+            common.click(COLLEAGUESPECIALITY);
+            common.twoDownKeyAndEnter();
+
+            common.logPrint("Step :: Enter Hospital Name");
+            common.click(COLLEAGUEHOSPITAL);
+            common.type(COLLEAGUEHOSPITAL, "Test Hospital");
+
+            common.logPrint("Step :: Enter College Name");
+            common.click(COLLEAGUECOLLEGE);
+            common.type(COLLEAGUECOLLEGE, "College" + name);
+
+            common.logPrint("Step :: Enter Passout Year");
+            common.click(COLLEAGUEPASSOUTYEAR);
+            common.type(COLLEAGUEPASSOUTYEAR, "2025");
+
+            common.logPrint("Step :: Enter Remarks");
+            common.click(REMARKS);
+            common.type(REMARKS, "2025 Remarks");
+
+            common.fillBothAddress();
+
+            common.logPrint("Step:: Click on Save button");
+            common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
+            common.click(SAVEBUTTON);
+        } catch (NoSuchElementException e) {
+            common.logPrint("Error: Element not found - " + e.getMessage());
+            throw new RuntimeException("Failed to add college mate and alumni details due to missing element", e);
+        } catch (TimeoutException e) {
+            common.logPrint("Error: Operation timed out - " + e.getMessage());
+            throw new RuntimeException("Failed to add college mate and alumni details due to timeout", e);
+        } catch (ElementClickInterceptedException e) {
+            common.logPrint("Error: Element click intercepted - " + e.getMessage());
+            throw new RuntimeException("Failed to add college mate and alumni details due to click interception", e);
+        } catch (StaleElementReferenceException e) {
+            common.logPrint("Error: Stale element reference - " + e.getMessage());
+            throw new RuntimeException("Failed to add college mate and alumni details due to stale element", e);
+        } catch (Exception e) {
+            common.logPrint("Unexpected error: " + e.getMessage());
+            throw new RuntimeException("Failed to add college mate and alumni details due to unexpected error", e);
+        }
+    }
+
+    public void addSocialActivities() {
+        try {
+            redirectToParticularAdditionalDetailPage(CSR);
+
+            common.logPrint("Step :: Enter CSR Activity");
+            common.waitUntilElementToBeVisible(By.xpath(CSRACTIVITY));
+            common.type(CSRACTIVITY, "Activity");
+
+            common.logPrint("Step :: Select NGO");
+            common.waitUntilElementToBeVisible(By.xpath(CSRNGO));
+            common.click(CSRNGO);
+            common.twoDownKeyAndEnter();
+
+            common.logPrint("Step :: Entering No. of Participants");
+            common.waitUntilElementToBeVisible(By.xpath(CSRPARTICIPANTS));
+            common.type(CSRPARTICIPANTS, "10");
+
+            common.logPrint("Step :: Entering CSR Venue");
+            common.waitUntilElementToBeVisible(By.xpath(CSRVENUE));
+            common.type(CSRVENUE, "Ahmedabad");
+
+            common.logPrint("Step :: Entering Amount Spent");
+            common.waitUntilElementToBeVisible(By.xpath(CSRAMOUNT));
+            common.type(CSRAMOUNT, "10000");
+
+            common.logPrint("Step :: Entering Sponsors");
+            common.waitUntilElementToBeVisible(By.xpath(CSRSPONSORS));
+            common.type(CSRSPONSORS, "Sponsors");
+
+            common.logPrint("Step :: Entering Remarks");
+            common.waitUntilElementToBeVisible(By.xpath(CSRREMARKS));
+            common.type(CSRREMARKS, "Remarks");
+
+            common.logPrint("Step :: Entering Desc");
+            common.waitUntilElementToBeVisible(By.xpath(CSRDESC));
+            common.type(CSRDESC, "Desc");
+
+            common.logPrint("Step :: Entering Address line 1");
+            common.waitUntilElementToBeVisible(By.xpath(CSRAD1));
+            common.type(CSRAD1, "Ahmedabad");
+
+            common.logPrint("Step :: Entering Address line 2");
+            common.waitUntilElementToBeVisible(By.xpath(CSRAD2));
+            common.type(CSRAD2, "Ahmedabad");
+
+            common.logPrint("Step :: Entering City");
+            common.waitUntilElementToBeVisible(By.xpath(CSRCITY));
+            common.type(CSRCITY, "Ahmedabad");
+            common.twoDownKeyAndEnter();
+
+            common.logPrint("Step :: Entering Pincode");
+            common.waitUntilElementToBeVisible(By.xpath(CSRPINCODE));
+            common.type(CSRPINCODE, "");
+            common.twoDownKeyAndEnter();
+
+            common.logPrint("Step:: Click on Save button");
+            common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
+            common.click(SAVEBUTTON);
+        } catch (NoSuchElementException e) {
+            common.logPrint("Error: Element not found - " + e.getMessage());
+            throw new RuntimeException("Failed to add social activities due to missing element", e);
+        } catch (TimeoutException e) {
+            common.logPrint("Error: Operation timed out - " + e.getMessage());
+            throw new RuntimeException("Failed to add social activities due to timeout", e);
+        } catch (ElementClickInterceptedException e) {
+            common.logPrint("Error: Element click intercepted - " + e.getMessage());
+            throw new RuntimeException("Failed to add social activities due to click interception", e);
+        } catch (StaleElementReferenceException e) {
+            common.logPrint("Error: Stale element reference - " + e.getMessage());
+            throw new RuntimeException("Failed to add social activities due to stale element", e);
+        } catch (Exception e) {
+            common.logPrint("Unexpected error: " + e.getMessage());
+            throw new RuntimeException("Failed to add social activities due to unexpected error", e);
+        }
+    }
+
+    public void addAssociatedHospital() {
+        try {
+            redirectToParticularAdditionalDetailPage(AH);
+
+            common.logPrint("Step :: Enter Associated Hospital");
+            common.waitUntilElementToBeVisible(By.xpath(AHNAME));
+            common.type(AHNAME, "Associated Hospital");
+
+            common.logPrint("Step :: Enter Hospital City");
+            common.waitUntilElementToBeVisible(By.xpath(AHCITY));
+            common.type(AHCITY, "Ahmedabad");
+            common.pause(1);
+            common.downKeyAndEnter();
+
+            common.logPrint("Step :: Enter Active Checkbox");
+            common.selectCheckBox(AHACTIVE);
+
+            common.logPrint("Step :: Select Is Recursive");
+            common.waitUntilElementToBeVisible(By.xpath(AHRECURSIVE));
+            common.type(AHRECURSIVE, "");
+            common.twoDownKeyAndEnter();
+
+            common.logPrint("Step :: Enter Daily Patient count");
+            common.waitUntilElementToBeVisible(By.xpath(AHHOSPITAL));
+            common.type(AHHOSPITAL, "10");
+
+            common.logPrint("Step :: Enter Weekly Patient count");
+            common.waitUntilElementToBeVisible(By.xpath(AHHOSPITALWEEKLY));
+            common.type(AHHOSPITALWEEKLY, "100");
+
+            common.logPrint("Step :: Enter Monthly Patient count");
+            common.waitUntilElementToBeVisible(By.xpath(AHHOSPITAMONTHLY));
+            common.type(AHHOSPITAMONTHLY, "1000");
+
+            common.logPrint("Step :: Enter Address Line 1");
+            common.waitUntilElementToBeVisible(By.xpath(AHADDRESS1));
+            common.type(AHADDRESS1, "Ahmedabad");
+
+            common.logPrint("Step :: Enter Address Line 2");
+            common.waitUntilElementToBeVisible(By.xpath(AHADDRESS2));
+            common.type(AHADDRESS2, "Ahmedabad");
+
+            common.logPrint("Step :: Enter City");
+            common.waitUntilElementToBeVisible(By.xpath(AHCITYD));
+            common.type(AHCITYD, "Ahmedabad");
+            common.downKeyAndEnter();
+
+            common.logPrint("Step :: Enter Pincode");
+            common.waitUntilElementToBeVisible(By.xpath(AHPINCODE));
+            common.type(AHPINCODE, "");
+            common.twoDownKeyAndEnter();
+
+            common.logPrint("Step:: Click on Save button");
+            common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
+            common.click(SAVEBUTTON);
+        } catch (NoSuchElementException e) {
+            common.logPrint("Error: Element not found - " + e.getMessage());
+            throw new RuntimeException("Failed to add associated hospital due to missing element", e);
+        } catch (TimeoutException e) {
+            common.logPrint("Error: Operation timed out - " + e.getMessage());
+            throw new RuntimeException("Failed to add associated hospital due to timeout", e);
+        } catch (ElementClickInterceptedException e) {
+            common.logPrint("Error: Element click intercepted - " + e.getMessage());
+            throw new RuntimeException("Failed to add associated hospital due to click interception", e);
+        } catch (StaleElementReferenceException e) {
+            common.logPrint("Error: Stale element reference - " + e.getMessage());
+            throw new RuntimeException("Failed to add associated hospital due to stale element", e);
+        } catch (Exception e) {
+            common.logPrint("Unexpected error: " + e.getMessage());
+            throw new RuntimeException("Failed to add associated hospital due to unexpected error", e);
+        }
+    }
+
+    public void addPatientsReferTo() {
+        try {
+            redirectToParticularAdditionalDetailPage(PRT);
+
+            String name = common.fakeName();
+            common.logPrint("Step :: Enter Name");
+            common.waitUntilElementToBeVisible(By.xpath(PRTDRNAME));
+            common.type(PRTDRNAME, name);
+
+            common.logPrint("Step :: PRT Speciality");
+            common.waitUntilElementToBeVisible(By.xpath(PRTSPECIALITY));
+            common.type(PRTSPECIALITY, "");
+            common.twoDownKeyAndEnter();
+
+            common.logPrint("Step :: Enter Hospital name");
+            common.waitUntilElementToBeVisible(By.xpath(PRTHOSPITALNAME));
+            common.type(PRTHOSPITALNAME, name);
+
+            common.logPrint("Step :: PRT Priority");
+            common.waitUntilElementToBeVisible(By.xpath(PRTPRIORITY));
+            common.type(PRTPRIORITY, "");
+            common.twoDownKeyAndEnter();
+
+            common.logPrint("Step :: PRT Patient Name");
+            common.waitUntilElementToBeVisible(By.xpath(PRTPATIENTNAME));
+            common.type(PRTPATIENTNAME, name);
+
+            common.logPrint("Step :: PRT Mobile");
+            common.waitUntilElementToBeVisible(By.xpath(PRTMOBILE));
+            common.type(PRTMOBILE, "9871727272");
+
+            common.logPrint("Step :: PRT Date");
+            common.waitUntilElementToBeVisible(By.xpath(PRTDATE));
+            common.type(PRTDATE, "27-06-2025");
+
+            common.logPrint("Step :: PRT Address 1");
+            common.waitUntilElementToBeVisible(By.xpath(PRTAD1));
+            common.type(PRTAD1, "Ahmedabad");
+
+            common.logPrint("Step :: PRT Address 2");
+            common.waitUntilElementToBeVisible(By.xpath(PRTAD2));
+            common.type(PRTAD2, "Ahmedabad");
+
+            common.logPrint("Step :: PRT City");
+            common.waitUntilElementToBeVisible(By.xpath(PRTCITY));
+            common.type(PRTCITY, "Ahmedabad");
+            common.downKeyAndEnter();
+
+            common.logPrint("Step :: PRT Pincode");
+            common.waitUntilElementToBeVisible(By.xpath(PRTPINCODE));
+            common.type(PRTPINCODE, "");
+            common.twoDownKeyAndEnter();
+
+            common.logPrint("Step:: Click on Save button");
+            common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
+            common.click(SAVEBUTTON);
+        } catch (NoSuchElementException e) {
+            common.logPrint("Error: Element not found - " + e.getMessage());
+            throw new RuntimeException("Failed to add patients refer to due to missing element", e);
+        } catch (TimeoutException e) {
+            common.logPrint("Error: Operation timed out - " + e.getMessage());
+            throw new RuntimeException("Failed to add patients refer to due to timeout", e);
+        } catch (ElementClickInterceptedException e) {
+            common.logPrint("Error: Element click intercepted - " + e.getMessage());
+            throw new RuntimeException("Failed to add patients refer to due to click interception", e);
+        } catch (StaleElementReferenceException e) {
+            common.logPrint("Error: Stale element reference - " + e.getMessage());
+            throw new RuntimeException("Failed to add patients refer to due to stale element", e);
+        } catch (Exception e) {
+            common.logPrint("Unexpected error: " + e.getMessage());
+            throw new RuntimeException("Failed to add patients refer to due to unexpected error", e);
+        }
+    }
+
+    public void addPatientRefSource() {
+        try {
+            redirectToParticularAdditionalDetailPage(PRS);
+
+            String name = common.fakeName();
+            common.logPrint("Step :: Enter Name");
+            common.waitUntilElementToBeVisible(By.xpath(PRSNAME));
+            common.type(PRSNAME, name);
+
+            common.logPrint("Step :: PRS Speciality");
+            common.waitUntilElementToBeVisible(By.xpath(PRSSPECIALITY));
+            common.type(PRSSPECIALITY, "");
+            common.twoDownKeyAndEnter();
+
+            common.logPrint("Step :: PRS Hospital");
+            common.waitUntilElementToBeVisible(By.xpath(PRSHOSPITAL));
+            common.type(PRSHOSPITAL, "Name");
+
+            common.logPrint("Step :: PRS Priority");
+            common.waitUntilElementToBeVisible(By.xpath(PRSPRIORITY));
+            common.type(PRSPRIORITY, "");
+            common.twoDownKeyAndEnter();
+
+            common.logPrint("Step :: Enter Patient Name");
+            common.waitUntilElementToBeVisible(By.xpath(PRSPATIENTNAME));
+            common.type(PRSPATIENTNAME, name);
+
+            common.logPrint("Step :: Enter PRS Mobile");
+            common.waitUntilElementToBeVisible(By.xpath(PRSMOBILE));
+            common.type(PRSMOBILE, "1231231231");
+
+            common.logPrint("Step :: Enter Date");
+            common.waitUntilElementToBeVisible(By.xpath(PRSREFERDATE));
+            common.type(PRSREFERDATE, common.generateCurDate());
+
+            common.logPrint("Step :: Enter PRS Address");
+            common.waitUntilElementToBeVisible(By.xpath(PRSAD1));
+            common.type(PRSAD1, "Ahmedabad");
+
+            common.logPrint("Step :: Enter PRS Address");
+            common.waitUntilElementToBeVisible(By.xpath(PRSAD2));
+            common.type(PRSAD2, "Ahmedabad");
+
+            common.logPrint("Step :: PRS City");
+            common.waitUntilElementToBeVisible(By.xpath(PRSCITY));
+            common.type(PRSCITY, "Ahmedabad");
+            common.downKeyAndEnter();
+
+            common.logPrint("Step :: PRS Pincode");
+            common.waitUntilElementToBeVisible(By.xpath(PRSPINCODE));
+            common.type(PRSPINCODE, "");
+            common.twoDownKeyAndEnter();
+
+            common.logPrint("Step:: Click on Save button");
+            common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
+            common.click(SAVEBUTTON);
+        } catch (NoSuchElementException e) {
+            common.logPrint("Error: Element not found - " + e.getMessage());
+            throw new RuntimeException("Failed to add patient reference source due to missing element", e);
+        } catch (TimeoutException e) {
+            common.logPrint("Error: Operation timed out - " + e.getMessage());
+            throw new RuntimeException("Failed to add patient reference source due to timeout", e);
+        } catch (ElementClickInterceptedException e) {
+            common.logPrint("Error: Element click intercepted - " + e.getMessage());
+            throw new RuntimeException("Failed to add patient reference source due to click interception", e);
+        } catch (StaleElementReferenceException e) {
+            common.logPrint("Error: Stale element reference - " + e.getMessage());
+            throw new RuntimeException("Failed to add patient reference source due to stale element", e);
+        } catch (Exception e) {
+            common.logPrint("Unexpected error: " + e.getMessage());
+            throw new RuntimeException("Failed to add patient reference source due to unexpected error", e);
+        }
+    }
+
+    public void addConsultingFess() {
+        try {
+            redirectToParticularAdditionalDetailPage(CFC);
+
+            common.logPrint("Step :: CFC Type");
+            common.waitUntilElementToBeVisible(By.xpath(CFCTYPE));
+            common.type(CFCTYPE, "");
+            common.twoDownKeyAndEnter();
+
+            common.logPrint("Step :: CFC Amount");
+            common.waitUntilElementToBeVisible(By.xpath(CFCAMOUNT));
+            common.type(CFCAMOUNT, "1000");
+
+            common.logPrint("Step :: Enter Start Date");
+            common.waitUntilElementToBeVisible(By.xpath(CFCSDATE));
+            common.type(CFCSDATE, common.generateCurDate());
+
+            common.logPrint("Step :: Enter End Date");
+            common.waitUntilElementToBeVisible(By.xpath(CFCEDATE));
+            common.type(CFCEDATE, common.generateCurDate());
+
+            common.logPrint("Step :: Entering CFC Duration");
+            common.waitUntilElementToBeVisible(By.xpath(CFCDURATION));
+            common.type(CFCDURATION, "Name");
+
+            common.logPrint("Step :: Entering CFC Current Amount");
+            common.waitUntilElementToBeVisible(By.xpath(CFCAMOUNTS));
+            common.type(CFCAMOUNTS, "Name");
+
+            common.logPrint("Step:: Click on Save button");
+            common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
+            common.click(SAVEBUTTON);
+        } catch (NoSuchElementException e) {
+            common.logPrint("Error: Element not found - " + e.getMessage());
+            throw new RuntimeException("Failed to add consulting fees due to missing element", e);
+        } catch (TimeoutException e) {
+            common.logPrint("Error: Operation timed out - " + e.getMessage());
+            throw new RuntimeException("Failed to add consulting fees due to timeout", e);
+        } catch (ElementClickInterceptedException e) {
+            common.logPrint("Error: Element click intercepted - " + e.getMessage());
+            throw new RuntimeException("Failed to add consulting fees due to click interception", e);
+        } catch (StaleElementReferenceException e) {
+            common.logPrint("Error: Stale element reference - " + e.getMessage());
+            throw new RuntimeException("Failed to add consulting fees due to stale element", e);
+        } catch (Exception e) {
+            common.logPrint("Unexpected error: " + e.getMessage());
+            throw new RuntimeException("Failed to add consulting fees due to unexpected error", e);
+        }
+    }
+
+    public void addConsultingFessMR() {
+        try {
+            redirectToParticularAdditionalDetailPage(CFM);
+
+            common.logPrint("Step :: CFM Type");
+            common.waitUntilElementToBeVisible(By.xpath(CFMTYPE));
+            common.type(CFMTYPE, "");
+            common.twoDownKeyAndEnter();
+
+            common.logPrint("Step :: Entering CFM Current Amount");
+            common.waitUntilElementToBeVisible(By.xpath(CFMAMOUNT));
+            common.type(CFMAMOUNT, "1000");
+
+            common.logPrint("Step :: Entering CFM Valid Upto");
+            common.waitUntilElementToBeVisible(By.xpath(CFMVALIDUPTO));
+            common.type(CFMVALIDUPTO, "30");
+
+            common.logPrint("Step:: Click on Save button");
+            common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
+            common.click(SAVEBUTTON);
+        } catch (NoSuchElementException e) {
+            common.logPrint("Error: Element not found - " + e.getMessage());
+            throw new RuntimeException("Failed to add consulting fees MR due to missing element", e);
+        } catch (TimeoutException e) {
+            common.logPrint("Error: Operation timed out - " + e.getMessage());
+            throw new RuntimeException("Failed to add consulting fees MR due to timeout", e);
+        } catch (ElementClickInterceptedException e) {
+            common.logPrint("Error: Element click intercepted - " + e.getMessage());
+            throw new RuntimeException("Failed to add consulting fees MR due to click interception", e);
+        } catch (StaleElementReferenceException e) {
+            common.logPrint("Error: Stale element reference - " + e.getMessage());
+            throw new RuntimeException("Failed to add consulting fees MR due to stale element", e);
+        } catch (Exception e) {
+            common.logPrint("Unexpected error: " + e.getMessage());
+            throw new RuntimeException("Failed to add consulting fees MR due to unexpected error", e);
+        }
+    }
+
+    public void addMedicalAdvisory() {
+        try {
+            redirectToParticularAdditionalDetailPage(MEDICALADVISORYSPEAKER);
+
+            common.logPrint("Step :: Entering MPurpose");
+            common.waitUntilElementToBeVisible(By.xpath(MPURPOSE));
+            common.type(MPURPOSE, "ADVICE");
+
+            common.logPrint("Step :: Entering MAmount");
+            common.waitUntilElementToBeVisible(By.xpath(MAMOUNT));
+            common.type(MAMOUNT, "100");
+
+            common.logPrint("Step :: Entering MCompany");
+            common.waitUntilElementToBeVisible(By.xpath(MCOMPANY));
+            common.type(MCOMPANY, "Test");
+
+            common.logPrint("Step :: Entering MStart Date");
+            common.waitUntilElementToBeVisible(By.xpath(MSTARTDATE));
+            common.type(MSTARTDATE, "04-07-2025");
+
+            common.logPrint("Step :: Entering MEnd Date");
+            common.waitUntilElementToBeVisible(By.xpath(MENDDATE));
+            common.type(MENDDATE, "04-07-2025");
+
+            common.logPrint("Step :: Entering MBusiness");
+            common.waitUntilElementToBeVisible(By.xpath(MBUSINESS));
+            common.type(MBUSINESS, "Test");
+
+            common.logPrint("Step :: Entering MRemarks");
+            common.waitUntilElementToBeVisible(By.xpath(MREMARKS));
+            common.type(MREMARKS, "Remarks");
+
+            common.logPrint("Step :: Entering MAddress");
+            common.waitUntilElementToBeVisible(By.xpath(MADDRESS));
+            common.type(MADDRESS, "Ahmedabad");
+
+            common.logPrint("Step :: Entering MAddress");
+            common.waitUntilElementToBeVisible(By.xpath(MADDRESS2));
+            common.type(MADDRESS2, "Ahmedabad");
+
+            common.logPrint("Step :: Entering MCity");
+            common.waitUntilElementToBeVisible(By.xpath(MCITY));
+            common.type(MCITY, "Ahmedabad");
+            common.twoDownKeyAndEnter();
+
+            common.logPrint("Step :: Entering MPincode");
+            common.waitUntilElementToBeVisible(By.xpath(MPINCODE));
+            common.type(MPINCODE, "");
+            common.twoDownKeyAndEnter();
+
+            common.logPrint("Step:: Click on Save button");
+            common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
+            common.click(SAVEBUTTON);
+        } catch (NoSuchElementException e) {
+            common.logPrint("Error: Element not found - " + e.getMessage());
+            throw new RuntimeException("Failed to add medical advisory due to missing element", e);
+        } catch (TimeoutException e) {
+            common.logPrint("Error: Operation timed out - " + e.getMessage());
+            throw new RuntimeException("Failed to add medical advisory due to timeout", e);
+        } catch (ElementClickInterceptedException e) {
+            common.logPrint("Error: Element click intercepted - " + e.getMessage());
+            throw new RuntimeException("Failed to add medical advisory due to click interception", e);
+        } catch (StaleElementReferenceException e) {
+            common.logPrint("Error: Stale element reference - " + e.getMessage());
+            throw new RuntimeException("Failed to add medical advisory due to stale element", e);
+        } catch (Exception e) {
+            common.logPrint("Unexpected error: " + e.getMessage());
+            throw new RuntimeException("Failed to add medical advisory due to unexpected error", e);
+        }
+    }
+
+    public void addAchievements() {
+        try {
+            redirectToParticularAdditionalDetailPage(ACHIEVEMENTS);
+
+            common.logPrint("Step :: Selecting Achievements");
+            common.waitUntilElementToBeVisible(By.xpath(ACHIEVEMENTSADD));
+            common.type(ACHIEVEMENTSADD, "");
+            common.twoDownKeyAndEnter();
+
+            common.logPrint("Step :: Selecting Date");
+            common.waitUntilElementToBeVisible(By.xpath(ACHIEVEMENTSDATE));
+            common.type(ACHIEVEMENTSDATE, "04-07-2025");
+
+            common.logPrint("Step :: Adding Remarks");
+            common.waitUntilElementToBeVisible(By.xpath(ACHIEVEMENTSREMARKS));
+            common.type(ACHIEVEMENTSREMARKS, " Remarks");
+
+            common.logPrint("Step :: Adding image");
+            WebElement fileInput = driver.findElement(By.xpath("//input[@type='file']"));
+            fileInput.sendKeys("C:\\Users\\Admin\\OneDrive\\Desktop\\Gopal Repo\\NewDemoRepo\\1.JPG");
+
+            common.logPrint("Step:: Click on Save button");
+            common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
+            common.click(SAVEBUTTON);
+        } catch (NoSuchElementException e) {
+            common.logPrint("Error: Element not found - " + e.getMessage());
+            throw new RuntimeException("Failed to add achievements due to missing element", e);
+        } catch (TimeoutException e) {
+            common.logPrint("Error: Operation timed out - " + e.getMessage());
+            throw new RuntimeException("Failed to add achievements due to timeout", e);
+        } catch (ElementClickInterceptedException e) {
+            common.logPrint("Error: Element click intercepted - " + e.getMessage());
+            throw new RuntimeException("Failed to add achievements due to click interception", e);
+        } catch (StaleElementReferenceException e) {
+            common.logPrint("Error: Stale element reference - " + e.getMessage());
+            throw new RuntimeException("Failed to add achievements due to stale element", e);
+        } catch (Exception e) {
+            common.logPrint("Unexpected error: " + e.getMessage());
+            throw new RuntimeException("Failed to add achievements due to unexpected error", e);
+        }
+    }
+
+    public void addProceduralEquipment() {
+        try {
+            redirectToParticularAdditionalDetailPage(PE);
+
+            common.logPrint("Step :: Entering PE Name");
+            common.waitUntilElementToBeVisible(By.xpath(PENAME));
+            common.type(PENAME, "Test");
+
+            common.logPrint("Step :: Entering Vendor Name");
+            common.waitUntilElementToBeVisible(By.xpath(PEVENDOR));
+            common.type(PEVENDOR, "Test Vendor");
+
+            common.logPrint("Step :: Entering PE Date");
+            common.waitUntilElementToBeVisible(By.xpath(PEDATE));
+            common.type(PEDATE, "07-07-2025");
+
+            common.logPrint("Step :: Entering PE Price");
+            common.waitUntilElementToBeVisible(By.xpath(PEPRICE));
+            common.type(PEPRICE, "100");
+
+            common.logPrint("Step :: Entering Remarks");
+            common.waitUntilElementToBeVisible(By.xpath(PEREMARKS));
+            common.type(PEREMARKS, "Test Remarks");
+
+            common.logPrint("Step :: Clicking the Save button");
+            common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
+            common.click(SAVEBUTTON);
+        } catch (NoSuchElementException e) {
+            common.logPrint("Error: Element not found - " + e.getMessage());
+            throw new RuntimeException("Failed to add procedural equipment due to missing element", e);
+        } catch (TimeoutException e) {
+            common.logPrint("Error: Operation timed out - " + e.getMessage());
+            throw new RuntimeException("Failed to add procedural equipment due to timeout", e);
+        } catch (ElementClickInterceptedException e) {
+            common.logPrint("Error: Element click intercepted - " + e.getMessage());
+            throw new RuntimeException("Failed to add procedural equipment due to click interception", e);
+        } catch (StaleElementReferenceException e) {
+            common.logPrint("Error: Stale element reference - " + e.getMessage());
+            throw new RuntimeException("Failed to add procedural equipment due to stale element", e);
+        } catch (Exception e) {
+            common.logPrint("Unexpected error: " + e.getMessage());
+            throw new RuntimeException("Failed to add procedural equipment due to unexpected error", e);
+        }
+    }
+
+    public void addDoctorBankDetails() {
+        try {
+            redirectToParticularAdditionalDetailPage(DBD);
+
+            common.logPrint("Step :: Entering Bank Name");
+            common.waitUntilElementToBeVisible(By.xpath(DBDBANKNAME));
+            common.type(DBDBANKNAME, "BOB");
+
+            common.logPrint("Step :: Entering Bank Account");
+            common.waitUntilElementToBeVisible(By.xpath(DBDACCOUNT));
+            common.type(DBDACCOUNT, "07072025321");
+
+            common.logPrint("Step :: Entering Bank IFSC");
+            common.waitUntilElementToBeVisible(By.xpath(DBDIFSC));
+            common.type(DBDIFSC, "07072025321");
+
+            common.logPrint("Step :: Entering Bank Account Holder");
+            common.waitUntilElementToBeVisible(By.xpath(DBDACCOUNTHOLDER));
+            common.type(DBDACCOUNTHOLDER, "NAME");
+
+            common.logPrint("Step :: Clicking the Save button");
+            common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
+            common.click(SAVEBUTTON);
+        } catch (NoSuchElementException e) {
+            common.logPrint("Error: Element not found - " + e.getMessage());
+            throw new RuntimeException("Failed to add doctor bank details due to missing element", e);
+        } catch (TimeoutException e) {
+            common.logPrint("Error: Operation timed out - " + e.getMessage());
+            throw new RuntimeException("Failed to add doctor bank details due to timeout", e);
+        } catch (ElementClickInterceptedException e) {
+            common.logPrint("Error: Element click intercepted - " + e.getMessage());
+            throw new RuntimeException("Failed to add doctor bank details due to click interception", e);
+        } catch (StaleElementReferenceException e) {
+            common.logPrint("Error: Stale element reference - " + e.getMessage());
+            throw new RuntimeException("Failed to add doctor bank details due to stale element", e);
+        } catch (Exception e) {
+            common.logPrint("Unexpected error: " + e.getMessage());
+            throw new RuntimeException("Failed to add doctor bank details due to unexpected error", e);
+        }
+    }
+
+    public void addSpecialDay() {
+        try {
+            redirectToParticularAdditionalDetailPage(SD);
+
+            common.logPrint("Step :: Entering Special Day Name");
+            common.waitUntilElementToBeVisible(By.xpath(SDNAME));
+            common.type(SDNAME, "Special Day");
+
+            common.logPrint("Step :: Entering Special Date");
+            common.waitUntilElementToBeVisible(By.xpath(SDDATE));
+            common.type(SDDATE, "07-07-2025");
+
+            common.logPrint("Step :: Clicking the Save button");
+            common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
+            common.click(SAVEBUTTON);
+        } catch (NoSuchElementException e) {
+            common.logPrint("Error: Element not found - " + e.getMessage());
+            throw new RuntimeException("Failed to add special day due to missing element", e);
+        } catch (TimeoutException e) {
+            common.logPrint("Error: Operation timed out - " + e.getMessage());
+            throw new RuntimeException("Failed to add special day due to timeout", e);
+        } catch (ElementClickInterceptedException e) {
+            common.logPrint("Error: Element click intercepted - " + e.getMessage());
+            throw new RuntimeException("Failed to add special day due to click interception", e);
+        } catch (StaleElementReferenceException e) {
+            common.logPrint("Error: Stale element reference - " + e.getMessage());
+            throw new RuntimeException("Failed to add special day due to stale element", e);
+        } catch (Exception e) {
+            common.logPrint("Unexpected error: " + e.getMessage());
+            throw new RuntimeException("Failed to add special day due to unexpected error", e);
+        }
+    }
+
+    public void addDoctorVendor() {
+        try {
+            redirectToParticularAdditionalDetailPage(DV);
+
+            common.logPrint("Step :: Selecting Doctor Vendor");
+            common.waitUntilElementToBeVisible(By.xpath(DVSERVICE));
+            common.type(DVSERVICE, "");
+            common.twoDownKeyAndEnter();
+
+            common.logPrint("Step :: Entering Doctor Vendor Head");
+            common.waitUntilElementToBeVisible(By.xpath(DVHEAD));
+            common.type(DVHEAD, "Doctor Vendor");
+
+            common.logPrint("Step :: Entering Doctor Vendor Phone");
+            common.waitUntilElementToBeVisible(By.xpath(DVPHONE));
+            common.type(DVPHONE, "1231231231");
+
+            common.logPrint("Step :: Entering Doctor Vendor Date");
+            common.waitUntilElementToBeVisible(By.xpath(DVDATE));
+            common.type(DVDATE, "07-07-2025");
+
+            common.logPrint("Step :: Entering Doctor Vendor Note");
+            common.waitUntilElementToBeVisible(By.xpath(DVNOTE));
+            common.type(DVNOTE, "Notes");
+
+            common.logPrint("Step :: Clicking the Save button");
+            common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
+            common.click(SAVEBUTTON);
+        } catch (NoSuchElementException e) {
+            common.logPrint("Error: Element not found - " + e.getMessage());
+            throw new RuntimeException("Failed to add doctor vendor due to missing element", e);
+        } catch (TimeoutException e) {
+            common.logPrint("Error: Operation timed out - " + e.getMessage());
+            throw new RuntimeException("Failed to add doctor vendor due to timeout", e);
+        } catch (ElementClickInterceptedException e) {
+            common.logPrint("Error: Element click intercepted - " + e.getMessage());
+            throw new RuntimeException("Failed to add doctor vendor due to click interception", e);
+        } catch (StaleElementReferenceException e) {
+            common.logPrint("Error: Stale element reference - " + e.getMessage());
+            throw new RuntimeException("Failed to add doctor vendor due to stale element", e);
+        } catch (RuntimeException e) {
+            common.logPrint("Error:" + e.getMessage());
+            throw new RuntimeException("Fail, e");
+        } catch (Exception e) {
+            common.logPrint("Unexpected error: " + e.getMessage());
+            throw new RuntimeException("Failed to add doctor vendor due to unexpected error", e);
+        }
+    }
+}
 
 
