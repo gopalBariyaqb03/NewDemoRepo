@@ -305,6 +305,33 @@ public class Locators extends BasePage {
     public static String ACHIEVEMENTSREMARKS ="//textarea[@name='Remarks']";
     public static String ACHIEVEMENTSIMAGE ="//input[@type='file']";
 
+    //ADDITIONAL DETAILS -> PROCEDURAL EQUIPMENT
+    public static String PE ="//p[normalize-space()='Procedural Equipments']";
+    public static String PENAME ="//input[@name='ProceduralEquipmentName']";
+    public static String PEVENDOR ="//input[@name='ProceduralEquipmentVendorName']";
+    public static String PEDATE ="//input[@name='ProceduralEquipmentInstallationDate']";
+    public static String PEPRICE ="//input[@name='ProceduralEquipmentPrice']";
+    public static String PEREMARKS ="//textarea[@name='Remarks']";
+
+    //ADDITIONAL DETAILS -> DOCTOR BANK DETAILS
+    public static String DBD = "//p[normalize-space()='Doctor Bank Details']";
+    public static String DBDBANKNAME = "//input[@name='BankName']";
+    public static String DBDACCOUNT = "//input[@name='AccountNo']";
+    public static String DBDIFSC = "//input[@name='IFsccode']";
+    public static String DBDACCOUNTHOLDER = "//input[@name='AccountHolderName']";
+
+    //ADDITIONAL DETAILS -> SPECIAL DAY
+    public static String SD = "//p[normalize-space()='Special Day']";
+    public static String SDNAME = "//input[@name='SpecialDayName']";
+    public static String SDDATE = "//input[@name='Date']";
+
+    //ADDITIONAL DETAILS -> DOCTOR VENDOR
+    public static String DV = "//p[normalize-space()='Doctor Vendor']";
+    public static String DVSERVICE = "//input[@role='comboboxs']";
+    public static String DVHEAD = "//input[@name='HeadOfService']";
+    public static String DVPHONE = "//input[@name='PhoneNumber']";
+    public static String DVDATE = "//input[@name='ServiceDateTime']";
+    public static String DVNOTE = "//input[@name='Note']";
 
 
 

@@ -225,7 +225,11 @@ public class AdminTest extends BasePage {
         //adminPage.addCollegeMateDetailInfo();
         //adminPage.addSocialActivities();
         //adminPage.addMedicalAdvisory();
-        adminPage.addAchievements();
+        //adminPage.addAchievements();
+        //adminPage.addProceduralEquipment();
+        //adminPage.addDoctorBankDetails();
+        //adminPage.addSpecialDay();
+        adminPage.addDoctorVendor();
     }
 
 }
