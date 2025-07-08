@@ -1,13 +1,7 @@
 package Tests;
 
-import Config.ReadProperties;
 import Utils.BasePage;
-import com.github.javafaker.Faker;
-import org.openqa.selenium.By;
 import org.testng.annotations.Test;
-
-import java.text.ParseException;
-import java.util.Locale;
 
 public class AdminTest extends BasePage {
 
@@ -18,7 +12,7 @@ public class AdminTest extends BasePage {
         adminPage.verifyEntityIsCreatedIsShowingInTheTableAndItStatusIsPending(drName);
         adminPage.verifyDrApprovalForTheAsmUser(drName);
         loginWithMRCredential();
-        adminPage.redeirectToDoctorPage();
+        adminPage.redirectToDoctorPage();
         adminPage.verifyDoctorIsCreatedIsShowingInTheTableAndItStatusIsApproval(drName);
     }
 
@@ -31,7 +25,7 @@ public class AdminTest extends BasePage {
         adminPage.verifyEntityIsCreatedIsShowingInTheTableAndItStatusIsPending(drName);
         adminPage.verifyDrApprovalForTheAsmUser(drName);
         loginWithMRCredential();
-        adminPage.redeirectToDoctorPage();
+        adminPage.redirectToDoctorPage();
         adminPage.verifyDoctorIsCreatedIsShowingInTheTableAndItStatusIsApproval(drName);
         loginWithMRCredential();
         String[] doctorInfo = adminPage.updateTheDoctor(drName);
@@ -39,8 +33,9 @@ public class AdminTest extends BasePage {
         String updatedMobile = doctorInfo[1];
         adminPage.verifyEntityIsCreatedIsShowingInTheTableAndItStatusIsPending(updatedName);
         adminPage.loginWithASMCredential();
-        adminPage.redeirectToDoctorPage();
+        adminPage.redirectToDoctorPage();
         adminPage.verifyEntityIsCreatedIsShowingInTheTableAndItStatusIsPending(updatedName);
+        adminPage.redirectToDoctorPage();
         adminPage.verifyDoctorIsUpdated(updatedName,updatedMobile);
     }
 
@@ -51,8 +46,11 @@ public class AdminTest extends BasePage {
         adminPage.verifyEntityIsCreatedIsShowingInTheTableAndItStatusIsPending(drName);
         adminPage.deleteDoctorFromTheList(drName);
         common.logPrint("Step:: Verify delete request is showing in the Directors account");
+        loginWithDirectorCredential();
+        adminPage.redirectsDeleteDoctorApprovalPage();
         adminPage.approvedDeleteRequestFromTheDirectorsUser(drName.toLowerCase());
         loginWithMRCredential();
+        adminPage.redirectToDoctorPage();
         adminPage.verifyDoctorRemoveFromTheList(drName);
     }
 
@@ -84,7 +82,25 @@ public class AdminTest extends BasePage {
         loginWithASMCredential();
         adminPage.redirectsToChemistPage();
         adminPage.verifyEntityIsCreatedIsShowingInTheTableAndItStatusIsPending(updatedName);
+        adminPage.redirectsToChemistPage();
         adminPage.verifyDoctorIsUpdated(updatedName, updatedMobile);
+    }
+
+    @Test
+    public void verifyDeleteChemistScenario(){
+        common.logPrint("Step:: Verify delete chemist scenario");
+        loginWithMRCredential();
+        String chemistName = adminPage.createChemistAndApprove();
+        adminPage.verifyEntityIsCreatedIsShowingInTheTableAndItStatusIsPending(chemistName);
+        adminPage.deleteChemistFromTheDirector();
+        common.logPrint("Step:: Verify delete request is showing in the Directors account");
+        loginWithDirectorCredential();
+        adminPage.redirectsDeleteChemistApprovalPage();
+        adminPage.approvedDeleteRequestFromTheDirectorsUser(chemistName.toLowerCase());
+        loginWithMRCredential();
+        adminPage.redirectsToChemistPage();
+        adminPage.verifyDoctorRemoveFromTheList(chemistName);
+
     }
 
     @Test
@@ -99,39 +115,39 @@ public class AdminTest extends BasePage {
     }
 
     @Test
-    public void verifyHospitalCreationScenario(){
+    public void verifyUpdateStockiestScenario(){
         loginWithMRCredential();
-        String hospitalName = adminPage.createNewHospital();
-        common.logPrint("Verify hospital is showing in the ASM account");
+        String stockiestName = adminPage.createStockiestApproval();
+        adminPage.verifyStockiestIsCreatedIsShowingInTheTableAndItStatusIsPending(stockiestName);
+        adminPage.verifyStockiestApprovedForTheAsmUser(stockiestName);
+        loginWithMRCredential();
+        adminPage.redirectsToStockiestPage();
+        adminPage.verifyStockiestIsCreatedIsShowingInTheTableAndItStatusIsApproval(stockiestName);
+        loginWithMRCredential();
+        String[] updateStockiest = adminPage.updateTheStockiest(stockiestName);
+        String updatedName = updateStockiest[0];
+        String updatedMobile = updateStockiest[1];
         loginWithASMCredential();
-        adminPage.verifyCreatedHospitalIsShowingInTheTable(hospitalName);
-        common.logPrint("Verify hospital is showing in the RSM account");
-        loginWithRSMCredential();
-        adminPage.verifyCreatedHospitalIsShowingInTheTable(hospitalName);
-        common.logPrint("Verify hospital is showing in the Directors account");
-        loginWithDirectorCredential();
-        adminPage.verifyCreatedHospitalIsShowingInTheTable(hospitalName);
+        adminPage.redirectsToStockiestPage();
+        adminPage.verifyStockiestIsCreatedIsShowingInTheTableAndItStatusIsPending(updatedName);
+        adminPage.redirectsToStockiestPage();
+        adminPage.verifyStockiestIsUpdated(updatedName);
+        //test gitHub
     }
 
     @Test
-    public void verifyUpdateHospitalScenario(){
+    public void verifyDeleteStockiestScenario(){
         loginWithMRCredential();
-        String hospitalName = adminPage.createNewHospital();
-        loginWithASMCredential();
-        adminPage.verifyCreatedHospitalIsShowingInTheTable(hospitalName);
-        loginWithRSMCredential();
-        adminPage.verifyCreatedHospitalIsShowingInTheTable(hospitalName);
+        String stockiestName = adminPage.createStockiestApproval();
+        //adminPage.verifyEntityIsCreatedIsShowingInTheTableAndItStatusIsPending(stockiestName);
+        adminPage.deleteChemistFromTheDirector();
+        common.logPrint("Step:: Verify delete request is showing in the Directors account");
         loginWithDirectorCredential();
-        adminPage.verifyCreatedHospitalIsShowingInTheTable(hospitalName);
-        common.logPrint("Update the Hospital name and check it's update in all the user");
-        String updatedName = adminPage.updateTheHospitalName(hospitalName);
-        adminPage.verifyInAllUserHospitalIsSHowingInTable(updatedName);
-    }
-
-    @Test
-    public void verifyHospitalDeleteScenario(){
-
-
+        adminPage.redirectsDeleteStockiestApprovalPage();
+        adminPage.approvedDeleteRequestFromTheDirectorsUser(stockiestName.toLowerCase());
+        loginWithMRCredential();
+        adminPage.redirectsToChemistPage();
+        adminPage.verifyDoctorRemoveFromTheList(stockiestName);
     }
 
     @Test
@@ -191,25 +207,22 @@ public class AdminTest extends BasePage {
     }
 
     @Test
-    public void createAllTheAddinationDetail(){
+    public void CreateAllTheAdditionalDetails(){
         loginWithDirectorCredential();
-        //adminPage.addDegree();
-        //adminPage.addAreaOfInterest();
-        //adminPage.addGuidelinesFollowed();
-        //adminPage.addConferenceAndSpeker();
-        //adminPage.addWeekendsAndVacation();
-        //adminPage.addFamilyFriendDetailInfo();
-        //adminPage.addCollegeMateDetailInfo();
-        adminPage.addSocialActivityDetailInfo();
+        adminPage.addDegree();
+        adminPage.addAreaOfInterest();
+        adminPage.addGuidelinesFollowed();
+        adminPage.addConferenceAndSpeaker();
+        adminPage.addWeekendsAndVacation();
+        adminPage.addFamilyFriendDetailInfo();
+        adminPage.addCollegeMateAndAlumniDetails();
+        adminPage.addSocialActivities();
+        adminPage.addMedicalAdvisory();
+        adminPage.addAchievements();
+        adminPage.addProceduralEquipment();
+        adminPage.addDoctorBankDetails();
+        adminPage.addSpecialDay();
+        adminPage.addDoctorVendor();
     }
-
-    @Test
-    public void verifyDuplicateValueInDropdown(){
-        loginWithDirectorCredential();
-        adminPage.redeirectToDoctorPage();
-        adminPage.verifyDropdownValueDuplication();
-    }
-
-
 
 }

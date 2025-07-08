@@ -30,7 +30,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Clock;
 import java.time.Duration;
+import java.time.LocalDate;
 import java.time.Year;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
@@ -90,10 +92,10 @@ public class Common extends Locators {
             return getWait().ignoring(StaleElementReferenceException.class).until(ExpectedConditions.elementToBeClickable(findBy(locator)));
         }
     }
-     public WebElement waitUntilStringLocator(String locator){
-         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-         return wait.ignoring(StaleElementReferenceException.class).until(ExpectedConditions.visibilityOfElementLocated(findBy(locator)));
-     }
+    public WebElement waitUntilStringLocator(String locator){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        return wait.ignoring(StaleElementReferenceException.class).until(ExpectedConditions.visibilityOfElementLocated(findBy(locator)));
+    }
     public WebElement waitUntilStringLocatorAsaElement(WebElement element){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         return wait.ignoring(StaleElementReferenceException.class).until(ExpectedConditions.visibilityOf(element));
@@ -107,9 +109,9 @@ public class Common extends Locators {
         return getWait(150).ignoring(StaleElementReferenceException.class).until(ExpectedConditions.invisibilityOf(element));
     }
 
-        public List<WebElement> waitUntilElementsToBeVisible(By by) {
-            return getWait().ignoring(StaleElementReferenceException.class).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(by));
-        }
+    public List<WebElement> waitUntilElementsToBeVisible(By by) {
+        return getWait().ignoring(StaleElementReferenceException.class).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(by));
+    }
 
     public String removeZero (String input){
         input = input.indexOf(".") < 0 ? input : input.replaceAll("0*$", "").replaceAll("\\.$", "");
@@ -563,7 +565,7 @@ public class Common extends Locators {
     public void pause2Sec() {
 
         driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
-		 }
+    }
 
     /**
      * Returns the number of elements in this list. If this list contains more than
@@ -646,24 +648,24 @@ public class Common extends Locators {
      *
      * @param locator the locator of checkbox element to be checked
      */
-//    public void checkChkBox(String locator) {
-//        WebElement element = waitUntilStringLocator(locator);
-//        highlightElement(element);
-//        boolean isCheckBoxChecked = element.isSelected();
-//        if (!isCheckBoxChecked) {
-//            try {
-//                element.click();
-//            } catch (Exception e) {
-//                jsClickWithoutWait(element);
-//            }
-//        }
-//    }
+    public void checkChkBox(String locator) {
+        WebElement element = waitUntilStringLocator(locator);
+        highlightElement(element);
+        boolean isCheckBoxChecked = element.isSelected();
+        if (!isCheckBoxChecked) {
+            try {
+                element.click();
+            } catch (Exception e) {
+                jsClickWithoutWait(element);
+            }
+        }
+    }
 
     public void scrollToElement(String locator)  {
         WebElement element = waitUntilStringLocator(locator);
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
 
-       // Thread.sleep(500);
+        // Thread.sleep(500);
     }
 
     public void scroll_To_Element(WebElement element) {
@@ -931,7 +933,7 @@ public class Common extends Locators {
      */
     public void click(String locator) {
         WebElement element = waitUntilElementToBeClickable(locator);
-       //scroll_To_Element(element);
+        //scroll_To_Element(element);
         highlightElementClick(element);
         try {
             element.click();
@@ -1091,7 +1093,7 @@ public class Common extends Locators {
             serverFormat.setTimeZone(TimeZone.getTimeZone("Server/Time/Zone"));  // Replace with the actual time zone
             cstTime = serverFormat.format(new Date());
             System.out.println("Server Time: " + cstTime);
-       }
+        }
     }
     public void assertElementDisplayed(String locator) {
         waitUntilStringLocator(locator);
@@ -1124,12 +1126,12 @@ public class Common extends Locators {
     }
 
     public static Year getCurrentYear() {
-             Year thisYear = Year.now(Clock.systemUTC());
+        Year thisYear = Year.now(Clock.systemUTC());
 
-                // Print the year object
-                System.out.println("year " + thisYear);
+        // Print the year object
+        System.out.println("year " + thisYear);
 
-      return thisYear;
+        return thisYear;
     }
 
     /**
@@ -1212,7 +1214,6 @@ public class Common extends Locators {
     public long startTime() {
         return System.currentTimeMillis();
     }
-
     public void endTime(long startTime, String msg) {
         long endTime = System.currentTimeMillis();
         long totalTime = endTime - startTime;
@@ -1250,7 +1251,7 @@ public class Common extends Locators {
     }
 
     public void downKeyAndEnter(){
-
+        common.pause(1);
         // Create Actions instance
         Actions actions = new Actions(driver);
 
@@ -1261,8 +1262,14 @@ public class Common extends Locators {
                 .perform();
     }
 
+    public void selectCheckBox(String checkboxValue){
+        WebElement element = driver.findElement(By.xpath(checkboxValue));
+        element.click();
+    }
+
     public void twoDownKeyAndEnter(){
 
+        common.pause(1);
         // Create Actions instance
         Actions actions = new Actions(driver);
 
@@ -1272,10 +1279,21 @@ public class Common extends Locators {
                 .build()
                 .perform();
     }
+    public void pressEnter(){
+        Actions actions = new Actions(driver);
+        actions.sendKeys(Keys.ENTER).build().perform();
+    }
+    public void pressSpace(){
+        Actions actions = new Actions(driver);
+        actions.sendKeys(Keys.SPACE).build().perform();
+    }
 
-    public void fakeName(){
+
+
+    public String fakeName(){
         Faker faker = new Faker();
         String Name = faker.name().firstName();
+        return Name;
     }
 
     public void openNewIncognitoBrowser(){
@@ -1337,44 +1355,44 @@ public class Common extends Locators {
         return incognitoDriver;
     }
 
-        public void hoverOverTheElement(String element){
+    public void hoverOverTheElement(String element){
 
-            Actions actions = new Actions(driver);
+        Actions actions = new Actions(driver);
 
-            WebElement menuOption = driver.findElement(By.xpath(element));
+        WebElement menuOption = driver.findElement(By.xpath(element));
 
-            actions.moveToElement(menuOption).click().perform();
-        }
+        actions.moveToElement(menuOption).click().perform();
+    }
 
-        public void hoverAndClickOnElement(String element){
+    public void hoverAndClickOnElement(String element){
 
-            WebElement element1 = driver.findElement(By.xpath(String.valueOf(element)));
-            Actions actions = new Actions(driver);
-            actions.moveToElement(element1).pause(Duration.ofSeconds(2)).click().perform();
-        }
+        WebElement element1 = driver.findElement(By.xpath(String.valueOf(element)));
+        Actions actions = new Actions(driver);
+        actions.moveToElement(element1).pause(Duration.ofSeconds(2)).click().perform();
+    }
 
-        public void scrollPageUsingPixel(){
+    public void scrollPageUsingPixel(){
 
-            JavascriptExecutor jse = (JavascriptExecutor)driver;
-            jse.executeScript("window.scrollBy(0,250)");
+        JavascriptExecutor jse = (JavascriptExecutor)driver;
+        jse.executeScript("window.scrollBy(0,250)");
 
-        }
+    }
 
-        public static List<String> readColumnDataFromExcel(String sheetName){
-            List<String> dataList = new ArrayList<>();
-            String filePath = "C:\\Main_Folder\\Automation\\Web_Automation\\src\\test\\resources\\DoctorAttributes.xlsx";
+    public static List<String> readColumnDataFromExcel(String sheetName){
+        List<String> dataList = new ArrayList<>();
+        String filePath = "C:\\Main_Folder\\Automation\\Web_Automation\\src\\test\\resources\\DoctorAttributes.xlsx";
 
-            try (FileInputStream fis = new FileInputStream(filePath);
-                 Workbook workbook = new XSSFWorkbook(fis)) {
+        try (FileInputStream fis = new FileInputStream(filePath);
+             Workbook workbook = new XSSFWorkbook(fis)) {
 
-                Sheet sheet = workbook.getSheet(sheetName);
-                if (sheet == null) {
-                    throw new RuntimeException("Sheet not found: " + sheetName);
-                }
+            Sheet sheet = workbook.getSheet(sheetName);
+            if (sheet == null) {
+                throw new RuntimeException("Sheet not found: " + sheetName);
+            }
 
-                for (Row row : sheet) {
-                    Cell cell = row.getCell(0);
-                    if (cell != null && cell.getCellType() == CellType.STRING) {
+            for (Row row : sheet) {
+                Cell cell = row.getCell(0);
+                if (cell != null && cell.getCellType() == CellType.STRING) {
                     String value = cell.getStringCellValue().trim();
                     if (!value.isEmpty()) {
                         dataList.add(value);
@@ -1549,19 +1567,9 @@ public class Common extends Locators {
         return Name;
     }
 
-    public String GenerateRandomName(){
-        String Name = faker.name().firstName();
-        return Name;
-    }
-
-    public void selectCheckBox(String element){
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        WebElement element2 = driver.findElement(By.xpath(element));
-        element2.click();
-    }
-
     public String GenerateParagraph(int count){
         String Name = faker.lorem().paragraph(count);
+
         return Name;
     }
 
@@ -1589,6 +1597,105 @@ public class Common extends Locators {
         int randomYear = ThreadLocalRandom.current().nextInt(startYear, endYear + 1);
         return String.valueOf(randomYear);
     }
+    public void fillAddress(){
+        common.logPrint("Step :: Adding address line 1");
+        common.waitUntilElementsToBeVisible(By.xpath(COMPANYADDRESS1));
+        common.type(COMPANYADDRESS1,"Ahmedabad");
+
+
+        common.logPrint("Step :: Adding Area");
+        common.waitUntilElementsToBeVisible(By.xpath(COMPANYAREA));
+        common.type(COMPANYAREA,"Ahmedabad");
+
+        common.logPrint("Step :: Adding City");
+        common.waitUntilElementsToBeVisible(By.xpath(COMPANYCITY));
+        common.type(COMPANYCITY,"Bhavnagar");
+        common.pause(1);
+        common.downKeyAndEnter();
+        common.pause(1);
+
+        common.logPrint("Step :: Adding Pincode");
+        common.waitUntilElementsToBeVisible(By.xpath(COMPANYPINCODE));
+        common.click(COMPANYPINCODE);
+        common.type(COMPANYPINCODE, "364001");
+        common.pause(1);
+        common.downKeyAndEnter();
+        common.pause(1);
+
+
+    }
+
+    public void fillBothAddress(){
+        common.logPrint("Step :: Adding address line 1");
+        common.waitUntilElementsToBeVisible(By.xpath(RADDRESSLINE1));
+        common.type(RADDRESSLINE1,"Ahmedabad");
+
+
+        common.logPrint("Step :: Adding Area");
+        common.waitUntilElementsToBeVisible(By.xpath(RADDRESSLINE2));
+        common.type(RADDRESSLINE2,"Ahmedabad");
+
+        common.logPrint("Step :: Adding City");
+        common.waitUntilElementsToBeVisible(By.xpath(RCITY));
+        common.type(RCITY,"Ahmedabad");
+        common.pause(1);
+        common.downKeyAndEnter();
+        common.pause(1);
+
+        common.logPrint("Step :: Adding Pincode");
+        common.waitUntilElementsToBeVisible(By.xpath(RPINCODE));
+        common.click(RPINCODE);
+        common.type(RPINCODE, "");
+        common.pause(1);
+        common.downKeyAndEnter();
+        common.pause(1);
+
+        common.logPrint("Step :: Adding address line 1");
+        common.waitUntilElementsToBeVisible(By.xpath(HADDRESSLINE1));
+        common.type(HADDRESSLINE1,"Ahmedabad");
+
+
+        common.logPrint("Step :: Adding Area");
+        common.waitUntilElementsToBeVisible(By.xpath(HADDRESSLINE2));
+        common.type(HADDRESSLINE2,"Ahmedabad");
+
+        common.logPrint("Step :: Adding City");
+        common.waitUntilElementsToBeVisible(By.xpath(HCITY));
+        common.type(HCITY,"Ahmedabad");
+        common.pause(1);
+        common.downKeyAndEnter();
+        common.pause(1);
+
+        common.logPrint("Step :: Adding Pincode");
+        common.waitUntilElementsToBeVisible(By.xpath(HPINCODE));
+        common.click(HPINCODE);
+        common.type(HPINCODE, "");
+        common.pause(1);
+        common.downKeyAndEnter();
+        common.pause(1);
+
+    }
+
+    public void searchAndValidate(String searchValue) {
+        common.type(COMPANYSEARCH, searchValue);
+
+        try {
+            WebElement result = driver.findElement(By.xpath("//div[@title='" + searchValue + "']"));
+
+            if (result.isDisplayed()) {
+                System.out.println("Success: Element with title '" + searchValue + "' found.");
+            }
+        } catch (NoSuchElementException e) {
+            System.out.println("Fail: Element with title '" + searchValue + "' not found.");
+        }
+    }
+    public String generateCurDate(){
+        LocalDate todays = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+
+        return todays.format(formatter);
+    }
+
 
 }
 
