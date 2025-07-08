@@ -64,17 +64,17 @@ public class DataCreationTest extends BasePage {
 
     @Test
     public void createDrChemistStockiest(){
-        createNew5Doctors("Chakorrsm@yopmail.com", "Admin@123", "Chakorrsm");
-        createNew5Chemist("Chakorrsm@yopmail.com", "Admin@123", "Chakorrsm");
-        createNewStockist("Chakorrsm@yopmail.com", "Admin@123", "Chakorrsm");
+        createNew5Doctors("Satishrsm@yopmail.com", "Admin@123", "Satishrsm");
+        createNew5Chemist("Satishrsm@yopmail.com", "Admin@123", "Satishrsm");
+        createNewStockist("Satishrsm@yopmail.com", "Admin@123", "Satishrsm");
         //createNewHospital("Menkarsm@yopmail.com", "Admin@123", "Menkarsm");
-        createNew5Doctors("Chakorasm@yopmail.com", "Admin@123", "Chakorasm");
-        createNew5Chemist("Chakorasm@yopmail.com", "Admin@123", "Chakorasm");
-        createNewStockist("Chakorasm@yopmail.com", "Admin@123", "Chakorasm");
+        createNew5Doctors("Satishasm@yopmail.com", "Admin@123", "Satishasm");
+        createNew5Chemist("Satishasm@yopmail.com", "Admin@123", "Satishasm");
+        createNewStockist("Satishasm@yopmail.com", "Admin@123", "Satishasm");
         //createNewHospital("MenkaAsm@yopmail.com", "Admin@123", "tanyarsm");
-        createNew5Doctors("Chakormr@yopmail.com", "Admin@123", "Menkamr");
-        createNew5Chemist("Chakormr@yopmail.com", "Admin@123", "Menkamr");
-        createNewStockist("Chakormr@yopmail.com", "Admin@123", "Menkamr");
+        createNew5Doctors("Satishmr@yopmail.com", "Admin@123", "Satishmr");
+        createNew5Chemist("Satishmr@yopmail.com", "Admin@123", "Satishmr");
+        createNewStockist("Satishmr@yopmail.com", "Admin@123", "Satishmr");
         //createNewHospital(ASMEmail, "admin@123", RSMName);
 
     }

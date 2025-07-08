@@ -810,6 +810,7 @@ public class Locators extends BasePage {
 
     //Xpath for the Doctor availability
     public static String TOURPROGRAMMENU = "//a[.='Tour Program']";
+    public static String DOCTORAPPROVALAVAILABILITY = "//div[contains(text(),'Doctor Availibility')]";
     public static String DOCTORINPDRAVAIL = "//label[.='Doctor *']/following-sibling::div//input";
     public static String LEAVESTARTDATE = "//input[@name='LeaveStartDate']";
     public static String LEAVEENDDATE = "//input[@name='LeaveEndDate']";
@@ -823,9 +824,14 @@ public class Locators extends BasePage {
     public static String DOCTORVALUEINP = "//input[@aria-autocomplete='list']";
     public static String DOCTORSTARTDATE = "//label[.='Start Date *']/following-sibling::div//input";
     public static String DOCTORENDDATE = "//label[.='End Date *']/following-sibling::div//input";
+    public static String FIRSTCHECKBOXAPPROVE = "(//tr[@class='MuiTableRow-root css-1rz7w7v']//td//span//input)[1]";
 
     //Xpath for Daily tour plan
     public static String DAILYTOURPLANMENU = "//div[contains(text(),'Daily Tour plan')]";
+    public static String TOURPLANDATEINP = "//input[@name='TourDate']";
+    public static String DOCTORINPDAILYPLAN = "//label[.='Doctor *']/following-sibling::div//input";
+
+
     //xpath for inventory
     public static String INVENTORYMENU = "//a[@href='/inventory']";
 

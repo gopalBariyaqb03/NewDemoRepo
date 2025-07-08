@@ -1132,7 +1132,7 @@ public class DataCreationPage extends Locators {
         common.click(SAVEBUTTON);
 
         common.logPrint("Step:: Check validation is displayed");
-        common.assertElementDisplayed("//*[contains(text(),'Added Successfull')]");
+        common.assertElementDisplayed(AddedSuccessfully);
 
         common.logPrint("Rout added successfully for all the user.");
 
@@ -1229,7 +1229,7 @@ public class DataCreationPage extends Locators {
         common.click(SAVEBUTTON);
 
         common.logPrint("Step:: Check validation is displayed");
-        common.assertElementDisplayed("//*[contains(text(),'Added SuccessFull')]");
+        common.assertElementDisplayed(AddedSuccessfully);
 
         common.logPrint("New Rout is created successfully for the: "+employeeName);
 
@@ -1339,7 +1339,7 @@ public class DataCreationPage extends Locators {
         common.click(SAVEBUTTON);
 
         common.logPrint("Step:: Check validation is displayed");
-        common.assertElementDisplayed("");
+        common.assertElementDisplayed(AddedSuccessfully);
 
         common.logPrint("New doctor is created successfully and name is: "+Doctorname);
     }
@@ -1404,7 +1404,7 @@ public class DataCreationPage extends Locators {
         common.click(SAVEBUTTON);
 
         common.logPrint("Step:: Check validation is displayed");
-        common.assertElementDisplayed("");
+        common.assertElementDisplayed(AddedSuccessfully);
 
         common.logPrint("New chemist is created successfully and name is: "+Chemistname);
     }
@@ -1461,7 +1461,7 @@ public class DataCreationPage extends Locators {
         common.click(SAVEBUTTON);
 
         common.logPrint("Step:: Check validation is displayed");
-        common.assertElementDisplayed("");
+        common.assertElementDisplayed(AddedSuccessfully);
 
         common.logPrint("New stockist is created successfully and name is: "+ Stockistname);
     }
@@ -1511,9 +1511,9 @@ public class DataCreationPage extends Locators {
         common.click(SAVEBUTTON);
 
         common.logPrint("Step:: Check validation is displayed");
-        common.waitForElementWithStaleCheck(By.xpath(""), 3, 10);
-        common.waitUntilElementToBeVisible("");
-        common.assertElementDisplayed("");
+        common.waitForElementWithStaleCheck(By.xpath(AddedSuccessfully), 3, 10);
+        common.waitUntilElementToBeVisible(AddedSuccessfully);
+        common.assertElementDisplayed(AddedSuccessfully);
 
         common.logPrint("New stockist is created successfully and name is: "+ HospitalName);
     }
@@ -1807,7 +1807,7 @@ public class DataCreationPage extends Locators {
         common.click(SAVEBUTTON);
 
         common.logPrint("Step:: Check validation is displayed");
-        common.assertElementDisplayed("");
+        common.assertElementDisplayed(AddedSuccessfully);
 
     }
 
@@ -1971,7 +1971,7 @@ public class DataCreationPage extends Locators {
         common.click(SAVEBUTTON);
 
         common.logPrint("Step:: Check validation is displayed");
-        common.assertElementDisplayed("//*[contains(text(),'Added Successfull')]");
+        common.assertElementDisplayed(AddedSuccessfully);
 
         common.logPrint("Verify vendor is created successfully and shwowing in the table");
         common.waitUntilElementToBeVisible(CREATEDVALUE);
@@ -2123,7 +2123,7 @@ public class DataCreationPage extends Locators {
         common.click(SAVEBUTTON);
 
         common.logPrint("Step:: Check validation is displayed");
-        common.assertElementDisplayed("");
+        common.assertElementDisplayed(AddedSuccessfully);
 
         common.logPrint("Qualification is added for the doctor: "+ CategoryName);
 
@@ -2180,7 +2180,7 @@ public class DataCreationPage extends Locators {
         common.click(SAVEBUTTON);
 
         common.logPrint("Step:: Check validation is displayed");
-        common.assertElementDisplayed("");
+        common.assertElementDisplayed(AddedSuccessfully);
 
         common.logPrint("Qualification is added for the doctor: "+ qualificationName);
 
@@ -2235,7 +2235,7 @@ public class DataCreationPage extends Locators {
         common.click(SAVEBUTTON);
 
         common.logPrint("Step:: Check validation is displayed");
-        common.assertElementDisplayed("");
+        common.assertElementDisplayed(AddedSuccessfully);
 
         common.logPrint("Qualification is added for the doctor: "+ specialityName);
 

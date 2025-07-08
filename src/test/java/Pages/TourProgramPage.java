@@ -24,15 +24,15 @@ public class TourProgramPage extends Locators {
         super(driver);
     }
 
-    public void verifyDailyTourPlanFunctionality(){
+    public void redirectsToDailyTourPlan(){
 
         common.logPrint("Step:: Click on the Tour plan menu");
         common.waitUntilElementToBeVisible(By.xpath(TOURPLANMENU));
         common.click(TOURPLANMENU);
 
         common.logPrint("Step:: Click on the Tour plan menu");
-        common.waitUntilElementToBeVisible(By.xpath(MONTHLYTOURPLAN));
-        common.click(MONTHLYTOURPLAN);
+        common.waitUntilElementToBeVisible(By.xpath(DAILYTOURPLANMENU));
+        common.click(DAILYTOURPLANMENU);
     }
 
     public void redirectsToDoctorAvailability(){
@@ -47,15 +47,15 @@ public class TourProgramPage extends Locators {
 
     }
 
-    public void redirectsToTourPlan(){
+    public void redirectsToDoctorAvailabilityPage(){
 
-        common.logPrint("Step:: Click on the Tour Program menu");
-        common.waitUntilElementToBeVisible(By.xpath(TOURPROGRAMMENU));
-        common.click(TOURPROGRAMMENU);
+        common.logPrint("Step:: Click on the Approval menu");
+        common.waitUntilElementToBeVisible(By.xpath(APPROVALMENU));
+        common.click(APPROVALMENU);
 
         common.logPrint("Step:: Click on the Doctor tour plan");
-        common.waitUntilElementToBeVisible(By.xpath(DAILYTOURPLANMENU));
-        common.click(DAILYTOURPLANMENU);
+        common.waitUntilElementToBeVisible(By.xpath(DOCTORAPPROVALAVAILABILITY));
+        common.click(DOCTORAPPROVALAVAILABILITY);
 
     }
 
@@ -70,18 +70,22 @@ public class TourProgramPage extends Locators {
 
         common.logPrint("Step:: Click on the Doctor list dropdown and select first doctor");
         common.waitUntilElementToBeVisible(By.xpath(DOCTORDROPDOWNICN));
-        common.click(DOCTORDROPDOWNICN);
-        common.pause(1);
-        common.downKeyAndEnter();
+        common.selectRandomValueFromDropdown(DOCTORDROPDOWNICN, 10);
 
-        common.pause(1);
+//        common.click(DOCTORDROPDOWNICN);
+//        common.pause(1);
+//        common.downKeyAndEnter();
+//
+//        common.pause(1);
         common.waitUntilElementToBeVisible(By.xpath(DOCTORVALUEINP));
-
         String drName = common.findElement(DOCTORVALUEINP).getAttribute("value");
+        common.logPrint("Selected doctor name is: "+ drName);
 
         common.logPrint("Step:: Create date for the Doctor availability");
         String currentDate = common.generateDate("future", null, null);
         //String endDate = common.generateDate("future", null, null);
+
+        common.logPrint("Entered date is: "+currentDate);
 
         common.logPrint("Step:: Enter current date");
         common.waitUntilElementToBeVisible(By.xpath(LEAVESTARTDATE));
@@ -100,40 +104,52 @@ public class TourProgramPage extends Locators {
 
     public void approvedDoctorAvailabilityRequestFromManager(String name, String date){
 
-        redirectsToDoctorAvailability();
+        redirectsToDoctorAvailabilityPage();
 
-        common.logPrint("Step:: Enter Start date");
-        common.waitUntilElementToBeVisible(By.xpath(DOCTORSTARTDATE));
-        common.type(DOCTORSTARTDATE, date);
-
-        common.logPrint("Step:: Enter End date");
-        common.waitUntilElementToBeVisible(By.xpath(DOCTORENDDATE));
-        common.type(DOCTORENDDATE, date);
         common.pause(1);
-        common.click(DOCTORENDDATE);
 
-        // You may need to adjust this XPath depending on the calendar HTML structure
-        List<WebElement> calendarDates = driver.findElements(By.xpath("//td[not(contains(@class, 'disabled'))]"));
+        common.logPrint("Step:: Select first checkbox");
+        common.pause(1);
+        common.selectCheckBox(FIRSTCHECKBOXAPPROVE);
 
-        for (WebElement datea : calendarDates) {
-            if (datea.getText().equals(datea)) {
-                common.pause(2);
-                datea.click();
-                break;
-            }
-        }
+        common.waitUntilElementToBeVisible(By.xpath("(//tr//td[contains(.,'"+name.toLowerCase()+"')])[1]"));
+        String xpath = "(//tr//td[contains(.,'"+name.toLowerCase()+"')])[1]";
+        String getDrName = common.getText(xpath);
+        common.logPrint(getDrName);
+        common.assertTwoValuesAreEqual(getDrName.toLowerCase(), name.toLowerCase());
+
+        common.logPrint("Verify both the name are equal");
+
+        common.logPrint("Step:: Click on the Approval button");
+        common.waitUntilElementToBeVisible(By.xpath(APPROVEBTN));
+        common.click(APPROVEBTN);
+
+        common.logPrint("Step:: Check validation is displayed");
+        common.assertElementDisplayed(DoctorApprovedSuccess);
 
     }
 
-    public void createDailyTourPlan(){
+    public void verifyDoctorAvailabilityInDailyTourPlan(String name, String date){
 
-        common.logPrint("Step:: Click on the Tour Program menu");
-        common.waitUntilElementToBeVisible(By.xpath(TOURPROGRAMMENU));
-        common.click(TOURPROGRAMMENU);
+        redirectsToDailyTourPlan();
 
-        common.logPrint("Step:: Click on the Tour Program menu");
-        common.waitUntilElementToBeVisible(By.xpath(DAILYTOURPLANMENU));
-        common.click(DAILYTOURPLANMENU);
+        common.logPrint("Step:: Click on the add button");
+        common.waitUntilElementsToBeVisible(By.xpath(ADDBTN));
+        common.click(ADDBTN);
+
+        common.logPrint("Convert date format from DD/MM/YYYY to MM/DD/yyyy");
+        String convertedDate = common.convertDateFormat(date);
+
+        common.logPrint("Step:: Enter date in the plan date.");
+        common.waitUntilElementsToBeVisible(By.xpath(TOURPLANDATEINP));
+        common.type(TOURPLANDATEINP, convertedDate);
+
+        common.logPrint("Step:: Enter the doctor name in the doctor dropdown");
+        common.waitUntilElementsToBeVisible(By.xpath(DOCTORINPDAILYPLAN));
+        common.type(DOCTORINPDAILYPLAN, name);
+
+
+
 
     }
 

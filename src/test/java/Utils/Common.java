@@ -1561,6 +1561,11 @@ public class Common extends Locators {
         }
     }
 
+    public static String GenerateRandomName() {
+        Faker faker = new Faker();
+        return faker.name().fullName();  // e.g., "John Doe"
+    }
+
     public String GenerateOneLineText(int count){
         String Name = faker.lorem().sentence(count);
 
@@ -1602,7 +1607,6 @@ public class Common extends Locators {
         common.waitUntilElementsToBeVisible(By.xpath(COMPANYADDRESS1));
         common.type(COMPANYADDRESS1,"Ahmedabad");
 
-
         common.logPrint("Step :: Adding Area");
         common.waitUntilElementsToBeVisible(By.xpath(COMPANYAREA));
         common.type(COMPANYAREA,"Ahmedabad");
@@ -1621,15 +1625,12 @@ public class Common extends Locators {
         common.pause(1);
         common.downKeyAndEnter();
         common.pause(1);
-
-
     }
 
     public void fillBothAddress(){
         common.logPrint("Step :: Adding address line 1");
         common.waitUntilElementsToBeVisible(By.xpath(RADDRESSLINE1));
         common.type(RADDRESSLINE1,"Ahmedabad");
-
 
         common.logPrint("Step :: Adding Area");
         common.waitUntilElementsToBeVisible(By.xpath(RADDRESSLINE2));
@@ -1653,7 +1654,6 @@ public class Common extends Locators {
         common.logPrint("Step :: Adding address line 1");
         common.waitUntilElementsToBeVisible(By.xpath(HADDRESSLINE1));
         common.type(HADDRESSLINE1,"Ahmedabad");
-
 
         common.logPrint("Step :: Adding Area");
         common.waitUntilElementsToBeVisible(By.xpath(HADDRESSLINE2));
@@ -1695,6 +1695,85 @@ public class Common extends Locators {
 
         return todays.format(formatter);
     }
+
+    public void selectRandomValueFromDropdown(String dropdownXpath, int optionsCount){
+
+        WebElement element = driver.findElement(By.xpath(dropdownXpath));
+
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        element.click();
+
+        common.pause(1);
+
+        //generate random index between 1 and optionCount -1
+        Random random = new Random();
+        int randomIndex = random.nextInt(optionsCount - 1)+1;
+
+        Actions actions = new Actions(driver);
+
+        for(int i = 0; i< randomIndex; i++){
+            actions.sendKeys(Keys.ARROW_DOWN);
+        }
+
+        actions.sendKeys(Keys.ENTER).build().perform();
+
+        common.logPrint("Selected random index from dropdown: " + randomIndex);
+    }
+
+    public void selectDateFromDynamicCalendar(By calendarIcon, String dateToSelect) {
+
+        driver.findElement(calendarIcon).click();
+        common.pause(1); // give time to render
+
+        try {
+            // Re-fetch every time to avoid stale references
+            WebElement dateElement = driver.findElement(By.xpath("//td[normalize-space()='" + dateToSelect + "']"));
+            dateElement.click();
+            common.logPrint("Selected date from calendar: " + dateToSelect);
+        } catch (NoSuchElementException e) {
+            common.logPrint("Calendar popup didn't render as expected. Retrying...");
+            driver.findElement(calendarIcon).click();
+            common.pause(1);
+            WebElement dateElement = driver.findElement(By.xpath("//td[normalize-space()='" + dateToSelect + "']"));
+            dateElement.click();
+        }
+    }
+
+    public void enterDateAndConfirm(String dateInput, String dateValue) {
+
+        WebElement element = driver.findElement(By.xpath(dateInput));
+
+        //element.click();
+        element.clear();
+        element.sendKeys(dateValue);
+        element.sendKeys(Keys.TAB); // or ENTER
+        common.logPrint("Date entered manually and confirmed: " + dateValue);
+    }
+
+    /**
+     * Converts a date from MM/dd/yyyy to ddMMyyyy format.
+     *
+     * date in MM/dd/yyyy format (e.g. "07/08/2025")
+     * formatted date in ddMMyyyy format (e.g. "08072025")
+     */
+
+    public static String convertDateFormat(String inputDate){
+
+        SimpleDateFormat inputFormat = new SimpleDateFormat("MM/dd/yyyy");
+        SimpleDateFormat outputFormat = new SimpleDateFormat("ddMMyyyy");
+
+        try{
+            Date date = inputFormat.parse(inputDate);
+            return outputFormat.format(date);
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return null; // or throw a custom exception
+        }
+
+
+    }
+
 
 
 }

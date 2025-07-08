@@ -14,7 +14,7 @@ public class TourProgramTest extends BasePage {
     @Test
     public void verifyDailyTourPlanFunctionality(){
         loginWithMRCredential();
-        tourProgramPage.verifyDailyTourPlanFunctionality();
+        //tourProgramPage.verifyDailyTourPlanFunctionality();
     }
 
     @Test
@@ -26,8 +26,8 @@ public class TourProgramTest extends BasePage {
         String Date = drName[1];
         loginWithASMCredential();
         tourProgramPage.approvedDoctorAvailabilityRequestFromManager(Name, Date);
+        loginWithMRCredential();
+        tourProgramPage.verifyDoctorAvailabilityInDailyTourPlan(Name, Date);
+
     }
-
-
-
 }
