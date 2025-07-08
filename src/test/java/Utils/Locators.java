@@ -144,6 +144,7 @@ public class Locators extends BasePage {
     public static String FIRSTROWDATADOCTR = "(//div[@data-colindex='5'])[1]";
     public static String DEGREEMENU = "//button[contains(.,'Degree')]";
     public static String DEGREEDROPDOWN = "//label[contains(.,'Degree')]/following-sibling::div//button";
+    public static String DEGREESELECTED = "(//input[@role='combobox'])[1]";
     public static String SPECIALITYDRODOWN = "//label[contains(.,'Speciality')]/following-sibling::div//button";
     public static String ADDMISSIONYEAR = "//input[@name='DegreeAdmissionYear']";
     public static String PASSOUTYEAR = "//input[@name='DegreePassOutYear']";
@@ -153,6 +154,7 @@ public class Locators extends BasePage {
     public static String PINCODEDROPDOWN = "//label[contains(.,'Pincode')]/following-sibling::div//button";
     public static String AREAOFINTEREST = "//span[contains(.,'Area of Interest')]";
     public static String AREAOFINTERESTINMEDICAL = "//label[.='Area Of Interest In Medical Field *']/following-sibling::div//button";
+    public static String AREAOFINTERESTINMEDICALS = "//input[@role='combobox']";
     public static String AREAREMARK = "//textarea[contains(@name,'Remarks')]";
     public static String GUIDELINESFOLLOWED = "//span[contains(.,'Guidelines Followed')]";
     public static String GUIDELINEFOLLOWEDDRP = "//label[contains(.,'Guidelines Followed')]/following-sibling::div//button";
