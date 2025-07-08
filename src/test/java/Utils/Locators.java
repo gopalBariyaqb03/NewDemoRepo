@@ -388,6 +388,7 @@ public class Locators extends BasePage {
     public static String ADDRESSLINEINP = "//input[@name='AddressLine1']";
     public static String AREALLBL = "//label[.='Area']";
     public static String AREAINPUT = "//input[@name='AddressLine2']";
+    public static String HOSPITALNETABLE = "(//div[@data-field='HospitalName'])[2]";
 
     //Xpath for mandatory field
     public static String DoctorError = "(//p[contains(@class,'MuiFormHelperText-root Mui-error MuiFormHelperText-sizeSmall')])[1]";
@@ -716,6 +717,8 @@ public class Locators extends BasePage {
     public static String ADDRESSLINE1MAN = "//label[.='Address Line 1 *']/following-sibling::div//input";
     public static String AREALMAN = "//label[.='Area *']/following-sibling::div//input";
     public static String CREATEDVALUE = "//div[@data-id='1']//div[@data-colindex='2']";
+    public static String CONTACTNUMBER = "//div[@data-id='1']//div[@data-colindex='5']";
+    public static String RATINGSTABLE = "//div[@data-colindex='6']//span[@aria-label='4 Stars']";
     public static String SEARCHFIELDTAB = "//input[@placeholder='Search']";
 
     //Xpath for the attributes
@@ -805,10 +808,6 @@ public class Locators extends BasePage {
     public static String TITLEVALIDATION = "//p[contains(.,'Title is required')]";
     //public static String = "";
 
-
-
-
-
     //Xpath for the Doctor availability
     public static String TOURPROGRAMMENU = "//a[.='Tour Program']";
     public static String DOCTORINPDRAVAIL = "//label[.='Doctor *']/following-sibling::div//input";
@@ -820,8 +819,10 @@ public class Locators extends BasePage {
     public static String DELETEAPPROVALCHEMIST = "//div[contains(text(),'Delete Approval Chemist')]";
     public static String DELETEAPPROVALSTOCKIEST = "//div[contains(text(),'Delete Approval Stockist')]";
     public static String DOCTORAVAILIBILITY = "//div[contains(text(),'Doctor Availibility')]";
-    public static String DOCTORDROPDOWNICN = "//label[.='Doctor *']/following-sibling::div//*[local-name()='svg']";
-    //public static String = "";
+    public static String DOCTORDROPDOWNICN = "//label[.='Doctor *']/following-sibling::div//input";
+    public static String DOCTORVALUEINP = "//input[@aria-autocomplete='list']";
+    public static String DOCTORSTARTDATE = "//label[.='Start Date *']/following-sibling::div//input";
+    public static String DOCTORENDDATE = "//label[.='End Date *']/following-sibling::div//input";
 
     //Xpath for Daily tour plan
     public static String DAILYTOURPLANMENU = "//div[contains(text(),'Daily Tour plan')]";

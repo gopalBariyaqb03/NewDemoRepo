@@ -17,9 +17,33 @@ public class VendorTest extends BasePage {
         Faker faker = new Faker();
         String name = faker.name().firstName();
         vendorPage.createVendorUsingAdminCredencials(name);
-        vendorPage.VerifyVendorFromMRUser(name);
-        vendorPage.VerifyVendorFromASMUser(name);
-        vendorPage.VerifyVendorFromRSMUser(name);
+        vendorPage.verifyVendorFromAllTheThreeUsers(name);
+    }
+
+    @Test
+    public void verifyUpdateVendorInfo(){
+        loginWithDirectorCredential();
+        String name = common.GenerateRandomName();
+        vendorPage.createVendorUsingAdminCredencials(name);
+        vendorPage.verifyVendorFromAllTheThreeUsers(name);
+        loginWithDirectorCredential();
+        String[] updatedValue = vendorPage.updateVendorScenario(name);
+        String updatedName = updatedValue[0];
+        String updatedNumber = updatedValue[1];
+        String updatedRatings = updatedValue[2];
+        loginWithMRCredential();
+        vendorPage.verifyUpdatedInformationForVendorForAllTheUser(updatedName, updatedNumber, updatedRatings);
+    }
+
+    @Test
+    public void verifyDeleteVendorScenario(){
+        loginWithDirectorCredential();
+        String name = common.GenerateRandomName();
+        vendorPage.createVendorUsingAdminCredencials(name);
+        vendorPage.verifyVendorFromAllTheThreeUsers(name);
+        loginWithDirectorCredential();
+        vendorPage.deleteVendorFromTheList(name);
+        vendorPage.verifyVendorIsRemovedFromAllUser(name);
     }
 
 }
