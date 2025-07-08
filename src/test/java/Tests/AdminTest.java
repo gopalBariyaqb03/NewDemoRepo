@@ -1,13 +1,7 @@
 package Tests;
 
-import Config.ReadProperties;
 import Utils.BasePage;
-import com.github.javafaker.Faker;
-import org.openqa.selenium.By;
 import org.testng.annotations.Test;
-
-import java.text.ParseException;
-import java.util.Locale;
 
 public class AdminTest extends BasePage {
 
@@ -18,7 +12,7 @@ public class AdminTest extends BasePage {
         adminPage.verifyEntityIsCreatedIsShowingInTheTableAndItStatusIsPending(drName);
         adminPage.verifyDrApprovalForTheAsmUser(drName);
         loginWithMRCredential();
-        adminPage.redeirectToDoctorPage();
+        adminPage.redirectToDoctorPage();
         adminPage.verifyDoctorIsCreatedIsShowingInTheTableAndItStatusIsApproval(drName);
     }
 
@@ -31,7 +25,7 @@ public class AdminTest extends BasePage {
         adminPage.verifyEntityIsCreatedIsShowingInTheTableAndItStatusIsPending(drName);
         adminPage.verifyDrApprovalForTheAsmUser(drName);
         loginWithMRCredential();
-        adminPage.redeirectToDoctorPage();
+        adminPage.redirectToDoctorPage();
         adminPage.verifyDoctorIsCreatedIsShowingInTheTableAndItStatusIsApproval(drName);
         loginWithMRCredential();
         String[] doctorInfo = adminPage.updateTheDoctor(drName);
@@ -39,9 +33,9 @@ public class AdminTest extends BasePage {
         String updatedMobile = doctorInfo[1];
         adminPage.verifyEntityIsCreatedIsShowingInTheTableAndItStatusIsPending(updatedName);
         adminPage.loginWithASMCredential();
-        adminPage.redeirectToDoctorPage();
+        adminPage.redirectToDoctorPage();
         adminPage.verifyEntityIsCreatedIsShowingInTheTableAndItStatusIsPending(updatedName);
-        adminPage.redeirectToDoctorPage();
+        adminPage.redirectToDoctorPage();
         adminPage.verifyDoctorIsUpdated(updatedName,updatedMobile);
     }
 
@@ -56,7 +50,7 @@ public class AdminTest extends BasePage {
         adminPage.redirectsDeleteDoctorApprovalPage();
         adminPage.approvedDeleteRequestFromTheDirectorsUser(drName.toLowerCase());
         loginWithMRCredential();
-        adminPage.redeirectToDoctorPage();
+        adminPage.redirectToDoctorPage();
         adminPage.verifyDoctorRemoveFromTheList(drName);
     }
 
@@ -138,7 +132,7 @@ public class AdminTest extends BasePage {
         adminPage.verifyStockiestIsCreatedIsShowingInTheTableAndItStatusIsPending(updatedName);
         adminPage.redirectsToStockiestPage();
         adminPage.verifyStockiestIsUpdated(updatedName);
-        //test github
+        //test gitHub
     }
 
     @Test
@@ -213,16 +207,22 @@ public class AdminTest extends BasePage {
     }
 
     @Test
-    public void createAllTheAddinationDetail(){
+    public void CreateAllTheAdditionalDetails(){
         loginWithDirectorCredential();
-        //adminPage.addDegree();
-        //adminPage.addAreaOfInterest();
-        //adminPage.addGuidelinesFollowed();
-        //adminPage.addConferenceAndSpeker();
-        //adminPage.addWeekendsAndVacation();
-        //adminPage.addFamilyFriendDetailInfo();
-        //adminPage.addCollegeMateDetailInfo();
+        adminPage.addDegree();
+        adminPage.addAreaOfInterest();
+        adminPage.addGuidelinesFollowed();
+        adminPage.addConferenceAndSpeaker();
+        adminPage.addWeekendsAndVacation();
+        adminPage.addFamilyFriendDetailInfo();
+        adminPage.addCollegeMateAndAlumniDetails();
         adminPage.addSocialActivities();
+        adminPage.addMedicalAdvisory();
+        adminPage.addAchievements();
+        adminPage.addProceduralEquipment();
+        adminPage.addDoctorBankDetails();
+        adminPage.addSpecialDay();
+        adminPage.addDoctorVendor();
     }
 
 }
