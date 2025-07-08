@@ -9,6 +9,10 @@ import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class AdminPage extends Locators {
     Common common = new Common(driver);
@@ -3249,27 +3253,48 @@ public class AdminPage extends Locators {
 
     }
 
+    public void searchAndValidateAdditionalDetails(String SearchedTerms)
+    {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement Search = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='Search']")));
+        if  (Search.isDisplayed()) {
+            common.searchAndValidate(SearchedTerms.toLowerCase());
+            WebElement result = driver.findElement(By.xpath("//div[@title='" + SearchedTerms.toLowerCase() + "']"));
+            System.out.println(result);
+            if (result.isDisplayed()) {System.out.println("Success: Element with title '" + SearchedTerms.toLowerCase() + "' found.");}}
+        else {
+            common.click(DEGREEMENU);
+            common.searchAndValidate(SearchedTerms.toLowerCase());
+            WebElement result = driver.findElement(By.xpath("//div[@title='" + SearchedTerms.toLowerCase() + "']"));
+            if (result.isDisplayed()) {System.out.println("Success: Element with title '" + SearchedTerms.toLowerCase() + "' found.");}
+            else {System.out.println("Error");}
+    }
+    }
+
     public void addDegree() {
         try {
-            redirectToTheDoctorAdditionalDetail();
-            common.pause(2);
-            WebElement addButton = driver.findElement(By.xpath(ADDBTN));
-            if (addButton.isEnabled()) {
-                common.logPrint("Step:: Add button is enabled");
-                common.click(ADDBTN);
-            } else {
-                common.logPrint("Step:: Add button is not enabled");
-                common.logPrint("Step:: Click on the Degree menu");
-                common.waitUntilElementToBeVisible(By.xpath(DEGREEMENU));
-                common.click(DEGREEMENU);
-                common.logPrint("Step:: Add button is enabled");
-                common.click(ADDBTN);
-            }
+//            redirectToTheDoctorAdditionalDetail();
+//            common.pause(2);
+//            WebElement addButton = driver.findElement(By.xpath(ADDBTN));
+//            if (addButton.isEnabled()) {
+//                common.logPrint("Step:: Add button is enabled");
+//                common.click(ADDBTN);
+//            } else {
+//                common.logPrint("Step:: Add button is not enabled");
+//                common.logPrint("Step:: Click on the Degree menu");
+//                common.waitUntilElementToBeVisible(By.xpath(DEGREEMENU));
+//                common.click(DEGREEMENU);
+//                common.logPrint("Step:: Add button is enabled");
+//                common.click(ADDBTN);
+//            }
+            redirectToParticularAdditionalDetailPage(DEGREEMENU);
 
             common.logPrint("Step:: Click on the Degree dropdown");
             common.waitUntilElementToBeVisible(By.xpath(DEGREEDROPDOWN));
             common.click(DEGREEDROPDOWN);
             common.downKeyAndEnter();
+            String enteredDegree = driver.findElement(By.xpath(DEGREESELECTED)).getAttribute("value");
+            System.out.println(enteredDegree);
 
             common.logPrint("Step:: Click on the Speciality dropdown");
             common.waitUntilElementToBeVisible(By.xpath(SPECIALITYDRODOWN));
@@ -3313,6 +3338,9 @@ public class AdminPage extends Locators {
             common.logPrint("Step:: Click on the save button");
             common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
             common.click(SAVEBUTTON);
+
+            searchAndValidateAdditionalDetails(enteredDegree);
+
         } catch (NoSuchElementException e) {
             common.logPrint("Error: Element not found - " + e.getMessage());
             throw new RuntimeException("Failed to add degree due to missing element", e);
@@ -3339,6 +3367,9 @@ public class AdminPage extends Locators {
             common.waitUntilElementToBeVisible(By.xpath(AREAOFINTERESTINMEDICAL));
             common.click(AREAOFINTERESTINMEDICAL);
             common.downKeyAndEnter();
+            String enteredAOI = driver.findElement(By.xpath(AREAOFINTERESTINMEDICALS)).getAttribute("value");
+            System.out.println(enteredAOI);
+
 
             String areaRemark = common.generateRandomChars(20);
             common.logPrint("Step:: Enter interest of area remark");
@@ -3348,6 +3379,12 @@ public class AdminPage extends Locators {
             common.logPrint("Step:: Click on the save button");
             common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
             common.click(SAVEBUTTON);
+
+            
+
+            searchAndValidateAdditionalDetails(enteredAOI);
+
+
         } catch (NoSuchElementException e) {
             common.logPrint("Error: Element not found - " + e.getMessage());
             throw new RuntimeException("Failed to add area of interest due to missing element", e);
