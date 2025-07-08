@@ -19,9 +19,15 @@ public class TourProgramTest extends BasePage {
 
     @Test
     public void verifyDoctorAvailabilityScenario(){
-        loginWithDirectorCredential();
-        //tourProgramPage.createDoctorAvailibility();
-
+        common.logPrint("Verify doctor availability scenario");
+        loginWithMRCredential();
+        String drName[] = tourProgramPage.createDoctorAvailability();
+        String Name = drName[0];
+        String Date = drName[1];
+        loginWithASMCredential();
+        tourProgramPage.approvedDoctorAvailabilityRequestFromManager(Name, Date);
     }
+
+
 
 }

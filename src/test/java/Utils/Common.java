@@ -315,7 +315,7 @@ public class Common extends Locators {
      * @param value2 Value-2.
      */
     public void assertTwoValuesAreEqual(Object value1, Object value2) {
-        pause(2);
+        pause(1);
         Assert.assertEquals(value1, value2);
     }
 

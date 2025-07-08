@@ -3,6 +3,7 @@ package Pages;
 import Config.ReadProperties;
 import Utils.Common;
 import Utils.Locators;
+import net.openhft.chronicle.core.values.StringValue;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -23,83 +24,20 @@ public class VendorPage extends Locators {
         super(driver);
     }
 
-    ReadProperties readProperties = new ReadProperties();
-    String rsmCredentials[] = readProperties.getRSMCredentials();
-    String Rsmusername = rsmCredentials[0];
-    String RSMpassword = rsmCredentials[1];
+    public void redirectsToVendorPage(){
 
-    String ASMCredentials[] = readProperties.getASMCredential();
-    String Asmusername = ASMCredentials[0];
-    String Asmpassword = ASMCredentials[1];
-
-    String MRCredentials[] = readProperties.getMRCredential();
-    String MRusername = MRCredentials[0];
-    String MRpassword = MRCredentials[1];
-
-    String adminCredentials[] = readProperties.getDirectorCredentials();
-    String username = adminCredentials[0];
-    String password = adminCredentials[1];
-
-    public void loginWithMRUser(){
-        common.logPrint("Step:: Enter username and password");
-
-        if (common.isElementDisplayed(USERNAMEFIELD)) {
-            common.waitUntilElementsToBeVisible(By.xpath(USERNAMEFIELD));
-            common.type(USERNAMEFIELD,MRusername);
-
-            common.waitUntilElementsToBeVisible(By.xpath(PASSWORDFIELD));
-            common.type(PASSWORDFIELD,MRpassword);
-
-            common.waitUntilElementsToBeVisible(By.xpath(LOGINBTN));
-            common.click(LOGINBTN);
-        } else {
-            common.logPrint("Login and password field is not displayed");
-        }
-    }
-
-    public void loginWithASMUser(){
-        common.logPrint("Step:: Enter username and password");
-
-        if (common.isElementDisplayed(USERNAMEFIELD)) {
-            common.waitUntilElementsToBeVisible(By.xpath(USERNAMEFIELD));
-            common.type(USERNAMEFIELD,Asmusername);
-
-            common.waitUntilElementsToBeVisible(By.xpath(PASSWORDFIELD));
-            common.type(PASSWORDFIELD,Asmpassword);
-
-            common.waitUntilElementsToBeVisible(By.xpath(LOGINBTN));
-            common.click(LOGINBTN);
-        } else {
-            common.logPrint("Login and password field is not displayed");
-        }
-    }
-
-    public void loginWithRSMUser(){
-        common.logPrint("Step:: Enter username and password");
-
-        if (common.isElementDisplayed(USERNAMEFIELD)) {
-            common.waitUntilElementsToBeVisible(By.xpath(USERNAMEFIELD));
-            common.type(USERNAMEFIELD,Rsmusername);
-
-            common.waitUntilElementsToBeVisible(By.xpath(PASSWORDFIELD));
-            common.type(PASSWORDFIELD,RSMpassword);
-
-            common.waitUntilElementsToBeVisible(By.xpath(LOGINBTN));
-            common.click(LOGINBTN);
-        } else {
-            common.logPrint("Login and password field is not displayed");
-        }
-    }
-
-    public void createVendorUsingAdminCredencials(String name){
-
-        common.logPrint("Step:: Search vendor menu");
-        common.waitUntilElementToBeVisible(By.xpath(SEARCHFIELDINDASH));
-        common.type(SEARCHFIELDINDASH,"Vendor");
+        common.waitUntilElementToBeVisible(By.xpath(VENDORMENU));
+        common.scroll_To_Element(VENDORMENU);
 
         common.logPrint("Step:: Click on the vendor menu");
         common.waitUntilElementToBeVisible(By.xpath(VENDORMENU));
         common.click(VENDORMENU);
+
+    }
+
+    public void createVendorUsingAdminCredencials(String name){
+
+       redirectsToVendorPage();
 
         common.logPrint("Step:: Click on the add button");
         common.waitUntilElementToBeVisible(By.xpath(ADDBTN));
@@ -107,7 +45,7 @@ public class VendorPage extends Locators {
 
         common.logPrint("Step:: Select vendor service type");
         common.waitUntilElementToBeVisible(By.xpath(VENDORSERTYPE));
-        common.type(VENDORSERTYPE, "test");
+        common.click(VENDORSERTYPE);
         common.pause(1);
         common.downKeyAndEnter();
 
@@ -140,7 +78,7 @@ public class VendorPage extends Locators {
 
         common.logPrint("Step:: Enter Address line 1");
         common.waitUntilElementToBeVisible(By.xpath(AREALMAN));
-        common.type(AREALMAN, "Test aerea");
+        common.type(AREALMAN, "Automation test area");
 
         common.logPrint("Step:: Select communication city");
         common.waitUntilElementToBeVisible(By.xpath(COMMNUNICATIONCITY));
@@ -150,7 +88,7 @@ public class VendorPage extends Locators {
 
         common.logPrint("Step:: Select Pincode city");
         common.waitUntilElementToBeVisible(By.xpath(COMMNUCATIONPINCODE));
-        common.type(COMMNUCATIONPINCODE, "380058");
+        common.click(COMMNUCATIONPINCODE);
         common.pause(2);
         common.downKeyAndEnter();
 
@@ -161,7 +99,7 @@ public class VendorPage extends Locators {
         common.logPrint("Step:: Check validation is displayed");
         common.assertElementDisplayed("//*[contains(text(),'Added Successfull')]");
 
-        common.logPrint("Verify vendor is created successfully and shwowing in the table");
+        common.logPrint("Verify vendor is created successfully and showing in the table");
         common.waitUntilElementToBeVisible(CREATEDVALUE);
         String getValue = common.getText(CREATEDVALUE);
         common.assertTwoValuesAreEqual(getValue, name);
@@ -169,100 +107,179 @@ public class VendorPage extends Locators {
         common.logPrint("Vendor are created successfully and showing in the table");
     }
 
-    public void VerifyVendorFromMRUser(String name){
+    public void verifyVendorFromAllTheThreeUsers(String name){
 
-        common.logPrint("Step:: Attempting to logout from the current user");
-        if (common.isElementDisplayed(LOGOUTBTN)) {
-            common.waitUntilElementsToBeVisible(By.xpath(LOGOUTBTN));
-            common.click(LOGOUTBTN);
-        } else {
-            common.logPrint("Step:: Logout button not found, skipping logout step");
-        }
+        common.logPrint("Step:: Verify vendor is created and showing in the MR user");
+        loginWithMRCredential();
+        VerifyVendorIsCreateAndShowingInTheTable(name);
 
-        loginWithMRUser();
-        common.logPrint("Step:: Verify vendor is showing in the MR user");
+        common.logPrint("Step:: Verify vendor is created and showing in the ASM user");
+        loginWithASMCredential();
+        VerifyVendorIsCreateAndShowingInTheTable(name);
 
-        common.logPrint("Step:: Search vendor menu");
-        common.waitUntilElementToBeVisible(By.xpath(SEARCHFIELDINDASH));
-        common.type(SEARCHFIELDINDASH,"Vendor");
+        common.logPrint("Step:: Verify vendor is created and showing in the RSM user");
+        loginWithRSMCredential();
+        VerifyVendorIsCreateAndShowingInTheTable(name);
+    }
 
-        common.logPrint("Step:: Click on the vendor menu");
-        common.waitUntilElementToBeVisible(By.xpath(VENDORMENU));
-        common.click(VENDORMENU);
+    public void VerifyVendorIsCreateAndShowingInTheTable(String name){
+
+        redirectsToVendorPage();
 
         common.logPrint("Step:: Search vendor name in the search field");
         common.waitUntilElementToBeVisible(By.xpath(SEARCHFIELDTAB));
         common.type(SEARCHFIELDTAB, name);
 
-        common.logPrint("Verify vendor is created successfully and shwowing in the table");
+        common.logPrint("Verify vendor is created successfully and showing in the table");
         common.waitUntilElementToBeVisible(CREATEDVALUE);
         String getValue = common.getText(CREATEDVALUE);
         common.assertTwoValuesAreEqual(getValue, name);
-
     }
 
-    public void VerifyVendorFromASMUser(String name){
+    public String[] updateVendorScenario(String name){
 
-        common.logPrint("Step:: Attempting to logout from the current user");
-        if (common.isElementDisplayed(LOGOUTBTN)) {
-            common.waitUntilElementsToBeVisible(By.xpath(LOGOUTBTN));
-            common.click(LOGOUTBTN);
-        } else {
-            common.logPrint("Step:: Logout button not found, skipping logout step");
-        }
+        redirectsToVendorPage();
 
-        loginWithASMUser();
-        common.logPrint("Step:: Verify vendor is showing in the MR user");
+        VerifyVendorIsCreateAndShowingInTheTable(name);
 
-        common.logPrint("Step:: Search vendor menu");
-        common.waitUntilElementToBeVisible(By.xpath(SEARCHFIELDINDASH));
-        common.type(SEARCHFIELDINDASH,"Vendor");
+        common.pause(2);
+        common.selectCheckBox(FIRSTCHECKBOX);
 
-        common.logPrint("Step:: Click on the vendor menu");
-        common.waitUntilElementToBeVisible(By.xpath(VENDORMENU));
-        common.click(VENDORMENU);
+        common.waitUntilElementToBeVisible(By.xpath(EDITBTN));
+        common.click(EDITBTN);
+
+        common.logPrint("Step:: Update the vendor name");
+        common.waitUntilElementToBeVisible(By.xpath(VENDORNAMEFIELD)).clear();
+        String updateName = common.GenerateRandomName();
+        common.type(VENDORNAMEFIELD, updateName);
+        common.logPrint("Updated name is: "+updateName);
+
+        common.logPrint("Step:: Update the Contact phone number");
+        common.waitUntilElementToBeVisible(By.xpath(CONTACTPHONENUM)).clear();
+        String ConMobilenum = common.generateRandomNumberString(10);
+        common.type(CONTACTPHONENUM,ConMobilenum);
+
+        common.logPrint("Step:: Enter ratings");
+        common.waitUntilElementToBeVisible(RATINGFIELD).clear();
+        common.type(RATINGFIELD,"4");
+
+        common.logPrint("Step:: Click on save button");
+        common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
+        common.click(SAVEBUTTON);
+
+        common.logPrint("Step:: Check validation is displayed");
+        common.assertElementDisplayed(UpdatedSuccessfully);
+
+        return new String[] {updateName, ConMobilenum, "4"};
+    }
+
+    public void verifyUpdatedInformationForVendorForAllTheUser(String name, String mobileNum, String Ratings){
+
+        common.logPrint("Verify updated information from MR user");
+        loginWithMRCredential();
+        verifyVendorInformationAfterItsUpdated(name, mobileNum, Ratings);
+
+        common.logPrint("Verify updated information from ASM user");
+        loginWithASMCredential();
+        verifyVendorInformationAfterItsUpdated(name, mobileNum, Ratings);
+
+        common.logPrint("Verify updated information from RSM user");
+        loginWithRSMCredential();
+        verifyVendorInformationAfterItsUpdated(name, mobileNum, Ratings);
+    }
+
+    public void verifyVendorInformationAfterItsUpdated(String name, String mobileNum, String Ratings){
+
+        redirectsToVendorPage();
 
         common.logPrint("Step:: Search vendor name in the search field");
         common.waitUntilElementToBeVisible(By.xpath(SEARCHFIELDTAB));
         common.type(SEARCHFIELDTAB, name);
 
-        common.logPrint("Verify vendor is created successfully and shwowing in the table");
+        common.pause(1);
+
+        common.logPrint("Verify vendor name is updated successfully and showing in the table");
         common.waitUntilElementToBeVisible(CREATEDVALUE);
         String getValue = common.getText(CREATEDVALUE);
         common.assertTwoValuesAreEqual(getValue, name);
 
+        common.logPrint("Verify vendor contact mobile number is updated successfully and showing in the table");
+        common.waitUntilElementToBeVisible(CONTACTNUMBER);
+        String getContactNum = common.getText(CONTACTNUMBER);
+        common.assertTwoValuesAreEqual(getContactNum, mobileNum);
+
+        common.logPrint("Verify vendor Ratings are updated successfully and showing in the table");
+        common.waitUntilElementToBeVisible(RATINGSTABLE);
+        String ratings = common.findElement(RATINGSTABLE).getAttribute("aria-label");
+        String firstChar = String.valueOf(ratings.charAt(0));
+        common.logPrint(firstChar);
+
+        common.assertTwoValuesAreEqual(firstChar.trim(), Ratings);
     }
 
-    public void VerifyVendorFromRSMUser(String name){
+    public void deleteVendorFromTheList(String name){
 
-        common.logPrint("Step:: Attempting to logout from the current user");
-        if (common.isElementDisplayed(LOGOUTBTN)) {
-            common.waitUntilElementsToBeVisible(By.xpath(LOGOUTBTN));
-            common.click(LOGOUTBTN);
-        } else {
-            common.logPrint("Step:: Logout button not found, skipping logout step");
-        }
-
-        loginWithRSMUser();
-        common.logPrint("Step:: Verify vendor is showing in the MR user");
-
-        common.logPrint("Step:: Search vendor menu");
-        common.waitUntilElementToBeVisible(By.xpath(SEARCHFIELDINDASH));
-        common.type(SEARCHFIELDINDASH,"Vendor");
-
-        common.logPrint("Step:: Click on the vendor menu");
-        common.waitUntilElementToBeVisible(By.xpath(VENDORMENU));
-        common.click(VENDORMENU);
+        redirectsToVendorPage();
 
         common.logPrint("Step:: Search vendor name in the search field");
         common.waitUntilElementToBeVisible(By.xpath(SEARCHFIELDTAB));
         common.type(SEARCHFIELDTAB, name);
 
-        common.logPrint("Verify vendor is created successfully and shwowing in the table");
-        common.waitUntilElementToBeVisible(CREATEDVALUE);
-        String getValue = common.getText(CREATEDVALUE);
-        common.assertTwoValuesAreEqual(getValue, name);
+        common.pause(2);
+        common.selectCheckBox(FIRSTCHECKBOX);
+
+        common.logPrint("Step:: Click on the delete button");
+        common.waitUntilElementToBeVisible(By.xpath(DELETEBTN));
+        common.click(DELETEBTN);
+
+        common.logPrint("Step:: Click on the Delete button");
+        common.waitUntilElementToBeVisible(By.xpath(DELETEBTN));
+        common.click(DELETEBTN);
+
+        common.logPrint("Step:: Verify delete confirmation pop-up is showing");
+        common.waitUntilElementToBeVisible(By.xpath(DeleteConfirmationPopUp));
+        common.assertElementPresent(DeleteConfirmationPopUp);
+
+        common.logPrint("Step:: Click on the delete button");
+        common.waitUntilElementToBeVisible(By.xpath(DELETEBTNPOP));
+        common.click(DELETEBTNPOP);
+
+        common.logPrint("Step:: Verify delete confirmation pop-up is showing");
+
+        common.logPrint("Step:: Check validation is displayed");
+        common.assertElementDisplayed(DeletedSuccessfully );
     }
 
+    public void verifyVendorIsRemovedFromAllUser(String name){
+
+        common.logPrint("Verify vendor is removed from the list for MR user");
+        loginWithMRCredential();
+        VerifyVendorIsDeletedFromTheTable(name);
+
+        common.logPrint("Verify vendor is removed from the list for ASM user");
+        loginWithASMCredential();
+        VerifyVendorIsDeletedFromTheTable(name);
+
+        common.logPrint("Verify vendor is removed from the list for RSM user");
+        loginWithRSMCredential();
+        VerifyVendorIsDeletedFromTheTable(name);
+
+    }
+
+    public void VerifyVendorIsDeletedFromTheTable(String name){
+
+        redirectsToVendorPage();
+
+        common.logPrint("Step:: Search vendor name in the search field");
+        common.waitUntilElementToBeVisible(By.xpath(SEARCHFIELDTAB));
+        common.type(SEARCHFIELDTAB, name);
+
+        common.pause(1);
+
+        common.logPrint("Step:: Check doctor is removed from the list");
+
+        common.logPrint("Step:: Now rows are available");
+        common.assertElementDisplayed(NOROWS);
+    }
 
 }
