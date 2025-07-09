@@ -4112,12 +4112,16 @@ public class AdminPage extends Locators {
             common.type(ACHIEVEMENTSREMARKS, " Remarks");
 
             common.logPrint("Step :: Adding image");
+            String file = "\\1.JPG";
+            String pathToSend = System.getProperty("user.dir")+file;
+            common.logPrint(pathToSend);
             WebElement fileInput = driver.findElement(By.xpath("//input[@type='file']"));
-            fileInput.sendKeys("C:\\Users\\Admin\\OneDrive\\Desktop\\Gopal Repo\\NewDemoRepo\\1.JPG");
+            fileInput.sendKeys(pathToSend);
 
             common.logPrint("Step:: Click on Save button");
             common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
             common.click(SAVEBUTTON);
+
         } catch (NoSuchElementException e) {
             common.logPrint("Error: Element not found - " + e.getMessage());
             throw new RuntimeException("Failed to add achievements due to missing element", e);

@@ -28,6 +28,18 @@ public class TourProgramTest extends BasePage {
         tourProgramPage.approvedDoctorAvailabilityRequestFromManager(Name, Date);
         loginWithMRCredential();
         tourProgramPage.verifyDoctorAvailabilityInDailyTourPlan(Name, Date);
-
     }
+
+    @Test
+    public void verifyAddExpenseScenario(){
+        loginWithMRCredential();
+        String[] expenseValue = tourProgramPage.createExpense();
+        String expenseDate = expenseValue[0];
+        String amount = expenseValue[1];
+        String expenseName = expenseValue[2];
+        tourProgramPage.verifyExpenseIsCreatedAndShowingAsPending(expenseDate, amount, expenseName);
+    }
+
+
+
 }
