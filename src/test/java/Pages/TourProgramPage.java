@@ -148,9 +148,6 @@ public class TourProgramPage extends Locators {
         common.waitUntilElementsToBeVisible(By.xpath(DOCTORINPDAILYPLAN));
         common.type(DOCTORINPDAILYPLAN, name);
 
-
-
-
     }
 
 }
