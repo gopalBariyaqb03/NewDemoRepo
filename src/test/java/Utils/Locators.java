@@ -335,6 +335,31 @@ public class Locators extends BasePage {
     public static String DVDATE = "//input[@name='ServiceDateTime']";
     public static String DVNOTE = "//input[@name='Note']";
 
+    //PRODUCT
+    public static String MASTERPRODUCT = "//div[contains(text(),'Product')]";
+    public static String PRODUCTADD = "//button[normalize-space()='Add']";
+    public static String PRODUCTDIV = "//label[contains(text(),'Division')]/parent::div//input";
+    public static String PRODUCTDRUGHEAD = "//label[contains(text(),'Drug Head')]/parent::div//input";
+    public static String PRODUCTLINE = "//label[contains(text(),'Product Line')]/parent::div//input";
+    public static String PRODUCTGROUP = "//label[contains(text(),'Product Group')]/parent::div//input";
+    public static String PRODUCTCLASS = "//label[contains(text(),'Product Class')]/parent::div//input";
+    public static String PRODUCTTYPE = "//label[contains(text(),'Product Type')]/parent::div//input";
+    public static String PRODUCTSHORTNAME = "//input[@name='ShortName']";
+    public static String PRODUCTNAME = "//input[@name='Name']";
+    public static String PRODUCTPACKINGTYPE = "//label[contains(text(),'Packing Type')]/parent::div//input";
+    public static String PRODUCTCODEREF = "//input[@name='CodeRef1']";
+    public static String PRODUCTNEW = "//input[@name='CodeRef1']";
+    public static String PRODUCTUPCOMING = "//input[@name='CodeRef1']";
+    public static String PRODUCTKEYPRODUCT = "//input[@name='CodeRef1']";
+    public static String PRODUCTHSN = "//label[contains(text(),'Hsn code')]/parent::div//input";
+    public static String PRODUCTPTR = "//label[contains(text(),'PTS AND PTR')]/parent::div//input";
+    public static String PRODUCTGST = "//label[contains(text(),'GST %')]/parent::div//input";
+    public static String PRODUCTMRP = "//label[contains(text(),'MRP')]/parent::div//input";
+    public static String PRODUCTCONTENT = "//textarea[@name='Contents']";
+    public static String PRODUCTCB = "(//input[@name='select_row'])[1]";
+    public static String PRODUCTEDIT = "//button[normalize-space()='Edit']";
+    public static String PRODUCTSHORTNAMETEXT = "//div[@aria-rowspan='1' and @aria-colindex='4']";
+
 
 
 
