@@ -359,6 +359,12 @@ public class Locators extends BasePage {
     public static String PRODUCTCB = "(//input[@name='select_row'])[1]";
     public static String PRODUCTEDIT = "//button[normalize-space()='Edit']";
     public static String PRODUCTSHORTNAMETEXT = "//div[@aria-rowspan='1' and @aria-colindex='4']";
+    public static String PRODUCTDELETE = "//button[normalize-space()='Delete']";
+    public static String PRODUCTDELETEYES = "//button[@class='MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedError MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorError MuiButton-root MuiButton-outlined MuiButton-outlinedError MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorError css-fnnp02']";
+    public static String COMPPRODUCT = "//button[normalize-space()='Competitor Product']";
+    public static String COMPPRODUCTNAME = "//label[contains(text(),'Competitor Name')]/parent::div//input";
+    public static String OUTRODUCTNAME = "//label[contains(text(),'Our Product')]/parent::div//input";
+
 
 
 
@@ -853,6 +859,10 @@ public class Locators extends BasePage {
 
     //Xpath for Daily tour plan
     public static String DAILYTOURPLANMENU = "//div[contains(text(),'Daily Tour plan')]";
+    public static String DAILYTOURPLANDATE = "//input[@name='TourDate']";
+    public static String DAILYTOURPLANROUTE = "(//input[@role='combobox'])[1]";
+    public static String DAILYTOURPLANSUBROUTE = "(//input[@role='combobox'])[2]";
+
     //xpath for inventory
     public static String INVENTORYMENU = "//a[@href='/inventory']";
 
@@ -979,6 +989,9 @@ public class Locators extends BasePage {
     public static String PRDISCOUNT2 = "(//input[@name='Discount'])[2]";
     public static String ACCEPT = "//img[@alt='Update']";
     public static String CANCEL = "//img[@alt='Cancle']";
+
+    //xpath for daily tour plan
+
 
 
 

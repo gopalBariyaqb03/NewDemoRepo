@@ -11,6 +11,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -134,6 +136,38 @@ public class TourProgramPage extends Locators {
         common.logPrint("Step:: Click on the Tour Program menu");
         common.waitUntilElementToBeVisible(By.xpath(DAILYTOURPLANMENU));
         common.click(DAILYTOURPLANMENU);
+
+        common.logPrint("Step :: Clicking the add Daily Tour Plan Button");
+        common.waitUntilElementToBeVisible(By.xpath(PRODUCTADD));
+        common.click(PRODUCTADD);
+
+        common.logPrint("Step :: Adding the daily tour plan date");
+        Actions actions = new Actions(driver);
+        actions.sendKeys(Keys.TAB).perform();
+
+        String date = "10-07";
+        common.pause(1);
+
+        common.type(DAILYTOURPLANDATE, date);
+
+        actions.sendKeys(Keys.DOWN).perform();
+
+        common.logPrint("Step:: Selecting Route");
+        common.waitUntilElementsToBeVisible(By.xpath(DAILYTOURPLANROUTE));
+        common.type(DAILYTOURPLANROUTE, "");
+        common.downKeyAndEnter();
+
+        common.logPrint("Step:: Selecting Sub Route");
+        common.waitUntilElementsToBeVisible(By.xpath(DAILYTOURPLANSUBROUTE));
+        common.type(DAILYTOURPLANSUBROUTE, "");
+        common.downKeyAndEnter();
+
+        common.logPrint("Step :: Selecting Selecting Doctor");
+        common.waitUntilElementsToBeVisible(By.xpath());
+
+
+
+
 
     }
 

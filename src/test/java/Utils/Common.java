@@ -1291,7 +1291,6 @@ public class Common extends Locators {
 
 
     public String fakeName(){
-        System.out.println("auhkajskaksjdahsjkdasdasdasdasdadadadad8a97d98a7d9a7d98a");
         Faker faker = new Faker();
         String Name = faker.name().firstName();
         return Name;
@@ -1695,6 +1694,10 @@ public class Common extends Locators {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
         return todays.format(formatter);
+    }
+    public void tab()
+    {
+
     }
 
 

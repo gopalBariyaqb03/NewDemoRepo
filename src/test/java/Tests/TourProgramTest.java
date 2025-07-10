@@ -28,6 +28,12 @@ public class TourProgramTest extends BasePage {
         tourProgramPage.approvedDoctorAvailabilityRequestFromManager(Name, Date);
     }
 
+    @Test
+    public void createDailyTourPlanTest(){
+        loginWithMRCredential();
+        tourProgramPage.createDailyTourPlan();
+    }
+
 
 
 }
