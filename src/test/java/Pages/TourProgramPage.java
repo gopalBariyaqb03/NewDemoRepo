@@ -22,6 +22,17 @@ public class TourProgramPage extends Locators {
         common.click(DAILYTOURPLANMENU);
     }
 
+    public void redirectsToLeavePage(){
+
+        common.logPrint("Step:: Click on the Tour plan menu");
+        common.waitUntilElementToBeVisible(By.xpath(TOURPLANMENU));
+        common.click(TOURPLANMENU);
+
+        common.logPrint("Step:: Click on the Leave menu");
+        common.waitUntilElementToBeVisible(By.xpath(LEAVEMENU));
+        common.click(LEAVEMENU);
+    }
+
     public void redirectsToExpenseModule(){
 
         common.logPrint("Step:: Click on the Tour Program menu");
@@ -226,4 +237,57 @@ public class TourProgramPage extends Locators {
         String getAmount = common.getText(GETEXPENSEAMOUNT);
         common.assertTwoValuesAreEqual(amount, getAmount);
     }
+
+    public String[] addHalfLeave(){
+
+        redirectsToLeavePage();
+
+        common.logPrint("Step:: Click on the add button");
+        common.waitUntilElementsToBeVisible(By.xpath(ADDBTN));
+        common.click(ADDBTN);
+
+        common.logPrint("Step:: Select half day checkbox");
+        common.pause(1);
+        common.selectCheckBox(HALFDAYCHECKBOX);
+
+        common.logPrint("Step:: Select the Leave type from dropdown");
+        common.waitUntilElementsToBeVisible(By.xpath(LEAVETYPEINP));
+
+        common.click(LEAVETYPEINP);
+        common.pause(1);
+        common.downKeyAndEnter();
+
+        String leaveDate = common.generateDate("future", null, null);
+        common.logPrint("Step:: Enter leave date");
+        common.waitUntilElementToBeVisible(By.xpath(FROMDATEINP));
+        common.type(FROMDATEINP, leaveDate);
+
+        String reason = common.GenerateParagraph(10);
+        common.logPrint("Step:: Enter guideline followed remark");
+        common.waitUntilElementToBeVisible(By.xpath(REASONINP));
+        common.type(REASONINP, reason);
+
+        common.logPrint("Step:: Click on the save button");
+        common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
+        common.click(SAVEBUTTON);
+
+        common.logPrint("Step:: Check validation is displayed");
+        common.assertElementDisplayed(AddedSuccessfully);
+
+        return new String[] {leaveDate, reason};
+    }
+
+    public void verifyLeaveIsAddedSuccessfullyAndShowingAsPending(String name) {
+
+        common.logPrint("Step:: Search name in the search field");
+        common.waitUntilElementToBeVisible(By.xpath(SEARCHFIELD));
+        common.type(SEARCHFIELD, name);
+
+        common.pause(1);
+        common.logPrint("Step:: Verify the status is showing as pending");
+        common.waitUntilElementToBeVisible(By.xpath(PENDINGSTATUS));
+        common.assertElementPresent(PENDINGSTATUS);
+
+    }
+
 }
