@@ -11,4 +11,22 @@ import java.util.Locale;
 
 public class MappingTest extends BasePage {
 
+    @Test
+
+    public void AddDoctorChemMaping()
+    {
+        loginWithDirectorCredential();
+       mappingPage.VerifyAddDoctorChemistMapping();
+        mappingPage.VerifyViewDocChemMapping();
+        mappingPage.VerifyEditDocChemMapping();
+        mappingPage.VerifyCancelDeleteDocChemMappingAndSearch();
+        mappingPage.VerifyDeleteDocChemMappingAndSearch();
+    }
+
+    public void AddDoctorProductMapping()
+    {
+
+
+    }
+
 }

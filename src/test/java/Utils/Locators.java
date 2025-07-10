@@ -8,6 +8,8 @@ import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 import org.openqa.selenium.support.pagefactory.ElementLocatorFactory;
 import org.stringtemplate.v4.ST;
 
+import java.util.List;
+
 public class Locators extends BasePage {
     int DRIVER_WAIT = 5;
 
@@ -28,6 +30,8 @@ public class Locators extends BasePage {
     public static String DeletedSuccessfully = "//*[contains(text(),'Delete Successfully')]";
     public static String DeleteConfirmationPopUp = "//h6[.='Are you sure you want to delete this item?']";
     public static String DELETEBTNPOP = "//div[@class='MuiCardContent-root css-15q2cw4']//div//button[.='Delete']";
+    public static String DELETEBTNPOPCANCEL = "//button[text()='Cancel']";
+
     public static String DoctorApprovedSuccess = "//*[contains(text(),'Doctor Approved Successfully!')] | //*[contains(text(),'Chemist Approved Successfully!')] | //*[contains(text(),'Stockist Approved Successfully!')]";
     public static String NOROWS = "//div[starts-with(text(),'No rows')]";
     public static String VIEWBTN1 = "//button//img[@src='/static/media/eye.f10b3b160555bcdbf184fd21043b5df5.svg']";
@@ -701,5 +705,22 @@ public class Locators extends BasePage {
     //Xpath for Daily tour plan
     public static String DAILYTOURPLANMENU = "//div[contains(text(),'Daily Tour plan')]";
 
+ //mapping
+
+    public static String  MAPPINGMENU = "//span[normalize-space()='Mapping']";
+    public static String  DOCTORCHEMISTMAP = "//div[contains(text(),'Doctor Chemist')]";
+    public static String  DOCTORMAP = "(//input[@id='autocomplete-dropdown-7'])[1]";
+    public static String  CHEMMAP = "(//input[@id='autocomplete-dropdown-6'])[1]";
+    public static String  MAPCHECKBOX = "//div[@data-rowindex='0']//input[@name='select_row']";
+    public static String VIEWCHEMNAME = "//div[@role='button']//span";
+
+    public static String chememap="//span[@class='MuiChip-label MuiChip-labelSmall css-b9zgoq']";
+
+    public static String VIEWDOCTORMAP="//input[@id='autocomplete-dropdown-7']";
+
+    public static String  SEARCHEDDOC ="//div[text()=' HIREN PARIKH']";
+    public static String SEARCHRESULT="//div[@class='MuiDataGrid-cell MuiDataGrid-cell--textLeft' and @data-field='Doctor' ]";
+
 
 }
+

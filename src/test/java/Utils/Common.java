@@ -589,7 +589,7 @@ public class Common extends Locators {
      *
      * @param print the message to log and to print
      */
-    public void logPrint(String print) {
+    public static void logPrint(String print) {
         if (print.startsWith("Step")) {
             int stepcount = BasePage.steps.get();
             String[] msg = print.split("::");

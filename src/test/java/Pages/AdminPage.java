@@ -8,7 +8,7 @@ import org.openqa.selenium.WebElement;
 
 public class AdminPage extends Locators {
     Common common = new Common(driver);
-    //jhghcjgfcjbhjjj
+
 
 
 
@@ -3088,7 +3088,8 @@ public class AdminPage extends Locators {
     public void deleteChemistFromTheDirector(){
 
         common.logPrint("Step:: Click on the checkbox");
-        common.pause(2);
+
+
         common.selectCheckBox(FIRSTCHECKBOX);
 
         common.logPrint("Step:: Click on the Delete button");
