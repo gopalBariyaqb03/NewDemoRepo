@@ -843,6 +843,7 @@ public class Locators extends BasePage {
 
     //Xpath for the Doctor availability
     public static String TOURPROGRAMMENU = "//a[.='Tour Program']";
+    public static String DOCTORAPPROVALAVAILABILITY = "//div[contains(text(),'Doctor Availibility')]";
     public static String DOCTORINPDRAVAIL = "//label[.='Doctor *']/following-sibling::div//input";
     public static String LEAVESTARTDATE = "//input[@name='LeaveStartDate']";
     public static String LEAVEENDDATE = "//input[@name='LeaveEndDate']";
@@ -856,12 +857,15 @@ public class Locators extends BasePage {
     public static String DOCTORVALUEINP = "//input[@aria-autocomplete='list']";
     public static String DOCTORSTARTDATE = "//label[.='Start Date *']/following-sibling::div//input";
     public static String DOCTORENDDATE = "//label[.='End Date *']/following-sibling::div//input";
+    public static String FIRSTCHECKBOXAPPROVE = "(//tr[@class='MuiTableRow-root css-1rz7w7v']//td//span//input)[1]";
 
     //Xpath for Daily tour plan
     public static String DAILYTOURPLANMENU = "//div[contains(text(),'Daily Tour plan')]";
     public static String DAILYTOURPLANDATE = "//input[@name='TourDate']";
     public static String DAILYTOURPLANROUTE = "(//input[@role='combobox'])[1]";
     public static String DAILYTOURPLANSUBROUTE = "(//input[@role='combobox'])[2]";
+    public static String TOURPLANDATEINP = "//input[@name='TourDate']";
+    public static String DOCTORINPDAILYPLAN = "//label[.='Doctor *']/following-sibling::div//input";
 
     //xpath for inventory
     public static String INVENTORYMENU = "//a[@href='/inventory']";
@@ -990,8 +994,25 @@ public class Locators extends BasePage {
     public static String ACCEPT = "//img[@alt='Update']";
     public static String CANCEL = "//img[@alt='Cancle']";
 
-    //xpath for daily tour plan
+    //Xpath for the Expense
+    public static String EXPENSEMENU = "//div[contains(text(),'Expense')]";
+    public static String EXPENSEDATEINP = "//input[@name='ExpenseDate']";
+    public static String EXPENSETYPEDRP = "//input[@id='autocomplete-dropdown-7']";
+    public static String AMOUNTINP = "//input[@name='Amount']";
+    public static String NOTETEXTAREA = "//textarea[@name='Note']";
+    public static String BILLIMAGEINP = "//div//input[@name='BillImage']";
+    public static String GETEXPENSETYPE = "(//div[@aria-colindex='4'])[2]";
+    public static String GETEXPENSEDATE = "(//div[@aria-colindex='5'])[2]";
+    public static String GETEXPENSEAMOUNT = "(//div[@aria-colindex='6'])[2]";
 
+    //xpath for the Leave
+    public static String LEAVEMENU = "//div[contains(text(),'Leave')]";
+    public static String HALFDAYCHECKBOX = "//input[contains(@value,'1')]";
+    public static String FULLDAYCHECKBOX = "//input[contains(@value,'2')]";
+    public static String MULTIPLEDAYCHECKBOX = "//input[contains(@value,'3')]";
+    public static String LEAVETYPEINP = "//input[@aria-autocomplete='list']";
+    public static String FROMDATEINP = "//input[@name='FromDate']";
+    public static String REASONINP = "//textarea[@name='Reason']";
 
 
 
