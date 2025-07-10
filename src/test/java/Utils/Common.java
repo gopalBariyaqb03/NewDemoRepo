@@ -1760,7 +1760,7 @@ public class Common extends Locators {
     public static String convertDateFormat(String inputDate){
 
         SimpleDateFormat inputFormat = new SimpleDateFormat("MM/dd/yyyy");
-        SimpleDateFormat outputFormat = new SimpleDateFormat("ddMMyyyy");
+        SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy-MM-dd");
 
         try{
             Date date = inputFormat.parse(inputDate);

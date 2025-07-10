@@ -961,6 +961,29 @@ public class Locators extends BasePage {
     public static String ACCEPT = "//img[@alt='Update']";
     public static String CANCEL = "//img[@alt='Cancle']";
 
+    //Xpath for the Expense
+    public static String EXPENSEMENU = "//div[contains(text(),'Expense')]";
+    public static String EXPENSEDATEINP = "//input[@name='ExpenseDate']";
+    public static String EXPENSETYPEDRP = "//input[@id='autocomplete-dropdown-7']";
+    public static String AMOUNTINP = "//input[@name='Amount']";
+    public static String NOTETEXTAREA = "//textarea[@name='Note']";
+    public static String BILLIMAGEINP = "//div//input[@name='BillImage']";
+    public static String GETEXPENSETYPE = "(//div[@aria-colindex='4'])[2]";
+    public static String GETEXPENSEDATE = "(//div[@aria-colindex='5'])[2]";
+    public static String GETEXPENSEAMOUNT = "(//div[@aria-colindex='6'])[2]";
+
+    //xpath for the Leave
+    public static String LEAVEMENU = "//div[contains(text(),'Leave')]";
+    public static String HALFDAYCHECKBOX = "//input[contains(@value,'1')]";
+    public static String FULLDAYCHECKBOX = "//input[contains(@value,'2')]";
+    public static String MULTIPLEDAYCHECKBOX = "//input[contains(@value,'3')]";
+    public static String LEAVETYPEINP = "//input[@aria-autocomplete='list']";
+    public static String FROMDATEINP = "//input[@name='FromDate']";
+    public static String REASONINP = "//textarea[@name='Reason']";
+//    public static String = "";
+//    public static String = "";
+//    public static String = "";
+//    public static String = "";
 
 
 }
