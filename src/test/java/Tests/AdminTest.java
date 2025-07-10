@@ -232,7 +232,7 @@ public class AdminTest extends BasePage {
        //adminPage.deleteAProduct();
         //adminPage.addANewCompProduct();
        // adminPage.editACompProduct();
-        //adminPage.deleteACompProduct();
+        adminPage.deleteACompProduct();
 
 
 
