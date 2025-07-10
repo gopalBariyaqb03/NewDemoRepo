@@ -300,40 +300,43 @@ public class TourProgramPage extends Locators {
         common.pause(1);
         common.logPrint("Step:: Verify the status is showing as pending");
         common.waitUntilElementToBeVisible(By.xpath(PENDINGSTATUS));
-        common.assertElementPresent(PENDINGSTATUS);
+        common.assertElementPresent(PENDINGSTATUS);}
 
-        common.logPrint("Step :: Clicking the add Daily Tour Plan Button");
-        common.waitUntilElementToBeVisible(By.xpath(PRODUCTADD));
-        common.click(PRODUCTADD);
+    public void  createDailyTourPlan() {
 
-        common.logPrint("Step :: Adding the daily tour plan date");
-        Actions actions = new Actions(driver);
-        actions.sendKeys(Keys.TAB).perform();
+            redirectsToDailyTourPlan();
 
-        String date = "10-07";
-        common.pause(1);
+            common.logPrint("Step :: Clicking the add Daily Tour Plan Button");
+            common.waitUntilElementToBeVisible(By.xpath(PRODUCTADD));
+            common.click(PRODUCTADD);
 
-        common.type(DAILYTOURPLANDATE, date);
+            common.logPrint("Step :: Adding the daily tour plan date");
+            Actions actions = new Actions(driver);
+            actions.sendKeys(Keys.TAB).perform();
 
-        actions.sendKeys(Keys.DOWN).perform();
+            String date = "10-07";
+            common.pause(1);
 
-        common.logPrint("Step:: Selecting Route");
-        common.waitUntilElementsToBeVisible(By.xpath(DAILYTOURPLANROUTE));
-        common.type(DAILYTOURPLANROUTE, "");
-        common.downKeyAndEnter();
+            common.type(DAILYTOURPLANDATE, date);
 
-        common.logPrint("Step:: Selecting Sub Route");
-        common.waitUntilElementsToBeVisible(By.xpath(DAILYTOURPLANSUBROUTE));
-        common.type(DAILYTOURPLANSUBROUTE, "");
-        common.downKeyAndEnter();
+            actions.sendKeys(Keys.DOWN).perform();
 
-        common.logPrint("Step :: Selecting Selecting Doctor");
-        common.waitUntilElementsToBeVisible(By.xpath());
+            common.logPrint("Step:: Selecting Route");
+            common.waitUntilElementsToBeVisible(By.xpath(DAILYTOURPLANROUTE));
+            common.type(DAILYTOURPLANROUTE, "");
+            common.twoDownKeyAndEnter();
 
+            common.logPrint("Step:: Selecting Sub Route");
+            common.waitUntilElementsToBeVisible(By.xpath(DAILYTOURPLANSUBROUTE));
+            common.type(DAILYTOURPLANSUBROUTE, "");
+            common.twoDownKeyAndEnter();
 
+            common.logPrint("Step :: Selecting Selecting Doctor");
+//        common.waitUntilElementsToBeVisible(By.xpath());
+
+        }
 
 
 
     }
 
-}
