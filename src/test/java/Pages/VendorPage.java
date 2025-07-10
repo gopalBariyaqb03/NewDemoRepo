@@ -150,7 +150,7 @@ public class VendorPage extends Locators {
 
         common.logPrint("Step:: Update the vendor name");
         common.waitUntilElementToBeVisible(By.xpath(VENDORNAMEFIELD)).clear();
-        String updateName = common.GenerateRandomName();
+        String updateName = common.fakeName();
         common.type(VENDORNAMEFIELD, updateName);
         common.logPrint("Updated name is: "+updateName);
 

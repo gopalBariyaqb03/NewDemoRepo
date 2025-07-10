@@ -1695,6 +1695,10 @@ public class Common extends Locators {
 
         return todays.format(formatter);
     }
+    public void tab()
+    {
+
+    }
 
     public void selectRandomValueFromDropdown(String dropdownXpath, int optionsCount){
 

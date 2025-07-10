@@ -65,6 +65,12 @@ public class TourProgramTest extends BasePage {
         }
     }
 
+    @Test
+    public void createDailyTourPlanTest(){
+        loginWithMRCredential();
+        tourProgramPage.createDailyTourPlan();
+    }
+
 
 
 }

@@ -224,5 +224,18 @@ public class AdminTest extends BasePage {
 //        adminPage.addSpecialDay();
 //        adminPage.addDoctorVendor();
     }
+    @Test
+    public void otherAdminPanelModule(){
+        loginWithDirectorCredential();
+       //adminPage.addANewProduct();
+       //adminPage.editAProduct();
+       //adminPage.deleteAProduct();
+        //adminPage.addANewCompProduct();
+       // adminPage.editACompProduct();
+        //adminPage.deleteACompProduct();
+
+
+
+    }
 
 }

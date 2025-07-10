@@ -23,7 +23,7 @@ public class VendorTest extends BasePage {
     @Test
     public void verifyUpdateVendorInfo(){
         loginWithDirectorCredential();
-        String name = common.GenerateRandomName();
+        String name = common.fakeName();
         vendorPage.createVendorUsingAdminCredencials(name);
         vendorPage.verifyVendorFromAllTheThreeUsers(name);
         loginWithDirectorCredential();
@@ -38,7 +38,7 @@ public class VendorTest extends BasePage {
     @Test
     public void verifyDeleteVendorScenario(){
         loginWithDirectorCredential();
-        String name = common.GenerateRandomName();
+        String name = common.fakeName();
         vendorPage.createVendorUsingAdminCredencials(name);
         vendorPage.verifyVendorFromAllTheThreeUsers(name);
         loginWithDirectorCredential();
