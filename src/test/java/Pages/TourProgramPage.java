@@ -25,6 +25,10 @@ public class TourProgramPage extends Locators {
         super(driver);
     }
 
+    public void redirectsToApproval(){
+        common.logPrint("Step:: Click on the Approval menu");common.waitUntilElementToBeVisible(By.xpath(APPROVALMENU));common.click(APPROVALMENU);
+    }
+
     public void redirectsToDailyTourPlan(){
 
         common.logPrint("Step:: Click on the Tour plan menu");
@@ -68,6 +72,20 @@ public class TourProgramPage extends Locators {
         common.logPrint("Step:: Click on the Doctor tour plan");
         common.waitUntilElementToBeVisible(By.xpath(DOCTORAPPROVALAVAILABILITY));
         common.click(DOCTORAPPROVALAVAILABILITY);
+
+    }
+
+    public void addDate(String sentDate, String dateElement){
+        common.logPrint("Step :: Adding the daily tour plan date");
+        Actions actions = new Actions(driver);
+        actions.sendKeys(Keys.TAB).perform();
+
+        common.pause(1);
+
+        common.waitUntilElementToBeVisible(dateElement);
+        common.type(dateElement, sentDate);
+
+        actions.sendKeys(Keys.DOWN).perform();
 
     }
 
@@ -302,7 +320,7 @@ public class TourProgramPage extends Locators {
         common.waitUntilElementToBeVisible(By.xpath(PENDINGSTATUS));
         common.assertElementPresent(PENDINGSTATUS);}
 
-    public void  createDailyTourPlan() {
+    public void  createDailyTourPlan(int doctorCount, int chemistCount, int stockistCount, int hospitalCount) {
 
             redirectsToDailyTourPlan();
 
@@ -310,16 +328,7 @@ public class TourProgramPage extends Locators {
             common.waitUntilElementToBeVisible(By.xpath(PRODUCTADD));
             common.click(PRODUCTADD);
 
-            common.logPrint("Step :: Adding the daily tour plan date");
-            Actions actions = new Actions(driver);
-            actions.sendKeys(Keys.TAB).perform();
-
-            String date = "10-07";
-            common.pause(1);
-
-            common.type(DAILYTOURPLANDATE, date);
-
-            actions.sendKeys(Keys.DOWN).perform();
+            addDate("10-07", DAILYTOURPLANDATE);
 
             common.logPrint("Step:: Selecting Route");
             common.waitUntilElementsToBeVisible(By.xpath(DAILYTOURPLANROUTE));
@@ -331,10 +340,104 @@ public class TourProgramPage extends Locators {
             common.type(DAILYTOURPLANSUBROUTE, "");
             common.twoDownKeyAndEnter();
 
-            common.logPrint("Step :: Selecting Selecting Doctor");
-//        common.waitUntilElementsToBeVisible(By.xpath());
+        for (int i = 0; i < doctorCount; i++) {
+            common.logPrint("Step :: Selecting Doctor " + (i + 1));
+            common.waitUntilElementsToBeVisible(By.xpath(DAILYSELECTDOCTOR));
+            common.click(DAILYSELECTDOCTOR);
+            common.pressDownKeysByArgument(i+2);
 
+            common.logPrint("Step :: Selecting Doctor visit time " + (i + 1));
+            common.waitUntilElementsToBeVisible(By.xpath(DAILYSELECTDOCTORTIME));
+            common.click(DAILYSELECTDOCTORTIME);
+            common.type(DAILYSELECTDOCTORTIME,"10-10-AM");
+            common.pressDownKeysByArgument(i+2);
+
+            common.logPrint("Step :: Adding Doctor " + (i + 1));
+            common.waitUntilElementsToBeVisible(By.xpath(DAILYSELECTDOCTORADD));
+            common.click(DAILYSELECTDOCTORADD);
+
+            common.pause(1);
         }
+
+        // Add Chemists
+        for (int i = 0; i < chemistCount; i++) {
+            common.logPrint("Step :: Selecting Chemist " + (i + 1));
+            common.waitUntilElementsToBeVisible(By.xpath(DAILYSELECTCHEMIST));
+            common.click(DAILYSELECTCHEMIST);
+            common.pressDownKeysByArgument(i+2);
+
+            common.logPrint("Step :: Selecting Chemist visit time " + (i + 1));
+            common.waitUntilElementsToBeVisible(By.xpath(DAILYSELECTCHEMISTTIME));
+            common.click(DAILYSELECTCHEMISTTIME);
+            common.type(DAILYSELECTCHEMISTTIME,"11-10-AM");
+            common.pressDownKeysByArgument(i+2);
+
+            common.logPrint("Step :: Adding Chemist " + (i + 1));
+            common.waitUntilElementsToBeVisible(By.xpath(DAILYSELECTCHEMISTADD));
+            common.click(DAILYSELECTCHEMISTADD);
+            common.pause(1);
+        }
+
+        // Add Stockists
+        for (int i = 0; i < stockistCount; i++) {
+            common.logPrint("Step :: Selecting Stockist " + (i + 1));
+            common.waitUntilElementsToBeVisible(By.xpath(DAILYSELECTSTOCKIST));
+            common.click(DAILYSELECTSTOCKIST);
+            common.pressDownKeysByArgument(i+2);
+
+            common.logPrint("Step :: Selecting Stockist visit time " + (i + 1));
+            common.waitUntilElementsToBeVisible(By.xpath(DAILYSELECTSTOCKISTTIME));
+            common.click(DAILYSELECTSTOCKISTTIME);
+            common.type(DAILYSELECTSTOCKISTTIME,"01-10-PM");
+            common.pressDownKeysByArgument(i+2);
+
+            common.logPrint("Step :: Adding Stockist " + (i + 1));
+            common.waitUntilElementsToBeVisible(By.xpath(DAILYSELECTSTOCKISTADD));
+            common.click(DAILYSELECTSTOCKISTADD);
+            common.pause(1);
+        }
+        for (int i = 0; i < hospitalCount; i++) {
+            common.logPrint("Step :: Selecting Hospital " + (i + 1));
+            common.waitUntilElementsToBeVisible(By.xpath(DAILYSELECTHOSPITAL));
+            common.click(DAILYSELECTHOSPITAL);
+            common.pressDownKeysByArgument(i+2);
+
+            common.logPrint("Step :: Selecting Hospital visit time " + (i + 1));
+            common.waitUntilElementsToBeVisible(By.xpath(DAILYSELECTHOSPITALTIME));
+            common.click(DAILYSELECTHOSPITALTIME);
+            common.type(DAILYSELECTHOSPITALTIME,"01-10-PM");
+            common.pressDownKeysByArgument(i+2);
+
+            common.logPrint("Step :: Adding Hospital " + (i + 1));
+            common.waitUntilElementsToBeVisible(By.xpath(DAILYSELECTHOSPITALADD));
+            common.click(DAILYSELECTHOSPITALADD);
+            common.pause(1);
+        }
+
+        common.pause(2);
+
+        common.waitUntilElementToBeVisible(DAILYSAVE);
+        common.click(DAILYSAVE);
+
+        common.pause(2);
+
+        common.loginWithASMCredential();
+
+        redirectsToApproval();
+
+        common.logPrint("Step :: Clicking the Daily tour plan approval");
+        common.waitUntilElementToBeVisible(DAILYAPPROVAL);
+        common.click(DAILYAPPROVAL);
+
+        common.selectCheckBox(DAILYAPPROVALCB);
+
+        common.waitUntilElementToBeVisible(By.xpath(DAILYAPPROVALBUTTON));
+        common.click(DAILYAPPROVALBUTTON);
+
+
+
+
+    }
 
 
 

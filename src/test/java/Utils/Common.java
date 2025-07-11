@@ -1270,10 +1270,9 @@ public class Common extends Locators {
     public void twoDownKeyAndEnter(){
 
         common.pause(1);
-        // Create Actions instance
+
         Actions actions = new Actions(driver);
 
-        // Press DOWN arrow key, then ENTER
         actions.sendKeys(org.openqa.selenium.Keys.ARROW_DOWN).sendKeys(org.openqa.selenium.Keys.ARROW_DOWN)
                 .sendKeys(org.openqa.selenium.Keys.ENTER)
                 .build()
@@ -1723,6 +1722,19 @@ public class Common extends Locators {
 
         common.logPrint("Selected random index from dropdown: " + randomIndex);
     }
+    public void pressDownKeysByArgument(int downCount){
+            common.pause(1);
+
+            Actions actions = new Actions(driver);
+
+            for (int i = 0; i < downCount; i++) {
+                actions.sendKeys(org.openqa.selenium.Keys.ARROW_DOWN);
+            }
+            actions.sendKeys(org.openqa.selenium.Keys.ENTER)
+                    .build()
+                    .perform();
+
+    }
 
     public void selectDateFromDynamicCalendar(By calendarIcon, String dateToSelect) {
 
@@ -1741,6 +1753,29 @@ public class Common extends Locators {
             WebElement dateElement = driver.findElement(By.xpath("//td[normalize-space()='" + dateToSelect + "']"));
             dateElement.click();
         }
+    }
+    public String resetAndCheck(){
+        List<WebElement> inputFields = driver.findElements(By.tagName("input"));
+
+        boolean allFieldsEmpty = true;
+
+        for (WebElement input : inputFields) {
+            String inputType = input.getAttribute("type");
+            if (inputType.equals("text") || inputType.equals("password") || inputType.equals("email")) {
+                String value = input.getAttribute("value");
+                if (value != null && !value.trim().isEmpty()) {
+                    allFieldsEmpty = false;
+                    System.out.println("Input field with ID '" + input.getAttribute("id") + "' is not empty: " + value);
+                }
+            }
+        }
+
+        if (allFieldsEmpty) {
+           return System.out.printf("All input fields are empty after reset.").toString();
+        } else {
+            return System.out.printf("Some input fields are not empty after reset.").toString();
+        }
+
     }
 
     public void enterDateAndConfirm(String dateInput, String dateValue) {
