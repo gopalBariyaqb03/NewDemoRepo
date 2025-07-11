@@ -866,6 +866,26 @@ public class Locators extends BasePage {
     public static String DAILYTOURPLANSUBROUTE = "(//input[@role='combobox'])[2]";
     public static String TOURPLANDATEINP = "//input[@name='TourDate']";
     public static String DOCTORINPDAILYPLAN = "//label[.='Doctor *']/following-sibling::div//input";
+    public static String DAILYSELECTDOCTOR = "//label[contains(text(),\"Doctor\")]/following-sibling::div//input";
+    public static String DAILYSELECTDOCTORTIME = "(//input[@name='ExpectedVisitTime'])[1]";
+    public static String DAILYSELECTDOCTORADD = "(//button[@type='button'][normalize-space()='Add'])[1]";
+    public static String DAILYSELECTCHEMIST = "//label[contains(text(),\"Chemist\")]/following-sibling::div//input";
+    public static String DAILYSELECTCHEMISTTIME = "(//input[@name='ExpectedVisitTime'])[2]";
+    public static String DAILYSELECTCHEMISTADD = "(//button[@type='button'][normalize-space()='Add'])[2]";
+    public static String DAILYSELECTSTOCKIST = "//label[contains(text(),\"Stockist\")]/following-sibling::div//input";
+    public static String DAILYSELECTSTOCKISTTIME = "(//input[@name='ExpectedVisitTime'])[3]";
+    public static String DAILYSELECTSTOCKISTADD = "(//button[@type='button'][normalize-space()='Add'])[3]";
+    public static String DAILYSELECTHOSPITAL = "//label[contains(text(),\"Hospital\")]/following-sibling::div//input";
+    public static String DAILYSELECTHOSPITALTIME = "(//input[@name='ExpectedVisitTime'])[4]";
+    public static String DAILYSELECTHOSPITALADD = "(//button[@type='button'][normalize-space()='Add'])[4]";
+    public static String DAILYRESET = "//button[normalize-space()='Reset']";
+    public static String DAILYSAVE = "//button[normalize-space()='Save']";
+    public static String DAILYAPPROVAL = "//div[contains(text(),'Daily Tour Plan')]";
+    public static String DAILYAPPROVALPENDING = "//input[@value='PENDING']";
+    public static String DAILYAPPROVALAPPROVED = "//input[@value='APPROVED']";
+    public static String DAILYAPPROVALCB = "(//input[@type='checkbox'])[2]";
+    public static String DAILYAPPROVALBUTTON = "//div[@class='header']//div[3]//button[1]";
+
 
     //xpath for inventory
     public static String INVENTORYMENU = "//a[@href='/inventory']";
