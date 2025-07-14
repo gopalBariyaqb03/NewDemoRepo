@@ -26,6 +26,9 @@ public class Locators extends BasePage {
     public static String AddedSuccessfully = "//*[contains(text(),'Added Successfully')]";
     public static String UpdatedSuccessfully = "//*[contains(text(),'Update Successfully')]";
     public static String DeletedSuccessfully = "//*[contains(text(),'Delete Successfully')]";
+    public static String LeaveAlreadyAddedThisDate = "//*[contains(text(),'Leave already added in this date')]";
+    public static String ApproveSuccessfully = "//*[contains(text(),'Approve Successfully')]";
+    public static String RejectSuccessfully = "//*[contains(text(),'Reject Successfully')]";
     public static String DeleteConfirmationPopUp = "//h6[.='Are you sure you want to delete this item?']";
     public static String DELETEBTNPOP = "//div[@class='MuiCardContent-root css-15q2cw4']//div//button[.='Delete']";
     public static String DoctorApprovedSuccess = "//*[contains(text(),'Doctor Approved Successfully!')] | //*[contains(text(),'Chemist Approved Successfully!')] | //*[contains(text(),'Stockist Approved Successfully!')]";
@@ -34,6 +37,7 @@ public class Locators extends BasePage {
     public static String PENDINGSTATUS = "(//button[@aria-label='Pending'])[2]";
     public static String PENDINGSTATUS1 = "(//button[@aria-label='Pending'])[1]";
     public static String APPROVESTATUS = "(//button[@aria-label='Approved'])[2]";
+    public static String REJECTSTATUS = "(//button[@aria-label='Rejected'])[2]";
     public static String APPROVESTATUS1 = "(//button[@aria-label='Approved'])[1]";
     public static String FIRSTCHECKBOXDR = "//input[@tabindex='0']";
     public static String SUCCESSMSG = "//*[contains(text(),'Approved Successfull')]";
@@ -510,7 +514,7 @@ public class Locators extends BasePage {
 
     public static String NEWPASSWORDFIELD = "//input[@name='NewPassword']";
     public static String CONFIRMPASSWORD = "//input[@name='ConfirmPassword']";
-    public static String SUBMITBTN = "//button[.='Submit ']";
+    public static String SUBMITBTN = "//button[.='Submit']";
 
     //Xpath for the Role menu
     public static String ROLENAMELABEL = "//label[.='Role Name *']";
@@ -727,6 +731,7 @@ public class Locators extends BasePage {
     public static String BULKAPPROVALBTN = "//button[.='Bulk Approvals']";
     public static String CHECKBOX = "(//div[@style='--width: 50px;'])[1]";
     public static String APPROVEBTN = "//img[@alt='Approve']";
+    public static String REJECTBTN = "//img[@alt='Reject']";
 
     public static String CLOSEBTN = "//button[@aria-label='close']";
     public static String FIRSTCHECKBOX = "(//*[local-name()='svg']/ancestor::span//input)[2]";
@@ -1034,6 +1039,11 @@ public class Locators extends BasePage {
     public static String FROMDATEINP = "//input[@name='FromDate']";
     public static String REASONINP = "//textarea[@name='Reason']";
 
+    public static String REASONINTABLE = "//div[@data-colindex='9']";
+    public static String USERDROPDOWN = "//label[.='User']/following-sibling::div//input";
+    public static String FIRSTCHECKBOXLEAVE = "(//input[@type='checkbox'])[2]";
+    public static String REJECTREASONINP = "//textarea[contains(@aria-invalid,'false')]";
+    public static String DELETEBTN2 = "(//button[contains(.,'Delete')])[2]";
 
 
 }
