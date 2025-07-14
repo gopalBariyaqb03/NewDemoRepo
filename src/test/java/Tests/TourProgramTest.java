@@ -39,32 +39,57 @@ public class TourProgramTest extends BasePage {
         loginWithMRCredential();
         String[] expenseValue = tourProgramPage.createExpense();
         String expenseDate = expenseValue[0];
-        String amount = expenseValue[1];
-        String expenseName = expenseValue[2];
-        tourProgramPage.verifyExpenseIsCreatedAndShowingAsPending(expenseDate, amount, expenseName);
+        String Reason = expenseValue[1];
+        String expenseType = expenseValue[2];
+        tourProgramPage.verifyExpenseIsCreatedAndShowingAsPending(expenseDate, Reason, expenseType);
     }
 
     @Test
-    public void addLeave(){
+    public void approveLeaveScenario(){
         loginWithMRCredential();
         String[] leaveInfo = tourProgramPage.addHalfLeave();
         String leaveDate = leaveInfo[0];
         String leaveReason = leaveInfo[1];
-        tourProgramPage.verifyLeaveIsAddedSuccessfullyAndShowingAsPending(leaveDate);
+        String leaveType = leaveInfo[2];
+        tourProgramPage.verifyLeaveIsAddedSuccessfullyAndShowingAsPending(leaveReason );
+        loginWithASMCredential();
+        tourProgramPage.approveLeaveByAsm(leaveDate, leaveReason,leaveType);
+        loginWithMRCredential();
+        tourProgramPage.verifyLeaveIsAddedSuccessfullyAndShowingAsApprove(leaveReason);
     }
 
     @Test
-    public void fileReader() throws IOException {
-
-        FileReader reader = new FileReader("C:\\Main_Folder\\Diffrent files\\automation.txt");
-        BufferedReader bufferedReader = new BufferedReader(reader);
-
-        String line;
-        while((line = bufferedReader.readLine()) !=null){
-            common.logPrint(line);
-        }
+    public void rejectLeaveScenario(){
+        loginWithMRCredential();
+        String[] leaveInfo = tourProgramPage.addHalfLeave();
+        String leaveDate = leaveInfo[0];
+        String leaveReason = leaveInfo[1];
+        String leaveType = leaveInfo[2];
+        tourProgramPage.verifyLeaveIsAddedSuccessfullyAndShowingAsPending(leaveReason );
+        loginWithASMCredential();
+        tourProgramPage.RejectLeaveManager(leaveDate, leaveReason,leaveType);
+        loginWithMRCredential();
+        tourProgramPage.verifyLeaveIsAddedSuccessfullyAndShowingAsReject(leaveReason);
     }
 
+    @Test
+    public void deleteLeaveScenario(){
+        loginWithMRCredential();
+        String[] leaveInfo = tourProgramPage.addHalfLeave();
+        String leaveDate = leaveInfo[0];
+        String leaveReason = leaveInfo[1];
+        String leaveType = leaveInfo[2];
+        tourProgramPage.redirectsToLeavePage();
+        tourProgramPage.verifyLeaveIsAddedSuccessfullyAndShowingAsPending(leaveReason );
+        loginWithASMCredential();
+        tourProgramPage.redirectsToLeavePage();
+        tourProgramPage.verifyLeaveIsAddedSuccessfullyAndShowingAsPending(leaveReason);
+        loginWithMRCredential();
+        tourProgramPage.deleteLeaveAndCheckItsRemove(leaveReason);
+        loginWithASMCredential();
+        tourProgramPage.redirectsToLeavePage();
+        tourProgramPage.verifyLeaveIsAddedSuccessfullyAndShowingAsPending(leaveReason);
+    }
 
 
 }

@@ -23,9 +23,7 @@ import org.testng.Reporter;
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.io.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Clock;
@@ -342,6 +340,15 @@ public class Common extends Locators {
         try {
             WebElement element = this.findElement(locator);
             return element.isDisplayed();
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public boolean isElementNotDisplayed(String locator) {
+        try {
+            WebElement element = this.findElement(locator);
+            return !element.isDisplayed();
         } catch (Exception e) {
             return false;
         }
@@ -1770,7 +1777,30 @@ public class Common extends Locators {
             e.printStackTrace();
             return null; // or throw a custom exception
         }
+    }
 
+    public void textFileReader(String filePath) throws IOException {
+
+        FileReader reader = new FileReader(System.getProperty("user.dir")+filePath);
+        BufferedReader bufferedReader = new BufferedReader(reader);
+
+        String line;
+        while((line = bufferedReader.readLine()) !=null){
+            common.logPrint(line);
+        }
+    }
+
+    public void addDate(String sentDateAndMonth, String element){
+        common.logPrint("Step :: Adding the daily tour plan date");
+        Actions actions = new Actions(driver);
+        actions.sendKeys(Keys.TAB).perform();
+
+        common.pause(1);
+
+        common.waitUntilElementToBeVisible(element);
+        common.type(element, sentDateAndMonth);
+
+        actions.sendKeys(Keys.DOWN).perform();
 
     }
 

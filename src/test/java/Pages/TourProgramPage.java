@@ -3,6 +3,7 @@ package Pages;
 import Utils.Common;
 import Utils.Locators;
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 
 public class TourProgramPage extends Locators {
     Common common = new Common(driver);
@@ -54,6 +55,18 @@ public class TourProgramPage extends Locators {
         common.logPrint("Step:: Click on the Doctor tour plan");
         common.waitUntilElementToBeVisible(By.xpath(DOCTORAPPROVALAVAILABILITY));
         common.click(DOCTORAPPROVALAVAILABILITY);
+
+    }
+
+    public void redirectsToLeaveApprovePage(){
+
+        common.logPrint("Step:: Click on the Approval menu");
+        common.waitUntilElementToBeVisible(By.xpath(APPROVALMENU));
+        common.click(APPROVALMENU);
+
+        common.logPrint("Step:: Click on the leave approval menu");
+        common.waitUntilElementToBeVisible(By.xpath(LEAVEMENU));
+        common.click(LEAVEMENU);
 
     }
 
@@ -252,17 +265,17 @@ public class TourProgramPage extends Locators {
 
         common.logPrint("Step:: Select the Leave type from dropdown");
         common.waitUntilElementsToBeVisible(By.xpath(LEAVETYPEINP));
+        common.selectRandomValueFromDropdown(LEAVETYPEINP,6);
 
-        common.click(LEAVETYPEINP);
-        common.pause(1);
-        common.downKeyAndEnter();
+        String leaveType = common.findElement(LEAVETYPEINP).getAttribute("value");
+        common.logPrint("The selected leave type is: "+leaveType);
 
         String leaveDate = common.generateDate("future", null, null);
         common.logPrint("Step:: Enter leave date");
         common.waitUntilElementToBeVisible(By.xpath(FROMDATEINP));
         common.type(FROMDATEINP, leaveDate);
 
-        String reason = common.GenerateParagraph(10);
+        String reason = common.GenerateParagraph(1);
         common.logPrint("Step:: Enter guideline followed remark");
         common.waitUntilElementToBeVisible(By.xpath(REASONINP));
         common.type(REASONINP, reason);
@@ -270,24 +283,188 @@ public class TourProgramPage extends Locators {
         common.logPrint("Step:: Click on the save button");
         common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
         common.click(SAVEBUTTON);
+//
+//        if(common.){
+//            String updatedLeave = common.generateDate("future", null, null);
+//            common.logPrint("Step:: Enter leave date");
+//            common.waitUntilElementToBeVisible(By.xpath(FROMDATEINP)).clear();
+//            common.type(FROMDATEINP, updatedLeave);
+//        }
 
         common.logPrint("Step:: Check validation is displayed");
         common.assertElementDisplayed(AddedSuccessfully);
 
-        return new String[] {leaveDate, reason};
+        return new String[] {leaveDate, reason, leaveType};
     }
 
-    public void verifyLeaveIsAddedSuccessfullyAndShowingAsPending(String name) {
+    public void verifyLeaveIsAddedSuccessfullyAndShowingAsPending(String reason) {
 
-        common.logPrint("Step:: Search name in the search field");
-        common.waitUntilElementToBeVisible(By.xpath(SEARCHFIELD));
-        common.type(SEARCHFIELD, name);
+        common.logPrint("Step :: Verify that leave is showing in the table");
+        common.waitUntilElementToBeVisible(By.xpath(REASONINTABLE));
+        String getReason = common.getText(REASONINTABLE);
+
+        common.assertTwoValuesAreEqual(getReason, reason);
 
         common.pause(1);
         common.logPrint("Step:: Verify the status is showing as pending");
         common.waitUntilElementToBeVisible(By.xpath(PENDINGSTATUS));
         common.assertElementPresent(PENDINGSTATUS);
+    }
 
+    public void verifyLeaveIsAddedSuccessfullyAndShowingAsApprove(String reason) {
+
+        redirectsToLeavePage();
+
+        common.logPrint("Step :: Verify that leave is showing in the table");
+        common.waitUntilElementToBeVisible(By.xpath(REASONINTABLE));
+        String getReason = common.getText(REASONINTABLE);
+
+        common.assertTwoValuesAreEqual(getReason, reason);
+
+        common.pause(1);
+        common.logPrint("Step:: Verify the status is showing as pending");
+        common.waitUntilElementToBeVisible(By.xpath(APPROVESTATUS));
+        common.assertElementPresent(APPROVESTATUS);
+    }
+
+    public void verifyLeaveIsAddedSuccessfullyAndShowingAsReject(String reason) {
+
+        redirectsToLeavePage();
+
+        common.logPrint("Step :: Verify that leave is showing in the table");
+        common.waitUntilElementToBeVisible(By.xpath(REASONINTABLE));
+        String getReason = common.getText(REASONINTABLE);
+
+        common.assertTwoValuesAreEqual(getReason, reason);
+
+        common.pause(1);
+        common.logPrint("Step:: Verify the status is showing as Reject");
+        common.waitUntilElementToBeVisible(By.xpath(REJECTSTATUS));
+        common.assertElementPresent(REJECTSTATUS);
+    }
+
+    public void approveLeaveByAsm(String date, String leaveReason, String leaveType){
+
+        redirectsToLeaveApprovePage();
+
+        common.refreshPage();
+
+        common.pause(3);
+        common.logPrint("Step:: Enter guideline followed remark");
+        common.waitUntilElementToBeVisible(By.xpath(USERDROPDOWN));
+        common.click(USERDROPDOWN);
+        common.pause(1);
+        common.downKeyAndEnter();
+
+        String reasonXpath = "//td[contains(.,'"+leaveReason+"')]";
+
+        if (common.isElementNotDisplayed(reasonXpath)){
+            common.refreshPage();
+        }
+
+        common.logPrint("Step :: Verify that leave is showing in the table");
+        common.waitUntilElementToBeVisible(By.xpath(reasonXpath));
+        String getReason = common.getText(reasonXpath);
+
+        common.assertTwoValuesAreEqual(getReason, leaveReason);
+
+        common.logPrint("Step:: Select first checkbox");
+        common.pause(2);
+        common.selectCheckBox(FIRSTCHECKBOXLEAVE);
+
+        common.logPrint("Step:: Click on the approve button");
+        common.waitUntilElementToBeVisible(By.xpath(APPROVEBTN));
+        common.click(APPROVEBTN);
+
+        common.logPrint("Step:: Check validation is displayed");
+        common.assertElementDisplayed(ApproveSuccessfully);
+    }
+
+    public void RejectLeaveManager(String date, String leaveReason, String leaveType){
+
+        redirectsToLeaveApprovePage();
+
+        common.refreshPage();
+
+        common.pause(3);
+        common.logPrint("Step:: Enter guideline followed remark");
+        common.waitUntilElementToBeVisible(By.xpath(USERDROPDOWN));
+        common.click(USERDROPDOWN);
+        common.pause(1);
+        common.downKeyAndEnter();
+
+        String reasonXpath = "//td[contains(.,'"+leaveReason+"')]";
+
+        if (common.isElementNotDisplayed(reasonXpath)){
+            common.refreshPage();
+        }
+
+        common.logPrint("Step :: Verify that leave is showing in the table");
+        common.waitUntilElementToBeVisible(By.xpath(reasonXpath));
+        String getReason = common.getText(reasonXpath);
+
+        common.assertTwoValuesAreEqual(getReason, leaveReason);
+
+        common.logPrint("Step:: Select first checkbox");
+        common.pause(2);
+        common.selectCheckBox(FIRSTCHECKBOXLEAVE);
+
+        common.logPrint("Step:: Click on the reject button");
+        common.waitUntilElementToBeVisible(By.xpath(REJECTBTN));
+        common.click(REJECTBTN);
+
+        String reasonForReject = common.GenerateParagraph(5);
+        common.logPrint("Step:: Enter reject reason");
+        common.waitUntilElementToBeVisible(By.xpath(REJECTREASONINP));
+        common.type(REJECTREASONINP, reasonForReject);
+
+        common.logPrint("Step:: Click on the reject button");
+        common.waitUntilElementToBeVisible(By.xpath(SUBMITBTN));
+        common.click(SUBMITBTN);
+
+        common.logPrint("Step:: Check validation is displayed");
+        common.assertElementDisplayed(RejectSuccessfully);
+    }
+
+    public void deleteLeaveAndCheckItsRemove(String leaveReason){
+
+        redirectsToLeaveApprovePage();
+
+        common.refreshPage();
+
+        common.pause(3);
+        common.logPrint("Step:: Enter guideline followed remark");
+        common.waitUntilElementToBeVisible(By.xpath(USERDROPDOWN));
+        common.click(USERDROPDOWN);
+        common.pause(1);
+        common.downKeyAndEnter();
+
+        String reasonXpath = "//td[contains(.,'"+leaveReason+"')]";
+
+        if (common.isElementNotDisplayed(reasonXpath)){
+            common.refreshPage();
+        }
+
+        common.logPrint("Step :: Verify that leave is showing in the table");
+        common.waitUntilElementToBeVisible(By.xpath(reasonXpath));
+        String getReason = common.getText(reasonXpath);
+
+        common.assertTwoValuesAreEqual(getReason, leaveReason);
+
+        common.logPrint("Step:: Select first checkbox");
+        common.pause(2);
+        common.selectCheckBox(FIRSTCHECKBOXLEAVE);
+
+        common.logPrint("Step:: Click on the Delete button");
+        common.waitUntilElementToBeVisible(By.xpath(DELETEBTN));
+        common.click(DELETEBTN);
+
+        common.logPrint("Step:: Click on the Delete button on confirmation pop-up");
+        common.waitUntilElementToBeVisible(By.xpath(DELETEBTN2));
+        common.click(DELETEBTN2);
+
+        common.logPrint("Step:: Check validation is displayed");
+        common.assertElementDisplayed(DeletedSuccessfully);
     }
 
 }
