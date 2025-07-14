@@ -91,5 +91,11 @@ public class TourProgramTest extends BasePage {
         tourProgramPage.verifyLeaveIsAddedSuccessfullyAndShowingAsPending(leaveReason);
     }
 
+    @Test
+    public void createDailyTourPlanTest(){
+        loginWithMRCredential();
+        tourProgramPage.createDailyTourPlan(2,2,2, 3);
+    }
+
 
 }

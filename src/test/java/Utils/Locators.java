@@ -148,6 +148,7 @@ public class Locators extends BasePage {
     public static String FIRSTROWDATADOCTR = "(//div[@data-colindex='5'])[1]";
     public static String DEGREEMENU = "//button[contains(.,'Degree')]";
     public static String DEGREEDROPDOWN = "//label[contains(.,'Degree')]/following-sibling::div//button";
+    public static String DEGREESELECTED = "(//input[@role='combobox'])[1]";
     public static String SPECIALITYDRODOWN = "//label[contains(.,'Speciality')]/following-sibling::div//button";
     public static String ADDMISSIONYEAR = "//input[@name='DegreeAdmissionYear']";
     public static String PASSOUTYEAR = "//input[@name='DegreePassOutYear']";
@@ -157,6 +158,7 @@ public class Locators extends BasePage {
     public static String PINCODEDROPDOWN = "//label[contains(.,'Pincode')]/following-sibling::div//button";
     public static String AREAOFINTEREST = "//span[contains(.,'Area of Interest')]";
     public static String AREAOFINTERESTINMEDICAL = "//label[.='Area Of Interest In Medical Field *']/following-sibling::div//button";
+    public static String AREAOFINTERESTINMEDICALS = "//input[@role='combobox']";
     public static String AREAREMARK = "//textarea[contains(@name,'Remarks')]";
     public static String GUIDELINESFOLLOWED = "//span[contains(.,'Guidelines Followed')]";
     public static String GUIDELINEFOLLOWEDDRP = "//label[contains(.,'Guidelines Followed')]/following-sibling::div//button";
@@ -336,6 +338,37 @@ public class Locators extends BasePage {
     public static String DVPHONE = "//input[@name='PhoneNumber']";
     public static String DVDATE = "//input[@name='ServiceDateTime']";
     public static String DVNOTE = "//input[@name='Note']";
+
+    //PRODUCT
+    public static String MASTERPRODUCT = "//div[contains(text(),'Product')]";
+    public static String PRODUCTADD = "//button[normalize-space()='Add']";
+    public static String PRODUCTDIV = "//label[contains(text(),'Division')]/parent::div//input";
+    public static String PRODUCTDRUGHEAD = "//label[contains(text(),'Drug Head')]/parent::div//input";
+    public static String PRODUCTLINE = "//label[contains(text(),'Product Line')]/parent::div//input";
+    public static String PRODUCTGROUP = "//label[contains(text(),'Product Group')]/parent::div//input";
+    public static String PRODUCTCLASS = "//label[contains(text(),'Product Class')]/parent::div//input";
+    public static String PRODUCTTYPE = "//label[contains(text(),'Product Type')]/parent::div//input";
+    public static String PRODUCTSHORTNAME = "//input[@name='ShortName']";
+    public static String PRODUCTNAME = "//input[@name='Name']";
+    public static String PRODUCTPACKINGTYPE = "//label[contains(text(),'Packing Type')]/parent::div//input";
+    public static String PRODUCTCODEREF = "//input[@name='CodeRef1']";
+    public static String PRODUCTNEW = "//input[@name='CodeRef1']";
+    public static String PRODUCTUPCOMING = "//input[@name='CodeRef1']";
+    public static String PRODUCTKEYPRODUCT = "//input[@name='CodeRef1']";
+    public static String PRODUCTHSN = "//label[contains(text(),'Hsn code')]/parent::div//input";
+    public static String PRODUCTPTR = "//label[contains(text(),'PTS AND PTR')]/parent::div//input";
+    public static String PRODUCTGST = "//label[contains(text(),'GST %')]/parent::div//input";
+    public static String PRODUCTMRP = "//label[contains(text(),'MRP')]/parent::div//input";
+    public static String PRODUCTCONTENT = "//textarea[@name='Contents']";
+    public static String PRODUCTCB = "(//input[@name='select_row'])[1]";
+    public static String PRODUCTEDIT = "//button[normalize-space()='Edit']";
+    public static String PRODUCTSHORTNAMETEXT = "//div[@aria-rowspan='1' and @aria-colindex='4']";
+    public static String PRODUCTDELETE = "//button[normalize-space()='Delete']";
+    public static String PRODUCTDELETEYES = "//button[@class='MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedError MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorError MuiButton-root MuiButton-outlined MuiButton-outlinedError MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorError css-fnnp02']";
+    public static String COMPPRODUCT = "//button[normalize-space()='Competitor Product']";
+    public static String COMPPRODUCTNAME = "//label[contains(text(),'Competitor Name')]/parent::div//input";
+    public static String OUTRODUCTNAME = "//label[contains(text(),'Our Product')]/parent::div//input";
+
 
 
 
@@ -833,8 +866,30 @@ public class Locators extends BasePage {
 
     //Xpath for Daily tour plan
     public static String DAILYTOURPLANMENU = "//div[contains(text(),'Daily Tour plan')]";
+    public static String DAILYTOURPLANDATE = "//input[@name='TourDate']";
+    public static String DAILYTOURPLANROUTE = "(//input[@role='combobox'])[1]";
+    public static String DAILYTOURPLANSUBROUTE = "(//input[@role='combobox'])[2]";
     public static String TOURPLANDATEINP = "//input[@name='TourDate']";
     public static String DOCTORINPDAILYPLAN = "//label[.='Doctor *']/following-sibling::div//input";
+    public static String DAILYSELECTDOCTOR = "//label[contains(text(),\"Doctor\")]/following-sibling::div//input";
+    public static String DAILYSELECTDOCTORTIME = "(//input[@name='ExpectedVisitTime'])[1]";
+    public static String DAILYSELECTDOCTORADD = "(//button[@type='button'][normalize-space()='Add'])[1]";
+    public static String DAILYSELECTCHEMIST = "//label[contains(text(),\"Chemist\")]/following-sibling::div//input";
+    public static String DAILYSELECTCHEMISTTIME = "(//input[@name='ExpectedVisitTime'])[2]";
+    public static String DAILYSELECTCHEMISTADD = "(//button[@type='button'][normalize-space()='Add'])[2]";
+    public static String DAILYSELECTSTOCKIST = "//label[contains(text(),\"Stockist\")]/following-sibling::div//input";
+    public static String DAILYSELECTSTOCKISTTIME = "(//input[@name='ExpectedVisitTime'])[3]";
+    public static String DAILYSELECTSTOCKISTADD = "(//button[@type='button'][normalize-space()='Add'])[3]";
+    public static String DAILYSELECTHOSPITAL = "//label[contains(text(),\"Hospital\")]/following-sibling::div//input";
+    public static String DAILYSELECTHOSPITALTIME = "(//input[@name='ExpectedVisitTime'])[4]";
+    public static String DAILYSELECTHOSPITALADD = "(//button[@type='button'][normalize-space()='Add'])[4]";
+    public static String DAILYRESET = "//button[normalize-space()='Reset']";
+    public static String DAILYSAVE = "//button[normalize-space()='Save']";
+    public static String DAILYAPPROVAL = "//div[contains(text(),'Daily Tour Plan')]";
+    public static String DAILYAPPROVALPENDING = "//input[@value='PENDING']";
+    public static String DAILYAPPROVALAPPROVED = "//input[@value='APPROVED']";
+    public static String DAILYAPPROVALCB = "(//input[@type='checkbox'])[2]";
+    public static String DAILYAPPROVALBUTTON = "//div[@class='header']//div[3]//button[1]";
 
 
     //xpath for inventory
@@ -983,6 +1038,7 @@ public class Locators extends BasePage {
     public static String LEAVETYPEINP = "//input[@aria-autocomplete='list']";
     public static String FROMDATEINP = "//input[@name='FromDate']";
     public static String REASONINP = "//textarea[@name='Reason']";
+
     public static String REASONINTABLE = "//div[@data-colindex='9']";
     public static String USERDROPDOWN = "//label[.='User']/following-sibling::div//input";
     public static String FIRSTCHECKBOXLEAVE = "(//input[@type='checkbox'])[2]";

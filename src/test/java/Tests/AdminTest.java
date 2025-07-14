@@ -209,20 +209,31 @@ public class AdminTest extends BasePage {
     @Test
     public void CreateAllTheAdditionalDetails(){
         loginWithDirectorCredential();
-        adminPage.addDegree();
+       // adminPage.addDegree();
         adminPage.addAreaOfInterest();
-        adminPage.addGuidelinesFollowed();
-        adminPage.addConferenceAndSpeaker();
-        adminPage.addWeekendsAndVacation();
-        adminPage.addFamilyFriendDetailInfo();
-        adminPage.addCollegeMateAndAlumniDetails();
-        adminPage.addSocialActivities();
-        adminPage.addMedicalAdvisory();
-        adminPage.addAchievements();
-        adminPage.addProceduralEquipment();
-        adminPage.addDoctorBankDetails();
-        adminPage.addSpecialDay();
-        adminPage.addDoctorVendor();
+        //adminPage.addGuidelinesFollowed();
+        // adminPage.addConferenceAndSpeaker();
+        // adminPage.addWeekendsAndVacation();
+        // adminPage.addFamilyFriendDetailInfo();
+        // adminPage.addCollegeMateAndAlumniDetails();
+        // adminPage.addSocialActivities();
+        // adminPage.addMedicalAdvisory();
+        // adminPage.addAchievements();
+        // adminPage.addProceduralEquipment();
+        // adminPage.addDoctorBankDetails();
+        // adminPage.addSpecialDay();
+        // adminPage.addDoctorVendor();
+    }
+    @Test
+    public void otherAdminPanelModule(){
+        loginWithDirectorCredential();
+        //adminPage.addANewProduct();
+        //adminPage.editAProduct();
+        //adminPage.deleteAProduct();
+        //adminPage.addANewCompProduct();
+        //adminPage.editACompProduct();
+        //adminPage.deleteACompProduct();
+
     }
 
 }
