@@ -4,6 +4,7 @@ import Config.ReadProperties;
 import Utils.BasePage;
 import com.github.javafaker.Faker;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
 import java.io.BufferedReader;
@@ -80,7 +81,7 @@ public class TourProgramTest extends BasePage {
         String leaveReason = leaveInfo[1];
         String leaveType = leaveInfo[2];
         tourProgramPage.redirectsToLeavePage();
-        tourProgramPage.verifyLeaveIsAddedSuccessfullyAndShowingAsPending(leaveReason );
+        tourProgramPage.verifyLeaveIsAddedSuccessfullyAndShowingAsPending(leaveReason);
         loginWithASMCredential();
         tourProgramPage.redirectsToLeavePage();
         tourProgramPage.verifyLeaveIsAddedSuccessfullyAndShowingAsPending(leaveReason);
@@ -97,5 +98,19 @@ public class TourProgramTest extends BasePage {
         tourProgramPage.createDailyTourPlan(2,2,2, 3);
     }
 
+    @Test
+    public void enterText(int a,  int b){
+        a = 1;
+        b = 0;
+        try {
+            int result = a/b;
+            System.out.println(result);
+        } catch (ArithmeticException e) {
+            System.out.println("Cannot divide by zero");
+            e.printStackTrace();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
 
 }

@@ -42,7 +42,6 @@ public class Locators extends BasePage {
     public static String FIRSTCHECKBOXDR = "//input[@tabindex='0']";
     public static String SUCCESSMSG = "//*[contains(text(),'Approved Successfull')]";
 
-
     //Locator for login screen
     public static String LOGINPAGELOGO = "//img[contains(@src, '/static/media/logo')]";
     public static String USERNAMELABEL = "//label[@id='email-label']";
@@ -83,7 +82,6 @@ public class Locators extends BasePage {
     public static String DOCTORNAMELBL = "//label[.='Doctor Name *']";
     public static String DOCTORNAMEINP = "//input[@name='DoctorName']";
     public static String DOCTORNAMEINTABLE = "";
-
 
     public static String CATEGORYLBL = "//label[.='Category *']";
     public static String CATEGORYINP = "//label[.='Category *']/parent::div//button";
@@ -817,8 +815,6 @@ public class Locators extends BasePage {
     public static String HOSPITALNAMEINPATT = "//label[.='Hospital Name *']/following-sibling::div//input";
     public static String HOSCONTACTPERSON = "//label[.='Hospital Contact Person Name *']/following-sibling::div//input";
 
-
-
     //Xpath for the email communication
     public static String COMMUNICATIONMENU = "//span[.='Communication']";
     public static String EMAILSUBMENU = "//div[contains(text(),'Email')]";
@@ -890,7 +886,6 @@ public class Locators extends BasePage {
     public static String DAILYAPPROVALAPPROVED = "//input[@value='APPROVED']";
     public static String DAILYAPPROVALCB = "(//input[@type='checkbox'])[2]";
     public static String DAILYAPPROVALBUTTON = "//div[@class='header']//div[3]//button[1]";
-
 
     //xpath for inventory
     public static String INVENTORYMENU = "//a[@href='/inventory']";
@@ -1038,6 +1033,7 @@ public class Locators extends BasePage {
     public static String LEAVETYPEINP = "//input[@aria-autocomplete='list']";
     public static String FROMDATEINP = "//input[@name='FromDate']";
     public static String REASONINP = "//textarea[@name='Reason']";
+    public static String REASONOFLEAVEREJECT = "//textarea[@aria-invalid='false']";
 
     public static String REASONINTABLE = "//div[@data-colindex='9']";
     public static String USERDROPDOWN = "//label[.='User']/following-sibling::div//input";

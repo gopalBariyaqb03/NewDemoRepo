@@ -77,6 +77,7 @@ public class Common extends Locators {
             getWait().ignoring(StaleElementReferenceException.class).until(ExpectedConditions.elementToBeClickable(element));
         }
     }
+
     public WebElement waitUntilPresenceOfElementLocated(By by) {
         return getWait().ignoring(StaleElementReferenceException.class).until(ExpectedConditions.presenceOfElementLocated(by));
     }
@@ -94,10 +95,12 @@ public class Common extends Locators {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         return wait.ignoring(StaleElementReferenceException.class).until(ExpectedConditions.visibilityOfElementLocated(findBy(locator)));
     }
+
     public WebElement waitUntilStringLocatorAsaElement(WebElement element){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         return wait.ignoring(StaleElementReferenceException.class).until(ExpectedConditions.visibilityOf(element));
     }
+
     public Boolean waitUntilInvisible(String locator){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         return getWait(150).ignoring(StaleElementReferenceException.class).until(ExpectedConditions.invisibilityOf(findElement(locator)));
@@ -1842,6 +1845,7 @@ public class Common extends Locators {
         actions.sendKeys(Keys.DOWN).perform();
 
     }
+
 
 
 
