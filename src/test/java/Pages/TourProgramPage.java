@@ -24,11 +24,13 @@ public class TourProgramPage extends Locators {
         super(driver);
     }
 
-    public void redirectsToApproval(){
-        common.logPrint("Step:: Click on the Approval menu");common.waitUntilElementToBeVisible(By.xpath(APPROVALMENU));common.click(APPROVALMENU);
+    public void redirectsToApproval() {
+        common.logPrint("Step:: Click on the Approval menu");
+        common.waitUntilElementToBeVisible(By.xpath(APPROVALMENU));
+        common.click(APPROVALMENU);
     }
 
-    public void redirectsToDailyTourPlan(){
+    public void redirectsToDailyTourPlan() {
 
         common.logPrint("Step:: Click on the Tour plan menu");
         common.waitUntilElementToBeVisible(By.xpath(TOURPLANMENU));
@@ -39,7 +41,7 @@ public class TourProgramPage extends Locators {
         common.click(DAILYTOURPLANMENU);
     }
 
-    public void redirectsToLeavePage(){
+    public void redirectsToLeavePage() {
 
         common.logPrint("Step:: Click on the Tour plan menu");
         common.waitUntilElementToBeVisible(By.xpath(TOURPLANMENU));
@@ -50,7 +52,7 @@ public class TourProgramPage extends Locators {
         common.click(LEAVEMENU);
     }
 
-    public void redirectsToExpenseModule(){
+    public void redirectsToExpenseModule() {
 
         common.logPrint("Step:: Click on the Tour Program menu");
         common.waitUntilElementToBeVisible(By.xpath(TOURPROGRAMMENU));
@@ -62,7 +64,7 @@ public class TourProgramPage extends Locators {
 
     }
 
-    public void redirectsToDoctorAvailabilityPage(){
+    public void redirectsToDoctorAvailabilityPage() {
 
         common.logPrint("Step:: Click on the Approval menu");
         common.waitUntilElementToBeVisible(By.xpath(APPROVALMENU));
@@ -74,7 +76,19 @@ public class TourProgramPage extends Locators {
 
     }
 
-    public void redirectsToLeaveApprovePage(){
+    public void redirectsToDoctorAvailabilityPageForMR() {
+
+        common.logPrint("Step:: Click on the tour program menu");
+        common.waitUntilElementToBeVisible(By.xpath(TOURPLANMENU));
+        common.click(TOURPLANMENU);
+
+        common.logPrint("Step:: Click on the Doctor tour plan");
+        common.waitUntilElementToBeVisible(By.xpath(DOCTORAPPROVALAVAILABILITY));
+        common.click(DOCTORAPPROVALAVAILABILITY);
+
+    }
+
+    public void redirectsToLeaveApprovePage() {
 
         common.logPrint("Step:: Click on the Approval menu");
         common.waitUntilElementToBeVisible(By.xpath(APPROVALMENU));
@@ -83,8 +97,9 @@ public class TourProgramPage extends Locators {
         common.logPrint("Step:: Click on the leave approval menu");
         common.waitUntilElementToBeVisible(By.xpath(LEAVEMENU));
         common.click(LEAVEMENU);
+    }
 
-    public void addDate(String sentDate, String dateElement){
+    public void addDate(String sentDate, String dateElement) {
         common.logPrint("Step :: Adding the daily tour plan date");
         Actions actions = new Actions(driver);
         actions.sendKeys(Keys.TAB).perform();
@@ -98,9 +113,9 @@ public class TourProgramPage extends Locators {
     }
 
 
-    public String[] createDoctorAvailability(){
+    public String[] createDoctorAvailability() {
 
-        redirectsToDoctorAvailabilityPage();
+        redirectsToDoctorAvailabilityPageForMR();
 
         common.logPrint("Step:: Click on the ADD button");
         common.waitUntilElementToBeVisible(By.xpath(ADDBTN));
@@ -117,13 +132,13 @@ public class TourProgramPage extends Locators {
 //        common.pause(1);
         common.waitUntilElementToBeVisible(By.xpath(DOCTORVALUEINP));
         String drName = common.findElement(DOCTORVALUEINP).getAttribute("value");
-        common.logPrint("Selected doctor name is: "+ drName);
+        common.logPrint("Selected doctor name is: " + drName);
 
         common.logPrint("Step:: Create date for the Doctor availability");
         String currentDate = common.generateDate("future", null, null);
         //String endDate = common.generateDate("future", null, null);
 
-        common.logPrint("Entered date is: "+currentDate);
+        common.logPrint("Entered date is: " + currentDate);
 
         common.logPrint("Step:: Enter current date");
         common.waitUntilElementToBeVisible(By.xpath(LEAVESTARTDATE));
@@ -137,10 +152,10 @@ public class TourProgramPage extends Locators {
         common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
         common.click(SAVEBUTTON);
 
-        return new String[] {drName, currentDate};
+        return new String[]{drName, currentDate};
     }
 
-    public void approvedDoctorAvailabilityRequestFromManager(String name, String date){
+    public void approvedDoctorAvailabilityRequestFromManager(String name, String date) {
 
         redirectsToDoctorAvailabilityPage();
 
@@ -150,8 +165,8 @@ public class TourProgramPage extends Locators {
         common.pause(1);
         common.selectCheckBox(FIRSTCHECKBOXAPPROVE);
 
-        common.waitUntilElementToBeVisible(By.xpath("(//tr//td[contains(.,'"+name.toLowerCase()+"')])[1]"));
-        String xpath = "(//tr//td[contains(.,'"+name.toLowerCase()+"')])[1]";
+        common.waitUntilElementToBeVisible(By.xpath("(//tr//td[contains(.,'" + name.toLowerCase() + "')])[1]"));
+        String xpath = "(//tr//td[contains(.,'" + name.toLowerCase() + "')])[1]";
         String getDrName = common.getText(xpath);
         common.logPrint(getDrName);
         common.assertTwoValuesAreEqual(getDrName.toLowerCase(), name.toLowerCase());
@@ -165,9 +180,10 @@ public class TourProgramPage extends Locators {
         common.logPrint("Step:: Check validation is displayed");
         common.assertElementDisplayed(DoctorApprovedSuccess);
 
+
     }
 
-    public void verifyDoctorAvailabilityInDailyTourPlan(String name, String date){
+    public void verifyDoctorAvailabilityInDailyTourPlan(String name, String date) {
 
         redirectsToDailyTourPlan();
 
@@ -175,12 +191,12 @@ public class TourProgramPage extends Locators {
         common.waitUntilElementsToBeVisible(By.xpath(ADDBTN));
         common.click(ADDBTN);
 
-        common.logPrint("Before date converted: "+ date);
+        common.logPrint("Before date converted: " + date);
 
         common.logPrint("Convert date format from DD/MM/YYYY to MM/DD/yyyy");
         String convertedDate = common.convertDateFormat(date);
 
-        common.logPrint("After date is converted: "+convertedDate);
+        common.logPrint("After date is converted: " + convertedDate);
 
         common.logPrint("Step:: Enter date in the plan date.");
         common.waitUntilElementsToBeVisible(By.xpath(TOURPLANDATEINP));
@@ -190,9 +206,10 @@ public class TourProgramPage extends Locators {
         common.waitUntilElementsToBeVisible(By.xpath(DOCTORINPDAILYPLAN));
         common.type(DOCTORINPDAILYPLAN, name);
 
+
     }
 
-    public String[] createExpense(){
+    public String[] createExpense() {
 
         redirectsToExpenseModule();
 
@@ -203,7 +220,7 @@ public class TourProgramPage extends Locators {
         common.logPrint("Step:: Create date for the Doctor availability");
         String expenseDate = common.generateDate("past", null, null);
 
-        common.logPrint("Entered date is: "+ expenseDate);
+        common.logPrint("Entered date is: " + expenseDate);
 
         common.logPrint("Step:: Enter Expense date");
         common.waitUntilElementToBeVisible(By.xpath(EXPENSEDATEINP));
@@ -215,7 +232,7 @@ public class TourProgramPage extends Locators {
         common.downKeyAndEnter();
 
         String getExpenseName = common.findElement(EXPENSETYPEDRP).getAttribute("value");
-        common.logPrint("Selected expense is: "+getExpenseName);
+        common.logPrint("Selected expense is: " + getExpenseName);
 
         String amount = common.generateRandomNumberString(4);
         common.logPrint("Step:: Enter amount of expense in the amount field");
@@ -228,7 +245,7 @@ public class TourProgramPage extends Locators {
         common.type(NOTETEXTAREA, note);
 
         String file = "\\1.JPG";
-        String pathToSend = System.getProperty("user.dir")+file;
+        String pathToSend = System.getProperty("user.dir") + file;
         common.logPrint(pathToSend);
         common.logPrint("Step:: Upload invoice image for the expense");
         common.pause(3);
@@ -246,9 +263,10 @@ public class TourProgramPage extends Locators {
         common.assertElementDisplayed(AddedSuccessfully);
 
         return new String[]{expenseDate, amount, getExpenseName};
+
     }
 
-    public void verifyExpenseIsCreatedAndShowingAsPending(String date, String amount, String name ){
+    public void verifyExpenseIsCreatedAndShowingAsPending(String date, String amount, String name) {
 
         common.logPrint("Step:: Search name in the search field");
         common.waitUntilElementToBeVisible(By.xpath(SEARCHFIELD));
@@ -264,7 +282,7 @@ public class TourProgramPage extends Locators {
         common.logPrint("Step:: Verify expense type is showing properly");
         common.waitUntilElementToBeVisible(By.xpath(GETEXPENSETYPE));
         String getExpenseName = common.getText(GETEXPENSETYPE);
-        common.logPrint("Get expense name is: "+getExpenseName);
+        common.logPrint("Get expense name is: " + getExpenseName);
         common.assertTwoValuesAreEqual(name.toLowerCase(), getExpenseName.toLowerCase());
 
         common.logPrint("Step:: Verify expense date is showing properly");
@@ -276,9 +294,10 @@ public class TourProgramPage extends Locators {
         common.waitUntilElementToBeVisible(By.xpath(GETEXPENSEAMOUNT));
         String getAmount = common.getText(GETEXPENSEAMOUNT);
         common.assertTwoValuesAreEqual(amount, getAmount);
+
     }
 
-    public String[] addHalfLeave(){
+    public String[] addHalfLeave() {
 
         redirectsToLeavePage();
 
@@ -292,10 +311,10 @@ public class TourProgramPage extends Locators {
 
         common.logPrint("Step:: Select the Leave type from dropdown");
         common.waitUntilElementsToBeVisible(By.xpath(LEAVETYPEINP));
-        common.selectRandomValueFromDropdown(LEAVETYPEINP,6);
+        common.selectRandomValueFromDropdown(LEAVETYPEINP, 6);
 
         String leaveType = common.findElement(LEAVETYPEINP).getAttribute("value");
-        common.logPrint("The selected leave type is: "+leaveType);
+        common.logPrint("The selected leave type is: " + leaveType);
 
         String leaveDate = common.generateDate("future", null, null);
         common.logPrint("Step:: Enter leave date");
@@ -321,7 +340,7 @@ public class TourProgramPage extends Locators {
         common.logPrint("Step:: Check validation is displayed");
         common.assertElementDisplayed(AddedSuccessfully);
 
-        return new String[] {leaveDate, reason, leaveType};
+        return new String[]{leaveDate, reason, leaveType};
     }
 
     public void verifyLeaveIsAddedSuccessfullyAndShowingAsPending(String reason) {
@@ -371,7 +390,7 @@ public class TourProgramPage extends Locators {
         common.assertElementPresent(REJECTSTATUS);
     }
 
-    public void approveLeaveByAsm(String date, String leaveReason, String leaveType){
+    public void approveLeaveByAsm(String date, String leaveReason, String leaveType) {
 
         redirectsToLeaveApprovePage();
 
@@ -384,9 +403,9 @@ public class TourProgramPage extends Locators {
         common.pause(1);
         common.downKeyAndEnter();
 
-        String reasonXpath = "//td[contains(.,'"+leaveReason+"')]";
+        String reasonXpath = "//td[contains(.,'" + leaveReason + "')]";
 
-        if (common.isElementNotDisplayed(reasonXpath)){
+        if (common.isElementNotDisplayed(reasonXpath)) {
             common.refreshPage();
         }
 
@@ -408,7 +427,8 @@ public class TourProgramPage extends Locators {
         common.assertElementDisplayed(ApproveSuccessfully);
     }
 
-    public void RejectLeaveManager(String date, String leaveReason, String leaveType){
+
+    public void RejectLeaveManager(String date, String leaveReason, String leaveType) {
 
         redirectsToLeaveApprovePage();
 
@@ -421,9 +441,9 @@ public class TourProgramPage extends Locators {
         common.pause(1);
         common.downKeyAndEnter();
 
-        String reasonXpath = "//td[contains(.,'"+leaveReason+"')]";
+        String reasonXpath = "//td[contains(.,'" + leaveReason + "')]";
 
-        if (common.isElementNotDisplayed(reasonXpath)){
+        if (common.isElementNotDisplayed(reasonXpath)) {
             common.refreshPage();
         }
 
@@ -441,39 +461,49 @@ public class TourProgramPage extends Locators {
         common.waitUntilElementToBeVisible(By.xpath(REJECTBTN));
         common.click(REJECTBTN);
 
-        common.assertElementPresent(PENDINGSTATUS);}
+        String reason = common.GenerateParagraph(1);
+        common.logPrint("Step:: Enter Reason for the rejection");
+        common.waitUntilElementToBeVisible(By.xpath(REASONOFLEAVEREJECT));
+        common.type(REASONOFLEAVEREJECT, reason);
 
-    public void  createDailyTourPlan(int doctorCount, int chemistCount, int stockistCount, int hospitalCount) {
+        common.logPrint("Step:: Click on the Submit button");
+        common.waitUntilElementToBeVisible(By.xpath(SUBMITBTN));
+        common.click(SUBMITBTN);
 
-            redirectsToDailyTourPlan();
+        common.assertElementPresent(RejectSuccessfully);
+    }
 
-            common.logPrint("Step :: Clicking the add Daily Tour Plan Button");
-            common.waitUntilElementToBeVisible(By.xpath(PRODUCTADD));
-            common.click(PRODUCTADD);
+    public void createDailyTourPlan(int doctorCount, int chemistCount, int stockistCount, int hospitalCount) {
 
-            addDate("10-07", DAILYTOURPLANDATE);
+        redirectsToDailyTourPlan();
 
-            common.logPrint("Step:: Selecting Route");
-            common.waitUntilElementsToBeVisible(By.xpath(DAILYTOURPLANROUTE));
-            common.type(DAILYTOURPLANROUTE, "");
-            common.twoDownKeyAndEnter();
+        common.logPrint("Step :: Clicking the add Daily Tour Plan Button");
+        common.waitUntilElementToBeVisible(By.xpath(PRODUCTADD));
+        common.click(PRODUCTADD);
 
-            common.logPrint("Step:: Selecting Sub Route");
-            common.waitUntilElementsToBeVisible(By.xpath(DAILYTOURPLANSUBROUTE));
-            common.type(DAILYTOURPLANSUBROUTE, "");
-            common.twoDownKeyAndEnter();
+        addDate("10-07", DAILYTOURPLANDATE);
+
+        common.logPrint("Step:: Selecting Route");
+        common.waitUntilElementsToBeVisible(By.xpath(DAILYTOURPLANROUTE));
+        common.type(DAILYTOURPLANROUTE, "");
+        common.twoDownKeyAndEnter();
+
+        common.logPrint("Step:: Selecting Sub Route");
+        common.waitUntilElementsToBeVisible(By.xpath(DAILYTOURPLANSUBROUTE));
+        common.type(DAILYTOURPLANSUBROUTE, "");
+        common.twoDownKeyAndEnter();
 
         for (int i = 0; i < doctorCount; i++) {
             common.logPrint("Step :: Selecting Doctor " + (i + 1));
             common.waitUntilElementsToBeVisible(By.xpath(DAILYSELECTDOCTOR));
             common.click(DAILYSELECTDOCTOR);
-            common.pressDownKeysByArgument(i+2);
+            common.pressDownKeysByArgument(i + 2);
 
             common.logPrint("Step :: Selecting Doctor visit time " + (i + 1));
             common.waitUntilElementsToBeVisible(By.xpath(DAILYSELECTDOCTORTIME));
             common.click(DAILYSELECTDOCTORTIME);
-            common.type(DAILYSELECTDOCTORTIME,"10-10-AM");
-            common.pressDownKeysByArgument(i+2);
+            common.type(DAILYSELECTDOCTORTIME, "10-10-AM");
+            common.pressDownKeysByArgument(i + 2);
 
             common.logPrint("Step :: Adding Doctor " + (i + 1));
             common.waitUntilElementsToBeVisible(By.xpath(DAILYSELECTDOCTORADD));
@@ -487,13 +517,13 @@ public class TourProgramPage extends Locators {
             common.logPrint("Step :: Selecting Chemist " + (i + 1));
             common.waitUntilElementsToBeVisible(By.xpath(DAILYSELECTCHEMIST));
             common.click(DAILYSELECTCHEMIST);
-            common.pressDownKeysByArgument(i+2);
+            common.pressDownKeysByArgument(i + 2);
 
             common.logPrint("Step :: Selecting Chemist visit time " + (i + 1));
             common.waitUntilElementsToBeVisible(By.xpath(DAILYSELECTCHEMISTTIME));
             common.click(DAILYSELECTCHEMISTTIME);
-            common.type(DAILYSELECTCHEMISTTIME,"11-10-AM");
-            common.pressDownKeysByArgument(i+2);
+            common.type(DAILYSELECTCHEMISTTIME, "11-10-AM");
+            common.pressDownKeysByArgument(i + 2);
 
             common.logPrint("Step :: Adding Chemist " + (i + 1));
             common.waitUntilElementsToBeVisible(By.xpath(DAILYSELECTCHEMISTADD));
@@ -506,13 +536,13 @@ public class TourProgramPage extends Locators {
             common.logPrint("Step :: Selecting Stockist " + (i + 1));
             common.waitUntilElementsToBeVisible(By.xpath(DAILYSELECTSTOCKIST));
             common.click(DAILYSELECTSTOCKIST);
-            common.pressDownKeysByArgument(i+2);
+            common.pressDownKeysByArgument(i + 2);
 
             common.logPrint("Step :: Selecting Stockist visit time " + (i + 1));
             common.waitUntilElementsToBeVisible(By.xpath(DAILYSELECTSTOCKISTTIME));
             common.click(DAILYSELECTSTOCKISTTIME);
-            common.type(DAILYSELECTSTOCKISTTIME,"01-10-PM");
-            common.pressDownKeysByArgument(i+2);
+            common.type(DAILYSELECTSTOCKISTTIME, "01-10-PM");
+            common.pressDownKeysByArgument(i + 2);
 
             common.logPrint("Step :: Adding Stockist " + (i + 1));
             common.waitUntilElementsToBeVisible(By.xpath(DAILYSELECTSTOCKISTADD));
@@ -523,13 +553,13 @@ public class TourProgramPage extends Locators {
             common.logPrint("Step :: Selecting Hospital " + (i + 1));
             common.waitUntilElementsToBeVisible(By.xpath(DAILYSELECTHOSPITAL));
             common.click(DAILYSELECTHOSPITAL);
-            common.pressDownKeysByArgument(i+2);
+            common.pressDownKeysByArgument(i + 2);
 
             common.logPrint("Step :: Selecting Hospital visit time " + (i + 1));
             common.waitUntilElementsToBeVisible(By.xpath(DAILYSELECTHOSPITALTIME));
             common.click(DAILYSELECTHOSPITALTIME);
-            common.type(DAILYSELECTHOSPITALTIME,"01-10-PM");
-            common.pressDownKeysByArgument(i+2);
+            common.type(DAILYSELECTHOSPITALTIME, "01-10-PM");
+            common.pressDownKeysByArgument(i + 2);
 
             common.logPrint("Step :: Adding Hospital " + (i + 1));
             common.waitUntilElementsToBeVisible(By.xpath(DAILYSELECTHOSPITALADD));
@@ -557,9 +587,9 @@ public class TourProgramPage extends Locators {
         common.waitUntilElementToBeVisible(By.xpath(DAILYAPPROVALBUTTON));
         common.click(DAILYAPPROVALBUTTON);
     }
-    
-    
-     public void RejectLeaveManager(String date, String leaveReason, String leaveType){
+
+
+    public void deleteLeaveAndCheckItsRemove (String leaveReason){
 
         redirectsToLeaveApprovePage();
 
@@ -572,56 +602,9 @@ public class TourProgramPage extends Locators {
         common.pause(1);
         common.downKeyAndEnter();
 
-        String reasonXpath = "//td[contains(.,'"+leaveReason+"')]";
+        String reasonXpath = "//td[contains(.,'" + leaveReason + "')]";
 
-        if (common.isElementNotDisplayed(reasonXpath)){
-            common.refreshPage();
-        }
-
-        common.logPrint("Step :: Verify that leave is showing in the table");
-        common.waitUntilElementToBeVisible(By.xpath(reasonXpath));
-        String getReason = common.getText(reasonXpath);
-
-        common.assertTwoValuesAreEqual(getReason, leaveReason);
-
-        common.logPrint("Step:: Select first checkbox");
-        common.pause(2);
-        common.selectCheckBox(FIRSTCHECKBOXLEAVE);
-
-        common.logPrint("Step:: Click on the reject button");
-        common.waitUntilElementToBeVisible(By.xpath(REJECTBTN));
-        common.click(REJECTBTN);
-
-        String reasonForReject = common.GenerateParagraph(5);
-        common.logPrint("Step:: Enter reject reason");
-        common.waitUntilElementToBeVisible(By.xpath(REJECTREASONINP));
-        common.type(REJECTREASONINP, reasonForReject);
-
-        common.logPrint("Step:: Click on the reject button");
-        common.waitUntilElementToBeVisible(By.xpath(SUBMITBTN));
-        common.click(SUBMITBTN);
-
-        common.logPrint("Step:: Check validation is displayed");
-        common.assertElementDisplayed(RejectSuccessfully);
-    }
-
-
-    public void deleteLeaveAndCheckItsRemove(String leaveReason){
-
-        redirectsToLeaveApprovePage();
-
-        common.refreshPage();
-
-        common.pause(3);
-        common.logPrint("Step:: Enter guideline followed remark");
-        common.waitUntilElementToBeVisible(By.xpath(USERDROPDOWN));
-        common.click(USERDROPDOWN);
-        common.pause(1);
-        common.downKeyAndEnter();
-
-        String reasonXpath = "//td[contains(.,'"+leaveReason+"')]";
-
-        if (common.isElementNotDisplayed(reasonXpath)){
+        if (common.isElementNotDisplayed(reasonXpath)) {
             common.refreshPage();
         }
 
@@ -646,4 +629,4 @@ public class TourProgramPage extends Locators {
         common.logPrint("Step:: Check validation is displayed");
         common.assertElementDisplayed(DeletedSuccessfully);
     }
-
+}
