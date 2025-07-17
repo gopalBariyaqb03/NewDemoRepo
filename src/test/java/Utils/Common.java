@@ -1297,6 +1297,16 @@ public class Common extends Locators {
         actions.sendKeys(Keys.SPACE).build().perform();
     }
 
+    public void dynamicDownKeyPress(int amount){
+        Actions actions = new Actions(driver);
+
+        for(int i =0; i< amount; i++) {
+            actions.sendKeys(Keys.DOWN).build().perform();
+            System.out.println("Pressing down " + i);
+        }
+        actions.sendKeys(Keys.ENTER).perform();
+    }
+
 
 
     public String fakeName(){
@@ -1799,13 +1809,6 @@ public class Common extends Locators {
         common.logPrint("Date entered manually and confirmed: " + dateValue);
     }
 
-    /**
-     * Converts a date from MM/dd/yyyy to ddMMyyyy format.
-     *
-     * date in MM/dd/yyyy format (e.g. "07/08/2025")
-     * formatted date in ddMMyyyy format (e.g. "08072025")
-     */
-
     public static String convertDateFormat(String inputDate){
 
         SimpleDateFormat inputFormat = new SimpleDateFormat("MM/dd/yyyy");
@@ -1844,10 +1847,6 @@ public class Common extends Locators {
 
         actions.sendKeys(Keys.DOWN).perform();
     }
-
-
-
-
 }
 
 
