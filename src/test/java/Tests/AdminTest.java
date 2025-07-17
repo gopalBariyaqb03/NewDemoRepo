@@ -100,18 +100,17 @@ public class AdminTest extends BasePage {
         loginWithMRCredential();
         adminPage.redirectsToChemistPage();
         adminPage.verifyDoctorRemoveFromTheList(chemistName);
-
     }
 
     @Test
     public void verifyCreateAndApprovedStockiestScenario(){
         loginWithMRCredential();
         String stockiestName = adminPage.createStockiestApproval();
-        adminPage.verifyEntityIsCreatedIsShowingInTheTableAndItStatusIsPending(stockiestName);
+        adminPage.verifyStockiestIsCreatedIsShowingInTheTableAndItStatusIsPending(stockiestName);
         adminPage.verifyStockiestApprovedForTheAsmUser(stockiestName);
         loginWithMRCredential();
         adminPage.redirectsToStockiestPage();
-        adminPage.verifyDoctorIsCreatedIsShowingInTheTableAndItStatusIsApproval(stockiestName);
+        adminPage.verifyStockiestIsCreatedIsShowingInTheTableAndItStatusIsApproval(stockiestName);
     }
 
     @Test
@@ -209,31 +208,32 @@ public class AdminTest extends BasePage {
     @Test
     public void CreateAllTheAdditionalDetails(){
         loginWithDirectorCredential();
-       // adminPage.addDegree();
-        //adminPage.addAreaOfInterest();
-        //adminPage.addGuidelinesFollowed();
-        // adminPage.addConferenceAndSpeaker();
-        // adminPage.addWeekendsAndVacation();
-        // adminPage.addFamilyFriendDetailInfo();
-        // adminPage.addCollegeMateAndAlumniDetails();
-        // adminPage.addSocialActivities();
-        // adminPage.addMedicalAdvisory();
-        // adminPage.addAchievements();
-        // adminPage.addProceduralEquipment();
-        // adminPage.addDoctorBankDetails();
-        // adminPage.addSpecialDay();
-         adminPage.addDoctorVendor();
+
+        adminPage.addDegree();
+        adminPage.addAreaOfInterest();
+        adminPage.addGuidelinesFollowed();
+        adminPage.addConferenceAndSpeaker();
+        adminPage.addWeekendsAndVacation();
+        adminPage.addFamilyFriendDetailInfo();
+        adminPage.addCollegeMateAndAlumniDetails();
+        adminPage.addSocialActivities();
+        adminPage.addMedicalAdvisory();
+        adminPage.addAchievements();
+        adminPage.addProceduralEquipment();
+        adminPage.addDoctorBankDetails();
+        adminPage.addSpecialDay();
+        adminPage.addDoctorVendor();
+      
     }
+
     @Test
     public void otherAdminPanelModule(){
         loginWithDirectorCredential();
-        //adminPage.addANewProduct();
-        //adminPage.editAProduct();
-        //adminPage.deleteAProduct();
-        //adminPage.addANewCompProduct();
-        //adminPage.editACompProduct();
-        //adminPage.deleteACompProduct();
-
+        adminPage.addANewProduct();
+        adminPage.editAProduct();
+        adminPage.deleteAProduct();
+        adminPage.addANewCompProduct();
+        adminPage.editACompProduct();
+        adminPage.deleteACompProduct();
     }
-
 }

@@ -178,8 +178,6 @@ public class TourProgramPage extends Locators {
 
         common.logPrint("Step:: Check validation is displayed");
         common.assertElementDisplayed(DoctorApprovedSuccess);
-
-
     }
 
     public void verifyDoctorAvailabilityInDailyTourPlan(String name, String date) {
