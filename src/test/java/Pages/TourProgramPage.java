@@ -112,7 +112,6 @@ public class TourProgramPage extends Locators {
         actions.sendKeys(Keys.DOWN).perform();
     }
 
-
     public String[] createDoctorAvailability() {
 
         redirectsToDoctorAvailabilityPageForMR();
@@ -427,7 +426,6 @@ public class TourProgramPage extends Locators {
         common.assertElementDisplayed(ApproveSuccessfully);
     }
 
-
     public void RejectLeaveManager(String date, String leaveReason, String leaveType) {
 
         redirectsToLeaveApprovePage();
@@ -587,7 +585,6 @@ public class TourProgramPage extends Locators {
         common.waitUntilElementToBeVisible(By.xpath(DAILYAPPROVALBUTTON));
         common.click(DAILYAPPROVALBUTTON);
     }
-
 
     public void deleteLeaveAndCheckItsRemove (String leaveReason){
 
