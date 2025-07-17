@@ -183,6 +183,7 @@ public class Locators extends BasePage {
     public static String SPECIALDAYDOBINP = "//input[@name='FamilyAndFriendSpeicialDay']";
     public static String SPECIALDAYDOBINPAdd = "//input[@name='FamilyAndFriendSpeicialDate']";
     public static String REMARKINP = "//textarea[@name='Remarks']";
+    public static String GETNAMEFROMFIRST = "//div[contains(@data-colindex,'2')]";
 
     //ADDITIONAL DETAILS -> ALUMNI
     public static String COLLEGEALUMNIDETAILS = "//p[normalize-space()='College Mate / Alumni Details']";

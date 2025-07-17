@@ -82,6 +82,7 @@ public class BasePage {
             common.logPrint("Step:: Logout button not found, skipping logout step");
         }
 
+        common.logPrint("Login from the Directors user");
         common.logPrint("Step:: Enter username and password");
         common.waitUntilElementsToBeVisible(By.xpath("//input[@id='email']"));
         common.type("//input[@id='email']",username);
@@ -111,6 +112,7 @@ public class BasePage {
             common.logPrint("Step:: Logout button not found, skipping logout step");
         }
 
+        common.logPrint("Login from the RSM user");
         common.logPrint("Step:: Enter username and password");
         common.waitUntilElementsToBeVisible(By.xpath("//input[@id='email']"));
         common.type("//input[@id='email']",Rsmusername);
@@ -140,6 +142,7 @@ public class BasePage {
             common.logPrint("Step:: Logout button not found, skipping logout step");
         }
 
+        common.logPrint("Login from the ASM user");
         common.logPrint("Step:: Enter username and password");
         common.waitUntilElementsToBeVisible(By.xpath("//input[@id='email']"));
         common.type("//input[@id='email']",Asmusername);
@@ -169,6 +172,7 @@ public class BasePage {
             common.logPrint("Step:: Logout button not found, skipping logout step");
         }
 
+        common.logPrint("Login from the MR user");
         common.logPrint("Step:: Enter username and password");
         common.waitUntilElementsToBeVisible(By.xpath("//input[@id='email']"));
         common.type("//input[@id='email']",MRusername);

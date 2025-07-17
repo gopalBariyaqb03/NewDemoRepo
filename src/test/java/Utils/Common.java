@@ -1843,7 +1843,6 @@ public class Common extends Locators {
         common.type(element, sentDateAndMonth);
 
         actions.sendKeys(Keys.DOWN).perform();
-
     }
 
 
