@@ -3395,9 +3395,8 @@ public class AdminPage extends Locators {
             common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
             common.click(SAVEBUTTON);
 
-            verifyNewAdiDetailIsShowing(enteredAOI);
 
-            //searchAndValidateAdditionalDetails(enteredAOI);
+            verifyNewAdiDetailIsShowing(enteredAOI);
 
 
         } catch (NoSuchElementException e) {
@@ -3435,6 +3434,8 @@ public class AdminPage extends Locators {
             common.logPrint("Step:: Click on the save button");
             common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
             common.click(SAVEBUTTON);
+
+            common.assertElementDisplayed(AddedSuccessfully);
 
         } catch (NoSuchElementException e) {
             common.logPrint("Error: Element not found - " + e.getMessage());
@@ -3507,6 +3508,8 @@ public class AdminPage extends Locators {
             common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
             common.click(SAVEBUTTON);
 
+            common.assertElementDisplayed(AddedSuccessfully);
+
         } catch (NoSuchElementException e) {
             common.logPrint("Error: Element not found - " + e.getMessage());
             throw new RuntimeException("Failed to add conference and speaker due to missing element", e);
@@ -3557,6 +3560,8 @@ public class AdminPage extends Locators {
             common.logPrint("Step:: Click on the save button");
             common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
             common.click(SAVEBUTTON);
+
+            common.assertElementDisplayed(AddedSuccessfully);
 
         } catch (NoSuchElementException e) {
             common.logPrint("Error: Element not found - " + e.getMessage());
@@ -3619,6 +3624,8 @@ public class AdminPage extends Locators {
             common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
             common.click(SAVEBUTTON);
 
+            common.assertElementDisplayed(AddedSuccessfully);
+
         } catch (NoSuchElementException e) {
             common.logPrint("Error: Element not found - " + e.getMessage());
             throw new RuntimeException("Failed to add family friend detail due to missing element", e);
@@ -3676,6 +3683,8 @@ public class AdminPage extends Locators {
             common.logPrint("Step:: Click on Save button");
             common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
             common.click(SAVEBUTTON);
+
+            common.assertElementDisplayed(AddedSuccessfully);
 
         } catch (NoSuchElementException e) {
             common.logPrint("Error: Element not found - " + e.getMessage());
@@ -3754,6 +3763,8 @@ public class AdminPage extends Locators {
             common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
             common.click(SAVEBUTTON);
 
+            common.assertElementDisplayed(AddedSuccessfully);
+
         } catch (NoSuchElementException e) {
             common.logPrint("Error: Element not found - " + e.getMessage());
             throw new RuntimeException("Failed to add social activities due to missing element", e);
@@ -3827,6 +3838,8 @@ public class AdminPage extends Locators {
             common.logPrint("Step:: Click on Save button");
             common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
             common.click(SAVEBUTTON);
+
+            common.assertElementDisplayed(AddedSuccessfully);
 
         } catch (NoSuchElementException e) {
             common.logPrint("Error: Element not found - " + e.getMessage());
@@ -3903,6 +3916,8 @@ public class AdminPage extends Locators {
             common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
             common.click(SAVEBUTTON);
 
+            common.assertElementDisplayed(AddedSuccessfully);
+
         } catch (NoSuchElementException e) {
             common.logPrint("Error: Element not found - " + e.getMessage());
             throw new RuntimeException("Failed to add patients refer to due to missing element", e);
@@ -3978,6 +3993,8 @@ public class AdminPage extends Locators {
             common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
             common.click(SAVEBUTTON);
 
+            common.assertElementDisplayed(AddedSuccessfully);
+
         } catch (NoSuchElementException e) {
             common.logPrint("Error: Element not found - " + e.getMessage());
             throw new RuntimeException("Failed to add patient reference source due to missing element", e);
@@ -4029,6 +4046,8 @@ public class AdminPage extends Locators {
             common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
             common.click(SAVEBUTTON);
 
+            common.assertElementDisplayed(AddedSuccessfully);
+
         } catch (NoSuchElementException e) {
             common.logPrint("Error: Element not found - " + e.getMessage());
             throw new RuntimeException("Failed to add consulting fees due to missing element", e);
@@ -4067,6 +4086,8 @@ public class AdminPage extends Locators {
             common.logPrint("Step:: Click on Save button");
             common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
             common.click(SAVEBUTTON);
+
+            common.assertElementDisplayed(AddedSuccessfully);
 
         } catch (NoSuchElementException e) {
             common.logPrint("Error: Element not found - " + e.getMessage());
@@ -4140,6 +4161,8 @@ public class AdminPage extends Locators {
             common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
             common.click(SAVEBUTTON);
 
+            common.assertElementDisplayed(AddedSuccessfully);
+
         } catch (NoSuchElementException e) {
             common.logPrint("Error: Element not found - " + e.getMessage());
             throw new RuntimeException("Failed to add medical advisory due to missing element", e);
@@ -4185,6 +4208,8 @@ public class AdminPage extends Locators {
             common.logPrint("Step:: Click on Save button");
             common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
             common.click(SAVEBUTTON);
+
+            common.assertElementDisplayed(AddedSuccessfully);
 
         } catch (NoSuchElementException e) {
             common.logPrint("Error: Element not found - " + e.getMessage());
@@ -4232,6 +4257,8 @@ public class AdminPage extends Locators {
             common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
             common.click(SAVEBUTTON);
 
+            common.assertElementDisplayed(AddedSuccessfully);
+
         } catch (NoSuchElementException e) {
             common.logPrint("Error: Element not found - " + e.getMessage());
             throw new RuntimeException("Failed to add procedural equipment due to missing element", e);
@@ -4274,6 +4301,8 @@ public class AdminPage extends Locators {
             common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
             common.click(SAVEBUTTON);
 
+            common.assertElementDisplayed(AddedSuccessfully);
+
         } catch (NoSuchElementException e) {
             common.logPrint("Error: Element not found - " + e.getMessage());
             throw new RuntimeException("Failed to add doctor bank details due to missing element", e);
@@ -4307,6 +4336,8 @@ public class AdminPage extends Locators {
             common.logPrint("Step :: Clicking the Save button");
             common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
             common.click(SAVEBUTTON);
+
+            common.assertElementDisplayed(AddedSuccessfully);
 
         } catch (NoSuchElementException e) {
             common.logPrint("Error: Element not found - " + e.getMessage());
@@ -4354,6 +4385,8 @@ public class AdminPage extends Locators {
             common.logPrint("Step :: Clicking the Save button");
             common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
             common.click(SAVEBUTTON);
+
+            common.assertElementDisplayed(AddedSuccessfully);
 
         } catch (NoSuchElementException e) {
             common.logPrint("Error: Element not found - " + e.getMessage());
@@ -4483,7 +4516,6 @@ public class AdminPage extends Locators {
 
         return returnedName;
         }
-
         catch (NoSuchElementException e) {
             common.logPrint("Error: Element not found - " + e.getMessage());
             throw new RuntimeException("Failed to add doctor vendor due to missing element", e);

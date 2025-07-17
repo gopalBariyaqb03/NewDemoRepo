@@ -224,6 +224,7 @@ public class AdminTest extends BasePage {
         adminPage.addSpecialDay();
         adminPage.addDoctorVendor();
       
+
     }
 
     @Test
@@ -235,5 +236,6 @@ public class AdminTest extends BasePage {
         adminPage.addANewCompProduct();
         adminPage.editACompProduct();
         adminPage.deleteACompProduct();
+
     }
 }

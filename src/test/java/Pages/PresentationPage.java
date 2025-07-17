@@ -62,8 +62,11 @@ public class PresentationPage extends Locators {
         common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
         common.click(SAVEBUTTON);
 
+        common.assertElementDisplayed(AddedSuccessfully);
+
         common.pause(2);
         common.searchAndValidate(name);
+
 
         return name;
     }
@@ -94,6 +97,8 @@ public class PresentationPage extends Locators {
         common.logPrint("Step :: Clicking the save button");
         common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
         common.click(SAVEBUTTON);
+
+        common.assertElementDisplayed(UpdatedSuccessfully);
 
         common.pause(2);
         common.searchAndValidate(name);
