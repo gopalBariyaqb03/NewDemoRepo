@@ -331,7 +331,7 @@ public class Locators extends BasePage {
 
     //ADDITIONAL DETAILS -> DOCTOR VENDOR
     public static String DV = "//p[normalize-space()='Doctor Vendor']";
-    public static String DVSERVICE = "//input[@role='comboboxs']";
+    public static String DVSERVICE = "//input[@role='combobox']";
     public static String DVHEAD = "//input[@name='HeadOfService']";
     public static String DVPHONE = "//input[@name='PhoneNumber']";
     public static String DVDATE = "//input[@name='ServiceDateTime']";
@@ -1040,6 +1040,17 @@ public class Locators extends BasePage {
     public static String FIRSTCHECKBOXLEAVE = "(//input[@type='checkbox'])[2]";
     public static String REJECTREASONINP = "//textarea[contains(@aria-invalid,'false')]";
     public static String DELETEBTN2 = "(//button[contains(.,'Delete')])[2]";
+
+    //xpaths for presentation
+    public static String PRESENTATIONMENU = "//span[contains(text(),'Presentation')]";
+    public static String PRESNAME = "//input[@name='PresentationName']";
+    public static String PRESVA = "(//input[@role='combobox'])[1]";
+    public static String PRESDOC = "(//input[@role='combobox'])[2]";
+    public static String PRESDESC = "//textarea[@name='Description']";
+    public static String PRESCB = "(//input[@name='select_row'])[1]";
+    public static String PRESBE = "(//div[@data-colindex='4' and @aria-rowspan='1'])[1]";
+    public static String PRESDELVAL="//div[contains(text(), 'No rows')]";
+
 
 
 }

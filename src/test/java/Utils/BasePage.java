@@ -37,7 +37,7 @@ public class BasePage {
 
 
     static Properties configProperties = null;
-    protected WebDriver driver;
+    protected static WebDriver driver;
     public static Common common;
     public static String currentTest; // current running test
     public static ThreadLocal<Integer> steps = new ThreadLocal<Integer>();

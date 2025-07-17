@@ -210,7 +210,7 @@ public class AdminTest extends BasePage {
     public void CreateAllTheAdditionalDetails(){
         loginWithDirectorCredential();
        // adminPage.addDegree();
-        adminPage.addAreaOfInterest();
+        //adminPage.addAreaOfInterest();
         //adminPage.addGuidelinesFollowed();
         // adminPage.addConferenceAndSpeaker();
         // adminPage.addWeekendsAndVacation();
@@ -222,7 +222,7 @@ public class AdminTest extends BasePage {
         // adminPage.addProceduralEquipment();
         // adminPage.addDoctorBankDetails();
         // adminPage.addSpecialDay();
-        // adminPage.addDoctorVendor();
+         adminPage.addDoctorVendor();
     }
     @Test
     public void otherAdminPanelModule(){
