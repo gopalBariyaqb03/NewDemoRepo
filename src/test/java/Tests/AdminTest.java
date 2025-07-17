@@ -209,9 +209,9 @@ public class AdminTest extends BasePage {
     @Test
     public void CreateAllTheAdditionalDetails(){
         loginWithDirectorCredential();
-       // adminPage.addDegree();
-        //adminPage.addAreaOfInterest();
-        //adminPage.addGuidelinesFollowed();
+        // adminPage.addDegree();
+        // adminPage.addAreaOfInterest();
+        // adminPage.addGuidelinesFollowed();
         // adminPage.addConferenceAndSpeaker();
         // adminPage.addWeekendsAndVacation();
         // adminPage.addFamilyFriendDetailInfo();
@@ -227,12 +227,12 @@ public class AdminTest extends BasePage {
     @Test
     public void otherAdminPanelModule(){
         loginWithDirectorCredential();
-        //adminPage.addANewProduct();
-        //adminPage.editAProduct();
-        //adminPage.deleteAProduct();
-        //adminPage.addANewCompProduct();
-        //adminPage.editACompProduct();
-        //adminPage.deleteACompProduct();
+        // adminPage.addANewProduct();
+        // adminPage.editAProduct();
+        // adminPage.deleteAProduct();
+        // adminPage.addANewCompProduct();
+        // adminPage.editACompProduct();
+        // adminPage.deleteACompProduct();
 
     }
 
