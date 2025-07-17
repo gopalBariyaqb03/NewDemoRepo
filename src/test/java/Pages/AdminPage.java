@@ -2726,6 +2726,8 @@ public class AdminPage extends Locators {
         common.waitUntilElementToBeVisible(By.xpath(EDITBTN));
         common.click(EDITBTN);
 
+
+
         String UpdatedrName = common.fakeName();
         common.logPrint("Step:: Update the doctor name");
         common.waitUntilElementsToBeVisible(By.xpath(DOCTORNAMEINP)).clear();

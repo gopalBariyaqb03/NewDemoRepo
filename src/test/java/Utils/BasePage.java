@@ -36,6 +36,7 @@ public class BasePage {
     String password = adminCredentials[1];
 
 
+
     static Properties configProperties = null;
     protected WebDriver driver;
     public static Common common;

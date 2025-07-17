@@ -1034,6 +1034,25 @@ public class Locators extends BasePage {
     public static String FROMDATEINP = "//input[@name='FromDate']";
     public static String REASONINP = "//textarea[@name='Reason']";
 
+    //mapping
+
+    public static String  MAPPINGMENU = "//span[normalize-space()='Mapping']";
+    public static String  DOCTORCHEMISTMAP = "//div[contains(text(),'Doctor Chemist')]";
+    public static String  DOCTORMAP = "(//input[@id='autocomplete-dropdown-7'])[1]";
+    public static String  CHEMMAP = "(//input[@id='autocomplete-dropdown-6'])[1]";
+    public static String  CHEMLIST ="//label[.='Chemist *']/following-sibling::div";
+    public static String  MAPCHECKBOX = "//div[@data-rowindex='0']//input[@name='select_row']";
+    public static String VIEWCHEMNAME = "//div[@role='button']//span";
+    public static String chememap="//span[@class='MuiChip-label MuiChip-labelSmall css-b9zgoq']";
+    public static String VIEWDOCTORMAP="//input[@id='autocomplete-dropdown-7']";
+    public static String  SEARCHEDDOC ="//div[text()=' HIREN PARIKH']";
+    public static String SEARCHRESULT="//div[@class='MuiDataGrid-cell MuiDataGrid-cell--textLeft' and @data-field='Doctor' ]";
+    public static String DOCTORPRODUCT="//div[contains(text(),'Doctor Product')]";
+    public static String PRODUCTMAP="//input[@id='autocomplete-dropdown-6']";
+    public static String DELETEBTNPOPCANCEL = "//button[text()='Cancel']";
+
+
+
 
 
 }
