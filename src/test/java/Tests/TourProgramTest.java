@@ -98,19 +98,6 @@ public class TourProgramTest extends BasePage {
         tourProgramPage.createDailyTourPlan(2,2,2, 3);
     }
 
-    @Test
-    public void enterText(int a,  int b){
-        a = 1;
-        b = 0;
-        try {
-            int result = a/b;
-            System.out.println(result);
-        } catch (ArithmeticException e) {
-            System.out.println("Cannot divide by zero");
-            e.printStackTrace();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-    }
+
 
 }

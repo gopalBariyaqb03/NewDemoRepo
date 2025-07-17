@@ -2818,8 +2818,6 @@ public class AdminPage extends Locators {
         common.waitUntilElementToBeVisible(By.xpath(PENDINGSTATUS));
         common.assertElementPresent(PENDINGSTATUS);
 
-        common.logPrint("Test branch");
-
     }
 
     public void verifyStockiestIsCreatedIsShowingInTheTableAndItStatusIsPending(String name) {
@@ -3271,6 +3269,22 @@ public class AdminPage extends Locators {
     }
     }
 
+    public void verifyNewAdiDetailIsShowing(String value){
+
+        common.logPrint("Step:: Search name in the search field");
+        common.waitUntilElementToBeVisible(By.xpath(SEARCHFIELD));
+        common.type(SEARCHFIELD, value);
+
+        common.pause(1);
+        common.logPrint("Step:: Verify the status is showing as pending");
+        common.waitUntilElementToBeVisible(By.xpath(GETNAMEFROMFIRST));
+        String getValue = driver.findElement(By.xpath(GETNAMEFROMFIRST)).getAttribute("title");
+        common.assertTwoValuesAreEqual(getValue.toLowerCase(), value.toLowerCase());
+
+        common.logPrint("The Additional detail is added successfully");
+
+    }
+
     public void addDegree() {
         try {
 //            redirectToTheDoctorAdditionalDetail();
@@ -3291,8 +3305,7 @@ public class AdminPage extends Locators {
 
             common.logPrint("Step:: Click on the Degree dropdown");
             common.waitUntilElementToBeVisible(By.xpath(DEGREEDROPDOWN));
-            common.click(DEGREEDROPDOWN);
-            common.downKeyAndEnter();
+            common.selectRandomValueFromDropdown(DEGREEDROPDOWN, 5);
             String enteredDegree = driver.findElement(By.xpath(DEGREESELECTED)).getAttribute("value");
             System.out.println(enteredDegree);
 
@@ -3339,7 +3352,11 @@ public class AdminPage extends Locators {
             common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
             common.click(SAVEBUTTON);
 
-            searchAndValidateAdditionalDetails(enteredDegree);
+            common.assertElementPresent(AddedSuccessfully);
+
+            verifyNewAdiDetailIsShowing(enteredDegree);
+
+            //searchAndValidateAdditionalDetails(enteredDegree.toUpperCase());
 
         } catch (NoSuchElementException e) {
             common.logPrint("Error: Element not found - " + e.getMessage());
@@ -3365,8 +3382,7 @@ public class AdminPage extends Locators {
 
             common.logPrint("Step:: Select Area Of Interest In Medical Field");
             common.waitUntilElementToBeVisible(By.xpath(AREAOFINTERESTINMEDICAL));
-            common.click(AREAOFINTERESTINMEDICAL);
-            common.downKeyAndEnter();
+            common.selectRandomValueFromDropdown(AREAOFINTERESTINMEDICAL, 10);
             String enteredAOI = driver.findElement(By.xpath(AREAOFINTERESTINMEDICALS)).getAttribute("value");
             System.out.println(enteredAOI);
 
@@ -3379,7 +3395,9 @@ public class AdminPage extends Locators {
             common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
             common.click(SAVEBUTTON);
 
-            searchAndValidateAdditionalDetails(enteredAOI);
+
+            verifyNewAdiDetailIsShowing(enteredAOI);
+
 
         } catch (NoSuchElementException e) {
             common.logPrint("Error: Element not found - " + e.getMessage());
