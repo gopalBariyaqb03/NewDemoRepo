@@ -67,7 +67,6 @@ public class PresentationPage extends Locators {
         common.pause(2);
         common.searchAndValidate(name);
 
-
         return name;
     }
 
