@@ -91,6 +91,7 @@ public class Common extends Locators {
             return getWait().ignoring(StaleElementReferenceException.class).until(ExpectedConditions.elementToBeClickable(findBy(locator)));
         }
     }
+
     public WebElement waitUntilStringLocator(String locator){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         return wait.ignoring(StaleElementReferenceException.class).until(ExpectedConditions.visibilityOfElementLocated(findBy(locator)));
@@ -186,6 +187,7 @@ public class Common extends Locators {
         }
 
     }
+
     public void switchToTab(int n){
 
         List<String> tabs = new ArrayList<>(driver.getWindowHandles());

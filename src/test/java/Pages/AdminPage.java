@@ -3250,8 +3250,8 @@ public class AdminPage extends Locators {
         }
 
     }
-    public void searchAndValidateAdditionalDetails(String SearchedTerms)
-    {
+
+    public void searchAndValidateAdditionalDetails(String SearchedTerms) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement Search = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='Search']")));
         if  (Search.isDisplayed()) {
