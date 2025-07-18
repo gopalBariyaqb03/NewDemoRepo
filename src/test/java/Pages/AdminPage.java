@@ -3250,7 +3250,6 @@ public class AdminPage extends Locators {
         }
 
     }
-
     public void searchAndValidateAdditionalDetails(String SearchedTerms)
     {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -3285,7 +3284,7 @@ public class AdminPage extends Locators {
 
     }
 
-    public void addDegree() {
+    public String addDegree() {
         try {
 //            redirectToTheDoctorAdditionalDetail();
 //            common.pause(2);
@@ -3311,8 +3310,10 @@ public class AdminPage extends Locators {
 
             common.logPrint("Step:: Click on the Speciality dropdown");
             common.waitUntilElementToBeVisible(By.xpath(SPECIALITYDRODOWN));
-            common.click(SPECIALITYDRODOWN);
-            common.downKeyAndEnter();
+            common.selectRandomValueFromDropdown(SPECIALITYDRODOWN, 5);
+            String enteredSpeciality = driver.findElement(By.xpath(DEGREESELECTED)).getText();
+            System.out.println(enteredSpeciality);
+
 
             String year = common.generateRandomYear("1998", "2001");
             common.logPrint("Step:: Enter Degree admission year");
@@ -3355,6 +3356,7 @@ public class AdminPage extends Locators {
             common.assertElementPresent(AddedSuccessfully);
 
             verifyNewAdiDetailIsShowing(enteredDegree);
+            return enteredDegree;
 
             //searchAndValidateAdditionalDetails(enteredDegree.toUpperCase());
 
@@ -3376,7 +3378,7 @@ public class AdminPage extends Locators {
         }
     }
 
-    public void addAreaOfInterest() {
+    public String addAreaOfInterest() {
         try {
             redirectToParticularAdditionalDetailPage(AREAOFINTEREST);
 
@@ -3398,6 +3400,8 @@ public class AdminPage extends Locators {
 
             verifyNewAdiDetailIsShowing(enteredAOI);
 
+            return enteredAOI;
+
 
         } catch (NoSuchElementException e) {
             common.logPrint("Error: Element not found - " + e.getMessage());
@@ -3417,16 +3421,18 @@ public class AdminPage extends Locators {
         }
     }
 
-    public void addGuidelinesFollowed() {
+    public String addGuidelinesFollowed() {
         try {
             redirectToParticularAdditionalDetailPage(GUIDELINESFOLLOWED);
 
             common.logPrint("Step:: Select guideline followed from dropdown");
             common.waitUntilElementToBeVisible(By.xpath(GUIDELINEFOLLOWEDDRP));
-            common.click(GUIDELINEFOLLOWEDDRP);
-            common.downKeyAndEnter();
+            common.selectRandomValueFromDropdown(GUIDELINEFOLLOWEDDRP, 3);
+            common.pause(1);
+            String guidelineFollowed = driver.findElement(By.xpath(GUIDELINEFOLLOWEDDRP)).getAttribute("value");
+            System.out.println(guidelineFollowed);
 
-            String areaRemark = common.generateRandomChars(20);
+            String areaRemark = common.generateRandomChars(10);
             common.logPrint("Step:: Enter guideline followed remark");
             common.waitUntilElementToBeVisible(By.xpath(AREAREMARK));
             common.type(AREAREMARK, areaRemark);
@@ -3436,6 +3442,8 @@ public class AdminPage extends Locators {
             common.click(SAVEBUTTON);
 
             common.assertElementDisplayed(AddedSuccessfully);
+
+            return guidelineFollowed;
 
         } catch (NoSuchElementException e) {
             common.logPrint("Error: Element not found - " + e.getMessage());
@@ -4408,6 +4416,180 @@ public class AdminPage extends Locators {
             throw new RuntimeException("Failed to add doctor vendor due to unexpected error", e);
         }
     }
+
+    public void editDegree() {
+        try {
+            String degreeName = addDegree();
+            String[] details = common.fetchDetails();
+
+            String beforeEditValue1 = details[0];
+            String beforeEditValue2 = details[1];
+
+            common.selectCheckBox(EDITCB);
+            common.logPrint("Step:: Edit button is enabled");
+            common.click(EDITBTN);
+
+            common.logPrint("Step:: Click on the Degree dropdown");
+            common.waitUntilElementToBeVisible(By.xpath(DEGREEDROPDOWN));
+            common.selectRandomValueFromDropdown(DEGREEDROPDOWN, 7);
+            String enteredDegree = driver.findElement(By.xpath(DEGREESELECTED)).getAttribute("value");
+            System.out.println(enteredDegree);
+
+            common.logPrint("Step:: Click on the Speciality dropdown");
+            common.waitUntilElementToBeVisible(By.xpath(SPECIALITYDRODOWN));
+            common.selectRandomValueFromDropdown(SPECIALITYDRODOWN, 5);
+            String enteredSpeciality = driver.findElement(By.xpath(DEGREESELECTED)).getText();
+            System.out.println(enteredSpeciality);
+
+            common.logPrint("Step :: Clicking the Save button");
+            common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
+            common.click(SAVEBUTTON);
+
+            common.assertElementDisplayed(UpdatedSuccessfully);
+
+            verifyNewAdiDetailIsShowing(enteredDegree);
+
+            if(beforeEditValue1.equals(enteredDegree) && beforeEditValue2.equals(enteredSpeciality)){
+                common.logPrint("Didn't edit, Before value was " +beforeEditValue1+" and After edit was also "+enteredDegree);
+            }
+            else{
+                common.logPrint("Edited "+beforeEditValue1+ " to " +enteredDegree+ " and " +beforeEditValue2+ " to " +enteredSpeciality+" Successfully.");
+            }
+
+        } catch (NoSuchElementException e) {
+            common.logPrint("Error: Element not found - " + e.getMessage());
+            throw new RuntimeException("Failed to add degree due to missing element", e);
+        } catch (TimeoutException e) {
+            common.logPrint("Error: Operation timed out - " + e.getMessage());
+            throw new RuntimeException("Failed to add degree due to timeout", e);
+        } catch (ElementClickInterceptedException e) {
+            common.logPrint("Error: Element click intercepted - " + e.getMessage());
+            throw new RuntimeException("Failed to add degree due to click interception", e);
+        } catch (StaleElementReferenceException e) {
+            common.logPrint("Error: Stale element reference - " + e.getMessage());
+            throw new RuntimeException("Failed to add degree due to stale element", e);
+        } catch (Exception e) {
+            common.logPrint("Unexpected error: " + e.getMessage());
+            throw new RuntimeException("Failed to add degree due to unexpected error", e);
+        }
+    }
+
+    public void editAreaOfInterest(){
+        try {
+            String areaOfInterest = addAreaOfInterest();
+            String[] details = common.fetchDetails();
+
+            String beforeEditValue1 = details[0];
+            String beforeEditValue2 = details[1];
+
+            common.selectCheckBox(EDITCB);
+            common.logPrint("Step:: Edit button is enabled");
+            common.click(EDITBTN);
+
+            common.logPrint("Step:: Click on the AOI dropdown");
+            common.waitUntilElementToBeVisible(By.xpath(AREAOFINTERESTINMEDICALS));
+            common.selectRandomValueFromDropdown(AREAOFINTERESTINMEDICALS, 7);
+            String enteredAOI = driver.findElement(By.xpath(AREAOFINTERESTINMEDICALS)).getAttribute("value");
+            System.out.println(enteredAOI);
+
+            common.logPrint("Step:: Entering Remarks");
+            common.waitUntilElementToBeVisible(By.xpath(AREAREMARK));
+            common.type(AREAREMARK, "Remarks");
+
+            String enteredAOIRemraks = driver.findElement(By.xpath(AREAREMARK)).getAttribute("value");;
+            System.out.println(enteredAOIRemraks);
+
+            common.logPrint("Step :: Clicking the Save button");
+            common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
+            common.click(SAVEBUTTON);
+
+            common.assertElementDisplayed(UpdatedSuccessfully);
+
+            verifyNewAdiDetailIsShowing(enteredAOI);
+
+            if(beforeEditValue1.equals(enteredAOI) && beforeEditValue2.equals(enteredAOIRemraks)){
+                common.logPrint("Didn't edit, Before value was " +beforeEditValue1+" and After edit was also "+enteredAOI);
+            }
+            else{
+                common.logPrint("Edited "+beforeEditValue1+ " to " +enteredAOI+ " and " +beforeEditValue2+ " to " +enteredAOIRemraks+" Successfully.");
+            }
+
+        } catch (NoSuchElementException e) {
+            common.logPrint("Error: Element not found - " + e.getMessage());
+            throw new RuntimeException("Failed to add degree due to missing element", e);
+        } catch (TimeoutException e) {
+            common.logPrint("Error: Operation timed out - " + e.getMessage());
+            throw new RuntimeException("Failed to add degree due to timeout", e);
+        } catch (ElementClickInterceptedException e) {
+            common.logPrint("Error: Element click intercepted - " + e.getMessage());
+            throw new RuntimeException("Failed to add degree due to click interception", e);
+        } catch (StaleElementReferenceException e) {
+            common.logPrint("Error: Stale element reference - " + e.getMessage());
+            throw new RuntimeException("Failed to add degree due to stale element", e);
+        } catch (Exception e) {
+            common.logPrint("Unexpected error: " + e.getMessage());
+            throw new RuntimeException("Failed to add degree due to unexpected error", e);
+        }
+
+
+    }
+
+    public void editGuidelinesFollowed(){
+        try {
+            String guidelinesFollowed = addGuidelinesFollowed();
+            String[] details = common.fetchDetails();
+
+            String beforeEditValue1 = details[0];
+            String beforeEditValue2 = details[1];
+
+            common.selectCheckBox(EDITCB);
+            common.logPrint("Step:: Edit button is enabled");
+            common.click(EDITBTN);
+
+            common.logPrint("Step:: Select guideline followed from dropdown");
+            common.waitUntilElementToBeVisible(By.xpath(GUIDELINEFOLLOWEDDRP));
+            common.selectRandomValueFromDropdown(GUIDELINEFOLLOWEDDRP, 7);
+            common.pause(1);
+            String guidelineFollowed2 = driver.findElement(By.xpath(GUIDELINEFOLLOWEDDRP)).getAttribute("value");
+            System.out.println(guidelineFollowed2);
+
+            String areaRemark2 = common.generateRandomChars(20);
+            common.logPrint("Step:: Enter guideline followed remark");
+            common.waitUntilElementToBeVisible(By.xpath(AREAREMARK));
+            common.type(AREAREMARK, areaRemark2);
+
+            common.logPrint("Step :: Clicking the Save button");
+            common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
+            common.click(SAVEBUTTON);
+
+            common.assertElementDisplayed(UpdatedSuccessfully);
+
+            verifyNewAdiDetailIsShowing(guidelineFollowed2);
+
+            if(beforeEditValue1.equals(guidelineFollowed2) && beforeEditValue2.equals(areaRemark2)){
+                common.logPrint("Didn't edit, Before value was " +beforeEditValue1+" and After edit was also "+guidelineFollowed2);
+            }
+            else{
+                common.logPrint("Edited "+beforeEditValue1+ " to " +guidelineFollowed2+ " and " +beforeEditValue2+ " to " +areaRemark2+" Successfully.");
+            }
+
+        } catch (NoSuchElementException e) {
+            common.logPrint("Error: Element not found - " + e.getMessage());
+            throw new RuntimeException("Failed to add degree due to missing element", e);
+        } catch (TimeoutException e) {
+            common.logPrint("Error: Operation timed out - " + e.getMessage());
+            throw new RuntimeException("Failed to add degree due to timeout", e);
+        } catch (ElementClickInterceptedException e) {
+            common.logPrint("Error: Element click intercepted - " + e.getMessage());
+            throw new RuntimeException("Failed to add degree due to click interception", e);
+        } catch (StaleElementReferenceException e) {
+            common.logPrint("Error: Stale element reference - " + e.getMessage());
+            throw new RuntimeException("Failed to add degree due to stale element", e);
+        } catch (Exception e) {
+            common.logPrint("Unexpected error: " + e.getMessage());
+            throw new RuntimeException("Failed to add degree due to unexpected error", e);
+        }}
+
     public String addANewProduct() {
 
         try {
@@ -4536,6 +4718,7 @@ public class AdminPage extends Locators {
             throw new RuntimeException("Failed to add doctor vendor due to unexpected error", e);
         }
     }
+
     public void editAProduct(){
 
         String addedProduct = addANewProduct();
@@ -4572,6 +4755,7 @@ public class AdminPage extends Locators {
             common.logPrint("Successfully Edited");
         }
     }
+
     public void deleteAProduct(){
 
         String addedProduct = addANewProduct();
@@ -4589,6 +4773,7 @@ public class AdminPage extends Locators {
 
         common.logPrint("Product "+ addedProduct + " Deleted Successfully");
     }
+
     public String addANewCompProduct() {
 
         try {
@@ -4734,6 +4919,7 @@ public class AdminPage extends Locators {
             throw new RuntimeException("Failed to add doctor vendor due to unexpected error", e);
         }
     }
+
     public void editACompProduct(){
 
         String addedProduct = addANewCompProduct();
@@ -4770,6 +4956,7 @@ public class AdminPage extends Locators {
             common.logPrint("Successfully Edited");
         }
     }
+
     public void deleteACompProduct(){
 
         String addedProduct = addANewCompProduct();

@@ -159,7 +159,7 @@ public class Locators extends BasePage {
     public static String AREAOFINTERESTINMEDICALS = "//input[@role='combobox']";
     public static String AREAREMARK = "//textarea[contains(@name,'Remarks')]";
     public static String GUIDELINESFOLLOWED = "//span[contains(.,'Guidelines Followed')]";
-    public static String GUIDELINEFOLLOWEDDRP = "//label[contains(.,'Guidelines Followed')]/following-sibling::div//button";
+    public static String GUIDELINEFOLLOWEDDRP = "//input[@id='autocomplete-dropdown-7']";
     public static String CONFERENCESPECKER = "//span[contains(.,'Conferences Speaker / Participants')]";
     public static String SUBJECTTYPE = "//label[contains(.,'Subject Type')]/following-sibling::div//button";
     public static String STARTDATEINP = "//input[@name='ConferencesAndWebinarStartDate']";
@@ -337,6 +337,11 @@ public class Locators extends BasePage {
     public static String DVPHONE = "//input[@name='PhoneNumber']";
     public static String DVDATE = "//input[@name='ServiceDateTime']";
     public static String DVNOTE = "//input[@name='Note']";
+
+    //ADDITIONAL DETAILS -> EDIT COMMON
+    public static String EDITCB = "(//input[@name='select_row'])[1]";
+    public static String EDITVAL1 = "(//div[@role='gridcell' and @aria-colindex='3'])[1]";
+    public static String EDITVAL2 = "(//div[@role='gridcell' and @aria-colindex='4'])[1]";
 
     //PRODUCT
     public static String MASTERPRODUCT = "//div[contains(text(),'Product')]";

@@ -1277,6 +1277,16 @@ public class Common extends Locators {
         element.click();
     }
 
+    public String[] fetchDetails() {
+        WebElement element1 = driver.findElement(By.xpath(EDITVAL1));
+        String value1 = element1.getText();
+
+        WebElement element2 = driver.findElement(By.xpath(EDITVAL2));
+        String value2 = element2.getText();
+
+        return new String[] { value1, value2 };
+    }
+
     public void twoDownKeyAndEnter(){
 
         common.pause(1);
@@ -1302,7 +1312,6 @@ public class Common extends Locators {
 
         for(int i =0; i< amount; i++) {
             actions.sendKeys(Keys.DOWN).build().perform();
-            System.out.println("Pressing down " + i);
         }
         actions.sendKeys(Keys.ENTER).perform();
     }

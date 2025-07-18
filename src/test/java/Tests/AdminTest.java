@@ -228,6 +228,14 @@ public class AdminTest extends BasePage {
     }
 
     @Test
+    public void EditAllAdditionalDetails(){
+        loginWithDirectorCredential();
+       // adminPage.editDegree();
+        //adminPage.editAreaOfInterest();
+        adminPage.editGuidelinesFollowed();
+    }
+
+    @Test
     public void otherAdminPanelModule(){
         loginWithDirectorCredential();
         adminPage.addANewProduct();
