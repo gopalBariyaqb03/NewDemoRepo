@@ -914,10 +914,10 @@ public class Locators extends BasePage {
     public static String COMPANYNRXDATE = "//input[@name='NrxExpiryDate']";
     public static String COMPANYADDRESS1 = "//input[@name='AddressLine1']";
     public static String COMPANYAREA = "//input[@name='AddressLine2']";
-    public static String COMPANYCITY = "(//input[@role='combobox'])[2]";
-    public static String COMPANYPINCODE = "(//input[@role='combobox'])[3]";
+    public static String COMPANYCITY = "//label[.='City *']/following-sibling::div//input";
+    public static String COMPANYPINCODE = "//label[.='Pincode *']/following-sibling::div//input";
     public static String COMPANYSEARCH = "//input[@placeholder='Search']";
-    public static String COMPANYSEARCH_CLICK = "form[class='MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1gh1qyt'] button[aria-label='search']";
+    public static String COMPANYSEARCH_CLICK = "//button[@aria-label='search']";
 
     //xpath for inventory Master Currency
     public static String INVENTORYMASTERCURRENCY = "//div[contains(text(),'Currency')]";

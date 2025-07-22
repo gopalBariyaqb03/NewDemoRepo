@@ -5,9 +5,13 @@ import Config.ReadProperties;
 import Utils.Common;
 import Utils.Locators;
 import org.openqa.selenium.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.Random;
 
         public class InventoryPage extends Locators {
+            private static final Logger log = LoggerFactory.getLogger(InventoryPage.class);
             Common common = new Common(driver);
 
             public InventoryPage(WebDriver driver) {
@@ -168,19 +172,24 @@ import java.util.Random;
                 common.waitUntilElementsToBeVisible(By.xpath(SAVEBUTTON));
                 common.click(SAVEBUTTON);
 
+                common.assertElementDisplayed(AddedSuccessfully);
+
                 common.logPrint("Step :: Searching for added company");
                 common.waitUntilElementsToBeVisible(By.xpath(COMPANYSEARCH));
                 common.click(COMPANYSEARCH);
                 common.type(COMPANYSEARCH, COM_NAME);
                 common.click(COMPANYSEARCH_CLICK);
 
-                String searchResult = driver.findElement(By.xpath("//div[@title='" + COM_NAME + "']")).getText();
-                System.out.println("search Result: " + searchResult);
-                if (!searchResult.isBlank()) {
-                    common.logPrint("Step: Validated Successfully");
-                } else {
-                    common.logPrint("Step: Validation Failed");
-                }
+                common.logPrint("Step :: Validating");
+                common.searchAndValidate(COM_NAME);
+
+//                String searchResult = driver.findElement(By.xpath("//div[@title='" + COM_NAME + "']")).getText();
+//                System.out.println("search Result: " + searchResult);
+//                if (!searchResult.isBlank()) {
+//                    common.logPrint("Step: Validated Successfully");
+//                } else {
+//                    common.logPrint("Step: Validation Failed");
+//                }
             }
 
             public void createInventoryMasterCurrency(){
@@ -202,8 +211,8 @@ import java.util.Random;
 
                 common.logPrint("Step:: Adding Currency name");
                 common.waitUntilElementsToBeVisible(By.xpath(CURRENCYNAME));
-                String CUR_NAME = "INR";
-                common.type(CURRENCYNAME, "CUR_NAME");
+                String CUR_NAME = common.fakeName();
+                common.type(CURRENCYNAME, CUR_NAME);
 
                 common.logPrint("Step:: Adding Currency Symbol");
                 common.waitUntilElementsToBeVisible(By.xpath(CURRENCYSYMBOL));
@@ -217,20 +226,24 @@ import java.util.Random;
                 common.waitUntilElementsToBeVisible(By.xpath(SAVEBUTTON));
                 common.click(SAVEBUTTON);
 
-                common.logPrint("Step :: Searching for added company");
+                common.assertElementDisplayed(AddedSuccessfully);
+
+                common.logPrint("Step :: Searching for added Currency");
                 common.waitUntilElementsToBeVisible(By.xpath(CURRENCYSEARCH));
                 common.click(CURRENCYSEARCH);
                 common.type(CURRENCYSEARCH, CUR_NAME);
                 common.click(CURRENCYSEARCH);
 
-                String searchResult = driver.findElement(By.xpath("//div[@title='" + CUR_NAME + "']")).getText();
-                System.out.println("search Result: " + searchResult);
+                common.searchAndValidate(CUR_NAME);
 
-                if (!searchResult.isBlank()) {
-                    common.logPrint("Step: Validated Failed");
-                } else {
-                    common.logPrint("Step: Validation Successfully");
-                }
+//                String searchResult = driver.findElement(By.xpath("//div[@title='" + CUR_NAME + "']")).getText();
+//                System.out.println("search Result: " + searchResult);
+//
+//                if (!searchResult.isBlank()) {
+//                    common.logPrint("Step: Validated Failed");
+//                } else {
+//                    common.logPrint("Step: Validation Successfully");
+//                }
             }
 
             public void createInventoryMasterCustomer(){
@@ -252,7 +265,8 @@ import java.util.Random;
 
                 common.logPrint("Step :: Adding Customer name");
                 common.waitUntilElementsToBeVisible(By.xpath(CUSTOMERNAME));
-                common.type(CUSTOMERNAME,"Test");
+                String Customer_name = common.fakeName();
+                common.type(CUSTOMERNAME,Customer_name);
 
                 common.logPrint("Step :: Adding Customer GR Number");
                 common.waitUntilElementsToBeVisible(By.xpath(CUSTOMERGRNUMBER));
@@ -260,13 +274,14 @@ import java.util.Random;
 
                 common.logPrint("Step :: Adding Customer GST Number");
                 common.waitUntilElementsToBeVisible(By.xpath(CUSTOMERGSTNUMBER));
-                common.type(CUSTOMERGSTNUMBER,"123");
+                String GST = common.generateRandomNumberString(15);
+                common.type(CUSTOMERGSTNUMBER,GST);
 
                 common.logPrint("Step :: Adding Customer Company");
                 common.waitUntilElementsToBeVisible(By.xpath(CUSTOMERCOMPANY));
-                common.type(CUSTOMERCOMPANY,"123");
+                common.type(CUSTOMERCOMPANY,"");
                 common.pause((int) 0.5);
-                common.downKeyAndEnter();
+                common.twoDownKeyAndEnter();
 
                 common.logPrint("Step :: Adding Customer FSSAI");
                 common.waitUntilElementsToBeVisible(By.xpath(COMPANYFSSAI));
@@ -318,6 +333,10 @@ import java.util.Random;
                 common.logPrint("Step :: Clicking Save");
                 common.waitUntilElementsToBeVisible(By.xpath(SAVEBUTTON));
                 common.click(SAVEBUTTON);
+
+                common.assertElementDisplayed(AddedSuccessfully);
+
+                common.searchAndValidate(Customer_name);
             }
 
             public void createInventoryHSN(){
@@ -333,7 +352,8 @@ import java.util.Random;
 
                 common.logPrint("Step:: Adding HSN name");
                 common.waitUntilElementsToBeVisible(By.xpath(CURRENCYNAME));
-                common.type(CURRENCYNAME, "212223");
+                String Cur_name = common.generateRandomNumberString(5);
+                common.type(CURRENCYNAME, Cur_name);
 
                 common.logPrint("Step:: Adding SGST");
                 common.waitUntilElementsToBeVisible(By.xpath(SGST));
@@ -347,7 +367,7 @@ import java.util.Random;
                 common.waitUntilElementsToBeVisible(By.xpath(HSNTYPE));
                 common.type(HSNTYPE, "");
                 common.pause(1);
-                common.downKeyAndEnter();
+                common.twoDownKeyAndEnter();
 
                 common.logPrint("Step:: Adding UQC");
                 common.waitUntilElementsToBeVisible(By.xpath(UQC));
@@ -357,7 +377,9 @@ import java.util.Random;
                 common.waitUntilElementsToBeVisible(By.xpath(SAVEBUTTON));
                 common.click(SAVEBUTTON);
 
-                common.searchAndValidate("212223");
+                common.assertElementDisplayed(AddedSuccessfully);
+
+                common.searchAndValidate(Cur_name);
             }
 
             public void createInventoryPaymentMethod(){
@@ -373,13 +395,16 @@ import java.util.Random;
 
                 common.logPrint("Step:: Adding a Payment Method ");
                 common.waitUntilElementsToBeVisible(By.xpath(CURRENCYNAME));
-                common.type(CURRENCYNAME, "UPI");
+                String Cur_Name = common.fakeName();
+                common.type(CURRENCYNAME, Cur_Name);
 
                 common.logPrint("Step :: Clicking Save");
                 common.waitUntilElementsToBeVisible(By.xpath(SAVEBUTTON));
                 common.click(SAVEBUTTON);
 
-                common.searchAndValidate("UPI");
+                common.assertElementDisplayed(AddedSuccessfully);
+
+                common.searchAndValidate(Cur_Name);
             }
 
             public void createInventoryWarehouse() {
@@ -387,6 +412,7 @@ import java.util.Random;
 
                 common.logPrint("Step :: Clicking on Warehouse");
                 common.waitUntilElementsToBeVisible(By.xpath(INVENTORYWAREHOUSE));
+                String Warehouse = common.fakeName();
                 common.click(INVENTORYWAREHOUSE);
 
                 common.logPrint("Step:: Click on the Add button");
@@ -395,7 +421,7 @@ import java.util.Random;
 
                 common.logPrint("Step :: Adding Warehouse Name");
                 common.waitUntilElementsToBeVisible(By.xpath(CUSTOMERNAME));
-                common.type(CUSTOMERNAME, common.fakeName());
+                common.type(CUSTOMERNAME,Warehouse);
                 common.downKeyAndEnter();
 
                 common.logPrint("Step :: Selecting Warehouse");
@@ -408,7 +434,9 @@ import java.util.Random;
                 common.waitUntilElementsToBeVisible(By.xpath(SAVEBUTTON));
                 common.click(SAVEBUTTON);
 
-                common.searchAndValidate("AHMEDABAD WAREHOUSE");
+                common.assertElementDisplayed(AddedSuccessfully);
+
+                common.searchAndValidate(Warehouse.toLowerCase());
             }
 
             public void createInventoryVendor(){
@@ -430,7 +458,8 @@ import java.util.Random;
 
                 common.logPrint("Step :: Adding GSTNUMBER");
                 common.waitUntilElementsToBeVisible(By.xpath(GSTNUMBER));
-                common.type(GSTNUMBER, "10");
+                String GST = common.generateRandomNumberString(15);
+                common.type(GSTNUMBER, GST);
 
                 common.logPrint("Step :: Selecting a Company");
                 common.waitUntilElementsToBeVisible(By.xpath(COMPANY));
@@ -452,19 +481,19 @@ import java.util.Random;
 
                 common.logPrint("Step :: Selecting a FSSAIEXPIRYDATE");
                 common.waitUntilElementsToBeVisible(By.xpath(FSSAIEXPIRYDATE));
-                common.type(FSSAIEXPIRYDATE, "2025-06-20");
+                common.type(FSSAIEXPIRYDATE, "20-06-2025");
 
                 common.logPrint("Step :: Selecting a DLNO1EXPIRYDATE");
                 common.waitUntilElementsToBeVisible(By.xpath(DLNO1EXPIRYDATE));
-                common.type(DLNO1EXPIRYDATE, "2025-06-20");
+                common.type(DLNO1EXPIRYDATE, "20-06-2025");
 
                 common.logPrint("Step :: Selecting a DLNO2EXPIRYDATE");
                 common.waitUntilElementsToBeVisible(By.xpath(DLNO2EXPIRYDATE));
-                common.type(DLNO2EXPIRYDATE, "2025-06-20");
+                common.type(DLNO2EXPIRYDATE, "20-06-2025");
 
                 common.logPrint("Step :: Selecting a NRXEXPIRYDATE");
                 common.waitUntilElementsToBeVisible(By.xpath(NRXEXPIRYDATE));
-                common.type(NRXEXPIRYDATE, "2025-06-20");
+                common.type(NRXEXPIRYDATE, "20-06-2025");
 
                 common.logPrint("Step :: Selecting a FSSAI");
                 common.waitUntilElementsToBeVisible(By.xpath(FSSAI));
@@ -484,7 +513,9 @@ import java.util.Random;
                 common.waitUntilElementsToBeVisible(By.xpath(SAVEBUTTON));
                 common.click(SAVEBUTTON);
 
-                common.searchAndValidate(vendorName);
+                common.assertElementDisplayed(AddedSuccessfully);
+
+                common.searchAndValidate(vendorName.toLowerCase());
             }
 
             public class GiftSelector {
@@ -540,7 +571,9 @@ import java.util.Random;
                 common.waitUntilElementsToBeVisible(By.xpath(SAVEBUTTON));
                 common.click(SAVEBUTTON);
 
-                common.searchAndValidate(giftName);
+                common.assertElementDisplayed(AddedSuccessfully);
+
+                common.searchAndValidate(giftName.toLowerCase());
             }
 
             public void createPurchaseInvoice() {
@@ -658,6 +691,8 @@ import java.util.Random;
                 common.waitUntilElementsToBeVisible(By.xpath(SAVE));
                 common.click(SAVE);
 
+                common.assertElementDisplayed(AddedSuccessfully);
+
                 try {
                     common.logPrint("Step :: Capturing updated invoice number");
                     common.waitUntilElementToBeVisible(By.xpath(CURRENTVALUE));
@@ -749,5 +784,80 @@ import java.util.Random;
                 common.logPrint("Step :: Clicking the SAVE button");
                 common.waitUntilElementsToBeVisible(By.xpath(SAVE));
                 common.click(SAVE);
+            }
+
+            public void editInventoryMasterCompany(){
+                createInventoryMasterCompany();
+
+                common.selectCheckBox(EDITCB);
+
+                common.logPrint("Step:: Click on the Add button");
+                common.waitUntilElementToBeVisible(By.xpath(EDITBTN));
+                common.click(EDITBTN);
+
+                common.logPrint("Step :: Adding Company Name");
+                common.waitUntilElementsToBeVisible(By.xpath(COMPANYNAME));
+                String COM_NAME = common.generateRandomChars(10);
+                common.type(COMPANYNAME, COM_NAME);
+
+                common.logPrint("Step :: Adding Company GST");
+                common.waitUntilElementsToBeVisible(By.xpath(COMPANYGST));
+                common.type(COMPANYGST, "12312312312312Z1");
+
+                common.logPrint("Step :: Adding Company Currency");
+                common.waitUntilElementsToBeVisible(By.xpath(COMPANYCURRENCY));
+                common.click(COMPANYCURRENCY);
+                common.downKeyAndEnter();
+
+                common.logPrint("Step :: Adding Company FSSAI");
+                common.waitUntilElementsToBeVisible(By.xpath(COMPANYFSSAI));
+                common.type(COMPANYFSSAI, "123112312");
+
+                common.logPrint("Step :: Adding Company DL NO 1");
+                common.waitUntilElementsToBeVisible(By.xpath(COMPANYDLNO1));
+                common.type(COMPANYDLNO1, "123112312");
+
+                common.logPrint("Step :: Adding Company DL NO 2");
+                common.waitUntilElementsToBeVisible(By.xpath(COMPANYDLNO2));
+                common.type(COMPANYDLNO2, "123112312");
+
+                common.logPrint("Step :: Adding Company NRX");
+                common.waitUntilElementsToBeVisible(By.xpath(COMPANYNRX));
+                common.type(COMPANYNRX, "123112312");
+
+                common.logPrint("Step :: Adding Company FSSAI Expiry Date");
+                common.waitUntilElementsToBeVisible(By.xpath(COMPANYDATE));
+                common.type(COMPANYDATE,"29-05-2025");
+
+                common.logPrint("Step :: Adding Company DL 1 Expiry Date");
+                common.waitUntilElementsToBeVisible(By.xpath(COMPANYDLNO1EXPDATE));
+                common.type(COMPANYDLNO1EXPDATE,"29-05-2025");
+
+                common.logPrint("Step :: Adding Company DL 2 Expiry Date");
+                common.waitUntilElementsToBeVisible(By.xpath(COMPANYDLNO2EXPDATE));
+                common.type(COMPANYDLNO2EXPDATE,"29-05-2025");
+
+                common.logPrint("Step :: Adding Company NRX Expiry Date");
+                common.waitUntilElementsToBeVisible(By.xpath(COMPANYNRXDATE));
+                common.type(COMPANYNRXDATE,"29-05-2025");
+
+                common.fillAddress();
+
+                common.logPrint("Step :: Clicking Save");
+                common.waitUntilElementsToBeVisible(By.xpath(SAVEBUTTON));
+                common.click(SAVEBUTTON);
+
+                common.assertElementDisplayed(UpdatedSuccessfully);
+
+                common.logPrint("Step :: Searching for added company");
+                common.waitUntilElementsToBeVisible(By.xpath(COMPANYSEARCH));
+                common.click(COMPANYSEARCH);
+                common.type(COMPANYSEARCH, COM_NAME);
+                common.click(COMPANYSEARCH_CLICK);
+
+                common.logPrint("Step :: Validating");
+                common.searchAndValidate(COM_NAME);
+
+
             }
         }

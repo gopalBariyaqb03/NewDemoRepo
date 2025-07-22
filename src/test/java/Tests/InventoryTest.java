@@ -14,26 +14,33 @@ import java.util.Locale;
 public class InventoryTest extends BasePage {
 
     @Test
-    public void createInventoryMaster(){
+    public void createInventoryMaster()
+    {
+
        common.loginWithDirectorCredential();
-//        attributesPage.createAttributeMethod();
-//        inventoryPage.createInventoryMasterCompany();
-//        inventoryPage.createInventoryMasterCurrency();
-//        inventoryPage.createInventoryMasterCustomer();
-//        inventoryPage.createInventoryHSN();
-//        inventoryPage.createInventoryPaymentMethod();
-//        inventoryPage.createInventoryWarehouse();
-//        inventoryPage.createInventoryVendor();
+       // attributesPage.createAttributeMethod();
+        inventoryPage.createInventoryMasterCompany();
+        inventoryPage.createInventoryMasterCurrency();
+        inventoryPage.createInventoryMasterCustomer();
+        inventoryPage.createInventoryHSN();
+        inventoryPage.createInventoryPaymentMethod();
+        inventoryPage.createInventoryWarehouse();
+        inventoryPage.createInventoryVendor();
         inventoryPage.createInventoryGift();
 
+    }
 
+    @Test
+    public void editInventoryMaster(){
+
+        common.loginWithDirectorCredential();
+        inventoryPage.editInventoryMasterCompany();
 
     }
 
     @Test
     public void createPurchaseInvoice()
     {
-
         loginWithDirectorCredential();
         inventoryPage.createPurchaseInvoice();
         inventoryPage.returnPurchaseInvoice();

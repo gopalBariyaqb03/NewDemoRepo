@@ -4570,7 +4570,7 @@ public class AdminPage extends Locators {
                 common.logPrint("Didn't edit, Before value was " +beforeEditValue1+" and After edit was also "+guidelineFollowed2);
             }
             else{
-                common.logPrint("Edited "+beforeEditValue1+ " to " +guidelineFollowed2+ " and " +beforeEditValue2+ " to " +areaRemark2+" Successfully.");
+                common.logPrint("Step :: Edited "+beforeEditValue1+ " to " +guidelineFollowed2+ " and " +beforeEditValue2+ " to " +areaRemark2+" Successfully.");
             }
 
         } catch (NoSuchElementException e) {
