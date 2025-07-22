@@ -638,25 +638,25 @@ public class DataCreationPage extends Locators {
 
         common.logPrint("Step:: Select communication city");
         common.waitUntilElementToBeVisible(By.xpath(COMMNUNICATIONCITY));
-        common.type(COMMNUNICATIONCITY, "AHMEDABAD");
+        common.type(COMMNUNICATIONCITY, "BHAVNAGAR");
         common.pause(2);
         common.downKeyAndEnter();
 
         common.logPrint("Step:: Select Pincode city");
         common.waitUntilElementToBeVisible(By.xpath(COMMNUCATIONPINCODE));
-        common.type(COMMNUCATIONPINCODE, "380058");
+        common.type(COMMNUCATIONPINCODE, "364001");
         common.pause(2);
         common.downKeyAndEnter();
 
         common.logPrint("Step:: Select communication city");
         common.waitUntilElementToBeVisible(By.xpath(PERMANENTCITY));
-        common.type(PERMANENTCITY, "AHMEDABAD");
+        common.type(PERMANENTCITY, "BHAVNAGAR");
         common.pause(2);
         common.downKeyAndEnter();
 
         common.logPrint("Step:: Select communication city");
         common.waitUntilElementToBeVisible(By.xpath(PERMANENTPINCODE));
-        common.type(PERMANENTPINCODE, "380058");
+        common.type(PERMANENTPINCODE, "364001");
         common.pause(2);
         common.downKeyAndEnter();
 
@@ -710,7 +710,7 @@ public class DataCreationPage extends Locators {
 
         common.logPrint("Step:: Select Reporting Senior");
         common.waitUntilElementToBeVisible(By.xpath(REPORTINGSENIORINP));
-        common.type(REPORTINGSENIORINP, "Directors");
+        common.type(REPORTINGSENIORINP, "SUPER ADMIN");
         common.pause(2);
         common.downKeyAndEnter();
 

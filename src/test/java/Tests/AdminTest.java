@@ -208,7 +208,6 @@ public class AdminTest extends BasePage {
     @Test
     public void CreateAllTheAdditionalDetails(){
         loginWithDirectorCredential();
-
         adminPage.addDegree();
         adminPage.addAreaOfInterest();
         adminPage.addGuidelinesFollowed();
@@ -223,8 +222,6 @@ public class AdminTest extends BasePage {
         adminPage.addDoctorBankDetails();
         adminPage.addSpecialDay();
         adminPage.addDoctorVendor();
-      
-
     }
 
     @Test
