@@ -54,7 +54,6 @@ public class AttributesPage extends Locators {
         common.assertTwoValuesAreEqual(getData, name);
     }
 
-
     public void createDoctorDegreeType(){
 
         navigateToDoctorMenu();

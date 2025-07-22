@@ -91,6 +91,7 @@ public class Common extends Locators {
             return getWait().ignoring(StaleElementReferenceException.class).until(ExpectedConditions.elementToBeClickable(findBy(locator)));
         }
     }
+
     public WebElement waitUntilStringLocator(String locator){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         return wait.ignoring(StaleElementReferenceException.class).until(ExpectedConditions.visibilityOfElementLocated(findBy(locator)));
@@ -186,6 +187,7 @@ public class Common extends Locators {
         }
 
     }
+
     public void switchToTab(int n){
 
         List<String> tabs = new ArrayList<>(driver.getWindowHandles());
@@ -1109,6 +1111,7 @@ public class Common extends Locators {
         waitUntilStringLocator(locator);
         highlightElement(locator);
         Assert.assertTrue(isElementDisplayed(locator));
+        common.click(CLOSEBTN);
 
     }
     public void upload_File_Using_Robot(String file) throws AWTException {
@@ -1277,6 +1280,16 @@ public class Common extends Locators {
         element.click();
     }
 
+    public String[] fetchDetails() {
+        WebElement element1 = driver.findElement(By.xpath(EDITVAL1));
+        String value1 = element1.getText();
+
+        WebElement element2 = driver.findElement(By.xpath(EDITVAL2));
+        String value2 = element2.getText();
+
+        return new String[] { value1, value2 };
+    }
+
     public void twoDownKeyAndEnter(){
 
         common.pause(1);
@@ -1302,7 +1315,6 @@ public class Common extends Locators {
 
         for(int i =0; i< amount; i++) {
             actions.sendKeys(Keys.DOWN).build().perform();
-            System.out.println("Pressing down " + i);
         }
         actions.sendKeys(Keys.ENTER).perform();
     }
@@ -1632,18 +1644,15 @@ public class Common extends Locators {
 
         common.logPrint("Step :: Adding City");
         common.waitUntilElementsToBeVisible(By.xpath(COMPANYCITY));
-        common.type(COMPANYCITY,"Bhavnagar");
-        common.pause(1);
-        common.downKeyAndEnter();
-        common.pause(1);
+        common.type(COMPANYCITY,"Ahmedabad");
+        common.twoDownKeyAndEnter();
 
         common.logPrint("Step :: Adding Pincode");
         common.waitUntilElementsToBeVisible(By.xpath(COMPANYPINCODE));
         common.click(COMPANYPINCODE);
-        common.type(COMPANYPINCODE, "364001");
-        common.pause(1);
-        common.downKeyAndEnter();
-        common.pause(1);
+        common.type(COMPANYPINCODE, "");
+        common.twoDownKeyAndEnter();
+
     }
 
     public void fillBothAddress(){
@@ -1696,16 +1705,23 @@ public class Common extends Locators {
     }
 
     public void searchAndValidate(String searchValue) {
-        common.type(COMPANYSEARCH, searchValue);
+
+        String in_string = searchValue.toLowerCase();
+        common.type(COMPANYSEARCH, in_string);
 
         try {
-            WebElement result = driver.findElement(By.xpath("//div[@title='" + searchValue + "']"));
+            WebElement result = driver.findElement(By.xpath("//div[@title='"+searchValue+"']"));
+            String searched_result = result.getText();
+            String l_searched_result = searched_result.toLowerCase();
 
-            if (result.isDisplayed()) {
-                System.out.println("Success: Element with title '" + searchValue + "' found.");
+            if (searched_result.equals(searchValue)) {
+                System.out.println("Success: Element with title '" + in_string + "' found.");
+            } else if (in_string.equals(l_searched_result)) {
+                System.out.println("Success: Element with title '" + result + "' found.");
+
             }
         } catch (NoSuchElementException e) {
-            System.out.println("Fail: Element with title '" + searchValue + "' not found.");
+            System.out.println("Fail: Element with title '" + in_string + "' not found.");
         }
     }
     public String generateCurDate(){
