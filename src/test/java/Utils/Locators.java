@@ -35,6 +35,7 @@ public class Locators extends BasePage {
     public static String NOROWS = "//div[starts-with(text(),'No rows')]";
     public static String VIEWBTN1 = "//button//img[@src='/static/media/eye.f10b3b160555bcdbf184fd21043b5df5.svg']";
     public static String PENDINGSTATUS = "(//button[@aria-label='Pending'])[2]";
+    public static String PENDINGSTATUS12 = "(//td[position()=3])[1]";
     public static String PENDINGSTATUS1 = "(//button[@aria-label='Pending'])[1]";
     public static String APPROVESTATUS = "(//button[@aria-label='Approved'])[2]";
     public static String REJECTSTATUS = "(//button[@aria-label='Rejected'])[2]";

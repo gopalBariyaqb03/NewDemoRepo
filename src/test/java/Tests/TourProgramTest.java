@@ -66,7 +66,7 @@ public class TourProgramTest extends BasePage {
         String leaveDate = leaveInfo[0];
         String leaveReason = leaveInfo[1];
         String leaveType = leaveInfo[2];
-        tourProgramPage.verifyLeaveIsAddedSuccessfullyAndShowingAsPending(leaveReason );
+        tourProgramPage.verifyLeaveIsAddedSuccessfullyAndShowingAsPending(leaveReason);
         loginWithASMCredential();
         tourProgramPage.RejectLeaveManager(leaveDate, leaveReason,leaveType);
         loginWithMRCredential();
@@ -80,11 +80,9 @@ public class TourProgramTest extends BasePage {
         String leaveDate = leaveInfo[0];
         String leaveReason = leaveInfo[1];
         String leaveType = leaveInfo[2];
-        tourProgramPage.redirectsToLeavePage();
         tourProgramPage.verifyLeaveIsAddedSuccessfullyAndShowingAsPending(leaveReason);
         loginWithASMCredential();
-        tourProgramPage.redirectsToLeavePage();
-        tourProgramPage.verifyLeaveIsAddedSuccessfullyAndShowingAsPending(leaveReason);
+        tourProgramPage.verifyLeaveIsAddedSuccessfullyAndShowingAsPendingInASM(leaveReason);
         loginWithMRCredential();
         tourProgramPage.deleteLeaveAndCheckItsRemove(leaveReason);
         loginWithASMCredential();
@@ -97,7 +95,5 @@ public class TourProgramTest extends BasePage {
         loginWithMRCredential();
         tourProgramPage.createDailyTourPlan(2,2,2, 3);
     }
-
-
 
 }
