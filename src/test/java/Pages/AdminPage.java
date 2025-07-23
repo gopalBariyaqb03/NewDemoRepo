@@ -3100,6 +3100,8 @@ public class AdminPage extends Locators {
         common.waitUntilElementToBeVisible(By.xpath(DeleteConfirmationPopUp));
         common.assertElementPresent(DeleteConfirmationPopUp);
 
+        common.pause(1);
+
         common.logPrint("Step:: Click on the delete button");
         common.waitUntilElementToBeVisible(By.xpath(DELETEBTNPOP));
         common.click(DELETEBTNPOP);

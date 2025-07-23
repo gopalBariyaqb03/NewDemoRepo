@@ -1,5 +1,6 @@
 package Pages;
 
+import Config.ReadProperties;
 import Utils.Common;
 import Utils.Locators;
 import org.openqa.selenium.*;
@@ -19,6 +20,18 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class TourProgramPage extends Locators {
     Common common = new Common(driver);
+
+    ReadProperties readProperties = new ReadProperties();
+    String ASMCredentials[] = readProperties.getASMCredential();
+    String Asmusername = ASMCredentials[0];
+
+    String MRCredentials[] = readProperties.getMRCredential();
+    String MRusername = MRCredentials[0];
+
+    String[] splitName = MRusername.split("@");
+    String username = splitName[0];
+
+
 
     public TourProgramPage(WebDriver driver) {
         super(driver);
@@ -326,13 +339,6 @@ public class TourProgramPage extends Locators {
         common.logPrint("Step:: Click on the save button");
         common.waitUntilElementToBeVisible(By.xpath(SAVEBUTTON));
         common.click(SAVEBUTTON);
-//
-//        if(common.){
-//            String updatedLeave = common.generateDate("future", null, null);
-//            common.logPrint("Step:: Enter leave date");
-//            common.waitUntilElementToBeVisible(By.xpath(FROMDATEINP)).clear();
-//            common.type(FROMDATEINP, updatedLeave);
-//        }
 
         common.logPrint("Step:: Check validation is displayed");
         common.assertElementDisplayed(AddedSuccessfully);
@@ -347,12 +353,56 @@ public class TourProgramPage extends Locators {
         String getReason = common.getText(REASONINTABLE);
 
         common.assertTwoValuesAreEqual(getReason, reason);
+        common.logPrint(getReason);
 
         common.pause(1);
+
         common.logPrint("Step:: Verify the status is showing as pending");
         common.waitUntilElementToBeVisible(By.xpath(PENDINGSTATUS));
-
         common.assertElementPresent(PENDINGSTATUS);
+    }
+
+    public void verifyLeaveIsAddedSuccessfullyAndShowingAsPendingInASM(String reason) {
+
+        redirectsToLeaveApprovePage();
+
+        common.refreshPage();
+
+        common.pause(3);
+        common.waitUntilElementToBeVisible(By.xpath(USERDROPDOWN));
+        common.type(USERDROPDOWN, username);
+        common.pause(1);
+        common.downKeyAndEnter();
+
+        common.refreshPage();
+
+        String splitName = MRusername.substring(0, 5);
+        common.logPrint(splitName);
+
+        common.pause(3);
+        common.waitUntilElementToBeVisible(By.xpath(USERDROPDOWN));
+        common.type(USERDROPDOWN, splitName);
+        common.pause(1);
+        common.downKeyAndEnter();
+
+        String reasonXpath = "//td[contains(.,'" + reason + "')]";
+
+        if (common.isElementNotDisplayed(reasonXpath)) {
+            common.refreshPage();
+        }
+
+        common.logPrint("Step :: Verify that leave is showing in the table");
+        common.waitUntilElementToBeVisible(By.xpath(reasonXpath));
+        String getReason = common.getText(reasonXpath);
+
+        common.assertTwoValuesAreEqual(getReason, reason);
+        common.logPrint(getReason);
+
+        common.pause(1);
+
+        common.logPrint("Step:: Verify the status is showing as pending");
+        common.waitUntilElementToBeVisible(By.xpath(PENDINGSTATUS12));
+        common.assertElementPresent(PENDINGSTATUS12);
     }
 
     public void verifyLeaveIsAddedSuccessfullyAndShowingAsApprove(String reason) {
@@ -366,7 +416,7 @@ public class TourProgramPage extends Locators {
         common.assertTwoValuesAreEqual(getReason, reason);
 
         common.pause(1);
-        common.logPrint("Step:: Verify the status is showing as pending");
+        common.logPrint("Step:: Verify the status is showing as Approved");
         common.waitUntilElementToBeVisible(By.xpath(APPROVESTATUS));
         common.assertElementPresent(APPROVESTATUS);
     }
@@ -394,9 +444,11 @@ public class TourProgramPage extends Locators {
         common.refreshPage();
 
         common.pause(3);
+
+        common.logPrint("User name is: "+ username);
         common.logPrint("Step:: Enter guideline followed remark");
         common.waitUntilElementToBeVisible(By.xpath(USERDROPDOWN));
-        common.click(USERDROPDOWN);
+        common.type(USERDROPDOWN, username);
         common.pause(1);
         common.downKeyAndEnter();
 
@@ -433,7 +485,7 @@ public class TourProgramPage extends Locators {
         common.pause(3);
         common.logPrint("Step:: Enter guideline followed remark");
         common.waitUntilElementToBeVisible(By.xpath(USERDROPDOWN));
-        common.click(USERDROPDOWN);
+        common.type(USERDROPDOWN, username);
         common.pause(1);
         common.downKeyAndEnter();
 
@@ -586,16 +638,9 @@ public class TourProgramPage extends Locators {
 
     public void deleteLeaveAndCheckItsRemove (String leaveReason){
 
-        redirectsToLeaveApprovePage();
+        redirectsToLeavePage();
 
         common.refreshPage();
-
-        common.pause(3);
-        common.logPrint("Step:: Enter guideline followed remark");
-        common.waitUntilElementToBeVisible(By.xpath(USERDROPDOWN));
-        common.click(USERDROPDOWN);
-        common.pause(1);
-        common.downKeyAndEnter();
 
         String reasonXpath = "//td[contains(.,'" + leaveReason + "')]";
 
