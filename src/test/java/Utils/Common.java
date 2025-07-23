@@ -1863,6 +1863,14 @@ public class Common extends Locators {
 
         actions.sendKeys(Keys.DOWN).perform();
     }
+    public void updatedSuccessfullyValidationLog(String module_name, String prev_value, String cur_value) {
+
+        if (!prev_value.equals(cur_value)) {
+            System.out.println(module_name + " Updated Successfully from " + prev_value + " To " + cur_value);
+        } else {
+            System.out.println("Error while updating " + prev_value + " To " + cur_value);
+        }
+    }
 }
 
 
