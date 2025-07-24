@@ -4,6 +4,7 @@ package Pages;
 import Config.ReadProperties;
 import Utils.Common;
 import Utils.Locators;
+import org.checkerframework.checker.units.qual.C;
 import org.openqa.selenium.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -109,7 +110,7 @@ public class InventoryPage extends Locators {
         common.click(INVENTORYMASTERMENU);
     }
 
-    public void createInventoryMasterCompany(){
+    public String createInventoryMasterCompany(){
         clickOnInventoryMaster();
 
         common.logPrint("Step:: Click on the Inventory Master Company sub-menu");
@@ -182,6 +183,7 @@ public class InventoryPage extends Locators {
 
         common.logPrint("Step :: Validating");
         common.searchAndValidate(COM_NAME);
+        return COM_NAME;
 
 //                String searchResult = driver.findElement(By.xpath("//div[@title='" + COM_NAME + "']")).getText();
 //                System.out.println("search Result: " + searchResult);
@@ -192,7 +194,7 @@ public class InventoryPage extends Locators {
 //                }
     }
 
-    public void createInventoryMasterCurrency(){
+    public String createInventoryMasterCurrency(){
         common.logPrint("Step:: Click on the Inventory menu");
         common.waitUntilElementToBeVisible(By.xpath(INVENTORYMENU));
         common.click(INVENTORYMENU);
@@ -236,6 +238,8 @@ public class InventoryPage extends Locators {
 
         common.searchAndValidate(CUR_NAME);
 
+        return CUR_NAME;
+
 //                String searchResult = driver.findElement(By.xpath("//div[@title='" + CUR_NAME + "']")).getText();
 //                System.out.println("search Result: " + searchResult);
 //
@@ -246,7 +250,7 @@ public class InventoryPage extends Locators {
 //                }
     }
 
-    public void createInventoryMasterCustomer(){
+    public String createInventoryMasterCustomer(){
         common.logPrint("Step:: Click on the Inventory menu");
         common.waitUntilElementToBeVisible(By.xpath(INVENTORYMENU));
         common.click(INVENTORYMENU);
@@ -337,9 +341,11 @@ public class InventoryPage extends Locators {
         common.assertElementDisplayed(AddedSuccessfully);
 
         common.searchAndValidate(Customer_name);
+
+        return Customer_name;
     }
 
-    public void createInventoryHSN(){
+    public String  createInventoryHSN(){
         clickOnInventoryMaster();
 
         common.logPrint("Step:: Click on the Inventory Master HSN sub-menu");
@@ -380,6 +386,8 @@ public class InventoryPage extends Locators {
         common.assertElementDisplayed(AddedSuccessfully);
 
         common.searchAndValidate(Cur_name);
+
+        return Cur_name;
     }
 
     public void createInventoryPaymentMethod(){
@@ -1106,6 +1114,118 @@ public class InventoryPage extends Locators {
         common.searchAndValidate(giftName.toLowerCase());
 
         common.updatedSuccessfullyValidationLog("Inventory Gift ",prev_value, giftName);
+
+    }
+
+    public void deleteInventoryMasterCompany(){
+        String name = createInventoryMasterCompany();
+
+        common.logPrint("Step :: Selecting a Company to Delete");
+
+        common.selectCheckBox(PRODUCTCB);
+
+        common.waitUntilElementToBeVisible(By.xpath(DELETEBTN));
+        common.click(DELETEBTN);
+
+        common.click(DELETECONFIRMBTN);
+
+        common.assertElementDisplayed(DeletedSuccessfully);
+
+        common.searchAndValidate(name);
+    }
+
+    public void deleteInventoryCurrency(){
+        String name = createInventoryMasterCurrency();
+
+        common.logPrint("Step :: Selecting a Currency to Delete");
+
+        common.selectCheckBox(PRODUCTCB);
+
+        common.waitUntilElementToBeVisible(By.xpath(DELETEBTN));
+        common.click(DELETEBTN);
+
+        common.click(DELETECONFIRMBTN);
+
+        common.assertElementDisplayed(DeletedSuccessfully);
+
+        common.searchAndValidate(name);
+
+        common.logPrint("Step :: Asserting No Rows");
+        WebElement noRow = driver.findElement(By.xpath(NOROWSMSG));
+        String noRow_value = noRow.getText();
+
+        if (noRow.isDisplayed()){
+            System.out.println("No row message displayed, Deleted Successfully");
+        }
+        else{
+            System.out.println("Error While deleting");
+        }
+
+
+
+
+    }
+
+    public void deleteInventoryCustomer(){
+        String name = createInventoryMasterCustomer();
+
+        common.logPrint("Step :: Selecting a Customer to Delete");
+
+        common.selectCheckBox(PRODUCTCB);
+
+        common.waitUntilElementToBeVisible(By.xpath(DELETEBTN));
+        common.click(DELETEBTN);
+
+        common.click(DELETECONFIRMBTN);
+
+        common.assertElementDisplayed(DeletedSuccessfully);
+
+        common.searchAndValidate(name);
+
+        common.logPrint("Step :: Asserting No Rows");
+        WebElement noRow = driver.findElement(By.xpath(NOROWSMSG));
+        String noRow_value = noRow.getText();
+
+        if (noRow.isDisplayed()){
+            System.out.println("No row message displayed, Deleted Successfully");
+        }
+        else{
+            System.out.println("Error While deleting");
+        }
+
+
+
+    }
+
+    public void deleteInventoryMasterHSN(){
+
+        String name = createInventoryHSN();
+
+        common.logPrint("Step :: Selecting a Customer to Delete");
+
+        common.selectCheckBox(PRODUCTCB);
+
+        common.waitUntilElementToBeVisible(By.xpath(DELETEBTN));
+        common.click(DELETEBTN);
+
+        common.click(DELETECONFIRMBTN);
+
+        common.assertElementDisplayed(DeletedSuccessfully);
+
+        common.searchAndValidate(name);
+
+        common.logPrint("Step :: Asserting No Rows");
+        WebElement noRow = driver.findElement(By.xpath(NOROWSMSG));
+        String noRow_value = noRow.getText();
+
+        if (noRow.isDisplayed()){
+            System.out.println("No row message displayed, Deleted Successfully");
+        }
+        else{
+            System.out.println("Error While deleting");
+        }
+
+
 
     }
 

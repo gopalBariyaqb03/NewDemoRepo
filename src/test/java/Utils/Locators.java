@@ -67,7 +67,9 @@ public class Locators extends BasePage {
 
     public static String BACKBTN = "(//div[@class='header']//button)[1]";
     public static String ADDBTN = "//button[contains(.,'Add')]";
-    public static String DELETEBTN = "//button[.='Delete']";
+    public static String DELETEBTN = "//button[normalize-space()='Delete']";
+    public static String DELETECONFIRMBTN = "(//button[normalize-space()='Delete'])[2]";
+    public static String NOROWSMSG = "//div[contains(text(),'No rows')]";
     public static String EDITBTN = "//div[.='Edit']";
     public static String VIEWBTN = "(//div[@class='header']//button)[5]";
     public static String PRINTBTN = "(//div[@class='header']//button)[6]";

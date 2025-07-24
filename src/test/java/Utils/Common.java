@@ -1721,7 +1721,7 @@ public class Common extends Locators {
 
             }
         } catch (NoSuchElementException e) {
-            System.out.println("Fail: Element with title '" + in_string + "' not found.");
+            System.out.println(" Element with title '" + in_string + "' not found.");
         }
     }
     public String generateCurDate(){
