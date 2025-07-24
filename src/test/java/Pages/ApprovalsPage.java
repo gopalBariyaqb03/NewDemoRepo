@@ -23,6 +23,4 @@ public class ApprovalsPage extends Locators {
         super(driver);
     }
 
-
-
 }

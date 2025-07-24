@@ -566,7 +566,6 @@ public class HomePage extends Locators {
         common.click("//*[@value='A']");
     }
 
-
     public void verifyCreateDoctorFunctionality(){
 
         common.logPrint("Step:: ");
@@ -2152,7 +2151,5 @@ public class HomePage extends Locators {
         common.waitUntilElementToBeVisible(By.xpath(ATTRIBUTESMENU));
         common.click(ATTRIBUTESMENU);
     }
-
-
 
 }

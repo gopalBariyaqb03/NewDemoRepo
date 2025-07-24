@@ -16,7 +16,6 @@ public class InventoryTest extends BasePage {
     @Test
     public void createInventoryMaster()
     {
-
        common.loginWithDirectorCredential();
        // attributesPage.createAttributeMethod();
         inventoryPage.createInventoryMasterCompany();
@@ -33,9 +32,29 @@ public class InventoryTest extends BasePage {
     @Test
     public void editInventoryMaster(){
 
-        common.loginWithDirectorCredential();
-        inventoryPage.editInventoryMasterCompany();
+          common.loginWithDirectorCredential();
+//        inventoryPage.editInventoryMasterCompany();
+//        inventoryPage.editInventoryCurrency();
+//        inventoryPage.editInventoryCustomer();
+//        inventoryPage.editInventoryMasterHSN();
+//        inventoryPage.editInventoryPaymentMethod();
+//        inventoryPage.editInventoryWarehouse();
+//        inventoryPage.editInventoryVendor();
+          inventoryPage.editInventoryGift();
 
+    }
+    @Test
+    public void deleteInventoryMaster(){
+
+          common.loginWithDirectorCredential();
+//          inventoryPage.deleteInventoryMasterCompany();
+//        inventoryPage.deleteInventoryCurrency();
+//        inventoryPage.deleteInventoryCustomer();
+        inventoryPage.deleteInventoryMasterHSN();
+//        inventoryPage.deleteInventoryPaymentMethod();
+//        inventoryPage.deleteInventoryWarehouse();
+//        inventoryPage.deleteInventoryVendor();
+//        inventoryPage.deleteInventoryGift();
     }
 
     @Test

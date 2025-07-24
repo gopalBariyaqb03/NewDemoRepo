@@ -4977,7 +4977,6 @@ public class AdminPage extends Locators {
         common.logPrint("Product "+ addedProduct + " Deleted Successfully");
     }
 
-
 }
 
 

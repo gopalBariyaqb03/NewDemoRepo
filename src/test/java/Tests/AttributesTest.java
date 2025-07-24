@@ -45,21 +45,17 @@ public class AttributesTest extends BasePage {
         attributesPage.createHospitalContactPerson();
     }
 
-
     @Test
     public void resetAllAttributes(){
         attributesPage.createDoctorDegreeType();
-
     }
 
     @Test
     public void deleteAllAttributes(){
-
     }
 
     @Test
     public void verifyAllAttributesEmpacts(){
-
     }
 
 }
