@@ -1872,6 +1872,19 @@ public class Common extends Locators {
         }
     }
 
+    public void noRowsAssertion(){
+        common.logPrint("Step :: Asserting No Rows");
+        WebElement noRow = driver.findElement(By.xpath(NOROWSMSG));
+        String noRow_value = noRow.getText();
+
+        if (noRow.isDisplayed()){
+            System.out.println("No row message displayed, Deleted Successfully");
+        }
+        else{
+            System.out.println("Error While deleting");
+        }
+    }
+
 
 }
 

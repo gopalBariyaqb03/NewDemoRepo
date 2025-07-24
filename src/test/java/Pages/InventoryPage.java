@@ -1150,16 +1150,7 @@ public class InventoryPage extends Locators {
 
         common.searchAndValidate(name);
 
-        common.logPrint("Step :: Asserting No Rows");
-        WebElement noRow = driver.findElement(By.xpath(NOROWSMSG));
-        String noRow_value = noRow.getText();
-
-        if (noRow.isDisplayed()){
-            System.out.println("No row message displayed, Deleted Successfully");
-        }
-        else{
-            System.out.println("Error While deleting");
-        }
+        common.noRowsAssertion();
 
 
 
@@ -1182,16 +1173,7 @@ public class InventoryPage extends Locators {
 
         common.searchAndValidate(name);
 
-        common.logPrint("Step :: Asserting No Rows");
-        WebElement noRow = driver.findElement(By.xpath(NOROWSMSG));
-        String noRow_value = noRow.getText();
-
-        if (noRow.isDisplayed()){
-            System.out.println("No row message displayed, Deleted Successfully");
-        }
-        else{
-            System.out.println("Error While deleting");
-        }
+        common.noRowsAssertion();
 
 
 
@@ -1214,17 +1196,7 @@ public class InventoryPage extends Locators {
 
         common.searchAndValidate(name);
 
-        common.logPrint("Step :: Asserting No Rows");
-        WebElement noRow = driver.findElement(By.xpath(NOROWSMSG));
-        String noRow_value = noRow.getText();
-
-        if (noRow.isDisplayed()){
-            System.out.println("No row message displayed, Deleted Successfully");
-        }
-        else{
-            System.out.println("Error While deleting");
-        }
-
+        common.noRowsAssertion();
 
 
     }
