@@ -520,6 +520,7 @@ public class InventoryPage extends Locators {
 
     public class GiftSelector {
         public static void selectRandomGift(Common common, WebDriver driver) {
+
             String[] giftOptions = {DOCTORGIFT, CHEMISTGIFT, STOCKIESTGIFT, EMPLOYEEGIFT};
             Random random = new Random();
             int index = random.nextInt(giftOptions.length);
@@ -1106,12 +1107,6 @@ public class InventoryPage extends Locators {
 
         common.updatedSuccessfullyValidationLog("Inventory Gift ",prev_value, giftName);
 
-
-
-
-
     }
-
-
 
 }

@@ -40,7 +40,7 @@ public class InventoryTest extends BasePage {
 //        inventoryPage.editInventoryPaymentMethod();
 //        inventoryPage.editInventoryWarehouse();
 //        inventoryPage.editInventoryVendor();
-//        inventoryPage.editInventoryGift();
+        inventoryPage.editInventoryGift();
 
     }
 

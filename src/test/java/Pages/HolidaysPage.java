@@ -58,7 +58,6 @@ public class HolidaysPage extends Locators {
         }
     }
 
-
     public void loginWithMRUser(){
         common.logPrint("Step:: Enter username and password");
 

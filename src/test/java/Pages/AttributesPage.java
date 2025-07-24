@@ -357,15 +357,4 @@ public class AttributesPage extends Locators {
 
     }
 
-
-
-
-
-
-
-
-
-
-
-
 }
